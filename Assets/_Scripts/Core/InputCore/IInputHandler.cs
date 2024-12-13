@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine.InputSystem;
+﻿using UnityEngine.InputSystem;
 
 namespace Assets.Scripts.Core.InputCore.MonoBehaviourInputHandlers
 {

@@ -1,5 +1,4 @@
-﻿using System;
-using Leopotam.EcsLite;
+﻿using Leopotam.EcsLite;
 
 namespace Assets.Scripts.Apart.Extensions.Ecs.DelHere
 {

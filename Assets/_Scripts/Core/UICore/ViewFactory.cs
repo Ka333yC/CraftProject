@@ -1,5 +1,4 @@
 using Assets.Assets.Scripts.Core.UICore.PopUp;
-using System;
 using Zenject;
 
 namespace Assets.Scripts.Core.UICore.Core

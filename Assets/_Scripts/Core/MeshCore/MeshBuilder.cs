@@ -1,10 +1,6 @@
-﻿using MeshCreation;
-using MeshCreation.Preset;
-using System;
+﻿using System;
 using System.Buffers;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.Rendering;

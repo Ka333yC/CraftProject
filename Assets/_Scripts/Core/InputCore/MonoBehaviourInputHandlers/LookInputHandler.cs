@@ -1,16 +1,8 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using Leopotam.EcsLite;
 using Input.Components;
-using static UnityEngine.InputSystem.InputAction;
-using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
-using UnityEngine.InputSystem.EnhancedTouch;
-using System.Linq;
-using System.Threading.Tasks;
 using Assets.Scripts.Core.InputCore.MonoBehaviourInputHandlers;
-using UnityEngine.InputSystem.LowLevel;
-using TempScripts;
 using Zenject;
 
 namespace Input.MonoBehaviourHandlers

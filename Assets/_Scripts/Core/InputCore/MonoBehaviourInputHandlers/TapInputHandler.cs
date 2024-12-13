@@ -1,15 +1,8 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Input.Components;
-using Input.MonoBehaviourHandlers;
+﻿using Input.Components;
 using Leopotam.EcsLite;
-using TempScripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Windows;
 using Zenject;
-using static UnityEngine.InputSystem.InputAction;
 
 namespace Assets.Scripts.Core.InputCore.MonoBehaviourInputHandlers
 {

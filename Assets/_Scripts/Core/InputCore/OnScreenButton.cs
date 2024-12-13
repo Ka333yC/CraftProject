@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine.EventSystems;
+﻿using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.Layouts;
 using UnityEngine;
 using UnityEngine.InputSystem.OnScreen;

@@ -1,10 +1,5 @@
 ﻿using Assets.Scripts.Core.EcsCore;
 using Leopotam.EcsLite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Zenject;
 
 namespace Assets.Scripts.Core

@@ -1,5 +1,4 @@
-﻿using System;
-using Assets._Scripts.Core.BlocksCore;
+﻿using Assets._Scripts.Core.BlocksCore;
 using Assets.Scripts.Core.InventoryCore.ItemLogic.BlockItem;
 using Assets.Scripts.InventoryCore;
 using UnityEngine;

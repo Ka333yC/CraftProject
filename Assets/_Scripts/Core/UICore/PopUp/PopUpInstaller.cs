@@ -1,12 +1,4 @@
-﻿using Assets.Scripts.Core.UICore.Core;
-using Assets.Scripts.Core.UICore.Installers;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 using Zenject;
 
 namespace Assets.Assets.Scripts.Core.UICore.PopUp

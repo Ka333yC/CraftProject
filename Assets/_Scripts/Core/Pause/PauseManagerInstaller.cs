@@ -1,5 +1,4 @@
-﻿using System;
-using Zenject;
+﻿using Zenject;
 
 namespace Assets.Scripts.Core.Pause
 {

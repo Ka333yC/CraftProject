@@ -1,12 +1,5 @@
-﻿using Assets.Scripts.Core;
-using Cysharp.Threading.Tasks;
-using System;
+﻿using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
-using UnityEngine.Playables;
 
 namespace Assets.Scripts.Undone.SettingsCore
 {

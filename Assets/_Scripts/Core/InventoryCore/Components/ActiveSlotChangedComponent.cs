@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Assets.Scripts.Core.PlayerCore.Components
+﻿namespace Assets.Scripts.Core.PlayerCore.Components
 {
 	public struct ActiveSlotChangedComponent
 	{

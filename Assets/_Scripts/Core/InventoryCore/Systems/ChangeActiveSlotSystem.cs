@@ -1,5 +1,4 @@
-﻿using System;
-using Assets.Scripts.Core.InventoryCore;
+﻿using Assets.Scripts.Core.InventoryCore;
 using Assets.Scripts.Core.PlayerCore.Components;
 using Leopotam.EcsLite;
 

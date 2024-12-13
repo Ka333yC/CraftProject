@@ -1,5 +1,4 @@
-﻿using System;
-using Assets.Scripts.InventoryCore;
+﻿using Assets.Scripts.InventoryCore;
 
 namespace Assets.Scripts.Core.InventoryCore
 {

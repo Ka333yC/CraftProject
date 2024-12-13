@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Assets.Scripts.Core.InventoryCore
+﻿namespace Assets.Scripts.Core.InventoryCore
 {
 	public struct InventoryComponent
 	{

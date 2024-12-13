@@ -1,5 +1,4 @@
 ﻿using System;
-using Assets.Scripts.Core.InventoryCore.ItemLogic;
 using UnityEngine;
 
 namespace Assets.Scripts.InventoryCore

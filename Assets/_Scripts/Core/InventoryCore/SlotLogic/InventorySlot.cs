@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Assets.Scripts.InventoryCore;
 using JetBrains.Annotations;
-using UnityEngine;
 
 namespace Assets.Scripts.Core.InventoryCore
 {

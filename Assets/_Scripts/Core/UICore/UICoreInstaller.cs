@@ -1,6 +1,5 @@
 using Assets.Assets.Scripts.Core.UICore.PopUp;
 using Assets.Scripts.Core.UICore.Installers;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;

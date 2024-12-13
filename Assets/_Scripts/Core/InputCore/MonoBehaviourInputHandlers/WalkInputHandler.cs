@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
 using Assets.Scripts.Core.InputCore.MonoBehaviourInputHandlers;
-using TempScripts;
 using Zenject;
 
 namespace Input.MonoBehaviourHandlers
