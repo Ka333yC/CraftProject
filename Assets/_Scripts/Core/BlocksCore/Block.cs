@@ -6,34 +6,34 @@ namespace Assets._Scripts.Core.BlocksCore
 {
 	public class Block
 	{
-		public class BlockPool
-		{
-			private readonly object _lock = new object();
-			private readonly Queue<Block> _freeBlocks = new Queue<Block>();
+		//public class BlockPool
+		//{
+		//	private readonly object _lock = new object();
+		//	private readonly Queue<Block> _freeBlocks = new Queue<Block>();
 
-			public Block Rent()
-			{
-				lock(_lock)
-				{
-					return _freeBlocks.Any() ? _freeBlocks.Dequeue() : Create();
-				}
-			}
+		//	public Block Rent()
+		//	{
+		//		lock(_lock)
+		//		{
+		//			return _freeBlocks.Any() ? _freeBlocks.Dequeue() : Create();
+		//		}
+		//	}
 
-			public void Return(Block block)
-			{
-				lock(_lock)
-				{
-					_freeBlocks.Enqueue(block);
-				}
-			}
+		//	public void Return(Block block)
+		//	{
+		//		lock(_lock)
+		//		{
+		//			_freeBlocks.Enqueue(block);
+		//		}
+		//	}
 
-			private Block Create()
-			{
-				return new Block();
-			}
-		}
+		//	private Block Create()
+		//	{
+		//		return new Block();
+		//	}
+		//}
 
-		public static readonly BlockPool Pool = new BlockPool();
+		// public static readonly BlockPool Pool = new BlockPool();
 		public static readonly Block Air = new Block();
 
 		private readonly List<IBlockComponent> _staticBlockComponents = new List<IBlockComponent>();
@@ -43,10 +43,10 @@ namespace Assets._Scripts.Core.BlocksCore
 		public bool HasState => _stateBlockComponents.Count > 0;
 		public IBlockContainer Container { get; private set; }
 
-		private Block()
-		{
+		//private Block()
+		//{
 
-		}
+		//}
 
 		public void Initialize(IBlockContainer container) 
 		{
@@ -102,14 +102,14 @@ namespace Assets._Scripts.Core.BlocksCore
 			return false;
 		}
 
-		public void PoolIfHasState()
-		{
-			if(HasState)
-			{
-				Reset();
-				Pool.Return(this);
-			}
-		}
+		//public void PoolIfHasState()
+		//{
+		//	if(HasState)
+		//	{
+		//		Reset();
+		//		Pool.Return(this);
+		//	}
+		//}
 
 		private void Reset()
 		{
