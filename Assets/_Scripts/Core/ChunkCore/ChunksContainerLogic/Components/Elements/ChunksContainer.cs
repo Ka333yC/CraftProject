@@ -1,5 +1,4 @@
-﻿using Assets._Code.Core.ChunkCore.ChunksContainerLogic.Components.Elements;
-using Assets.Scripts.Core.ChunkCore.ChunksContainerScripts;
+﻿using Assets.Scripts.Core.ChunkCore.ChunksContainerScripts;
 using ChunkCore.LifeTimeControl;
 using Leopotam.EcsLite;
 using System;
@@ -15,7 +14,6 @@ namespace ChunkCore.ChunksContainerScripts
 	{
 		private readonly Dictionary<Vector3Int, ChunkData> _chunkDataByGridPosition =
 			new Dictionary<Vector3Int, ChunkData>();
-
 		private readonly Dictionary<int, ChunkData> _chunkDataByEntity = new Dictionary<int, ChunkData>();
 		private readonly HashSet<Vector3Int> _positionsWithoutChunkEntity = new HashSet<Vector3Int>();
 		private readonly HashSet<int> _chunkEntitiesWithoutChunkUsers = new HashSet<int>();
@@ -50,14 +48,34 @@ namespace ChunkCore.ChunksContainerScripts
 			}
 
 			chunkData.AddUser(priority);
-			OnChunkDataChanged(gridPosition, chunkData.ChunkEntity);
+			if(chunkData.HasEntity)
+			{
+				_chunkEntitiesWithoutChunkUsers.Remove(chunkData.ChunkEntity);
+			}
+			else
+			{
+				_positionsWithoutChunkEntity.Add(gridPosition);
+			}
 		}
 
 		public void RemoveChunkUser(Vector3Int gridPosition, int priority)
 		{
 			var chunkData = _chunkDataByGridPosition[gridPosition];
 			chunkData.RemoveUser(priority);
-			OnChunkDataChanged(gridPosition, chunkData.ChunkEntity);
+			if(chunkData.HasUsers)
+			{
+				return;
+			}
+
+			if(chunkData.HasEntity)
+			{
+				_chunkEntitiesWithoutChunkUsers.Add(chunkData.ChunkEntity);
+			}
+			else
+			{
+				_chunkDataByGridPosition.Remove(gridPosition);
+				_positionsWithoutChunkEntity.Remove(gridPosition);
+			}
 		}
 
 		public void SetChunkEntity(Vector3Int gridPosition, int chunkEntity)
@@ -70,35 +88,62 @@ namespace ChunkCore.ChunksContainerScripts
 
 			chunkData.ChunkEntity = chunkEntity;
 			_chunkDataByEntity.Add(chunkEntity, chunkData);
-			OnChunkDataChanged(gridPosition, chunkEntity);
+			_positionsWithoutChunkEntity.Remove(gridPosition);
+			if(!chunkData.HasUsers)
+			{
+				_chunkEntitiesWithoutChunkUsers.Add(chunkData.ChunkEntity);
+			}
 		}
 
 		public void RemoveChunkEntity(Vector3Int gridPosition)
 		{
-			var chunkEntity = _chunkDataByGridPosition[gridPosition].ChunkEntity;
-			_chunkDataByGridPosition[gridPosition].SetDefaultChunkEntity();
-			OnChunkDataChanged(gridPosition, chunkEntity);
+			var chunkData = _chunkDataByGridPosition[gridPosition];
+			_chunkDataByEntity.Remove(chunkData.ChunkEntity);
+			_chunkEntitiesWithoutChunkUsers.Remove(chunkData.ChunkEntity);
+			if(chunkData.HasUsers)
+			{
+				_chunkDataByGridPosition[gridPosition].ResetChunkEntity();
+				_positionsWithoutChunkEntity.Add(gridPosition);
+			}
+			else
+			{
+				_chunkDataByGridPosition.Remove(gridPosition);
+			}
 		}
 
 		public bool TryGetPositionWithoutChunkEntity(out Vector3Int result)
 		{
-			using var enumertor = _positionsWithoutChunkEntity.GetEnumerator();
-			if(enumertor.MoveNext())
+			var hasResult = false;
+			var lowerPriority = int.MaxValue;
+			result = default;
+			// В редких случаях может выбрасывать IndexOutOfRangeException, т.к. доступ из потоков,
+			// так что ставим try-catch
+			try
 			{
-				result = enumertor.Current;
-				return true;
+				foreach(var position in _positionsWithoutChunkEntity)
+				{
+					var priority = _chunkDataByGridPosition[position].Priority;
+					if(priority < lowerPriority)
+					{
+						hasResult = true;
+						lowerPriority = priority;
+						result = position;
+					}
+				}
+			}
+			catch(Exception)
+			{
 			}
 
-			result = default;
-			return false;
+			return hasResult;
 		}
 
 		public bool TryGetChunkEntityWithoutChunkUsers(out int result)
 		{
-			using var enumertor = _chunkEntitiesWithoutChunkUsers.GetEnumerator();
-			if(enumertor.MoveNext())
+			using var chunkEntitiesWithoutChunkEnumertor = _chunkEntitiesWithoutChunkUsers.GetEnumerator();
+			if(chunkEntitiesWithoutChunkEnumertor.MoveNext())
 			{
-				result = enumertor.Current;
+				result = chunkEntitiesWithoutChunkEnumertor.Current;
 				return true;
 			}
 
@@ -106,11 +151,10 @@ namespace ChunkCore.ChunksContainerScripts
 			return false;
 		}
 
-		/// <returns>Вернёт entity чанка с высшим приоритетом. Если в фильтре нет сущностей, вернёт -1</returns>
-		public int GetChunkWithHighlyPriority(EcsFilter chunksFilter)
+		public int GetChunkWithLowestPriority(EcsFilter chunksFilter)
 		{
 			var resultChunkEntity = -1;
-			var highlyPriority = int.MaxValue;
+			var lowerPriority = int.MaxValue;
 			foreach(var chunkEntity in chunksFilter)
 			{
 				var chunkData = _chunkDataByEntity[chunkEntity];
@@ -124,51 +168,15 @@ namespace ChunkCore.ChunksContainerScripts
 					{
 						resultChunkEntity = chunkEntity;
 					}
-
-					continue;
 				}
-
-				var chunkPriority = chunkData.Priority;
-				if(chunkPriority < highlyPriority)
+				else if(chunkData.Priority < lowerPriority)
 				{
 					resultChunkEntity = chunkEntity;
-					highlyPriority = chunkPriority;
+					lowerPriority = chunkData.Priority;
 				}
 			}
 
 			return resultChunkEntity;
-		}
-
-		private void OnChunkDataChanged(Vector3Int gridPosition, int previousChunkEntity)
-		{
-			var chunkData = _chunkDataByGridPosition[gridPosition];
-			if(chunkData.HasUsers)
-			{
-				if(chunkData.HasEntity)
-				{
-					_chunkEntitiesWithoutChunkUsers.Remove(chunkData.ChunkEntity);
-					_positionsWithoutChunkEntity.Remove(gridPosition);
-				}
-				else
-				{
-					_positionsWithoutChunkEntity.Add(gridPosition);
-				}
-			}
-			else
-			{
-				if(chunkData.HasEntity)
-				{
-					_chunkEntitiesWithoutChunkUsers.Add(chunkData.ChunkEntity);
-					_positionsWithoutChunkEntity.Remove(gridPosition);
-				}
-				else
-				{
-					_chunkEntitiesWithoutChunkUsers.Remove(previousChunkEntity);
-					_positionsWithoutChunkEntity.Remove(gridPosition);
-					_chunkDataByEntity.Remove(previousChunkEntity);
-					_chunkDataByGridPosition.Remove(gridPosition);
-				}
-			}
 		}
 	}
 }

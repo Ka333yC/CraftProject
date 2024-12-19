@@ -68,7 +68,7 @@ namespace ChunkCore.Loading.Systems
 				return;
 			}
 
-			var chunkToGenerate = _chunksContainer.GetChunkWithHighlyPriority(_uninitializedChunksFilter);
+			var chunkToGenerate = _chunksContainer.GetChunkWithLowestPriority(_uninitializedChunksFilter);
 			InitializeChunk(chunkToGenerate).Forget();
 		}
 

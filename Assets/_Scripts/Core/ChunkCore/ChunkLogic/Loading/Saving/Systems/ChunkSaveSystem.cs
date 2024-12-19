@@ -53,7 +53,7 @@ namespace Assets.Scripts.Core.ChunkCore.Saving.Systems
 				return;
 			}
 
-			var chunkToSave = _chunksContainer.GetChunkWithHighlyPriority(_chunksToSaveFilter);
+			var chunkToSave = _chunksContainer.GetChunkWithLowestPriority(_chunksToSaveFilter);
 			SaveChunk(chunkToSave).Forget();
 		}
 

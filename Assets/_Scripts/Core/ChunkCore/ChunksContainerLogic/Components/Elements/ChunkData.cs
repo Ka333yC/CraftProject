@@ -5,18 +5,17 @@ namespace Assets.Scripts.Core.ChunkCore.ChunksContainerScripts
 {
 	public class ChunkData
 	{
+		private const int _defaultChunkEntityValue = -1;
+
 		private readonly List<int> _priorities = new List<int>(1);
 
-		private int _chunkEntity = 0;
+		private int _chunkEntity = _defaultChunkEntityValue;
 
 		public IReadOnlyList<int> Priorities => _priorities;
+		public int Priority => _priorities[0];
+		public bool HasUsers => _priorities.Count > 0;
 		public int UsersCount => _priorities.Count;
-		// Бросит ArumentOutOfRangeException, если чанк ещё cуществует, но у него уже нету User'ов
-		// (соответственно и приоритета), поэтому добавляем проверку на Count
-		public int Priority => _priorities.Count > 0 ? _priorities[0] : int.MaxValue;
-		public bool HasEntity => _chunkEntity != 0;
-		public bool HasUsers => UsersCount > 0;
-
+		public bool HasEntity => _chunkEntity != _defaultChunkEntityValue;
 		public int ChunkEntity
 		{
 			get
@@ -26,7 +25,7 @@ namespace Assets.Scripts.Core.ChunkCore.ChunksContainerScripts
 
 			set
 			{
-				if(_chunkEntity != 0)
+				if(HasEntity)
 				{
 					throw new ArgumentException("Chunk already exist");
 				}
@@ -51,9 +50,9 @@ namespace Assets.Scripts.Core.ChunkCore.ChunksContainerScripts
 			_priorities.Sort();
 		}
 
-		public void SetDefaultChunkEntity()
+		public void ResetChunkEntity()
 		{
-			_chunkEntity = 0;
+			_chunkEntity = _defaultChunkEntityValue;
 		}
 	}
 }
