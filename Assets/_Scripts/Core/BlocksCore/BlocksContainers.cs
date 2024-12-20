@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Core.InventoryCore.ItemLogic;
 using Assets.Scripts.Core.InventoryCore.ItemLogic.BlockItem;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Zenject;
@@ -10,6 +11,8 @@ namespace Assets._Scripts.Core.BlocksCore
 	{
 		private readonly List<IBlockContainer> _containers = new List<IBlockContainer>();
 		private readonly ItemsContainers _itemsContainers;
+
+		public Block Air { get; private set; }
 
 		public IBlockContainer this[int itemId]
 		{
@@ -60,6 +63,20 @@ namespace Assets._Scripts.Core.BlocksCore
 
 				_containers.Add(blockContainer);
 			}
+		}
+
+		private void SetAirBlock()
+		{
+			foreach(var container in _containers)
+			{
+				if(container is AirBlockContainer airBlockContainer)
+				{
+					Air = airBlockContainer.CreateBlock();
+					return;
+				}
+			}
+
+			throw new ArgumentException($"BlocksContainers has no {nameof(AirBlockContainer)}");
 		}
 	}
 }

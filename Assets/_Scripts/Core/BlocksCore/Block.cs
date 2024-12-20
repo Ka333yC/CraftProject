@@ -1,130 +1,83 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
+using UnityEngine.Pool;
 
 namespace Assets._Scripts.Core.BlocksCore
 {
-	public class Block
+	public sealed class Block
 	{
-		//public class BlockPool
-		//{
-		//	private readonly object _lock = new object();
-		//	private readonly Queue<Block> _freeBlocks = new Queue<Block>();
+		public readonly bool IsShared;
 
-		//	public Block Rent()
-		//	{
-		//		lock(_lock)
-		//		{
-		//			return _freeBlocks.Any() ? _freeBlocks.Dequeue() : Create();
-		//		}
-		//	}
-
-		//	public void Return(Block block)
-		//	{
-		//		lock(_lock)
-		//		{
-		//			_freeBlocks.Enqueue(block);
-		//		}
-		//	}
-
-		//	private Block Create()
-		//	{
-		//		return new Block();
-		//	}
-		//}
-
-		// public static readonly BlockPool Pool = new BlockPool();
-		public static readonly Block Air = new Block();
-
-		private readonly List<IBlockComponent> _staticBlockComponents = new List<IBlockComponent>();
-		private readonly List<IBlockComponent> _stateBlockComponents = new List<IBlockComponent>();
+		private readonly List<IBlockComponent> _сomponents = new List<IBlockComponent>(1);
 
 		public int Id => Container.Id;
-		public bool HasState => _stateBlockComponents.Count > 0;
 		public IBlockContainer Container { get; private set; }
 
-		//private Block()
-		//{
-
-		//}
+		public Block(bool isShared)
+		{
+			IsShared = isShared;
+		}
 
 		public void Initialize(IBlockContainer container) 
 		{
 			Container = container;
 		}
 
-		public void AddStaticBlockComponent(IBlockComponent blockComponent)
+		public void AddComponent(IBlockComponent component)
 		{
-			_staticBlockComponents.Add(blockComponent);
+			_сomponents.Add(component);
 		}
 
-		public void AddStateBlockComponent(IBlockComponent blockComponent)
+		public void Destroy()
 		{
-			_stateBlockComponents.Add(blockComponent);
-		}
-
-		public bool TryGetComponent<T>(out T result) where T : IBlockComponent
-		{
-			foreach(var component in _staticBlockComponents)
-			{
-				if(component is T)
-				{
-					result = (T)component;
-					return true;
-				}
-			}
-
-			foreach(var component in _stateBlockComponents)
-			{
-				if(component is T)
-				{
-					result = (T)component;
-					return true;
-				}
-			}
-
-			result = default;
-			return false;
-		}
-
-		public bool TryGetStateComponent<T>(out T result) where T : IBlockComponent
-		{
-			foreach(var component in _stateBlockComponents)
-			{
-				if(component is T)
-				{
-					result = (T)component;
-					return true;
-				}
-			}
-
-			result = default;
-			return false;
-		}
-
-		//public void PoolIfHasState()
-		//{
-		//	if(HasState)
-		//	{
-		//		Reset();
-		//		Pool.Return(this);
-		//	}
-		//}
-
-		private void Reset()
-		{
-			_staticBlockComponents.Clear();
-			_stateBlockComponents.Clear();
+			_сomponents.Clear();
 		}
 
 		public string Serialize()
 		{
-			throw new NotImplementedException();
+			List<string> serializedData = ListPool<string>.Get();
+			foreach(var component in _сomponents)
+			{
+				if(component is ISerializableBlockComponent serializableComponent)
+				{
+					serializedData.Add(serializableComponent.Serialize());
+				}
+			}
+
+			string result = JsonConvert.SerializeObject(serializedData);
+			ListPool<string>.Release(serializedData);
+			return result;
 		}
 
-		public void Populate(string serializedData)
+		public void Populate(string rawSerializedData)
 		{
-			throw new NotImplementedException();
+			List<string> serializedData = JsonConvert.DeserializeObject<List<string>>(rawSerializedData);
+			int serializedDataIndex = 0;
+			foreach(var component in _сomponents)
+			{
+				if(component is ISerializableBlockComponent serializableComponent)
+				{
+					serializableComponent.Populate(serializedData[serializedDataIndex++]);
+				}
+			}
+		}
+
+		public bool TryGetComponent<T>(out T result) where T : IBlockComponent
+		{
+			foreach(var component in _сomponents)
+			{
+				if(component is T)
+				{
+					result = (T)component;
+					return true;
+				}
+			}
+
+			result = default;
+			return false;
 		}
 	}
 }

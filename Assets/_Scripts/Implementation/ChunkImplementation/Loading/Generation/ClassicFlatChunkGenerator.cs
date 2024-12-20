@@ -66,7 +66,7 @@ namespace TempScripts.TerrainGeneration
 				return _blocksContainers[4].CreateBlock();
 			}
 
-			return Block.Air;
+			return _blocksContainers.Air;
 		}
 	}
 }

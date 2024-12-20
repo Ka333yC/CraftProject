@@ -75,7 +75,7 @@ namespace TempScripts.TerrainGeneration
 			int maxHeightByY = _baseHeight + Mathf.FloorToInt(_maxDeviation * noiseValue);
 			if(y > maxHeightByY)
 			{
-				return Block.Air;
+				return _blocksContainers.Air;
 			}
 			else if(y == maxHeightByY)
 			{

@@ -5,6 +5,7 @@ using ChunkCore.ChunksContainerScripts.Components;
 using ChunkCore.LifeTimeControl.Components.Fixed;
 using ChunkCore.LifeTimeControl.Components.Standart;
 using ChunkCore.Loading.Components;
+using Cysharp.Threading.Tasks;
 using Leopotam.EcsLite;
 using UnityEngine;
 
@@ -13,11 +14,12 @@ namespace Assets.Scripts.Core.ChunkCore.LifeTimeControl.Systems
 	public class ChunkDestroyer : IEcsPreInitSystem, IEcsInitSystem, IEcsRunSystem
 	{
 		private ChunksContainer _chunksContainer;
+		private bool _isChunkDestroying = false;
 
 		private EcsPool<ChunkComponent> _chunkPool;
 		private EcsPool<FixedChunkDestroyedComponent> _fixedChunkDestroyedPool;
 		private EcsPool<StandartChunkDestroyedComponent> _standartChunkDestroyedPool;
-		private EcsPool<ChunkInitializingTag> _chunkGeneratingPool;
+		private EcsPool<ChunkInitializingTag> _chunkInitializingPool;
 		private EcsPool<ChunkSavingTag> _chunkSavingPool;
 
 		public void PreInit(IEcsSystems systems)
@@ -26,7 +28,7 @@ namespace Assets.Scripts.Core.ChunkCore.LifeTimeControl.Systems
 			_chunkPool = world.GetPool<ChunkComponent>();
 			_fixedChunkDestroyedPool = world.GetPool<FixedChunkDestroyedComponent>();
 			_standartChunkDestroyedPool = world.GetPool<StandartChunkDestroyedComponent>();
-			_chunkGeneratingPool = world.GetPool<ChunkInitializingTag>();
+			_chunkInitializingPool = world.GetPool<ChunkInitializingTag>();
 			_chunkSavingPool = world.GetPool<ChunkSavingTag>();
 		}
 
@@ -35,11 +37,10 @@ namespace Assets.Scripts.Core.ChunkCore.LifeTimeControl.Systems
 			_chunksContainer = GetChunksContainer(systems.GetWorld());
 		}
 
-		// TODO: исправить неправильно работающий TryGetChunkEntityWithoutChunkUsers
 		public void Run(IEcsSystems systems)
 		{
 			if(_chunksContainer.TryGetChunkEntityWithoutChunkUsers(out var chunkEntity) &&
-				!_chunkGeneratingPool.Has(chunkEntity) &&
+				!_chunkInitializingPool.Has(chunkEntity) &&
 				!_chunkSavingPool.Has(chunkEntity))
 			{
 				DestroyChunk(chunkEntity);
@@ -50,13 +51,12 @@ namespace Assets.Scripts.Core.ChunkCore.LifeTimeControl.Systems
 		{
 			var chunk = _chunkPool.Get(chunkEntity);
 			var gridPosition = chunk.GridPosition;
-			chunk.Blocks.Dispose();
-			chunk.CancellationTokenSource.Cancel();
-			chunk.CancellationTokenSource.Dispose();
 			NotifyFixedChunkDestroyed(chunkEntity, gridPosition);
 			NotifyStandartChunkDestroyed(chunkEntity, gridPosition);
 			_chunkPool.Del(chunkEntity);
 			_chunksContainer.RemoveChunkEntity(gridPosition);
+
+			
 		}
 
 		private void NotifyFixedChunkDestroyed(int chunkEntity, Vector3Int gridPosition)
@@ -69,6 +69,21 @@ namespace Assets.Scripts.Core.ChunkCore.LifeTimeControl.Systems
 		{
 			ref var chunkDestroyed = ref _standartChunkDestroyedPool.Add(chunkEntity);
 			chunkDestroyed.GridPosition = gridPosition;
+		}
+
+		private async UniTaskVoid DisposeChunk(ChunkComponent chunk)
+		{
+			_isChunkDestroying = true;
+			try
+			{
+				chunk.CancellationTokenSource.Cancel();
+				chunk.CancellationTokenSource.Dispose();
+				await UniTask.RunOnThreadPool(() => chunk.Blocks.Dispose());
+			}
+			finally
+			{
+				_isChunkDestroying = false;
+			}
 		}
 
 		private ChunksContainer GetChunksContainer(EcsWorld world)

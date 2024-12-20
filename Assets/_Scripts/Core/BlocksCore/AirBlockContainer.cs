@@ -4,16 +4,19 @@ namespace Assets._Scripts.Core.BlocksCore
 {
 	public class AirBlockContainer : IBlockContainer
 	{
+		private readonly Block _air = new Block(true);
+
 		public int Id { get; set; }
+		public bool CanCreateBlockAsync => true;
 
 		public void Initialize()
 		{
-			Block.Air.Initialize(this);
+			_air.Initialize(this);
 		}
 
 		public Block CreateBlock()
 		{
-			return Block.Air;
+			return _air;
 		}
 
 		public bool IsPlaceable(Vector3Int worldPosition)

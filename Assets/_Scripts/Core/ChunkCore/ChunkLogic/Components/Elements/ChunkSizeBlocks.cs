@@ -29,7 +29,7 @@ namespace Assets.Scripts.Core.ChunkCore.ChunkLogic.Components.Elements
 
 		public void Dispose()
 		{
-			ChunkSizeArrayPool<Block>.Shared.Return(_blocks);
+			ChunkSizeArrayPool<Block>.Shared.Return(_blocks, true);
 		}
 	}
 }
