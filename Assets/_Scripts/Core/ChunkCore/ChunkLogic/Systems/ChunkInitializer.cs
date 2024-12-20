@@ -82,10 +82,7 @@ namespace ChunkCore.Loading.Systems
 				var isLoaded = await _chunkSerializer.Populate(chunkEntity, token);
 				if(!isLoaded)
 				{
-					var gridPosition = chunk.GridPosition;
-					var blocks = chunk.Blocks;
-					await UniTask.RunOnThreadPool(() => GenerateBlocks(blocks, gridPosition, token),
-						cancellationToken: token);
+					await _chunkGenerator.GenerateBlocks(chunkEntity);
 					// Если чанк ранее не существовал, надо его сохранить, чтобы потом ещё раз не генерировать
 					_needSaveChunkPool.Add(chunkEntity);
 				}
@@ -98,25 +95,6 @@ namespace ChunkCore.Loading.Systems
 			finally
 			{
 				_chunkInitializingPool.Del(chunkEntity);
-			}
-		}
-
-		private void GenerateBlocks(ChunkSizeBlocks blocks, Vector3Int gridPosition, CancellationToken token)
-		{
-			Vector3Int worldChunksPosition = ChunkConstantData.GridToWorldPosition(gridPosition);
-			for(int y = 0; y < ChunkConstantData.ChunkScale.y; y++)
-			{
-				token.ThrowIfCancellationRequested();
-				for(int x = 0; x < ChunkConstantData.ChunkScale.x; x++)
-				{
-					for(int z = 0; z < ChunkConstantData.ChunkScale.z; z++)
-					{
-						Vector3Int blockPosition = new Vector3Int(x, y, z);
-						Vector3Int worldBlockPosition = blockPosition + worldChunksPosition;
-						Block newBlock = _chunkGenerator.GetRandomBlock(ref worldBlockPosition);
-						blocks[x, y, z] = newBlock;
-					}
-				}
 			}
 		}
 

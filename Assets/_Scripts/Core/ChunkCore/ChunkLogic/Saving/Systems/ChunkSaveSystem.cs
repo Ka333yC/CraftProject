@@ -59,13 +59,11 @@ namespace Assets.Scripts.Core.ChunkCore.Saving.Systems
 
 		private async UniTask SaveChunk(int chunkEntity)
 		{
-			var chunk = _chunkPool.Get(chunkEntity);
-			var token = chunk.CancellationTokenSource.Token;
 			try
 			{
 				_chunkSavingPool.Add(chunkEntity);
 				_needSaveChunkPool.Del(chunkEntity);
-				await _chunkSerializer.Save(chunkEntity, token);
+				await _chunkSerializer.Save(chunkEntity);
 			}
 			catch(OperationCanceledException)
 			{
