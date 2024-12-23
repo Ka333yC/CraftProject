@@ -14,34 +14,38 @@ using UnityEngine;
 
 namespace Assets.Scripts.Undone.PlayerCore.Saving
 {
-	public class PlayersLoader
+	public class PlayersSerializer
 	{
-		private readonly DataBaseCommandExecutor _commandExecutor;
+		private const string _nickname = "Steve";
+
 		private readonly EcsWorld _world;
 		private readonly EcsPool<ObjectPhysicsComponent> _objectPhysicsPool;
 
-		public PlayersLoader(GameWorldDBCommandExecutor commandExecutor, EcsWorld world)
+		private readonly DataBaseCommandExecutor _commandExecutor;
+
+		public PlayersSerializer(GameWorldDBCommandExecutor commandExecutor, EcsWorld world)
 		{
-			_commandExecutor = commandExecutor.CommandExecutor;
 			_world = world;
 			_objectPhysicsPool = world.GetPool<ObjectPhysicsComponent>();
+
+			_commandExecutor = commandExecutor.CommandExecutor;
 		}
 
-		public async Task Save(int playerEntity, CancellationToken token)
+		public async Task Save(int playerEntity)
 		{
 			var objectPhysics = _objectPhysicsPool.Get(playerEntity);
 			var playerInDatabase = new PlayerInDatabase();
-			playerInDatabase.Nickname = "Steve";
+			playerInDatabase.Nickname = _nickname;
 			playerInDatabase.SetPosition(objectPhysics.Rigidbody.position);
 			await WriteToDatabase(playerInDatabase);
 		}
 
-		public async Task<Vector3?> GetSavedPosition(CancellationToken token) 
+		public async Task<Vector3?> GetSavedPosition() 
 		{
 			Vector3? result = null;
 			var selectCommand =
 				PlayerInDatabase.SelectWhereNicknameCommand;
-			selectCommand.Nickname = "Steve";
+			selectCommand.Nickname = _nickname;
 			await _commandExecutor.ExecuteReaderAsync(selectCommand, (reader) =>
 			{
 				if(!reader.Read())
@@ -49,7 +53,6 @@ namespace Assets.Scripts.Undone.PlayerCore.Saving
 					return;
 				}
 
-				token.ThrowIfCancellationRequested();
 				float x = reader.GetFloat(0);
 				float y = reader.GetFloat(1);
 				float z = reader.GetFloat(2);

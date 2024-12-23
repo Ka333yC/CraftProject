@@ -11,6 +11,7 @@ using Assets.Scripts.Undone.PlayerCore.Saving;
 using Leopotam.EcsLite;
 using Assets._Scripts;
 using Assets._Scripts.Core.BlocksCore;
+using Cysharp.Threading.Tasks;
 
 namespace Assets.Scripts.Undone
 {
@@ -42,11 +43,12 @@ namespace Assets.Scripts.Undone
 
 		private async void SpawnPlayer()
 		{
-			var spawnPosition = await _container.Instantiate<PlayersLoader>().GetSavedPosition(default);
+			var playersSerializer = _container.Instantiate<PlayersSerializer>();
+			var spawnPosition = await playersSerializer.GetSavedPosition();
 			if(!spawnPosition.HasValue)
 			{
 				var spawnPositionFinder = _container.Instantiate<PlayerSpawnPositionFinder>();
-				spawnPosition = await spawnPositionFinder.FindSpawnPosition(default);
+				spawnPosition = await spawnPositionFinder.FindSpawnPosition();
 			}
 
 			Instantiate(_playerPrefab, spawnPosition.Value, Quaternion.identity);

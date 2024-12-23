@@ -7,85 +7,102 @@ using ChunkCore;
 using ChunkCore.ChunksContainerScripts;
 using ChunkCore.ChunksContainerScripts.Components;
 using ChunkCore.Loading.Components;
+using Cysharp.Threading.Tasks;
 using Leopotam.EcsLite;
 using TempScripts;
 using UnityEngine;
 
 namespace Assets.Scripts.Core.PlayerCore.FindCoordinatesToSpawn
 {
+	// TODO: возможен бесконечный поиск, если мир был уничтожен до того, как позиция найдена. Добавить отмену
+	// при уничтожении мира
 	public class PlayerSpawnPositionFinder
 	{
+		private EcsWorld _world;
 		private EcsPool<ChunkInitializedTag> _chunkInitializedPool;
 		private EcsPool<ChunkComponent> _chunkPool;
 		private EcsPool<ChunksContainerComponent> _chunksContainerPool;
-		private EcsFilter _chunksContainerFilter;
+		private EcsFilter _chunksContainersFilter;
 
 		private BlocksContainers _blocksContainers;
 
 		public PlayerSpawnPositionFinder(EcsWorld world, BlocksContainers blocksContainers)
 		{
+			_world = world;
 			_chunkInitializedPool = world.GetPool<ChunkInitializedTag>();
 			_chunkPool = world.GetPool<ChunkComponent>();
 			_chunksContainerPool = world.GetPool<ChunksContainerComponent>();
-			_chunksContainerFilter = world
+			_chunksContainersFilter = world
 				.Filter<ChunksContainerComponent>()
 				.End();
 
 			_blocksContainers = blocksContainers;
 		}
 
-		public async Task<Vector3> FindSpawnPosition(CancellationToken token) 
+		public async UniTask<Vector3> FindSpawnPosition() 
 		{
 			bool isPositionFound = false;
 			Vector3Int chunkPositionToCheck = new Vector3Int(0, 0, 0);
-			var chunksContainer = GetChunksContainer();
+			var chunksContainer = await GetChunksContainer();
 			while(!isPositionFound)
 			{
 				chunksContainer.AddChunkUser(chunkPositionToCheck, 0);
-				var chunkEntity = await WaitUntilChunkGenerated(chunkPositionToCheck,
-					chunksContainer,  token);
-				var blockPositionToSpawnOn = await Task.Run(() =>
+				try
 				{
-					return FindBlockPositionToSpawnOn(chunkEntity, token); 
-				});
-
-				chunksContainer.RemoveChunkUser(chunkPositionToCheck, 0);
-				if(blockPositionToSpawnOn.HasValue)
-				{
-					var positionToSpawn = blockPositionToSpawnOn.Value + ChunkConstantData.ShiftToBlockCenter;
-					// +1, т.к. был найден блок на котором заспавниться, позиция для спавна находится выше блока
-					positionToSpawn.y += 1;
-					return positionToSpawn;
+					var chunkEntity = await WaitUntilChunkGenerated(chunkPositionToCheck,
+						chunksContainer);
+					Vector3Int blockPositionToSpawnOn = Vector3Int.zero;
+					var hasPositionFound = await UniTask.RunOnThreadPool(
+						() => TryFindBlockPositionToSpawnOn(chunkEntity, out blockPositionToSpawnOn));
+					if(hasPositionFound)
+					{
+						var positionToSpawn = blockPositionToSpawnOn + ChunkConstantData.ShiftToBlockCenter;
+						// +1, т.к. был найден блок на котором заспавниться, позиция для спавна находится выше блока
+						positionToSpawn.y += 1;
+						return positionToSpawn;
+					}
+					else
+					{
+						chunkPositionToCheck += new Vector3Int(1, 0, 1);
+					}
 				}
-				else
+				finally
 				{
-					chunkPositionToCheck += new Vector3Int(1, 0, 1);
+					chunksContainer.RemoveChunkUser(chunkPositionToCheck, 0);
 				}
 			}
 
 			return default;
 		}
 
-		private async Task<int> WaitUntilChunkGenerated(Vector3Int gridPosition, ChunksContainer chunksContainer,
-			CancellationToken token)
+		private async UniTask<ChunksContainer> GetChunksContainer()
+		{
+			ChunksContainer result = null;
+			while(!TryGetChunksContainer(out result))
+			{
+				await UniTask.Yield();
+			}
+
+			return result;
+		}
+
+		private async UniTask<int> WaitUntilChunkGenerated(Vector3Int gridPosition, ChunksContainer chunksContainer)
 		{
 			int chunkEntity;
 			while(!chunksContainer.TryGetChunk(gridPosition, out chunkEntity))
 			{
-				await Task.Yield();
-				token.ThrowIfCancellationRequested();
+				await UniTask.Yield();
 			}
 
 			while(!_chunkInitializedPool.Has(chunkEntity))
 			{
-				await Task.Yield();
-				token.ThrowIfCancellationRequested();
+				await UniTask.Yield();
 			}
 
 			return chunkEntity;
 		}
 
-		private Vector3Int? FindBlockPositionToSpawnOn(int chunkEntity, CancellationToken token)
+		private bool TryFindBlockPositionToSpawnOn(int chunkEntity, out Vector3Int result)
 		{
 			var random = new System.Random();
 			int randomStartXPosition = random.Next(0, ChunkConstantData.ChunkScale.x);
@@ -94,7 +111,6 @@ namespace Assets.Scripts.Core.PlayerCore.FindCoordinatesToSpawn
 			var blockIdToSpawnOn = Singleton.Instance.BlockToSpawn.Id;
 			for(int x = randomStartXPosition; x < ChunkConstantData.ChunkScale.x; x++)
 			{
-				token.ThrowIfCancellationRequested();
 				for(int z = randomStarZPosition; z < ChunkConstantData.ChunkScale.z; z++)
 				{
 					// Минус 3, т.к. 2 блока над игроком должны быть воздухом
@@ -104,23 +120,27 @@ namespace Assets.Scripts.Core.PlayerCore.FindCoordinatesToSpawn
 							blocks[x, y + 1, z] == _blocksContainers.Air &&
 							blocks[x, y + 2, z] == _blocksContainers.Air)
 						{
-							return new Vector3Int(x, y, z);
+							result = new Vector3Int(x, y, z);
+							return true;
 						}
 					}
 				}
 			}
 
-			return null;
+			result = default;
+			return false;
 		}
 
-		private ChunksContainer GetChunksContainer()
+		private bool TryGetChunksContainer(out ChunksContainer result)
 		{
-			foreach(var entity in _chunksContainerFilter)
+			foreach(var entity in _chunksContainersFilter)
 			{
-				return _chunksContainerPool.Get(entity).ChunksContainer;
+				result = _chunksContainerPool.Get(entity).ChunksContainer;
+				return true;
 			}
 
-			throw new Exception($"{typeof(ChunksContainerComponent).Name} not found");
+			result = default;
+			return false;
 		}
 	}
 }

@@ -20,7 +20,7 @@ namespace Assets.Scripts.Undone.PlayerCore.Saving.Systems
 		[Inject]
 		private DiContainer _container;
 
-		private PlayersLoader _playersLoader;
+		private PlayersSerializer _playersSerializer;
 
 		private EcsWorld _world;
 		private EcsPool<ObjectPhysicsComponent> _objectPhysicsPool;
@@ -48,7 +48,7 @@ namespace Assets.Scripts.Undone.PlayerCore.Saving.Systems
 
 		public void Init(IEcsSystems systems)
 		{
-			_playersLoader = _container.Instantiate<PlayersLoader>();
+			_playersSerializer = _container.Instantiate<PlayersSerializer>();
 		}
 
 		public void Run(IEcsSystems systems)
@@ -69,7 +69,7 @@ namespace Assets.Scripts.Undone.PlayerCore.Saving.Systems
 			try
 			{
 				_playerSavingPool.Add(playerEntity);
-				await _playersLoader.Save(playerEntity, default);
+				await _playersSerializer.Save(playerEntity);
 				_needSavePlayerTagPool.Del(playerEntity);
 			}
 			catch(OperationCanceledException)

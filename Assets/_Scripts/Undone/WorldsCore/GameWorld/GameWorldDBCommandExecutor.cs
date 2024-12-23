@@ -18,7 +18,7 @@ namespace Assets.Scripts.Undone
 				SaveFilePathes.GameWorldDatabaseFileName);
 			CommandExecutor.OpenConnection(pathToWorldDB);
 			CommandExecutor.ExecuteNonQuery(ChunkInDatabase.CreateTableCommand);
-			//CommandExecutor.ExecuteNonQuery(PlayerInDatabase.CreateTableCommand);
+			CommandExecutor.ExecuteNonQuery(PlayerInDatabase.CreateTableCommand);
 		}
 
 		public void Dispose()
