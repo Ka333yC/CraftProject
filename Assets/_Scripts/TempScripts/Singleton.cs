@@ -12,6 +12,8 @@ using UnityEngine;
 using Zenject;
 using Leopotam.EcsLite;
 using Assets.Scripts.Core.ChunkGraphicsCore.Cache;
+using Assets.Scripts.PhysicsCore;
+using Assets.Scripts.Core.ChunkPhysicsCore.Cache;
 
 namespace TempScripts
 {
@@ -21,8 +23,8 @@ namespace TempScripts
 		//private GameWorldDBCommandExecutor _commandExecutor;
 		//[Inject]
 		//private WorldLauncher _worldLauncher;
-		//[Inject]
-		//private PhysicsPresets _physicsPresets;
+		[Inject]
+		private PhysicsPresets _physicsPresets;
 		[Inject]
 		private EcsWorld _ecsWorld;
 
@@ -31,8 +33,8 @@ namespace TempScripts
 		[field: SerializeField]
 		public ChunkGraphicsGameObject ChunkGraphicsPrefab { get; private set; } // В DI
 
-		//[field: SerializeField] 
-		//public ChunkPhysicsGameObject ChunkPhysicsPrefab { get; private set; } // В DI
+		[field: SerializeField] 
+		public ChunkPhysicsGameObject ChunkPhysicsPrefab { get; private set; } // В DI
 
 		//[field: SerializeField]
 		//public BlockDataContainer BlockToSpawn { get; private set; } // В DI
@@ -43,7 +45,7 @@ namespace TempScripts
 		[field: SerializeField]
 		public NoiseSettings NoiseSettings { get; private set; }
 
-		//public PhysicsPresets PhysicsSettings => _physicsPresets;
+		public PhysicsPresets PhysicsSettings => _physicsPresets;
 
 		public EcsWorld EcsWorld => _ecsWorld;
 
