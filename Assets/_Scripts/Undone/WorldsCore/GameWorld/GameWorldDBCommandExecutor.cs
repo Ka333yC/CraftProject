@@ -17,7 +17,7 @@ namespace Assets.Scripts.Undone
 			var pathToWorldDB = Path.Combine(worldLauncher.WorldParameters.WorldFolderPath,
 				SaveFilePathes.GameWorldDatabaseFileName);
 			CommandExecutor.OpenConnection(pathToWorldDB);
-			//CommandExecutor.ExecuteNonQuery(ChunkInDatabase.CreateTableCommand);
+			CommandExecutor.ExecuteNonQuery(ChunkInDatabase.CreateTableCommand);
 			//CommandExecutor.ExecuteNonQuery(PlayerInDatabase.CreateTableCommand);
 		}
 
