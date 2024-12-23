@@ -37,7 +37,7 @@ namespace Assets._Scripts.Core.BlocksCore
 					return;
 				}
 
-				block.Destroy();
+				block.Dispose();
 				lock(_lock)
 				{
 					_freeBlocks.Enqueue(block);
@@ -55,20 +55,11 @@ namespace Assets._Scripts.Core.BlocksCore
 		private readonly List<IBlockComponent> _сomponents = new List<IBlockComponent>(1);
 
 		public int Id => Container.Id;
-		public IBlockContainer Container { get; private set; }
+		public IBlockContainer Container { get; set; }
 
 		private Block(bool isShared)
 		{
 			IsShared = isShared;
-		}
-
-		public void Initialize(IBlockContainer container) 
-		{
-			Container = container;
-			foreach(var componentContainer in container.BlockComponentContainers)
-			{
-				componentContainer.InitializeBlock(this);
-			}
 		}
 
 		public void AddComponent(IBlockComponent component)
@@ -76,39 +67,10 @@ namespace Assets._Scripts.Core.BlocksCore
 			_сomponents.Add(component);
 		}
 
-		public void Destroy()
+		public void Dispose()
 		{
 			Container = null;
 			_сomponents.Clear();
-		}
-
-		public string Serialize()
-		{
-			List<string> serializedData = ListPool<string>.Get();
-			foreach(var component in _сomponents)
-			{
-				if(component is ISerializableBlockComponent serializableComponent)
-				{
-					serializedData.Add(serializableComponent.Serialize());
-				}
-			}
-
-			string result = JsonConvert.SerializeObject(serializedData);
-			ListPool<string>.Release(serializedData);
-			return result;
-		}
-
-		public void Populate(string rawSerializedData)
-		{
-			List<string> serializedData = JsonConvert.DeserializeObject<List<string>>(rawSerializedData);
-			int serializedDataIndex = 0;
-			foreach(var component in _сomponents)
-			{
-				if(component is ISerializableBlockComponent serializableComponent)
-				{
-					serializableComponent.Populate(serializedData[serializedDataIndex++]);
-				}
-			}
 		}
 
 		public bool TryGetComponent<T>(out T result) where T : IBlockComponent

@@ -2,8 +2,6 @@
 {
 	public interface IBlockComponentContainer
 	{
-		public bool CanInitializeAsync { get; }
-
 		public void InitializeBlock(Block block);
 	}
 }

@@ -16,8 +16,6 @@ namespace Realization.Blocks.Cube.Physics
 		[field: SerializeField] 
 		public StandartMeshData MeshData { get; private set; }
 
-		public override bool CanInitializeAsync => true;
-
 		public override void InitializeBlock(Block block)
 		{
 			block.AddComponent(new StandartBlockPhysics(this));

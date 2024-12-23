@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Zenject
@@ -16,7 +17,12 @@ namespace Zenject
             get { return _instance; }
         }
 
-        void OnDespawned(List<T> list)
+		public static List<string> Get()
+		{
+			throw new NotImplementedException();
+		}
+
+		void OnDespawned(List<T> list)
         {
             list.Clear();
         }

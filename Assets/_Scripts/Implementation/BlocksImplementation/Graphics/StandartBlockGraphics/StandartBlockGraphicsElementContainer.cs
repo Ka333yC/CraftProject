@@ -22,8 +22,6 @@ namespace Realization.Blocks.Cube.Graphics
 		[field: SerializeField] 
 		public BlockTransparency Transparency { get; private set; }
 
-		public override bool CanInitializeAsync { get; } = true;
-
 		public override void InitializeBlock(Block block)
 		{
 			block.AddComponent(new StandartBlockGraphics(this));

@@ -2,46 +2,40 @@
 using Assets.Scripts.Realization.Blocks.BlockDataPresentation;
 using ChunkCore.BlockData;
 using Leopotam.EcsLite;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Pool;
 using Zenject;
 using static Assets._Scripts.Core.BlocksCore.Block;
 
 namespace Assets._Scripts.Implementation.BlocksImplementation
 {
 	[CreateAssetMenu(fileName = "UniqueBlockContainer", menuName = "Blocks/Unique block container")]
-	public class UniqueBlockContainer : BlockContainer
+	public class UniqueBlockContainer : BlockContainer, ISerializableBlockContainer
 	{
 		[SerializeField]
 		private BlockComponentContainer[] _blockComponentContainers;
 		[SerializeField]
 		private BlockPlaceableChecker[] _blockPlaceableCheckers;
 
-		private bool _canCreateBlockAsync;
+		private ISerializableBlockComponentContainer[] _serializableBlockComponentContainers;
 
 		public override int Id { get; set; }
-		public override bool CanCreateBlockAsync => _canCreateBlockAsync;
-		public override IBlockComponentContainer[] BlockComponentContainers
-		{
-			get
-			{
-				return _blockComponentContainers;
-			}
-		}
 
 		public override void Initialize()
 		{
-			_canCreateBlockAsync = CanInitializeComponentContainersAsync();
+			_serializableBlockComponentContainers = GetSerializableBlockComponentContainers().ToArray();
 		}
 
 		public override Block CreateBlock()
 		{
 			var result = BlockPool.Shared.Rent(false);
-			result.Initialize(this);
+			result.Container = this;
 			foreach(var blockComponentContainer in _blockComponentContainers)
 			{
 				blockComponentContainer.InitializeBlock(result);
@@ -63,6 +57,55 @@ namespace Assets._Scripts.Implementation.BlocksImplementation
 			return true;
 		}
 
+		public override bool TryGetComponentContainer<T>(out T result)
+		{
+			foreach(var componentContainer in _blockComponentContainers)
+			{
+				if(componentContainer is T resultContainer)
+				{
+					result = resultContainer;
+					return true;
+				}
+			}
+
+			result = default;
+			return false;
+		}
+
+		public string Serialize(Block block)
+		{
+			List<string> serializedData = UnityEngine.Pool.ListPool<string>.Get();
+			foreach(var componentContainer in _serializableBlockComponentContainers)
+			{
+				serializedData.Add(componentContainer.Serialize(block));
+			}
+
+			string result = JsonConvert.SerializeObject(serializedData);
+			UnityEngine.Pool.ListPool<string>.Release(serializedData);
+			return result;
+		}
+
+		public Block Deserialize(string serializedBlock)
+		{
+			var result = BlockPool.Shared.Rent(false);
+			result.Container = this;
+			List<string> serializedData = JsonConvert.DeserializeObject<List<string>>(serializedBlock);
+			int serializedDataIndex = 0;
+			foreach(var componentContainer in _blockComponentContainers)
+			{
+				if(componentContainer is ISerializableBlockComponentContainer serializableComponent)
+				{
+					serializableComponent.InitializeBlock(result, serializedData[serializedDataIndex++]);
+				}
+				else
+				{
+					componentContainer.InitializeBlock(result);
+				}
+			}
+
+			return result;
+		}
+
 		[Inject]
 		private void Inject(DiContainer container)
 		{
@@ -77,17 +120,18 @@ namespace Assets._Scripts.Implementation.BlocksImplementation
 			}
 		}
 
-		private bool CanInitializeComponentContainersAsync()
+		private List<ISerializableBlockComponentContainer> GetSerializableBlockComponentContainers() 
 		{
-			foreach(var blockComponentContainer in _blockComponentContainers)
+			var result = new List<ISerializableBlockComponentContainer>();
+			foreach(var component in _blockComponentContainers)
 			{
-				if(!blockComponentContainer.CanInitializeAsync)
+				if(component is ISerializableBlockComponentContainer serializableComponentContainer)
 				{
-					return false;
+					result.Add(serializableComponentContainer);
 				}
 			}
 
-			return true;
+			return result;
 		}
 	}
 }

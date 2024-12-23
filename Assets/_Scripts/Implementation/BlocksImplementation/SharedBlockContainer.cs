@@ -24,19 +24,15 @@ namespace ChunkCore.BlockData
 		private Block _sharedBlock;
 
 		public override int Id { get; set; }
-		public override bool CanCreateBlockAsync => true;
-		public override IBlockComponentContainer[] BlockComponentContainers
-		{
-			get
-			{
-				return _blockComponentContainers;
-			}
-		}
 
 		public override void Initialize()
 		{
 			_sharedBlock = BlockPool.Shared.Rent(true);
-			_sharedBlock.Initialize(this);
+			_sharedBlock.Container = this;
+			foreach(var componentContainer in _blockComponentContainers)
+			{
+				componentContainer.InitializeBlock(_sharedBlock);
+			}
 		}
 
 		public override Block CreateBlock()
@@ -55,6 +51,21 @@ namespace ChunkCore.BlockData
 			}
 
 			return true;
+		}
+
+		public override bool TryGetComponentContainer<T>(out T result)
+		{
+			foreach(var componentContainer in _blockComponentContainers)
+			{
+				if(componentContainer is T resultContainer)
+				{
+					result = resultContainer;
+					return true;
+				}
+			}
+
+			result = default;
+			return false;
 		}
 
 		[Inject]
