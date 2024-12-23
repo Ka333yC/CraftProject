@@ -12,6 +12,7 @@ using Zenject;
 
 namespace Assets._Scripts.Implementation.BlocksImplementation
 {
+	[CreateAssetMenu(fileName = "UniqueBlockContainer", menuName = "Blocks/Unique block container")]
 	public class UniqueBlockContainer : BlockContainer
 	{
 		[SerializeField]
@@ -23,6 +24,13 @@ namespace Assets._Scripts.Implementation.BlocksImplementation
 
 		public override int Id { get; set; }
 		public override bool CanCreateBlockAsync => _canCreateBlockAsync;
+		public override IBlockComponentContainer[] BlockComponentContainers
+		{
+			get
+			{
+				return _blockComponentContainers;
+			}
+		}
 
 		public override void Initialize()
 		{
@@ -32,27 +40,13 @@ namespace Assets._Scripts.Implementation.BlocksImplementation
 		public override Block CreateBlock()
 		{
 			var result = new Block(true);
+			result.Initialize(this);
 			foreach(var blockComponentContainer in _blockComponentContainers)
 			{
 				blockComponentContainer.InitializeBlock(result);
 			}
 
 			return result;
-		}
-
-		public override bool TryGetComponentContainer<T>(out T result)
-		{
-			foreach(var componentContainer in _blockComponentContainers)
-			{
-				if(componentContainer is T resultContainer)
-				{
-					result = resultContainer;
-					return true;
-				}
-			}
-
-			result = default;
-			return false;
 		}
 
 		public override bool IsPlaceable(Vector3Int worldPosition)
@@ -85,14 +79,7 @@ namespace Assets._Scripts.Implementation.BlocksImplementation
 		private bool CanInitializeComponentContainersAsync()
 		{
 			var result = new Block(true);
-			foreach(var blockComponentContainer in _blockComponentContainers)
-			{
-				if(!blockComponentContainer.CanInitializeAsync)
-				{
-					return false;
-				}
-			}
-
+			result.Initialize(this);
 			return true;
 		}
 	}

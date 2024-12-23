@@ -1,7 +1,6 @@
 ﻿using System;
 using Assets._Scripts.Core.BlocksCore;
 using Assets.Scripts.Realization.Blocks.InventoryBlockPresentation;
-using Assets.Scripts.Undone.Realization.Blocks.InventoryBlockPresentation;
 using ChunkCore.LifeTimeControl;
 using ChunkCore.OnBlockChanged.Components;
 using TempScripts;

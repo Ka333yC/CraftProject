@@ -264,6 +264,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94b7bbd43e4c5024188acb3b8e27ce21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _itemContainers:
+  - {fileID: 11400000, guid: ec6d7020540413341b4ae257883398c8, type: 2}
+  - {fileID: 11400000, guid: 46f305d52a935df4c95446fa925f3453, type: 2}
+  - {fileID: 11400000, guid: e1197ce0abe748b49aa6ce856bfa0ded, type: 2}
+  - {fileID: 11400000, guid: 690e957c20c358d439563878e529d843, type: 2}
+  - {fileID: 11400000, guid: 5662e420736bd824ab122c9048520f3a, type: 2}
+  - {fileID: 11400000, guid: ae6bb3163cfbf514fbc46b64b5618691, type: 2}
   _chunkMaterial: {fileID: 2100000, guid: 70cc2cd424e1aad488604ecc4ddd54ea, type: 2}
 --- !u!4 &375821045
 Transform:
@@ -1093,7 +1100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ecsGameStartup: {fileID: 793464810}
-  _playerPrefab: {fileID: 0}
+  _playerPrefab: {fileID: 7703652865888514851, guid: 482bb19348044b74bbb53789e1a94854, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components;
 using Assets.Scripts.Core.ChunkCore.Saving.Components;
 using ChunkCore.ChunksContainerScripts;
 using ChunkCore.ChunksContainerScripts.Components;
+using ChunkCore.Loading.Components;
 using Cysharp.Threading.Tasks;
 using Leopotam.EcsLite;
 
@@ -31,6 +32,7 @@ namespace Assets.Scripts.Core.ChunkCore.Saving.Systems
 			_needSaveChunkPool = _world.GetPool<NeedSaveChunkTag>();
 			_chunksToSaveFilter = _world
 				.Filter<ChunkComponent>()
+				.Inc<ChunkInitializedTag>()
 				.Inc<NeedSaveChunkTag>()
 				.Exc<ChunkSavingTag>()
 				.End();

@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -26,6 +27,10 @@ namespace Assets._Scripts.Core.BlocksCore
 		public void Initialize(IBlockContainer container) 
 		{
 			Container = container;
+			foreach(var componentContainer in container.BlockComponentContainers)
+			{
+				componentContainer.InitializeBlock(this);
+			}
 		}
 
 		public void AddComponent(IBlockComponent component)
@@ -35,6 +40,7 @@ namespace Assets._Scripts.Core.BlocksCore
 
 		public void Destroy()
 		{
+			Container = null;
 			_сomponents.Clear();
 		}
 

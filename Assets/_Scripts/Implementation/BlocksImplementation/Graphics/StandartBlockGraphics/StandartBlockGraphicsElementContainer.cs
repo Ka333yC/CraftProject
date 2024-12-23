@@ -10,7 +10,7 @@ using Zenject;
 
 namespace Realization.Blocks.Cube.Graphics
 {
-	[CreateAssetMenu(fileName = "BlockGraphicsElement", menuName = "Blocks/Elements/Graphics/Standart block graphics element")]
+	[CreateAssetMenu(fileName = "BlockGraphicsElement", menuName = "Blocks/Graphics/Standart block graphics element")]
 	public class StandartBlockGraphicsElementContainer : BlockComponentContainer, IGraphicsBlockComponentContainer
 	{
 		[field: SerializeField] 

@@ -24,6 +24,13 @@ namespace ChunkCore.BlockData
 
 		public override int Id { get; set; }
 		public override bool CanCreateBlockAsync => true;
+		public override IBlockComponentContainer[] BlockComponentContainers
+		{
+			get
+			{
+				return _blockComponentContainers;
+			}
+		}
 
 		public override void Initialize()
 		{
@@ -33,21 +40,6 @@ namespace ChunkCore.BlockData
 		public override Block CreateBlock()
 		{
 			return _sharedBlock;
-		}
-
-		public override bool TryGetComponentContainer<T>(out T result)
-		{
-			foreach(var blockComponentContainer in _blockComponentContainers)
-			{
-				if(blockComponentContainer is T resultContainer)
-				{
-					result = resultContainer;
-					return true;
-				}
-			}
-
-			result = default;
-			return false;
 		}
 
 		public override bool IsPlaceable(Vector3Int worldPosition)
@@ -80,11 +72,7 @@ namespace ChunkCore.BlockData
 		private Block CreateSharedBlock()
 		{
 			var result = new Block(true);
-			foreach(var blockComponentContainer in _blockComponentContainers)
-			{
-				blockComponentContainer.InitializeBlock(result);
-			}
-
+			result.Initialize(this);
 			return result;
 		}
 	}

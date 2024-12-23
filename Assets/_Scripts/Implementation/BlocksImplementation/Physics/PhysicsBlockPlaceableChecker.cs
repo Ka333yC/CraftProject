@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Realization.Blocks.CubePhysics
 {
-	[CreateAssetMenu(fileName = "PhysicsPlaceableChecker", menuName = "Blocks/Elements/Physics/Physics placeable checker")]
+	[CreateAssetMenu(fileName = "PhysicsPlaceableChecker", menuName = "Blocks/Physics/Physics placeable checker")]
 	public class PhysicsBlockPlaceableChecker : BlockPlaceableChecker
 	{
 		[SerializeField] 

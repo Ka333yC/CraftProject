@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69a8ce8f641f6b94f91b577392fb791c, type: 3}
+  m_Name: Coal graphics element
+  m_EditorClassIdentifier: 
+  <MeshData>k__BackingField: {fileID: 11400000, guid: bb464c3d011a3274db79317a18ab4018, type: 2}
+  <TextureData>k__BackingField:
+    <Textures>k__BackingField:
+    - {fileID: 2800000, guid: c97e56439be2a03459acbb608f204dd2, type: 3}
+    <FrontSide>k__BackingField:
+      UV: []
+      <TextureIndex>k__BackingField: 0
+    <BackSide>k__BackingField:
+      UV: []
+      <TextureIndex>k__BackingField: 0
+    <TopSide>k__BackingField:
+      UV: []
+      <TextureIndex>k__BackingField: 0
+    <BottomSide>k__BackingField:
+      UV: []
+      <TextureIndex>k__BackingField: 0
+    <RightSide>k__BackingField:
+      UV: []
+      <TextureIndex>k__BackingField: 0
+    <LeftSide>k__BackingField:
+      UV: []
+      <TextureIndex>k__BackingField: 0
+    <Other>k__BackingField: []
+  <Transparency>k__BackingField:
+    IsForwardSideTransparent: 0
+    IsBackSideTransparent: 0
+    IsUpSideTransparent: 0
+    IsDownSideTransparent: 0
+    IsRightSideTransparent: 0
+    IsLeftSideTransparent: 0

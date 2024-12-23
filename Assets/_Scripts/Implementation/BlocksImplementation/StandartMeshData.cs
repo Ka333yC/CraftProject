@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 namespace MeshCreation.Preset
 {
-	[CreateAssetMenu(fileName = "MeshData", menuName = "Blocks/Elements/Standart mesh data")]
+	[CreateAssetMenu(fileName = "MeshData", menuName = "Blocks/Standart mesh data")]
 	public class StandartMeshData : ScriptableObject
 	{
 		public bool HasFullForwardSide;

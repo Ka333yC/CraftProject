@@ -1,4 +1,7 @@
-﻿using Assets.Scripts.Core.ChunkGraphicsCore;
+﻿using Assets._Scripts.Core.BlocksCore;
+using Assets._Scripts.Implementation.InventoryImplementation;
+using Assets.Scripts.Core.ChunkGraphicsCore;
+using Assets.Scripts.Core.InventoryCore.ItemLogic;
 using Assets.Scripts.InventoryCore;
 using ChunkCore.LifeTimeControl;
 using System;
@@ -13,25 +16,29 @@ namespace Assets.Scripts.Undone.WorldsCore
 {
 	public class TempInitializer : MonoInstaller
 	{
-		//[SerializeField]
-		//private BaseInventoryItemContainer[] _items;
+		[SerializeField]
+		private ItemContainer[] _itemContainers;
 		[SerializeField]
 		private Material _chunkMaterial;
 
-		[Inject]
-		private DiContainer _container;
-
 		public override void InstallBindings()
 		{
-			//Item.Containers.Initialize(_items);
-			//Block.Containers.Initialize(_container);
-			InitializeChunkMaterial();
-		}
+			var itemsContainer = new ItemsContainers();
+			Container
+				.Bind<ItemsContainers>()
+				.FromInstance(itemsContainer)
+				.AsSingle();
+			itemsContainer.Initialize(_itemContainers);
 
-		private void InitializeChunkMaterial()
-		{
-			//var chunkGraphicsTextureCreator = new ChunkGraphicsTextureCreator();
-			//_chunkMaterial.mainTexture = chunkGraphicsTextureCreator.CreateTexture();
+			var blocksContainers = Container.Instantiate<BlocksContainers>();
+			Container
+				.Bind<BlocksContainers>()
+				.FromInstance(blocksContainers)
+				.AsSingle();
+			blocksContainers.Initialize();
+
+			var textureCreator = new ChunkGraphicsTextureCreator(blocksContainers);
+			_chunkMaterial.mainTexture = textureCreator.CreateTexture();
 		}
 	}
 }

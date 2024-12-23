@@ -4,10 +4,12 @@ namespace Assets._Scripts.Core.BlocksCore
 {
 	public class AirBlockContainer : IBlockContainer
 	{
+		private readonly IBlockComponentContainer[] _blockComponentContainers = new IBlockComponentContainer[0];
 		private readonly Block _air = new Block(true);
 
 		public int Id { get; set; }
 		public bool CanCreateBlockAsync => true;
+		public IBlockComponentContainer[] BlockComponentContainers => _blockComponentContainers;
 
 		public void Initialize()
 		{
@@ -22,12 +24,6 @@ namespace Assets._Scripts.Core.BlocksCore
 		public bool IsPlaceable(Vector3Int worldPosition)
 		{
 			return true;
-		}
-
-		public bool TryGetComponentContainer<T>(out T result) where T : IBlockComponentContainer
-		{
-			result = default;
-			return false;
 		}
 	}
 }

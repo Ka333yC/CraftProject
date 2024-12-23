@@ -15,7 +15,7 @@ namespace Assets.Scripts.Implementation.Chunk
 		{
 			return new List<IEcsSystem>()
 			{
-				// new CompressedChunkSerializerCreator(),
+				new CompressedChunkSerializerCreator(),
 				new ChunkGeneratorCreator(),
 			};
 		}

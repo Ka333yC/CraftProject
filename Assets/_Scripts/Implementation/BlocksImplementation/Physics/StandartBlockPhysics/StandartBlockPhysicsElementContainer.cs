@@ -10,7 +10,7 @@ using Zenject;
 
 namespace Realization.Blocks.Cube.Physics
 {
-	[CreateAssetMenu(fileName = "BlockPhysicsElement", menuName = "Blocks/Elements/Physics/Standart block physics element")]
+	[CreateAssetMenu(fileName = "BlockPhysicsElement", menuName = "Blocks/Physics/Standart block physics element")]
 	public class StandartBlockPhysicsElementContainer : BlockComponentContainer, IPhysicsBlockComponentContainer
 	{
 		[field: SerializeField] 

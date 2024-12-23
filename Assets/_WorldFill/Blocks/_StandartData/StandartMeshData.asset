@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64ee82a7f09c98945beb61df6113ea71, type: 3}
+  m_Name: StandartMeshData
+  m_EditorClassIdentifier: 
+  HasFullForwardSide: 1
+  HasFullBackSide: 1
+  HasFullUpSide: 1
+  HasFullDownSide: 1
+  HasFullRightSide: 1
+  HasFullLeftSide: 1
+  OtherMeshParts: []
