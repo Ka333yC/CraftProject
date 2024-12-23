@@ -11,6 +11,7 @@ using TempScripts.TerrainGeneration;
 using UnityEngine;
 using Zenject;
 using Leopotam.EcsLite;
+using Assets.Scripts.Core.ChunkGraphicsCore.Cache;
 
 namespace TempScripts
 {
@@ -27,8 +28,8 @@ namespace TempScripts
 
 		public static Singleton Instance { get; private set; }
 
-		//[field: SerializeField] 
-		//public ChunkGraphicsGameObject ChunkGraphicsPrefab { get; private set; } // В DI
+		[field: SerializeField]
+		public ChunkGraphicsGameObject ChunkGraphicsPrefab { get; private set; } // В DI
 
 		//[field: SerializeField] 
 		//public ChunkPhysicsGameObject ChunkPhysicsPrefab { get; private set; } // В DI

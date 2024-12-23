@@ -1,6 +1,6 @@
 ﻿namespace Assets._Scripts.Core.BlocksCore
 {
-	public interface IBlockContainerComponent
+	public interface IBlockComponentContainer
 	{
 		public bool CanInitializeAsync { get; }
 
