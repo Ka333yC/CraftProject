@@ -11,8 +11,8 @@ namespace TempScripts.TerrainGeneration
 {
 	public abstract class ChunkGenerator
 	{
-		protected readonly NoiseSettings _noiseSettings;
 		protected readonly int _seed;
+		protected readonly NoiseSettings _noiseSettings;
 		protected readonly BlocksContainers _blocksContainers;
 
 		public ChunkGenerator(int seed, NoiseSettings noiseSettings, BlocksContainers blocksContainers)
