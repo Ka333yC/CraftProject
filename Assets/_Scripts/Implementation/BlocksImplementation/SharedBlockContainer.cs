@@ -9,6 +9,7 @@ using System.Linq;
 using TempScripts;
 using UnityEngine;
 using Zenject;
+using static Assets._Scripts.Core.BlocksCore.Block;
 
 namespace ChunkCore.BlockData
 {
@@ -34,7 +35,8 @@ namespace ChunkCore.BlockData
 
 		public override void Initialize()
 		{
-			_sharedBlock = CreateSharedBlock();
+			_sharedBlock = BlockPool.Shared.Rent(true);
+			_sharedBlock.Initialize(this);
 		}
 
 		public override Block CreateBlock()
@@ -67,13 +69,6 @@ namespace ChunkCore.BlockData
 			{
 				container.Inject(placeableChecker);
 			}
-		}
-
-		private Block CreateSharedBlock()
-		{
-			var result = new Block(true);
-			result.Initialize(this);
-			return result;
 		}
 	}
 }

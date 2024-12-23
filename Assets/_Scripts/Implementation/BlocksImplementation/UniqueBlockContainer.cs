@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using Zenject;
+using static Assets._Scripts.Core.BlocksCore.Block;
 
 namespace Assets._Scripts.Implementation.BlocksImplementation
 {
@@ -39,7 +40,7 @@ namespace Assets._Scripts.Implementation.BlocksImplementation
 
 		public override Block CreateBlock()
 		{
-			var result = new Block(true);
+			var result = BlockPool.Shared.Rent(false);
 			result.Initialize(this);
 			foreach(var blockComponentContainer in _blockComponentContainers)
 			{
@@ -78,8 +79,14 @@ namespace Assets._Scripts.Implementation.BlocksImplementation
 
 		private bool CanInitializeComponentContainersAsync()
 		{
-			var result = new Block(true);
-			result.Initialize(this);
+			foreach(var blockComponentContainer in _blockComponentContainers)
+			{
+				if(!blockComponentContainer.CanInitializeAsync)
+				{
+					return false;
+				}
+			}
+
 			return true;
 		}
 	}
