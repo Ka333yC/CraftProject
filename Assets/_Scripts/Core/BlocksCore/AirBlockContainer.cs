@@ -24,7 +24,7 @@ namespace Assets._Scripts.Core.BlocksCore
 			return true;
 		}
 
-		public bool TryGetContainerComponent<T>(out T result) where T : IBlockComponentContainer
+		public bool TryGetComponentContainer<T>(out T result) where T : IBlockComponentContainer
 		{
 			result = default;
 			return false;

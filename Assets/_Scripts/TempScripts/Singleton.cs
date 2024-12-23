@@ -14,6 +14,7 @@ using Leopotam.EcsLite;
 using Assets.Scripts.Core.ChunkGraphicsCore.Cache;
 using Assets.Scripts.PhysicsCore;
 using Assets.Scripts.Core.ChunkPhysicsCore.Cache;
+using Assets._Scripts.Implementation.BlocksImplementation;
 
 namespace TempScripts
 {
@@ -36,8 +37,8 @@ namespace TempScripts
 		[field: SerializeField] 
 		public ChunkPhysicsGameObject ChunkPhysicsPrefab { get; private set; } // В DI
 
-		//[field: SerializeField]
-		//public BlockDataContainer BlockToSpawn { get; private set; } // В DI
+		[field: SerializeField]
+		public BlockContainer BlockToSpawn { get; private set; } // В DI
 
 		//[field: SerializeField]
 		//public EcsGameStartup EcsGameStartup { get; private set; } // В DI

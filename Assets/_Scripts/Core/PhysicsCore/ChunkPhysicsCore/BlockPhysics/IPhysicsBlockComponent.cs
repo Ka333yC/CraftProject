@@ -9,8 +9,6 @@ namespace PhysicsCore.ChunkPhysicsCore.BlockPhysics
 	public interface IPhysicsBlockComponent : IBlockComponent
 	{
 		public bool IsFull(Face face);
-		// public bool HasOtherFaces();
 		public MeshDataPart GetMeshDataPart(Face face);
-		public Mesh GetSharedMesh();
 	}
 }

@@ -56,7 +56,7 @@ namespace Assets.Scripts.Core.ChunkGraphicsCore
 				new Dictionary<IGraphicsBlockComponentContainer, IEnumerable<Texture2D>>();
 			foreach(var blockData in _blocksContainers)
 			{
-				if(blockData.TryGetContainerComponent(out IGraphicsBlockComponentContainer 
+				if(blockData.TryGetComponentContainer(out IGraphicsBlockComponentContainer 
 					graphicsElementContainer))
 				{
 					IEnumerable<Texture2D> textures = graphicsElementContainer.GetTextures();

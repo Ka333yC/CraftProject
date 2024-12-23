@@ -9,6 +9,8 @@ namespace Assets._Scripts.Core.BlocksCore
 {
 	public sealed class Block
 	{
+		public static readonly Block Air = new Block(true);
+
 		public readonly bool IsShared;
 
 		private readonly List<IBlockComponent> _сomponents = new List<IBlockComponent>(1);

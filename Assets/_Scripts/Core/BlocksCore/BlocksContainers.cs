@@ -39,6 +39,8 @@ namespace Assets._Scripts.Core.BlocksCore
 					blockContainer.Initialize();
 				}
 			}
+
+			SetAirBlock();
 		}
 
 		public IEnumerator<IBlockContainer> GetEnumerator()

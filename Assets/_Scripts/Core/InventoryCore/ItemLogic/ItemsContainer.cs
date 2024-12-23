@@ -18,7 +18,6 @@ namespace Assets.Scripts.Core.InventoryCore.ItemLogic
 
 		public void Initialize(params IItemContainer[] containers)
 		{
-			_containers.Clear();
 			_containers.Add(new AirItemContainer());
 			_containers.AddRange(containers);
 			for(int i = 0; i < _containers.Count; i++)
