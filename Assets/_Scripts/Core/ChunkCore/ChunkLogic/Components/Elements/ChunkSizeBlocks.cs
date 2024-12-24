@@ -2,7 +2,9 @@
 using ChunkCore;
 using ChunkCore.LifeTimeControl;
 using System;
+using System.Threading;
 using UnityEngine;
+using static Assets._Scripts.Core.BlocksCore.Block;
 
 namespace Assets.Scripts.Core.ChunkCore.ChunkLogic.Components.Elements
 {
@@ -12,14 +14,27 @@ namespace Assets.Scripts.Core.ChunkCore.ChunkLogic.Components.Elements
 
 		public Block this[int x, int y, int z]
 		{
-			get => _blocks[x, y, z];
-			set => _blocks[x, y, z] = value;
+			get
+			{
+				return _blocks[x, y, z];
+			}
+
+			set
+			{
+				var block = _blocks[x, y, z];
+				if(block != null)
+				{
+					ReleaseBlock(block);
+				}
+
+				_blocks[x, y, z] = value;
+			}
 		}
 
 		public Block this[Vector3Int position]
 		{
-			get => _blocks[position.x, position.y, position.z];
-			set => _blocks[position.x, position.y, position.z] = value;
+			get => this[position.x, position.y, position.z];
+			set => this[position.x, position.y, position.z] = value;
 		} 
 
 		public ChunkSizeBlocks()
@@ -29,7 +44,21 @@ namespace Assets.Scripts.Core.ChunkCore.ChunkLogic.Components.Elements
 
 		public void Dispose()
 		{
+			foreach(var block in _blocks)
+			{
+				if(!block.IsShared)
+				{
+					ReleaseBlock(block);
+				}
+			}
+
 			ChunkSizeArrayPool<Block>.Shared.Return(_blocks, true);
+		}
+
+		private void ReleaseBlock(Block block)
+		{
+			block.Release();
+			BlockPool.Shared.Return(block);
 		}
 	}
 }

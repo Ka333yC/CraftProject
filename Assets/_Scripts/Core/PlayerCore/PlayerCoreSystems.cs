@@ -17,8 +17,6 @@ namespace Assets.Scripts.Core.PlayerCore
 			{
 #region 
 				new UpdateChunkUsersAroundPlayersSystem(),
-				new MarkChangedPlayersNeedToSaveSystem(),
-				new PlayerSaveSystem(),
 #endregion
 			};
 		}

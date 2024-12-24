@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Threading;
 
 #if ENABLE_IL2CPP
 using Unity.IL2CPP.CompilerServices;
@@ -22,9 +23,12 @@ namespace Leopotam.EcsLite {
     [Il2CppSetOption (Option.NullChecks, false)]
     [Il2CppSetOption (Option.ArrayBoundsChecks, false)]
 #endif
-    public class EcsWorld {
-        // componentsCount, gen, c1, c2, ..., [next]
-        short[] _entities;
+    public class EcsWorld
+	{
+        private readonly CancellationTokenSource _cts = new CancellationTokenSource();
+
+		// componentsCount, gen, c1, c2, ..., [next]
+		short[] _entities;
         int _entitiesItemSize;
         int _entitiesCount;
         int[] _recycledEntities;
@@ -42,6 +46,9 @@ namespace Leopotam.EcsLite {
         int _masksCount;
 
         bool _destroyed;
+
+        public CancellationToken CancellationToken => _cts.Token;
+
 #if DEBUG || LEOECSLITE_WORLD_EVENTS
         List<IEcsWorldEventListener> _eventListeners;
 
@@ -128,8 +135,10 @@ namespace Leopotam.EcsLite {
             // _allFilters.Clear ();
             // _filtersByIncludedComponents = Array.Empty<List<EcsFilter>> ();
             // _filtersByExcludedComponents = Array.Empty<List<EcsFilter>> ();
+            _cts.Cancel();
+            _cts.Dispose();
 #if DEBUG || LEOECSLITE_WORLD_EVENTS
-            for (var ii = _eventListeners.Count - 1; ii >= 0; ii--) {
+			for (var ii = _eventListeners.Count - 1; ii >= 0; ii--) {
                 _eventListeners[ii].OnWorldDestroyed (this);
             }
 #endif

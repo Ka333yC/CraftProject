@@ -8,7 +8,7 @@ using Zenject;
 
 namespace Assets.Scripts.Implementation
 {
-	public class GameWorldDBCommandExecutorInstaller : MonoInstaller
+	public class GameWorldDBInstaller : MonoInstaller
 	{
 		public override void InstallBindings()
 		{

@@ -10,6 +10,44 @@ namespace Assets._Scripts.Core.BlocksCore
 {
 	public sealed class Block
 	{
+		public readonly bool IsShared;
+
+		private readonly List<IBlockComponent> _сomponents = new List<IBlockComponent>(1);
+
+		public int Id => Container.Id;
+		public IBlockContainer Container { get; set; }
+
+		private Block(bool isShared)
+		{
+			IsShared = isShared;
+		}
+
+		public void AddComponent(IBlockComponent component)
+		{
+			_сomponents.Add(component);
+		}
+
+		public void Release()
+		{
+			Container = null;
+			_сomponents.Clear();
+		}
+
+		public bool TryGetComponent<T>(out T result) where T : IBlockComponent
+		{
+			foreach(var component in _сomponents)
+			{
+				if(component is T)
+				{
+					result = (T)component;
+					return true;
+				}
+			}
+
+			result = default;
+			return false;
+		}
+
 		public class BlockPool
 		{
 			private readonly object _lock = new object();
@@ -32,12 +70,6 @@ namespace Assets._Scripts.Core.BlocksCore
 
 			public void Return(Block block)
 			{
-				if(block.IsShared)
-				{
-					return;
-				}
-
-				block.Dispose();
 				lock(_lock)
 				{
 					_freeBlocks.Enqueue(block);
@@ -48,44 +80,6 @@ namespace Assets._Scripts.Core.BlocksCore
 			{
 				return new Block(false);
 			}
-		}
-
-		public readonly bool IsShared;
-
-		private readonly List<IBlockComponent> _сomponents = new List<IBlockComponent>(1);
-
-		public int Id => Container.Id;
-		public IBlockContainer Container { get; set; }
-
-		private Block(bool isShared)
-		{
-			IsShared = isShared;
-		}
-
-		public void AddComponent(IBlockComponent component)
-		{
-			_сomponents.Add(component);
-		}
-
-		public void Dispose()
-		{
-			Container = null;
-			_сomponents.Clear();
-		}
-
-		public bool TryGetComponent<T>(out T result) where T : IBlockComponent
-		{
-			foreach(var component in _сomponents)
-			{
-				if(component is T)
-				{
-					result = (T)component;
-					return true;
-				}
-			}
-
-			result = default;
-			return false;
 		}
 	}
 }

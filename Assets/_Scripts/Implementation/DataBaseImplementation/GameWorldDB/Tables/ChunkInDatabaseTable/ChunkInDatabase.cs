@@ -8,11 +8,8 @@ namespace Assets.Scripts.Core.ChunkCore.Saving
 	public class ChunkInDatabase
 	{
 		public int? Id { get; set; }
-
 		public int GridPositionX { get; set; }
-
 		public int GridPositionZ { get; set; }
-
 		public string SerializedBlocks { get; set; }
 
 		public static CreateChunkInDatabaseCommand CreateTableCommand

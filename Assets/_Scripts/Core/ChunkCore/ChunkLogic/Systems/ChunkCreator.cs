@@ -8,6 +8,8 @@ using System.Threading;
 using UnityEngine;
 using ChunkCore.ChunksContainerScripts;
 using Assets.Scripts.Core.ChunkCore.ChunkLogic.Components.Elements;
+using Zenject;
+using Assets._Scripts.Core.BlocksCore;
 
 namespace Assets.Scripts.Core.ChunkCore.LifeTimeControl.Systems
 {
