@@ -1,5 +1,4 @@
 ﻿using System;
-using GraphicsCore.ChunkGraphicsCore.Cache.ChunkGraphicsMeshFilterPoolScripts.Systems;
 using GraphicsCore.ChunkGraphicsCore.LifeTimeControl.Systems;
 using Leopotam.EcsLite;
 using System.Collections.Generic;
@@ -25,7 +24,6 @@ namespace Assets.Scripts.Core.GraphicsCore
 		{
 			return new List<IEcsSystem>()
 			{
-				new ChunkGraphicsGameObjectPoolCreator(),
 			};
 		}
 

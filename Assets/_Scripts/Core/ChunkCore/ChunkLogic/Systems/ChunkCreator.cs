@@ -10,12 +10,16 @@ using ChunkCore.ChunksContainerScripts;
 using Assets.Scripts.Core.ChunkCore.ChunkLogic.Components.Elements;
 using Zenject;
 using Assets._Scripts.Core.BlocksCore;
+using PhysicsCore.ChunkPhysicsCore.Cache.ChunkPhysicsMeshColliderPoolScripts;
+using PhysicsCore.ChunkPhysicsCore.Cache.ChunkPhysicsMeshColliderPoolScripts.Components;
+using ChunkCore;
 
 namespace Assets.Scripts.Core.ChunkCore.LifeTimeControl.Systems
 {
 	public class ChunkCreator : IEcsPreInitSystem, IEcsInitSystem, IEcsRunSystem
 	{
 		private ChunksContainer _chunksContainer;
+		private ChunkGameObjectPool _chunkGameObjectPool;
 
 		private EcsPool<ChunkComponent> _chunkPool;
 		private EcsPool<FixedChunkСreatedTag> _fixedChunkСreatedPool;
@@ -31,7 +35,9 @@ namespace Assets.Scripts.Core.ChunkCore.LifeTimeControl.Systems
 
 		public void Init(IEcsSystems systems)
 		{
-			_chunksContainer = GetChunksContainer(systems.GetWorld());
+			var world = systems.GetWorld();
+			_chunksContainer = GetChunksContainer(world);
+			_chunkGameObjectPool = GetChunkGameObjectPool(world);
 		}
 
 		public void Run(IEcsSystems systems)
@@ -48,6 +54,8 @@ namespace Assets.Scripts.Core.ChunkCore.LifeTimeControl.Systems
 			var chunkEntity = world.NewEntity();
 			ref var chunk = ref _chunkPool.Add(chunkEntity);
 			chunk.GridPosition = gridPosition;
+			chunk.GameObject = _chunkGameObjectPool.Get();
+			chunk.GameObject.transform.position = ChunkConstantData.GridToWorldPosition(gridPosition);
 			chunk.Blocks = new ChunkSizeBlocks();
 			chunk.CancellationTokenSource = new CancellationTokenSource();
 			_fixedChunkСreatedPool.Add(chunkEntity);
@@ -68,6 +76,20 @@ namespace Assets.Scripts.Core.ChunkCore.LifeTimeControl.Systems
 			}
 
 			throw new Exception($"{typeof(ChunksContainerComponent).Name} not found");
+		}
+
+		private ChunkGameObjectPool GetChunkGameObjectPool(EcsWorld world)
+		{
+			var componentPool = world.GetPool<ChunkGameObjectPoolComponent>();
+			var filter = world
+				.Filter<ChunkGameObjectPoolComponent>()
+				.End();
+			foreach(var entity in filter)
+			{
+				return componentPool.Get(entity).Pool;
+			}
+
+			throw new Exception($"{typeof(ChunkGameObjectPoolComponent).Name} not found");
 		}
 	}
 }

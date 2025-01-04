@@ -22,7 +22,7 @@ namespace Assets.Scripts.Core.ChunkCore.ChunkLogic.Components.Elements
 			set
 			{
 				var block = _blocks[x, y, z];
-				if(block != null)
+				if(block != null && !block.IsShared)
 				{
 					ReleaseBlock(block);
 				}
@@ -46,7 +46,9 @@ namespace Assets.Scripts.Core.ChunkCore.ChunkLogic.Components.Elements
 		{
 			foreach(var block in _blocks)
 			{
-				if(!block.IsShared)
+				// Проверка на null - это костыль. Если чанк ещё не инициализирован, то у него весь массив будет
+				// состоять из null объектов
+				if(block != null && !block.IsShared)
 				{
 					ReleaseBlock(block);
 				}

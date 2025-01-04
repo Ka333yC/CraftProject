@@ -7,6 +7,8 @@ using ChunkCore.LifeTimeControl.Components.Standart;
 using ChunkCore.Loading.Components;
 using Cysharp.Threading.Tasks;
 using Leopotam.EcsLite;
+using PhysicsCore.ChunkPhysicsCore.Cache.ChunkPhysicsMeshColliderPoolScripts;
+using PhysicsCore.ChunkPhysicsCore.Cache.ChunkPhysicsMeshColliderPoolScripts.Components;
 using UnityEngine;
 
 namespace Assets.Scripts.Core.ChunkCore.LifeTimeControl.Systems
@@ -14,6 +16,7 @@ namespace Assets.Scripts.Core.ChunkCore.LifeTimeControl.Systems
 	public class ChunkDestroyer : IEcsPreInitSystem, IEcsInitSystem, IEcsRunSystem
 	{
 		private ChunksContainer _chunksContainer;
+		private ChunkGameObjectPool _chunkGameObjectPool;
 		private bool _isChunkDestroying = false;
 
 		private EcsPool<ChunkComponent> _chunkPool;
@@ -34,7 +37,9 @@ namespace Assets.Scripts.Core.ChunkCore.LifeTimeControl.Systems
 
 		public void Init(IEcsSystems systems)
 		{
-			_chunksContainer = GetChunksContainer(systems.GetWorld());
+			var world = systems.GetWorld();
+			_chunksContainer = GetChunksContainer(world);
+			_chunkGameObjectPool = GetChunkGameObjectPool(world);
 		}
 
 		public void Run(IEcsSystems systems)
@@ -55,8 +60,7 @@ namespace Assets.Scripts.Core.ChunkCore.LifeTimeControl.Systems
 			NotifyStandartChunkDestroyed(chunkEntity, gridPosition);
 			_chunkPool.Del(chunkEntity);
 			_chunksContainer.RemoveChunkEntity(gridPosition);
-
-			
+			DisposeChunk(chunk).Forget();
 		}
 
 		private void NotifyFixedChunkDestroyed(int chunkEntity, Vector3Int gridPosition)
@@ -78,6 +82,7 @@ namespace Assets.Scripts.Core.ChunkCore.LifeTimeControl.Systems
 			{
 				chunk.CancellationTokenSource.Cancel();
 				chunk.CancellationTokenSource.Dispose();
+				_chunkGameObjectPool.Return(chunk.GameObject);
 				await UniTask.RunOnThreadPool(() => chunk.Blocks.Dispose());
 			}
 			finally
@@ -98,6 +103,20 @@ namespace Assets.Scripts.Core.ChunkCore.LifeTimeControl.Systems
 			}
 
 			throw new Exception($"{typeof(ChunksContainerComponent).Name} not found");
+		}
+
+		private ChunkGameObjectPool GetChunkGameObjectPool(EcsWorld world)
+		{
+			var componentPool = world.GetPool<ChunkGameObjectPoolComponent>();
+			var filter = world
+				.Filter<ChunkGameObjectPoolComponent>()
+				.End();
+			foreach(var entity in filter)
+			{
+				return componentPool.Get(entity).Pool;
+			}
+
+			throw new Exception($"{typeof(ChunkGameObjectPoolComponent).Name} not found");
 		}
 	}
 }

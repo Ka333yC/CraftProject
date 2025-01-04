@@ -94,8 +94,8 @@ namespace Assets.Scripts.Core.GraphicsCore.ChunkGraphicsCore.MeshUpdating.System
 				{
 					if(_chunkPool.Has(chunkWithGeneratingMesh.Key))
 					{
-						var chunkGraphics = _chunkGraphicsPool.Get(chunkWithGeneratingMesh.Key);
-						chunkGraphics.GameObject.MeshFilter.mesh = chunkWithGeneratingMesh.Value.Result;
+						var chunk = _chunkPool.Get(chunkWithGeneratingMesh.Key);
+						chunk.GameObject.MeshFilter.mesh = chunkWithGeneratingMesh.Value.Result;
 					}
 				}
 			}

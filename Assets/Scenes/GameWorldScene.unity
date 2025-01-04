@@ -522,9 +522,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fb63ebce9c47f542b8ff37fea751bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <ChunkGraphicsPrefab>k__BackingField: {fileID: 2340590943541292417, guid: dd25d63bd1a156849b97f91979187917, type: 3}
-  <ChunkPhysicsPrefab>k__BackingField: {fileID: 5753679362083434208, guid: f42ab8074e590824fa4aa56645f60a96, type: 3}
-  <BlockToSpawn>k__BackingField: {fileID: 0}
+  <ChunkPrefab>k__BackingField: {fileID: 3345022460761111687, guid: dd25d63bd1a156849b97f91979187917, type: 3}
+  <BlockToSpawn>k__BackingField: {fileID: 11400000, guid: c33615c8c59d0bb4b9f9d12e8531455b, type: 2}
   <NoiseSettings>k__BackingField:
     <NoiseType>k__BackingField: 0
     <FractalType>k__BackingField: 0

@@ -98,7 +98,7 @@ namespace Assets.Scripts.Core.PhysicsCore.ChunkPhysicsCore.MeshUpdating.Systems
 				// Проверяем на Has потому что за время генерации чанк мог быть уничтожен
 				if(_chunkPool.Has(chunkEntity))
 				{
-					chunkPhysics.GameObject.MeshCollider.sharedMesh = mesh;
+					chunk.GameObject.MeshCollider.sharedMesh = mesh;
 					_meshGeneratedNotificationPool.Add(chunkEntity);
 				}
 			}

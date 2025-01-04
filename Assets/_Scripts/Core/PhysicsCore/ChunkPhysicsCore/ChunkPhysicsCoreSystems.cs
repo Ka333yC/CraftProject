@@ -1,6 +1,5 @@
 ﻿using System;
 using Leopotam.EcsLite;
-using PhysicsCore.ChunkPhysicsCore.Cache.ChunkPhysicsMeshColliderPoolScripts.Systems;
 using PhysicsCore.ChunkPhysicsCore.LifeTimeControl.Systems;
 using System.Collections.Generic;
 using Assets.Scripts.Apart.Extensions.Ecs;
@@ -24,7 +23,6 @@ namespace Assets.Scripts.Core.PhysicsCore
 		{
 			return new List<IEcsSystem>()
 			{
-				new ChunkPhysicsGameObjectPoolCreator(),
 			};
 		}
 

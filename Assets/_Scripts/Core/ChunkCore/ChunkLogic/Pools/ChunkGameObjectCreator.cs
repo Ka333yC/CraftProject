@@ -1,23 +1,23 @@
-﻿using Assets.Scripts.Core.ChunkPhysicsCore.Cache;
+﻿using Assets._Scripts.Core.ChunkCore.ChunkLogic.Components;
 using ObjectPoolPattern;
 using TempScripts;
 using UnityEngine;
 
 namespace PhysicsCore.ChunkPhysicsCore.Cache.ChunkPhysicsMeshColliderPoolScripts
 {
-	public class ChunkPhysicsGameObjectCreator : ICreator<ChunkPhysicsGameObject>
+	public class ChunkGameObjectCreator : ICreator<ChunkGameObject>
 	{
 		private static Transform _parent;
 
-		static ChunkPhysicsGameObjectCreator()
+		static ChunkGameObjectCreator()
 		{
 			var chunkPhysicsParentGameObject = new GameObject("Chunk physics parent");
 			_parent = chunkPhysicsParentGameObject.transform;
 		}
 
-		public ChunkPhysicsGameObject Create()
+		public ChunkGameObject Create()
 		{
-			return GameObject.Instantiate(Singleton.Instance.ChunkPhysicsPrefab, _parent);
+			return GameObject.Instantiate(Singleton.Instance.ChunkPrefab, _parent);
 		}
 	}
 }

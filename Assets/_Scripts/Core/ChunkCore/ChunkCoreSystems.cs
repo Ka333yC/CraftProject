@@ -13,6 +13,7 @@ using Assets.Scripts.Apart.Extensions.Ecs;
 using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Systems;
 using ChunkCore.ChunksContainerScripts.Systems;
 using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components;
+using PhysicsCore.ChunkPhysicsCore.Cache.ChunkPhysicsMeshColliderPoolScripts.Systems;
 
 namespace ChunkCore
 {
@@ -23,6 +24,7 @@ namespace ChunkCore
 			return new List<IEcsSystem>()
 			{
 				new ChunksContainerCreator(),
+				new ChunkGameObjectPoolCreator(),
 				// new BlockContainersInitializer(),
 			};
 		}
