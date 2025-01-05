@@ -55,7 +55,7 @@ namespace Assets.Scripts.Core.ChunkCore.LifeTimeControl.Systems
 			ref var chunk = ref _chunkPool.Add(chunkEntity);
 			chunk.GridPosition = gridPosition;
 			chunk.GameObject = _chunkGameObjectPool.Get();
-			chunk.GameObject.transform.position = ChunkConstantData.GridToWorldPosition(gridPosition);
+			chunk.GameObject.GridPosition = gridPosition;
 			chunk.Blocks = new ChunkSizeBlocks();
 			chunk.CancellationTokenSource = new CancellationTokenSource();
 			_fixedChunkСreatedPool.Add(chunkEntity);

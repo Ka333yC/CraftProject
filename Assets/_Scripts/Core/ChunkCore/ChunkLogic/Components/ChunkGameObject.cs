@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChunkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,8 +11,24 @@ namespace Assets._Scripts.Core.ChunkCore.ChunkLogic.Components
 	[RequireComponent(typeof(MeshFilter), typeof(MeshCollider))]
 	public class ChunkGameObject : MonoBehaviour
 	{
+		private Vector3Int _gridPosition;
+
 		public MeshFilter MeshFilter { get; private set; }
 		public MeshCollider MeshCollider { get; private set; }
+		public Vector3Int GridPosition
+		{
+			get
+			{
+				return _gridPosition;
+			}
+
+			set
+			{
+				_gridPosition = value;
+				transform.position = ChunkConstantData.GridToWorldPosition(_gridPosition);
+				name = $"Chunk {_gridPosition.x} {_gridPosition.z}";
+			}
+		}
 
 		private void Awake()
 		{

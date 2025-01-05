@@ -11,7 +11,7 @@ namespace PhysicsCore.ChunkPhysicsCore.Cache.ChunkPhysicsMeshColliderPoolScripts
 
 		static ChunkGameObjectCreator()
 		{
-			var chunkPhysicsParentGameObject = new GameObject("Chunk physics parent");
+			var chunkPhysicsParentGameObject = new GameObject("Chunks");
 			_parent = chunkPhysicsParentGameObject.transform;
 		}
 
