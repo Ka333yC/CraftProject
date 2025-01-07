@@ -9,8 +9,8 @@ using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.InSimulatedChunkCheck.Componen
 using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.InSimulatedChunkCheck.Systems;
 using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.Systems;
 using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.StandartNotification.Components;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.StandartNotification.Systems;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.StandardNotification.Components;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.StandardNotification.Systems;
 using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Systems;
 using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.Systems;
 using Leopotam.EcsLite;
@@ -37,7 +37,7 @@ namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore
 				new DelHereSystem<BlockPositionChangedComponent>(),
 				new DelHereSystem<GridPositionChangedComponent>(),
 				new ObjectPhysicsPositionsUpdater(),
-				new StandartPositionsChangedNotifySystem(),
+				new StandardPositionsChangedNotifySystem(),
 				new DelHereSystem<BoundsChangedComponent>(),
 				new ObjectPhysicsBoundsUpdater(),
 				// Применение сопротивления(drag) и остановка движения, если оно незначительное
@@ -59,12 +59,12 @@ namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore
 			};
 		}
 
-		public static IEnumerable<IEcsSystem> GetPostStandartDelSystems()
+		public static IEnumerable<IEcsSystem> GetPostStandardDelSystems()
 		{
 			return new List<IEcsSystem>()
 			{
-				new DelHereSystem<StandartBlockPositionChangedComponent>(),
-				new DelHereSystem<StandartGridPositionChangedComponent>(),
+				new DelHereSystem<StandardBlockPositionChangedComponent>(),
+				new DelHereSystem<StandardGridPositionChangedComponent>(),
 			};
 		}
 	}

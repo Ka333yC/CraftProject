@@ -3,7 +3,7 @@ using System.Threading;
 using _Scripts.Core.ChunkCore.ChunkLogic.Components;
 using _Scripts.Core.ChunkCore.ChunkLogic.Components.Elements;
 using _Scripts.Core.ChunkCore.ChunkLogic.Components.Fixed;
-using _Scripts.Core.ChunkCore.ChunkLogic.Components.Standart;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components.Standard;
 using _Scripts.Core.ChunkCore.ChunkLogic.Pools;
 using _Scripts.Core.ChunkCore.ChunkLogic.Pools.Components;
 using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components;
@@ -20,14 +20,14 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Systems
 
 		private EcsPool<ChunkComponent> _chunkPool;
 		private EcsPool<FixedChunkСreatedTag> _fixedChunkСreatedPool;
-		private EcsPool<StandartChunkСreatedTag> _standartChunkСreatedPool;
+		private EcsPool<StandardChunkСreatedTag> _standardChunkСreatedPool;
 
 		public void PreInit(IEcsSystems systems)
 		{
 			EcsWorld world = systems.GetWorld();
 			_chunkPool = world.GetPool<ChunkComponent>();
 			_fixedChunkСreatedPool = world.GetPool<FixedChunkСreatedTag>();
-			_standartChunkСreatedPool = world.GetPool<StandartChunkСreatedTag>();
+			_standardChunkСreatedPool = world.GetPool<StandardChunkСreatedTag>();
 		}
 
 		public void Init(IEcsSystems systems)
@@ -56,7 +56,7 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Systems
 			chunk.Blocks = new ChunkSizeBlocks();
 			chunk.CancellationTokenSource = new CancellationTokenSource();
 			_fixedChunkСreatedPool.Add(chunkEntity);
-			_standartChunkСreatedPool.Add(chunkEntity);
+			_standardChunkСreatedPool.Add(chunkEntity);
 			_chunksContainer.SetChunkEntity(gridPosition, chunkEntity);
 			return chunkEntity;
 		}

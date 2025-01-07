@@ -2,13 +2,13 @@
 using _Scripts.Core.MeshWrap;
 using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.BlockPhysics;
 
-namespace _Scripts.Implementation.BlocksImplementation.Physics.StandartBlockPhysics
+namespace _Scripts.Implementation.BlocksImplementation.Physics.StandardBlockPhysics
 {
-	public class StandartBlockPhysics : IPhysicsBlockComponent
+	public class StandardBlockPhysics : IPhysicsBlockComponent
 	{
-		private StandartBlockPhysicsElementContainer _physicsElement;
+		private StandardBlockPhysicsElementContainer _physicsElement;
 
-		public StandartBlockPhysics(StandartBlockPhysicsElementContainer physicsElement)
+		public StandardBlockPhysics(StandardBlockPhysicsElementContainer physicsElement)
 		{
 			_physicsElement = physicsElement;
 		}

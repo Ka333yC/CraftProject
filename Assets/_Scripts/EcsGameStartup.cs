@@ -26,15 +26,15 @@ namespace _Scripts
 		private EcsWorld _world;
 
 		private EcsSystems _fixedUpdateSystems;
-		private EcsSystems _standartUpdateSystems;
+		private EcsSystems _standardUpdateSystems;
 		private EcsSystems _lateUpdateSystems;
 
 		private void Awake()
 		{
 			_fixedUpdateSystems = new EcsSystems(_world);
 			AddSystemsToFixedUpdate();
-			_standartUpdateSystems = new EcsSystems(_world);
-			AddSystemsToStandartUpdate();
+			_standardUpdateSystems = new EcsSystems(_world);
+			AddSystemsToStandardUpdate();
 			_lateUpdateSystems = new EcsSystems(_world);
 			AddSystemsToLateUpdate();
 #if UNITY_EDITOR
@@ -49,7 +49,7 @@ namespace _Scripts
 		private void Start()
 		{
 			_fixedUpdateSystems.Init();
-			_standartUpdateSystems.Init();
+			_standardUpdateSystems.Init();
 			_lateUpdateSystems.Init();
 		}
 
@@ -60,7 +60,7 @@ namespace _Scripts
 
 		private void Update()
 		{
-			_standartUpdateSystems.Run();
+			_standardUpdateSystems.Run();
 		}
 
 		private void LateUpdate()
@@ -76,10 +76,10 @@ namespace _Scripts
 				_fixedUpdateSystems = null;
 			}
 
-			if(_standartUpdateSystems != null)
+			if(_standardUpdateSystems != null)
 			{
-				_standartUpdateSystems.Destroy();
-				_standartUpdateSystems = null;
+				_standardUpdateSystems.Destroy();
+				_standardUpdateSystems = null;
 			}
 
 			if(_world != null)
@@ -107,20 +107,20 @@ namespace _Scripts
 			_container.InjectEcsSystems(_fixedUpdateSystems);
 		}
 
-		private void AddSystemsToStandartUpdate()
+		private void AddSystemsToStandardUpdate()
 		{
-			_standartUpdateSystems.AddRange(ChunkCoreSystems.GetStandartInitCreatorSystems());
-			_standartUpdateSystems.AddRange(ChunkGraphicsCoreSystems.GetStandartInitCreatorSystems());
+			_standardUpdateSystems.AddRange(ChunkCoreSystems.GetStandardInitCreatorSystems());
+			_standardUpdateSystems.AddRange(ChunkGraphicsCoreSystems.GetStandardInitCreatorSystems());
 
-			_standartUpdateSystems.AddRange(ChunkCoreSystems.GetStandartSystems());
-			_standartUpdateSystems.AddRange(ChunkGraphicsCoreSystems.GetStandartSystems());
-			_standartUpdateSystems.AddRange(InventoryCoreSystems.GetStandartSystems());
+			_standardUpdateSystems.AddRange(ChunkCoreSystems.GetStandardSystems());
+			_standardUpdateSystems.AddRange(ChunkGraphicsCoreSystems.GetStandardSystems());
+			_standardUpdateSystems.AddRange(InventoryCoreSystems.GetStandardSystems());
 
-			_standartUpdateSystems.AddRange(ChunkCoreSystems.GetPostStandartDelSystems());
-			_standartUpdateSystems.AddRange(ObjectPhysicsCoreSystems.GetPostStandartDelSystems());
-			_standartUpdateSystems.AddRange(InputCoreSystems.GetPostStandartDelSystems());
+			_standardUpdateSystems.AddRange(ChunkCoreSystems.GetPostStandardDelSystems());
+			_standardUpdateSystems.AddRange(ObjectPhysicsCoreSystems.GetPostStandardDelSystems());
+			_standardUpdateSystems.AddRange(InputCoreSystems.GetPostStandardDelSystems());
 
-			_container.InjectEcsSystems(_standartUpdateSystems);
+			_container.InjectEcsSystems(_standardUpdateSystems);
 		}
 
 		private void AddSystemsToLateUpdate()
@@ -140,9 +140,9 @@ namespace _Scripts
 				   .Add(new Leopotam.EcsLite.UnityEditor.EcsWorldDebugSystem())
 				   // Регистрируем отладочные системы по контролю за текущей группой систем. 
 				   .Add(new Leopotam.EcsLite.UnityEditor.EcsSystemsDebugSystem("Fixed update systems"));
-			_standartUpdateSystems
+			_standardUpdateSystems
 				   // Регистрируем отладочные системы по контролю за текущей группой систем. 
-				   .Add(new Leopotam.EcsLite.UnityEditor.EcsSystemsDebugSystem("Standart update systems"));
+				   .Add(new Leopotam.EcsLite.UnityEditor.EcsSystemsDebugSystem("Standard update systems"));
 			_lateUpdateSystems
 				   // Регистрируем отладочные системы по контролю за текущей группой систем. 
 				   .Add(new Leopotam.EcsLite.UnityEditor.EcsSystemsDebugSystem("Late update systems"));

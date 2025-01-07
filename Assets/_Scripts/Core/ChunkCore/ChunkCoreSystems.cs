@@ -6,7 +6,7 @@ using _Scripts.Core.ChunkCore.BlockChanging.FixedNotification.Systems;
 using _Scripts.Core.ChunkCore.BlockChanging.Systems;
 using _Scripts.Core.ChunkCore.ChunkLogic.Components;
 using _Scripts.Core.ChunkCore.ChunkLogic.Components.Fixed;
-using _Scripts.Core.ChunkCore.ChunkLogic.Components.Standart;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components.Standard;
 using _Scripts.Core.ChunkCore.ChunkLogic.Pools.Systems;
 using _Scripts.Core.ChunkCore.ChunkLogic.Saving.Systems;
 using _Scripts.Core.ChunkCore.ChunkLogic.Systems;
@@ -27,7 +27,7 @@ namespace _Scripts.Core.ChunkCore
 			};
 		}
 
-		public static IEnumerable<IEcsSystem> GetStandartInitCreatorSystems()
+		public static IEnumerable<IEcsSystem> GetStandardInitCreatorSystems()
 		{
 			return new List<IEcsSystem>()
 			{
@@ -53,7 +53,7 @@ namespace _Scripts.Core.ChunkCore
 			};
 		}
 
-		public static IEnumerable<IEcsSystem> GetStandartSystems()
+		public static IEnumerable<IEcsSystem> GetStandardSystems()
 		{
 			return new List<IEcsSystem>()
 			{
@@ -71,13 +71,13 @@ namespace _Scripts.Core.ChunkCore
 			};
 		}
 
-		public static IEnumerable<IEcsSystem> GetPostStandartDelSystems()
+		public static IEnumerable<IEcsSystem> GetPostStandardDelSystems()
 		{
 			return new List<IEcsSystem>()
 			{
-				new DelHereSystem<StandartChunkСreatedTag>(),
-				new DelHereSystem<StandartChunkDestroyedComponent>(),
-				new DelHereSystem<StandartChunkInitializedNotificationTag>(),
+				new DelHereSystem<StandardChunkСreatedTag>(),
+				new DelHereSystem<StandardChunkDestroyedComponent>(),
+				new DelHereSystem<StandardChunkInitializedNotificationTag>(),
 			};
 		}
 	}

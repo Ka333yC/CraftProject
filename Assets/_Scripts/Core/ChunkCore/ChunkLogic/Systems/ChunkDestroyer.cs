@@ -1,7 +1,7 @@
 ﻿using System;
 using _Scripts.Core.ChunkCore.ChunkLogic.Components;
 using _Scripts.Core.ChunkCore.ChunkLogic.Components.Fixed;
-using _Scripts.Core.ChunkCore.ChunkLogic.Components.Standart;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components.Standard;
 using _Scripts.Core.ChunkCore.ChunkLogic.Pools;
 using _Scripts.Core.ChunkCore.ChunkLogic.Pools.Components;
 using _Scripts.Core.ChunkCore.ChunkLogic.Saving.Components;
@@ -21,7 +21,7 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Systems
 
 		private EcsPool<ChunkComponent> _chunkPool;
 		private EcsPool<FixedChunkDestroyedComponent> _fixedChunkDestroyedPool;
-		private EcsPool<StandartChunkDestroyedComponent> _standartChunkDestroyedPool;
+		private EcsPool<StandardChunkDestroyedComponent> _standardChunkDestroyedPool;
 		private EcsPool<ChunkInitializingTag> _chunkInitializingPool;
 		private EcsPool<ChunkSavingTag> _chunkSavingPool;
 
@@ -30,7 +30,7 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Systems
 			EcsWorld world = systems.GetWorld();
 			_chunkPool = world.GetPool<ChunkComponent>();
 			_fixedChunkDestroyedPool = world.GetPool<FixedChunkDestroyedComponent>();
-			_standartChunkDestroyedPool = world.GetPool<StandartChunkDestroyedComponent>();
+			_standardChunkDestroyedPool = world.GetPool<StandardChunkDestroyedComponent>();
 			_chunkInitializingPool = world.GetPool<ChunkInitializingTag>();
 			_chunkSavingPool = world.GetPool<ChunkSavingTag>();
 		}
@@ -57,7 +57,7 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Systems
 			var chunk = _chunkPool.Get(chunkEntity);
 			var gridPosition = chunk.GridPosition;
 			NotifyFixedChunkDestroyed(chunkEntity, gridPosition);
-			NotifyStandartChunkDestroyed(chunkEntity, gridPosition);
+			NotifyStandardChunkDestroyed(chunkEntity, gridPosition);
 			_chunkPool.Del(chunkEntity);
 			_chunksContainer.RemoveChunkEntity(gridPosition);
 			DisposeChunk(chunk).Forget();
@@ -69,9 +69,9 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Systems
 			chunkDestroyed.GridPosition = gridPosition;
 		}
 
-		private void NotifyStandartChunkDestroyed(int chunkEntity, Vector3Int gridPosition)
+		private void NotifyStandardChunkDestroyed(int chunkEntity, Vector3Int gridPosition)
 		{
-			ref var chunkDestroyed = ref _standartChunkDestroyedPool.Add(chunkEntity);
+			ref var chunkDestroyed = ref _standardChunkDestroyedPool.Add(chunkEntity);
 			chunkDestroyed.GridPosition = gridPosition;
 		}
 

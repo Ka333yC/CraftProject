@@ -8,7 +8,7 @@ namespace _Scripts.Core.InventoryCore
 {
 	public static class InventoryCoreSystems
 	{
-		public static IEnumerable<IEcsSystem> GetStandartSystems()
+		public static IEnumerable<IEcsSystem> GetStandardSystems()
 		{
 			return new List<IEcsSystem>()
 			{

@@ -9,7 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13103c73c217251489ce91584d18af96, type: 3}
-  m_Name: StandartPhysicsPlaceableChecker
+  m_Script: {fileID: 11500000, guid: 64ee82a7f09c98945beb61df6113ea71, type: 3}
+  m_Name: StandardMeshData
   m_EditorClassIdentifier: 
-  _boxSizeToCheck: {x: 0, y: 0, z: 0}
+  HasFullForwardSide: 1
+  HasFullBackSide: 1
+  HasFullUpSide: 1
+  HasFullDownSide: 1
+  HasFullRightSide: 1
+  HasFullLeftSide: 1
+  OtherMeshParts: []

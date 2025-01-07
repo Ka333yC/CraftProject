@@ -6,7 +6,7 @@ using _Scripts.Core.ChunkCore.ChunkLogic.ChunkSerialization;
 using _Scripts.Core.ChunkCore.ChunkLogic.ChunkSerialization.Elements;
 using _Scripts.Core.ChunkCore.ChunkLogic.Components;
 using _Scripts.Core.ChunkCore.ChunkLogic.Components.Fixed;
-using _Scripts.Core.ChunkCore.ChunkLogic.Components.Standart;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components.Standard;
 using _Scripts.Core.ChunkCore.ChunkLogic.Saving.Components;
 using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components;
 using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components.Elements;
@@ -26,7 +26,7 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Systems
 		private EcsPool<ChunkInitializingTag> _chunkInitializingPool;
 		private EcsPool<ChunkInitializedTag> _chunkInitializedPool;
 		private EcsPool<FixedChunkInitializedNotificationTag> _fixedChunkInitializedNotificationPool;
-		private EcsPool<StandartChunkInitializedNotificationTag> _standartChunkInitializedNotificationPool;
+		private EcsPool<StandardChunkInitializedNotificationTag> _standardChunkInitializedNotificationPool;
 		private EcsPool<NeedSaveChunkTag> _needSaveChunkPool;
 		private EcsFilter _uninitializedChunksFilter;
 		private EcsFilter _chunkInitializingFilter;
@@ -38,7 +38,7 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Systems
 			_chunkInitializingPool = _world.GetPool<ChunkInitializingTag>();
 			_chunkInitializedPool = _world.GetPool<ChunkInitializedTag>();
 			_fixedChunkInitializedNotificationPool = _world.GetPool<FixedChunkInitializedNotificationTag>();
-			_standartChunkInitializedNotificationPool = _world.GetPool<StandartChunkInitializedNotificationTag>();
+			_standardChunkInitializedNotificationPool = _world.GetPool<StandardChunkInitializedNotificationTag>();
 			_needSaveChunkPool = _world.GetPool<NeedSaveChunkTag>();
 			_uninitializedChunksFilter = _world
 				.Filter<ChunkComponent>()
@@ -98,7 +98,7 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Systems
 		{
 			_chunkInitializedPool.Add(chunkEntity);
 			_fixedChunkInitializedNotificationPool.Add(chunkEntity);
-			_standartChunkInitializedNotificationPool.Add(chunkEntity);
+			_standardChunkInitializedNotificationPool.Add(chunkEntity);
 		}
 
 		private ChunksContainer GetChunksContainer(EcsWorld world)

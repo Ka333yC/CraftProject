@@ -14,14 +14,14 @@ namespace _Scripts.Core.ChunkGraphicsCore
 {
 	public static class ChunkGraphicsCoreSystems
 	{
-		public static IEnumerable<IEcsSystem> GetStandartInitCreatorSystems()
+		public static IEnumerable<IEcsSystem> GetStandardInitCreatorSystems()
 		{
 			return new List<IEcsSystem>()
 			{
 			};
 		}
 
-		public static IEnumerable<IEcsSystem> GetStandartSystems()
+		public static IEnumerable<IEcsSystem> GetStandardSystems()
 		{
 			return new List<IEcsSystem>()
 			{

@@ -3,13 +3,13 @@ using _Scripts.Core.ChunkGraphicsCore.BlockGraphics;
 using _Scripts.Core.MeshWrap;
 using UnityEngine;
 
-namespace _Scripts.Implementation.BlocksImplementation.Graphics.StandartBlockGraphics
+namespace _Scripts.Implementation.BlocksImplementation.Graphics.StandardBlockGraphics
 {
-	public class StandartBlockGraphics : IGraphicsBlockComponent
+	public class StandardBlockGraphics : IGraphicsBlockComponent
 	{
-		private readonly StandartBlockGraphicsElementContainer _graphicsElement;
+		private readonly StandardBlockGraphicsElementContainer _graphicsElement;
 
-		public StandartBlockGraphics(StandartBlockGraphicsElementContainer graphicsComponent)
+		public StandardBlockGraphics(StandardBlockGraphicsElementContainer graphicsComponent)
 		{
 			_graphicsElement = graphicsComponent;
 		}

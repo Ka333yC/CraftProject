@@ -9,13 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64ee82a7f09c98945beb61df6113ea71, type: 3}
-  m_Name: StandartMeshData
+  m_Script: {fileID: 11500000, guid: 987f7a6401b80dc4bb4f0954a10afc30, type: 3}
+  m_Name: StandardBlockPhysicsElement
   m_EditorClassIdentifier: 
-  HasFullForwardSide: 1
-  HasFullBackSide: 1
-  HasFullUpSide: 1
-  HasFullDownSide: 1
-  HasFullRightSide: 1
-  HasFullLeftSide: 1
-  OtherMeshParts: []
+  <MeshData>k__BackingField: {fileID: 11400000, guid: bb464c3d011a3274db79317a18ab4018, type: 2}

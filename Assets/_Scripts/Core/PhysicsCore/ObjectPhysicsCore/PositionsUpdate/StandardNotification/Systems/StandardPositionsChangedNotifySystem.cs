@@ -1,16 +1,16 @@
 ﻿using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.Components;
 using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.StandartNotification.Components;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.StandardNotification.Components;
 using Leopotam.EcsLite;
 
-namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.StandartNotification.Systems
+namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.StandardNotification.Systems
 {
-	public class StandartPositionsChangedNotifySystem : IEcsPreInitSystem, IEcsRunSystem
+	public class StandardPositionsChangedNotifySystem : IEcsPreInitSystem, IEcsRunSystem
 	{
 		private EcsPool<BlockPositionChangedComponent> _blockPositionChangedPool;
 		private EcsPool<GridPositionChangedComponent> _gridPositionChangedPool;
-		private EcsPool<StandartBlockPositionChangedComponent> _standartBlockPositionChangedPool;
-		private EcsPool<StandartGridPositionChangedComponent> _standartGridPositionChangedPool;
+		private EcsPool<StandardBlockPositionChangedComponent> _standardBlockPositionChangedPool;
+		private EcsPool<StandardGridPositionChangedComponent> _standardGridPositionChangedPool;
 		private EcsFilter _positionsChangedBlockPositionFilter;
 		private EcsFilter _positionsChangedGridPositionFilter;
 
@@ -19,19 +19,19 @@ namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.StandartNo
 			EcsWorld world = systems.GetWorld();
 			_blockPositionChangedPool = world.GetPool<BlockPositionChangedComponent>();
 			_gridPositionChangedPool = world.GetPool<GridPositionChangedComponent>();
-			_standartBlockPositionChangedPool = world.GetPool<StandartBlockPositionChangedComponent>();
-			_standartGridPositionChangedPool = world.GetPool<StandartGridPositionChangedComponent>();
+			_standardBlockPositionChangedPool = world.GetPool<StandardBlockPositionChangedComponent>();
+			_standardGridPositionChangedPool = world.GetPool<StandardGridPositionChangedComponent>();
 			// Exc если прошлое уведомление не было обработано, то просто пропускаем
-			// т.к. standart system помнит только самое первое изменение, а не последующие
+			// т.к. Standard system помнит только самое первое изменение, а не последующие
 			_positionsChangedBlockPositionFilter = world
 				.Filter<ObjectPhysicsComponent>()
 				.Inc<BlockPositionChangedComponent>()
-				.Exc<StandartBlockPositionChangedComponent>()
+				.Exc<StandardBlockPositionChangedComponent>()
 				.End();
 			_positionsChangedGridPositionFilter = world
 				.Filter<ObjectPhysicsComponent>()
 				.Inc<GridPositionChangedComponent>()
-				.Exc<StandartGridPositionChangedComponent>()
+				.Exc<StandardGridPositionChangedComponent>()
 				.End();
 		}
 
@@ -47,9 +47,9 @@ namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.StandartNo
 			{
 				var blockPositionChanged =
 					_blockPositionChangedPool.Get(objectPhysicsEntity);
-				ref var standartBlockPositionChanged = 
-					ref _standartBlockPositionChangedPool.Add(objectPhysicsEntity);
-				standartBlockPositionChanged.PreviousBlockPosition = blockPositionChanged.PreviousBlockPosition;
+				ref var StandardBlockPositionChanged = 
+					ref _standardBlockPositionChangedPool.Add(objectPhysicsEntity);
+				StandardBlockPositionChanged.PreviousBlockPosition = blockPositionChanged.PreviousBlockPosition;
 			}
 		}
 
@@ -59,8 +59,8 @@ namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.StandartNo
 			{
 				var gridPositionChanged =
 					_gridPositionChangedPool.Get(objectPhysicsEntity);
-				ref var standartGridPositionChanged = ref _standartGridPositionChangedPool.Add(objectPhysicsEntity);
-				standartGridPositionChanged.PreviousGridPosition = gridPositionChanged.PreviousGridPosition;
+				ref var StandardGridPositionChanged = ref _standardGridPositionChangedPool.Add(objectPhysicsEntity);
+				StandardGridPositionChanged.PreviousGridPosition = gridPositionChanged.PreviousGridPosition;
 			}
 		}
 	}

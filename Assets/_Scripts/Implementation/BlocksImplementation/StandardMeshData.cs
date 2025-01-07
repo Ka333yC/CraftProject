@@ -6,8 +6,8 @@ using UnityEngine;
 
 namespace _Scripts.Implementation.BlocksImplementation
 {
-	[CreateAssetMenu(fileName = "MeshData", menuName = "Blocks/Standart mesh data")]
-	public class StandartMeshData : ScriptableObject
+	[CreateAssetMenu(fileName = "MeshData", menuName = "Blocks/Standard mesh data")]
+	public class StandardMeshData : ScriptableObject
 	{
 		public bool HasFullForwardSide;
 		public bool HasFullBackSide;

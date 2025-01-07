@@ -7,7 +7,7 @@ namespace _Scripts.Core.InputCore
 {
 	public static class InputCoreSystems
 	{
-		public static IEnumerable<IEcsSystem> GetPostStandartDelSystems()
+		public static IEnumerable<IEcsSystem> GetPostStandardDelSystems()
 		{
 			return new List<IEcsSystem>()
 			{

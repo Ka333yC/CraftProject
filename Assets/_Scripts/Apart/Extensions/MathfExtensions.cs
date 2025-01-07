@@ -1,6 +1,6 @@
 ﻿namespace _Scripts.Apart.Extensions
 {
-	public class MathfExtensions
+	public static class MathfExtensions
 	{
 		public static int PositivePowOfTwo(int p)
 		{

@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 987f7a6401b80dc4bb4f0954a10afc30, type: 3}
-  m_Name: StandartBlockPhysicsElement
+  m_Script: {fileID: 11500000, guid: 13103c73c217251489ce91584d18af96, type: 3}
+  m_Name: StandardPhysicsPlaceableChecker
   m_EditorClassIdentifier: 
-  <MeshData>k__BackingField: {fileID: 11400000, guid: bb464c3d011a3274db79317a18ab4018, type: 2}
+  _boxSizeToCheck: {x: 0, y: 0, z: 0}

@@ -5,10 +5,10 @@ using _Scripts.Apart.Extensions;
 using _Scripts.Core;
 using UnityEngine;
 
-namespace _Scripts.Implementation.BlocksImplementation.Graphics.StandartBlockGraphics
+namespace _Scripts.Implementation.BlocksImplementation.Graphics.StandardBlockGraphics
 {
 	[Serializable]
-	public class StandartBlockTextureData
+	public class StandardBlockTextureData
 	{
 		[field: SerializeField] 
 		public Texture2D[] Textures { get; private set; }
