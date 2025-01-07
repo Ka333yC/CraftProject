@@ -1,6 +1,7 @@
-﻿using Assets.Scripts.Core.ChunkPhysicsCore.ChunkPhysicsScripts.Components.Elements.BlockPhysicsGetters;
+﻿using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.Components.Elements;
+using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.Components.Elements.BlockPhysicsGetters;
 
-namespace PhysicsCore.ChunkPhysicsCore.LifeTimeControl.Components
+namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.Components
 {
 	public struct ChunkPhysicsComponent
 	{

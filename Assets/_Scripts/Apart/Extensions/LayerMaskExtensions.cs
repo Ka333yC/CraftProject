@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Apart.Extensions
+namespace _Scripts.Apart.Extensions
 {
 	public static class LayerMaskExtensions
 	{

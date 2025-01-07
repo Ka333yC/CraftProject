@@ -1,20 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components;
-using ChunkCore.ChunksContainerScripts;
-using ChunkCore;
-using ChunkCore.ChunksContainerScripts.Components;
-using ChunkCore.OnBlockChanged.Components;
-using PhysicsCore.ChunkPhysicsCore.LifeTimeControl.Components;
+using _Scripts.Apart.Extensions.Ecs;
+using _Scripts.Core.ChunkCore.BlockChanging.FixedNotification.Components;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components.Elements;
+using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.Components;
+using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.MeshGeneration.Components;
 using Leopotam.EcsLite;
 using UnityEngine;
-using Assets.Scripts.Core.PhysicsCore.ChunkPhysicsCore.MeshUpdating.Components;
-using Assets.Scripts.Core.PhysicsCore.ChunkPhysicsCore.MeshPartsContainerUpdating.Components;
-using Unity.VisualScripting;
-using Extensions.Ecs;
-using ChunkCore.OnBlockChanged.FixedNotification.Components;
 
-namespace Assets.Scripts.Core.PhysicsCore.ChunkPhysicsCore.MeshPartsContainerUpdating.BlocksUpdating.Systems
+namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.MeshPartsContainerLogic.Systems
 {
 	public class PhysicsUpdaterOnBlockChanged : IEcsPreInitSystem, IEcsInitSystem, IEcsRunSystem
 	{

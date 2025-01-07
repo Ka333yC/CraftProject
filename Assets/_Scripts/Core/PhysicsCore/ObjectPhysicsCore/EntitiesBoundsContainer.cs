@@ -1,12 +1,9 @@
-﻿using Assets.Scripts.Apart.Extensions;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using _Scripts.Core.Extensions;
 using UnityEngine;
 
-namespace Assets.Scripts.Implementation.ObjectPhysics.InBlockCheck2
+namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore
 {
 	public class EntitiesBoundsContainer
 	{

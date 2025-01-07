@@ -1,8 +1,7 @@
-﻿using Assets._Scripts.Core.BlocksCore;
-using ChunkCore.LifeTimeControl;
+﻿using _Scripts.Core.BlocksCore;
 using UnityEngine;
 
-namespace ChunkCore.OnBlockChanged.Components
+namespace _Scripts.Core.ChunkCore.BlockChanging.Components
 {
 	public struct SetBlockComponent
 	{

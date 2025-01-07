@@ -1,9 +1,9 @@
-﻿using Assets.Scripts.Core.UICore.Core;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using _Scripts.Core.UICore.Page;
 
-namespace Assets.Assets.Scripts.Core.UICore.PopUp
+namespace _Scripts.Core.UICore.PopUp
 {
 	public class PopUpViewStack : IEnumerable<BasePopUpView>
 	{

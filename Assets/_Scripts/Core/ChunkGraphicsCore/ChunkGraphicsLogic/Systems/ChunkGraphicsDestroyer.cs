@@ -1,11 +1,8 @@
-﻿using System;
+﻿using _Scripts.Core.ChunkCore.ChunkLogic.Components;
+using _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.Components;
 using Leopotam.EcsLite;
-using GraphicsCore.ChunkGraphicsCore.LifeTimeControl.Components;
-using UnityEngine;
-using Cysharp.Threading.Tasks;
-using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components;
 
-namespace GraphicsCore.ChunkGraphicsCore.LifeTimeControl.Systems
+namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.Systems
 {
 	public class ChunkGraphicsDestroyer : IEcsPreInitSystem, IEcsRunSystem
 	{

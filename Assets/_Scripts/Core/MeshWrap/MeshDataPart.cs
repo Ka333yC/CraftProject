@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace MeshCreation.Preset
+namespace _Scripts.Core.MeshWrap
 {
 	[Serializable]
 	public class MeshDataPart

@@ -1,6 +1,6 @@
 ﻿using Zenject;
 
-namespace Assets.Scripts.Core.Pause
+namespace _Scripts.Core.Pause
 {
 	public class PauseManagerInstaller : MonoInstaller
 	{

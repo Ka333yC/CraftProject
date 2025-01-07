@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.Core.PlayerCore.Components
+﻿namespace _Scripts.Core.InventoryCore.Components
 {
 	public struct ActiveSlotChangedComponent
 	{

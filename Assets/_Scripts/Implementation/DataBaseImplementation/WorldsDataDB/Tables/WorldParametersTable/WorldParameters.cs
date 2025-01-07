@@ -1,8 +1,6 @@
-using Assets.Scripts.Core.WorldsCore.WorldSettingsCommands;
-using Assets.Scripts.Core.WorldsCore.WorldSettingsTable.WorldSettingsCommands;
-using System;
+using _Scripts.Implementation.DataBaseImplementation.WorldsDataDB.Tables.WorldParametersTable.Commands;
 
-namespace Assets.Scripts.Core.WorldsCore
+namespace _Scripts.Implementation.DataBaseImplementation.WorldsDataDB.Tables.WorldParametersTable
 {
 	public class WorldParameters
 	{

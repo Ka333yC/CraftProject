@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Assets.Scripts.Undone.TerrainGeneration
+namespace _Scripts.Core.ChunkCore.ChunkLogic.ChunkGeneration.Elements
 {
 	[Serializable]
 	public class NoiseSettings

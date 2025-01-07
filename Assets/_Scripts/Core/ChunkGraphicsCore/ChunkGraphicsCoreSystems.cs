@@ -1,22 +1,16 @@
-﻿using System;
-using GraphicsCore.ChunkGraphicsCore.LifeTimeControl.Systems;
+﻿using System.Collections.Generic;
+using _Scripts.Apart.Extensions.Ecs.DelHere;
+using _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.Components;
+using _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.MeshGeneration.Components;
+using _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.MeshGeneration.Systems;
+using _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.MeshPartsContainerLogic.Components;
+using _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.MeshPartsContainerLogic.Systems;
+using _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.MeshPartsContainerLogic.WallUpdate.Components;
+using _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.MeshPartsContainerLogic.WallUpdate.Systems;
+using _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.Systems;
 using Leopotam.EcsLite;
-using System.Collections.Generic;
-using Assets.Scripts.Core.GraphicsCore.ChunkGraphicsCore.MeshPartsContainerUpdating.Systems;
-using Assets.Scripts.Core.GraphicsCore.ChunkGraphicsCore.MeshUpdating.Systems;
-using Extensions.Ecs;
-using Assets.Scripts.Core.GraphicsCore.ChunkGraphicsCore.MeshPartsContainerUpdating.WallUpdating.Mark.Systems;
-using Assets.Scripts.Core.GraphicsCore.ChunkGraphicsCore.MeshPartsContainerUpdating.WallUpdating.Systems;
-using Assets.Scripts.Core.GraphicsCore.ChunkGraphicsCore.MeshPartsContainerUpdating.BlocksUpdating.Systems;
-using Assets.Scripts.Apart.Extensions.Ecs;
-using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components;
-using Assets.Scripts.Core.GraphicsCore.ChunkGraphicsCore.MeshPartsContainerUpdating.WallUpdating.Mark.Components;
-using Assets.Scripts.Core.GraphicsCore.ChunkGraphicsCore.MeshPartsContainerUpdating.WallUpdating.Components;
-using GraphicsCore.ChunkGraphicsCore.LifeTimeControl.Components;
-using Assets.Scripts.Core.GraphicsCore.ChunkGraphicsCore.MeshPartsContainerUpdating.Components;
-using Assets.Scripts.Core.GraphicsCore.ChunkGraphicsCore.MeshUpdating.Components;
 
-namespace Assets.Scripts.Core.GraphicsCore
+namespace _Scripts.Core.ChunkGraphicsCore
 {
 	public static class ChunkGraphicsCoreSystems
 	{

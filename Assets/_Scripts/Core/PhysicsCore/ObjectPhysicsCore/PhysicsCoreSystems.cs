@@ -1,26 +1,21 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using _Scripts.Apart.Extensions.Ecs.DelHere;
+using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.Components;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.BoundsUpdate.Components;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.BoundsUpdate.Systems;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.GroundCheck.Systems;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.InBlockCheck.Systems;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.InSimulatedChunkCheck.Components;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.InSimulatedChunkCheck.Systems;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.Systems;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.StandartNotification.Components;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.StandartNotification.Systems;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Systems;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.Systems;
 using Leopotam.EcsLite;
-using System.Collections.Generic;
-using PhysicsCore.ObjectPhysics.PositionUpdater.StandartNotification.Components;
-using PhysicsCore.ObjectPhysics.PositionUpdater.Components;
-using Extensions.Ecs;
-using PhysicsCore.ObjectPhysics.PositionUpdater.Systems;
-using PhysicsCore.ObjectPhysics.PositionUpdater.StandartNotification.Systems;
-using PhysicsCore.ObjectPhysics.Drag.Systems;
-using Assets.Scripts.Core.PhysicsCore.ObjectPhysics.Systems;
-using Assets.Scripts.Apart.Extensions.Ecs;
-using Assets.Scripts.Core.PhysicsCore.ObjectPhysics.PhysicsDeactivating.Systems;
-using Assets.Scripts.Core.PhysicsCore.ObjectPhysics.PhysicsDeactivating.Components;
-using PhysicsCore.ChunkPhysicsCore.LifeTimeControl.Components;
-using Assets.Scripts.Implementation.ObjectPhysics.InBlockCheck2.Systems;
-using Assets.Scripts.Implementation.ObjectPhysics.GroundCheck.Systems;
-using Assets.Scripts.Core.ObjectPhysicsCore.BoundsUpdate.Systems;
-using Assets.Scripts.Core.ObjectPhysicsCore.BoundsUpdate.Components;
-using Assets.Scripts.Core.ObjectPhysicsCore.PositionsUpdate.Systems;
-using Assets.Scripts.Core.ObjectPhysicsCore.InSimulatedChunkCheck.Components;
-using Assets.Scripts.Core.ObjectPhysicsCore.PhysicsDeactivation.Systems;
 
-namespace PhysicsCore.ObjectPhysics
+namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore
 {
 	public static class ObjectPhysicsCoreSystems
 	{

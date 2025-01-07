@@ -1,12 +1,10 @@
-﻿using Leopotam.EcsLite;
-using ChunkCore;
-using ChunkCore.Loading.Components;
-using GraphicsCore.ChunkGraphicsCore.LifeTimeControl.Components;
-using System;
-using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components;
-using Assets.Scripts.Core.ChunkGraphicsCore.ChunkGraphicsScripts.Components.Elements;
+﻿using _Scripts.Core.ChunkCore.ChunkLogic.Components;
+using _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.Components;
+using _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.Components.Elements;
+using _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.Components.Elements.BlockGraphicsGetters;
+using Leopotam.EcsLite;
 
-namespace GraphicsCore.ChunkGraphicsCore.LifeTimeControl.Systems
+namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.Systems
 {
 	public class ChunkGraphicsCreator : IEcsPreInitSystem, IEcsRunSystem
 	{

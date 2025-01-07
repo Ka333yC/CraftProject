@@ -1,12 +1,7 @@
-﻿using GraphicsCore.ChunkGraphicsCore.BlockGraphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using _Scripts.Core.ChunkGraphicsCore.BlockGraphics;
 using UnityEngine;
 
-namespace Assets.Scripts.Core.ChunkGraphicsCore.ChunkGraphicsScripts.Components.Elements.BlockGraphicsGetters
+namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.Components.Elements.BlockGraphicsGetters
 {
 	public interface IBlocksGraphicsGetter
 	{

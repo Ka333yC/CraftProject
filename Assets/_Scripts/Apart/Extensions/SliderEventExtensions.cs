@@ -1,7 +1,7 @@
 ﻿using System;
 using static UnityEngine.UI.Slider;
 
-namespace Assets.Scripts.Apart.Extensions
+namespace _Scripts.Apart.Extensions
 {
 	public static class SliderEventExtensions
 	{

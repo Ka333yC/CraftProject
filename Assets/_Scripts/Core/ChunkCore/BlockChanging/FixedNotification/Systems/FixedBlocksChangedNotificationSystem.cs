@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
+using _Scripts.Core.ChunkCore.BlockChanging.Components;
+using _Scripts.Core.ChunkCore.BlockChanging.FixedNotification.Components;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components;
 using Leopotam.EcsLite;
-using ChunkCore.OnBlockChanged.Components;
-using ChunkCore.OnBlockChanged.FixedNotification.Components;
 using Unity.VisualScripting;
 using UnityEngine;
-using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components;
 
-namespace ChunkCore.OnBlockChanged.FixedNotification.Systems
+namespace _Scripts.Core.ChunkCore.BlockChanging.FixedNotification.Systems
 {
 	public class FixedBlocksChangedNotificationSystem : IEcsPreInitSystem, IEcsRunSystem
 	{

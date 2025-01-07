@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Assets.Assets.Scripts.Implementation.UI.PopUps.Animations
+namespace _Scripts.Core.UICore.Animation
 {
 	[Serializable]
 	public class VisibilityAnimationParameter

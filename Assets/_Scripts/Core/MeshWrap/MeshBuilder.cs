@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.Rendering;
 
-namespace Assets.Scripts.Core.MeshCreation
+namespace _Scripts.Core.MeshWrap
 {
 	public class MeshBuilder : IDisposable
 	{

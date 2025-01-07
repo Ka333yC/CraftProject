@@ -1,7 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using Zenject;
 
-namespace Assets.Scripts.Apart.ZenjectToEcs
+namespace _Scripts.Apart.Extensions
 {
 	public static class DiContainerToEcsExtensions
 	{

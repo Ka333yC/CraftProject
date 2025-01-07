@@ -1,10 +1,10 @@
-using Assets.Assets.Scripts.Core.UICore.PopUp;
-using Assets.Scripts.Core.UICore.Installers;
 using System.Collections.Generic;
+using _Scripts.Core.UICore.Page;
+using _Scripts.Core.UICore.PopUp;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.Core.UICore.Core
+namespace _Scripts.Core.UICore
 {
 	public class UICoreInstaller : MonoInstaller
 	{

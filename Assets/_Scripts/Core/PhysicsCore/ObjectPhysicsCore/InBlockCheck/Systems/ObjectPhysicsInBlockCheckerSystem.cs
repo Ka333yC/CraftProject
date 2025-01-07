@@ -1,22 +1,16 @@
-﻿using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components;
-using ChunkCore.ChunksContainerScripts.Components;
-using ChunkCore.ChunksContainerScripts;
-using ChunkCore;
-using Extensions;
+﻿using System;
+using _Scripts.Apart.Extensions;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components.Elements;
+using _Scripts.Core.Extensions;
+using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.BlockPhysics;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.Components;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.InBlockCheck.Components;
 using Leopotam.EcsLite;
-using PhysicsCore.ChunkPhysicsCore.BlockPhysics;
-using PhysicsCore.ObjectPhysics.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
-using Assets.Scripts.Implementation.ObjectPhysics.InBlockCheck2.Components;
-using Assets.Scripts.Apart.Extensions;
-using Assets.Scripts.Core.ObjectPhysicsCore.InBlockCheck.Components;
 
-namespace Assets.Scripts.Implementation.ObjectPhysics.InBlockCheck2.Systems
+namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.InBlockCheck.Systems
 {
 	public class ObjectPhysicsInBlockCheckerSystem : IEcsPreInitSystem, IEcsInitSystem, IEcsRunSystem
 	{

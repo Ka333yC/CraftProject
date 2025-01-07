@@ -1,18 +1,9 @@
-﻿using Assets.Scripts.Apart.Extensions;
-using Assets.Scripts.Core.ObjectPhysicsCore.BoundsUpdate.Components;
-using Assets.Scripts.Implementation.ObjectPhysics.PositionsUpdate.Components;
-using ChunkCore;
+﻿using _Scripts.Core.Extensions;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.BoundsUpdate.Components;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.Components;
 using Leopotam.EcsLite;
-using PhysicsCore.ObjectPhysics.Components;
-using PhysicsCore.ObjectPhysics.PositionUpdater.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
 
-namespace Assets.Scripts.Core.ObjectPhysicsCore.BoundsUpdate.Systems
+namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.BoundsUpdate.Systems
 {
 	public class ObjectPhysicsBoundsUpdater : IEcsPreInitSystem, IEcsRunSystem
 	{

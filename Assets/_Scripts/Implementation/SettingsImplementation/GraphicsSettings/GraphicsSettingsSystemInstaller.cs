@@ -1,13 +1,6 @@
-﻿using Assets.Scripts.Undone.SettingsCore;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Zenject;
+﻿using Zenject;
 
-namespace Assets.Scripts.Implementation.Settings.GraphicsSettings
+namespace _Scripts.Implementation.SettingsImplementation.GraphicsSettings
 {
 	public class GraphicsSettingsSystemInstaller : MonoInstaller
 	{

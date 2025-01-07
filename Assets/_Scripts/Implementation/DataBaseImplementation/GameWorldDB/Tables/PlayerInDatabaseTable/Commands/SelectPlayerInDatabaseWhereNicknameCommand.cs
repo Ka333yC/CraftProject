@@ -1,13 +1,6 @@
-﻿using Assets.Scripts.Core.ChunkCore.Saving;
-using DataBase.Commands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using DataBase.Commands;
 
-namespace Assets.Scripts.Core.PlayerCore.Saving.PlayerInDatabseCommands
+namespace _Scripts.Implementation.DataBaseImplementation.GameWorldDB.Tables.PlayerInDatabaseTable.Commands
 {
 	public class SelectPlayerInDatabaseWhereNicknameCommand : ICommand
 	{

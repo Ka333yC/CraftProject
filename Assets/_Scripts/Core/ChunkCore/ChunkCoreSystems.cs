@@ -1,21 +1,19 @@
 ﻿using System.Collections.Generic;
+using _Scripts.Apart.Extensions.Ecs.DelHere;
+using _Scripts.Core.ChunkCore.BlockChanging.Components;
+using _Scripts.Core.ChunkCore.BlockChanging.FixedNotification.Components;
+using _Scripts.Core.ChunkCore.BlockChanging.FixedNotification.Systems;
+using _Scripts.Core.ChunkCore.BlockChanging.Systems;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components.Fixed;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components.Standart;
+using _Scripts.Core.ChunkCore.ChunkLogic.Pools.Systems;
+using _Scripts.Core.ChunkCore.ChunkLogic.Saving.Systems;
+using _Scripts.Core.ChunkCore.ChunkLogic.Systems;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Systems;
 using Leopotam.EcsLite;
-using ChunkCore.LifeTimeControl.Components.Fixed;
-using ChunkCore.LifeTimeControl.Components.Standart;
-using ChunkCore.Loading.Components;
-using ChunkCore.OnBlockChanged.Components;
-using ChunkCore.OnBlockChanged.FixedNotification.Components;
-using ChunkCore.OnBlockChanged.Systems;
-using ChunkCore.OnBlockChanged.FixedNotification.Systems;
-using ChunkCore.Loading.Systems;
-using Assets.Scripts.Core.ChunkCore.Saving.Systems;
-using Assets.Scripts.Apart.Extensions.Ecs;
-using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Systems;
-using ChunkCore.ChunksContainerScripts.Systems;
-using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components;
-using PhysicsCore.ChunkPhysicsCore.Cache.ChunkPhysicsMeshColliderPoolScripts.Systems;
 
-namespace ChunkCore
+namespace _Scripts.Core.ChunkCore
 {
 	public static class ChunkCoreSystems
 	{

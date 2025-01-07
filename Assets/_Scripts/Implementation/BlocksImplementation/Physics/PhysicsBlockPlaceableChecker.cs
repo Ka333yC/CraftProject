@@ -1,12 +1,9 @@
-﻿using System;
-using System.Buffers;
-using Assets.Scripts.Apart.Extensions;
-using Assets.Scripts.PhysicsCore;
-using Assets.Scripts.Realization.Blocks.BlockDataPresentation;
-using TempScripts;
+﻿using System.Buffers;
+using _Scripts.Apart.Extensions;
+using _Scripts.TempScripts;
 using UnityEngine;
 
-namespace Assets.Scripts.Realization.Blocks.CubePhysics
+namespace _Scripts.Implementation.BlocksImplementation.Physics
 {
 	[CreateAssetMenu(fileName = "PhysicsPlaceableChecker", menuName = "Blocks/Physics/Physics placeable checker")]
 	public class PhysicsBlockPlaceableChecker : BlockPlaceableChecker
@@ -19,11 +16,11 @@ namespace Assets.Scripts.Realization.Blocks.CubePhysics
 			var boxSizeToCheckHalfSize = _boxSizeToCheck / 2;
 			Vector3 center = new Vector3(worldPosition.x + boxSizeToCheckHalfSize.x,
 				worldPosition.y, worldPosition.z + boxSizeToCheckHalfSize.z);
-			Vector3 halfExtents = new Vector3(boxSizeToCheckHalfSize.x - Physics.defaultContactOffset, 0, 
-				boxSizeToCheckHalfSize.z - Physics.defaultContactOffset);
+			Vector3 halfExtents = new Vector3(boxSizeToCheckHalfSize.x - UnityEngine.Physics.defaultContactOffset, 0, 
+				boxSizeToCheckHalfSize.z - UnityEngine.Physics.defaultContactOffset);
 			var raycastHits = ArrayPool<RaycastHit>.Shared.Rent(16);
-			var count = Physics.BoxCastNonAlloc(center, halfExtents, Vector3.up, raycastHits, 
-				Quaternion.identity, _boxSizeToCheck.y - Physics.defaultContactOffset * 2);
+			var count = UnityEngine.Physics.BoxCastNonAlloc(center, halfExtents, Vector3.up, raycastHits, 
+				Quaternion.identity, _boxSizeToCheck.y - UnityEngine.Physics.defaultContactOffset * 2);
 			bool isPlaceable = true;
 			for(int i = 0; i < count; i++)
 			{

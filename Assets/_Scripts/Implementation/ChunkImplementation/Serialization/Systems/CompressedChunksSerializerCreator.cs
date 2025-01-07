@@ -1,14 +1,8 @@
-﻿using Assets.Scripts.Core.ChunkCore.Saving.Components;
-using Assets.Scripts.Core.DataSave;
+﻿using _Scripts.Core.ChunkCore.ChunkLogic.ChunkSerialization;
 using Leopotam.EcsLite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Zenject;
 
-namespace Assets.Scripts.Core.ChunkCore.Saving.Systems
+namespace _Scripts.Implementation.ChunkImplementation.Serialization.Systems
 {
 	public class CompressedChunkSerializerCreator : IEcsInitSystem
 	{

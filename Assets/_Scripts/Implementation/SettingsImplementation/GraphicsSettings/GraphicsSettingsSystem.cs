@@ -1,11 +1,7 @@
-﻿using Assets.Scripts.Undone.SettingsCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using _Scripts.Core.SettingsCore;
 
-namespace Assets.Scripts.Implementation.Settings.GraphicsSettings
+namespace _Scripts.Implementation.SettingsImplementation.GraphicsSettings
 {
 	public class GraphicsSettingsSystem : ISettingsSystem
 	{

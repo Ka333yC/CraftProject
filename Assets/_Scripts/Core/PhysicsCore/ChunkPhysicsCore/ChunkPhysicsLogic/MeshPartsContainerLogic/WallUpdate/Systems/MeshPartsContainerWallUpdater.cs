@@ -1,25 +1,17 @@
 ﻿using System;
-using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components;
-using Assets.Scripts.Core.PhysicsCore.ChunkPhysicsCore.MeshPartsContainerUpdating.Components;
-using Cysharp.Threading.Tasks;
-using PhysicsCore.ChunkPhysicsCore.LifeTimeControl.Components;
-using Leopotam.EcsLite;
-using PhysicsCore.ObjectPhysics.Components;
-using System.Collections.Generic;
-using UnityEngine;
-using Extensions;
-using System.Linq;
-using Assets.Scripts.Core.PhysicsCore.ChunkPhysicsCore.MeshPartsContainerUpdating.WallUpdating.Components;
-using ChunkCore;
 using System.Threading;
-using Extensions.Ecs;
-using Assets.Scripts.Core.PhysicsCore.ChunkPhysicsCore.MeshUpdating.Components;
-using Assets.Scripts.Apart.Extensions.Ecs;
-using ChunkCore.ChunksContainerScripts.Components;
-using ChunkCore.ChunksContainerScripts;
-using Assets.Scripts.Core.ChunkPhysicsCore.MeshPartsContainerUpdating.WallUpdating.Components;
+using _Scripts.Apart.Extensions.Ecs;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components.Elements;
+using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.Components;
+using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.MeshGeneration.Components;
+using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.MeshPartsContainerLogic.Components;
+using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.MeshPartsContainerLogic.WallUpdate.Components;
+using Cysharp.Threading.Tasks;
+using Leopotam.EcsLite;
 
-namespace Assets.Scripts.Core.PhysicsCore.ChunkPhysicsCore.MeshPartsContainerUpdating.WallUpdating.Systems
+namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.MeshPartsContainerLogic.WallUpdate.Systems
 {
 	public class MeshPartsContainerWallUpdater : IEcsPreInitSystem, IEcsInitSystem, IEcsRunSystem
 	{

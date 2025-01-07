@@ -1,6 +1,6 @@
-﻿using TempScripts.TerrainGeneration;
+﻿using _Scripts.Core.ChunkCore.ChunkLogic.ChunkGeneration.Elements;
 
-namespace Assets.Scripts.Core.ChunkCore.ChunkLogic.Loading.TerrainGeneration.Components
+namespace _Scripts.Core.ChunkCore.ChunkLogic.ChunkGeneration
 {
 	public struct ChunkGeneratorComponent
 	{

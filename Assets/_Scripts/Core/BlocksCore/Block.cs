@@ -1,12 +1,7 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
-using UnityEngine.Pool;
 
-namespace Assets._Scripts.Core.BlocksCore
+namespace _Scripts.Core.BlocksCore
 {
 	public sealed class Block
 	{

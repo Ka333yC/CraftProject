@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace ChunkCore
+namespace _Scripts.Core
 {
 	public enum Face : byte
 	{

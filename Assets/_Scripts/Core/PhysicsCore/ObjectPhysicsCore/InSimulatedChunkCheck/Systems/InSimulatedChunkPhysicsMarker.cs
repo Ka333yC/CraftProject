@@ -1,22 +1,16 @@
 ﻿using System;
-using ChunkCore.ChunksContainerScripts.Components;
-using ChunkCore.ChunksContainerScripts;
+using _Scripts.Apart.Extensions.Ecs;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components.Elements;
+using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.Components;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.Components;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.InSimulatedChunkCheck.Components;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components.Elements;
 using Leopotam.EcsLite;
-using PhysicsCore.ObjectPhysics.Components;
-using PhysicsCore.ObjectPhysics.PositionUpdater.Components;
-using Assets.Scripts.Core.PhysicsCore.ObjectPhysics.PhysicsDeactivating;
-using UnityEngine;
-using Assets.Scripts.Core.PhysicsCore.ChunkPhysicsCore.MeshPartsContainerUpdating.Components;
-using Assets.Scripts.Implementation.ObjectPhysics.PositionsUpdate.Components;
-using Assets.Scripts.Core.PhysicsCore.ObjectPhysics.PhysicsDeactivating.Components;
-using Extensions.Ecs;
-using PhysicsCore.ChunkPhysicsCore.LifeTimeControl.Components;
-using Assets.Scripts.Core.ObjectPhysicsCore.InSimulatedChunkCheck.Components;
-using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components;
-using Assets.Scripts.Core.ObjectPhysicsCore.PositionsUpdate;
-using Assets.Scripts.Core.ObjectPhysicsCore.PositionsUpdate.Components;
 
-namespace Assets.Scripts.Core.PhysicsCore.ObjectPhysics.Systems
+namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.InSimulatedChunkCheck.Systems
 {
 	public class InSimulatedChunkPhysicsMarker : IEcsPreInitSystem, IEcsInitSystem, IEcsRunSystem
 	{

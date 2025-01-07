@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets.Scripts.Core.UICore.Core
+namespace _Scripts.Core.UICore
 {
 	[RequireComponent(typeof(Canvas))]
 	public class RootCanvas : MonoBehaviour

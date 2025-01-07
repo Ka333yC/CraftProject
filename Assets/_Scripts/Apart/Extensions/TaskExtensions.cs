@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Extensions
+namespace _Scripts.Apart.Extensions
 {
 	public static class TaskExtensions
 	{

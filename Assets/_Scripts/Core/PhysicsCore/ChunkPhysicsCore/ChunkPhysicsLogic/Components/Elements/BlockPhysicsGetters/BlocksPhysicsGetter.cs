@@ -1,23 +1,14 @@
-﻿using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components;
-using Assets.Scripts.Core.ChunkPhysicsCore.ChunkPhysicsScripts.Components.Elements.BlockPhysicsGetters;
-using Assets.Scripts.Core.ChunkPhysicsCore.ChunkPhysicsScripts.Components.Elements;
-using ChunkCore.ChunksContainerScripts.Components;
-using ChunkCore.ChunksContainerScripts;
-using ChunkCore.LifeTimeControl;
-using ChunkCore;
-using PhysicsCore.ChunkPhysicsCore.BlockPhysics;
-using PhysicsCore.ChunkPhysicsCore.LifeTimeControl.Components;
+﻿using System;
+using _Scripts.Core.BlocksCore;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components.Elements;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components.Elements;
+using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.BlockPhysics;
 using Leopotam.EcsLite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
-using Assets.Scripts.Core.ChunkCore.ChunkLogic.Components.Elements;
-using Assets._Scripts.Core.BlocksCore;
 
-namespace Assets.Scripts.Core.ChunkPhysicsCore.ChunkPhysicsScripts.Components.Elements.BlockPhysicsGetters
+namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.Components.Elements.BlockPhysicsGetters
 {
 	public class BlocksPhysicsGetter : IBlocksPhysicsGetter, IDisposable
 	{

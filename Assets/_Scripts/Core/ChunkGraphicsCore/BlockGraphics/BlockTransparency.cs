@@ -1,7 +1,6 @@
-﻿using ChunkCore;
-using System;
+﻿using System;
 
-namespace GraphicsCore.ChunkGraphicsCore.BlockGraphics
+namespace _Scripts.Core.ChunkGraphicsCore.BlockGraphics
 {
 	[Serializable]
 	public class BlockTransparency

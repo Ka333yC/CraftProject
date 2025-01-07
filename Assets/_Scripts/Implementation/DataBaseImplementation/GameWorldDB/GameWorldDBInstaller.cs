@@ -1,12 +1,6 @@
-﻿using Assets.Scripts.Undone;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Zenject;
+﻿using Zenject;
 
-namespace Assets.Scripts.Implementation
+namespace _Scripts.Implementation.DataBaseImplementation.GameWorldDB
 {
 	public class GameWorldDBInstaller : MonoInstaller
 	{

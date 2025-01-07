@@ -1,19 +1,17 @@
-
-using Assets.Scripts.Implementation.ObjectPhysics.PositionsUpdate.Components;
-using Assets.Scripts.Implementation.Settings.GraphicsSettings;
-using ChunkCore.ChunksContainerScripts;
-using ChunkCore.ChunksContainerScripts.Components;
-using ChunkCore.LifeTimeControl.Components;
-using Leopotam.EcsLite;
-using PhysicsCore.ObjectPhysics.Components;
-using PhysicsCore.ObjectPhysics.PositionUpdater.Components;
 using System;
 using System.Collections.Generic;
-using TempScripts;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components.Elements;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.Components;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components;
+using _Scripts.Core.PlayerCore.ChunkSet.Components;
+using _Scripts.Core.PlayerCore.Components;
+using _Scripts.Implementation.SettingsImplementation.GraphicsSettings;
+using Leopotam.EcsLite;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.Core.PlayerCore.ChunkSet.Systems
+namespace _Scripts.Core.PlayerCore.ChunkSet.Systems
 {
 	class UpdateChunkUsersAroundPlayersSystem : IEcsPreInitSystem, IEcsInitSystem, IEcsRunSystem
 	{
@@ -70,8 +68,8 @@ namespace Assets.Scripts.Core.PlayerCore.ChunkSet.Systems
 			}
 		}
 
-		// Как идея оптимизации -вынести в таск, чтобы не нагружало главный поток,
-		// т.к. вычеслений действительно много
+		// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ -пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ,
+		// пїЅ.пїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		private void UpdateChunkUsersAroundPlayerChangedPosition()
 		{
 			foreach(var playerEntity in _playersChangedPositionFilter)

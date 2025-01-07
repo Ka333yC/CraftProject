@@ -1,13 +1,8 @@
-﻿using Assets.Scripts.Core.PlayerCore.ChunkSet.Systems;
-using Assets.Scripts.Undone.PlayerCore.Saving.Systems;
+﻿using System.Collections.Generic;
+using _Scripts.Implementation.PlayerImplementation.PlayerSerialization.Systems;
 using Leopotam.EcsLite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Assets._Scripts.Implementation.PlayerImplementation
+namespace _Scripts.Implementation.PlayerImplementation
 {
 	public static class PlayerImplementationSystems
 	{

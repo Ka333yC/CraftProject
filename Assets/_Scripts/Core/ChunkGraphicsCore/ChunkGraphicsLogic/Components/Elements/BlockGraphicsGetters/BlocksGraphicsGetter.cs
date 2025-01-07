@@ -1,24 +1,14 @@
-﻿using Assets._Scripts.Core.BlocksCore;
-using Assets.Scripts.Core.ChunkCore.ChunkLogic.Components.Elements;
-using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components;
-using Assets.Scripts.Core.ChunkGraphicsCore.ChunkGraphicsScripts.Components.Elements.BlockGraphicsGetters;
-using ChunkCore;
-using ChunkCore.ChunksContainerScripts;
-using ChunkCore.ChunksContainerScripts.Components;
-using ChunkCore.LifeTimeControl;
-using GraphicsCore.ChunkGraphicsCore.BlockGraphics;
-using GraphicsCore.ChunkGraphicsCore.LifeTimeControl;
-using GraphicsCore.ChunkGraphicsCore.LifeTimeControl.Components;
+﻿using System;
+using _Scripts.Core.BlocksCore;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components.Elements;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components.Elements;
+using _Scripts.Core.ChunkGraphicsCore.BlockGraphics;
 using Leopotam.EcsLite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-namespace Assets.Scripts.Core.ChunkGraphicsCore.ChunkGraphicsScripts.Components.Elements
+namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.Components.Elements.BlockGraphicsGetters
 {
 	public class BlocksGraphicsGetter : IBlocksGraphicsGetter, IDisposable
 	{

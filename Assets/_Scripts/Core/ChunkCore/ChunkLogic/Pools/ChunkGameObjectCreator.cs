@@ -1,9 +1,9 @@
-﻿using Assets._Scripts.Core.ChunkCore.ChunkLogic.Components;
-using ObjectPoolPattern;
-using TempScripts;
+﻿using _Scripts.Apart.ObjectPoolPattern;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components;
+using _Scripts.TempScripts;
 using UnityEngine;
 
-namespace PhysicsCore.ChunkPhysicsCore.Cache.ChunkPhysicsMeshColliderPoolScripts
+namespace _Scripts.Core.ChunkCore.ChunkLogic.Pools
 {
 	public class ChunkGameObjectCreator : ICreator<ChunkGameObject>
 	{

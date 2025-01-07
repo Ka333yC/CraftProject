@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using _Scripts.Core.ChunkCore.BlockChanging.Components;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components.Elements;
 using Leopotam.EcsLite;
-using ChunkCore.ChunksContainerScripts.Components;
-using ChunkCore.OnBlockChanged.Components;
 using UnityEngine;
-using ChunkCore.ChunksContainerScripts;
-using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components;
 
-namespace ChunkCore.OnBlockChanged.Systems
+namespace _Scripts.Core.ChunkCore.BlockChanging.Systems
 {
 	public class BlockChangeSystem : IEcsPreInitSystem, IEcsInitSystem, IEcsRunSystem
 	{

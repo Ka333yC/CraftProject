@@ -1,10 +1,10 @@
-﻿using Cysharp.Threading.Tasks;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.IO;
+using Cysharp.Threading.Tasks;
+using Newtonsoft.Json;
 using UnityEngine;
 
-namespace Assets.Scripts.Undone.SettingsCore
+namespace _Scripts.Core.SettingsCore
 {
 	public class SettingsFileLoader
 	{

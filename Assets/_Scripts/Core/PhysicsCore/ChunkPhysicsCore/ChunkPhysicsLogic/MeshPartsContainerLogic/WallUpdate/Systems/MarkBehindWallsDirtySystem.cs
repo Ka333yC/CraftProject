@@ -1,18 +1,15 @@
 ﻿using System;
-using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components;
-using Assets.Scripts.Core.PhysicsCore.ChunkPhysicsCore.MeshPartsContainerUpdating.Components;
-using Assets.Scripts.Core.PhysicsCore.ChunkPhysicsCore.MeshPartsContainerUpdating.WallUpdating.Components;
-using Assets.Scripts.Core.PhysicsCore.ChunkPhysicsCore.MeshPartsContainerUpdating.WallUpdating.Mark.Components;
-using ChunkCore;
-using ChunkCore.ChunksContainerScripts;
-using ChunkCore.ChunksContainerScripts.Components;
-using Extensions.Ecs;
-using PhysicsCore.ChunkPhysicsCore.LifeTimeControl.Components;
+using _Scripts.Apart.Extensions.Ecs;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components.Elements;
+using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.Components;
+using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.MeshPartsContainerLogic.Components;
+using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.MeshPartsContainerLogic.WallUpdate.Components;
 using Leopotam.EcsLite;
-using PhysicsCore.ObjectPhysics.Components;
 using UnityEngine;
 
-namespace Assets.Scripts.Core.PhysicsCore.ChunkPhysicsCore.MeshPartsContainerUpdating.WallUpdating.Mark.Systems
+namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.MeshPartsContainerLogic.WallUpdate.Systems
 {
 	public class MarkBehindWallsDirtySystem : IEcsPreInitSystem, IEcsInitSystem, IEcsRunSystem
 	{

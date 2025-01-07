@@ -1,15 +1,11 @@
-﻿using Assets.Scripts.Undone.PlayerCore.Saving.Components;
-using Extensions.Ecs;
+﻿using _Scripts.Apart.Extensions.Ecs;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.Components;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components;
+using _Scripts.Core.PlayerCore.Components;
+using _Scripts.Implementation.PlayerImplementation.PlayerSerialization.Components;
 using Leopotam.EcsLite;
-using PhysicsCore.ObjectPhysics.Components;
-using PhysicsCore.ObjectPhysics.PositionUpdater.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Assets.Scripts.Undone.PlayerCore.Saving.Systems
+namespace _Scripts.Implementation.PlayerImplementation.PlayerSerialization.Systems
 {
 	public class MarkChangedPlayersNeedToSaveSystem : IEcsPreInitSystem, IEcsRunSystem
 	{

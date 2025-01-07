@@ -1,15 +1,8 @@
-﻿using Assets.Scripts.Core.ChunkGraphicsCore.ChunkGraphicsScripts.Components.Elements.BlockGraphicsGetters;
-using ChunkCore;
-using GraphicsCore.ChunkGraphicsCore.BlockGraphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using _Scripts.Core.ChunkGraphicsCore.BlockGraphics;
 using UnityEngine;
-using UnityEngine.Pool;
 
-namespace Assets.Scripts.Core.ChunkGraphicsCore.ChunkGraphicsScripts.Components.Elements
+namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.Components.Elements.BlockGraphicsGetters
 {
 	public class CachedBlocksGraphicsGetter : IBlocksGraphicsGetter, IDisposable
 	{

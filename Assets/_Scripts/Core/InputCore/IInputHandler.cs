@@ -1,6 +1,6 @@
 ﻿using UnityEngine.InputSystem;
 
-namespace Assets.Scripts.Core.InputCore.MonoBehaviourInputHandlers
+namespace _Scripts.Core.InputCore
 {
 	public interface IInputHandler
 	{

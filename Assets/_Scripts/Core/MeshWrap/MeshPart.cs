@@ -1,8 +1,7 @@
-﻿using MeshCreation.Preset;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.Core.MeshCreation
+namespace _Scripts.Core.MeshWrap
 {
 	public class MeshPart
 	{

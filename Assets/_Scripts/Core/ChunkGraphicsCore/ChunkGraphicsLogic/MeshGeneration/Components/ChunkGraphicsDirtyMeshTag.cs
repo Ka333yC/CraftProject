@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace Assets.Scripts.Core.GraphicsCore.ChunkGraphicsCore.MeshUpdating.Components
+namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.MeshGeneration.Components
 {
 	public struct ChunkGraphicsDirtyMeshComponent
 	{

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Assets.Scripts.Core.PhysicsCore.ObjectPhysics.PhysicsDeactivating.Components
+﻿namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.InSimulatedChunkCheck.Components
 {
 	public struct ChunkPhysicsSimulatedTag
 	{

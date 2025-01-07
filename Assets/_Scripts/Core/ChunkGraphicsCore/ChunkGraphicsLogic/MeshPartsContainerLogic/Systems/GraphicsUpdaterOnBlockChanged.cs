@@ -1,19 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components;
-using ChunkCore.ChunksContainerScripts;
-using ChunkCore;
-using ChunkCore.ChunksContainerScripts.Components;
-using ChunkCore.OnBlockChanged.Components;
-using GraphicsCore.ChunkGraphicsCore.LifeTimeControl.Components;
+using _Scripts.Apart.Extensions.Ecs;
+using _Scripts.Core.ChunkCore.BlockChanging.Components;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components.Elements;
+using _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.Components;
+using _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.MeshGeneration.Components;
 using Leopotam.EcsLite;
 using UnityEngine;
-using Assets.Scripts.Core.GraphicsCore.ChunkGraphicsCore.MeshUpdating.Components;
-using Assets.Scripts.Core.GraphicsCore.ChunkGraphicsCore.MeshPartsContainerUpdating.Components;
-using Unity.VisualScripting;
-using Extensions.Ecs;
 
-namespace Assets.Scripts.Core.GraphicsCore.ChunkGraphicsCore.MeshPartsContainerUpdating.BlocksUpdating.Systems
+namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.MeshPartsContainerLogic.Systems
 {
 	public class GraphicsUpdaterOnBlockChanged : IEcsPreInitSystem, IEcsInitSystem, IEcsRunSystem
 	{

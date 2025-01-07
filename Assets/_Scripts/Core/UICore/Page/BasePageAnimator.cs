@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Assets.Assets.Scripts.Core.UICore.Page
+namespace _Scripts.Core.UICore.Page
 {
 	public abstract class BasePageAnimator : MonoBehaviour
 	{

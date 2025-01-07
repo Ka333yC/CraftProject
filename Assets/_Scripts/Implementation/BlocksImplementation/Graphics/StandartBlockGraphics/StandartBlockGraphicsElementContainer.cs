@@ -1,14 +1,9 @@
-using Assets._Scripts.Core.BlocksCore;
-using ChunkCore.BlockData;
-using GraphicsCore.ChunkGraphicsCore.BlockGraphics;
-using Leopotam.EcsLite;
-using MeshCreation.Preset;
 using System.Collections.Generic;
-using TempScripts;
+using _Scripts.Core.BlocksCore;
+using _Scripts.Core.ChunkGraphicsCore.BlockGraphics;
 using UnityEngine;
-using Zenject;
 
-namespace Realization.Blocks.Cube.Graphics
+namespace _Scripts.Implementation.BlocksImplementation.Graphics.StandartBlockGraphics
 {
 	[CreateAssetMenu(fileName = "BlockGraphicsElement", menuName = "Blocks/Graphics/Standart block graphics element")]
 	public class StandartBlockGraphicsElementContainer : BlockComponentContainer, IGraphicsBlockComponentContainer

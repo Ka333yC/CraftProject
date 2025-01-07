@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Linq;
-using Assets.Scripts.Apart.Extensions.Ecs;
-using Assets.Scripts.Core.ChunkCore.ChunkLogic.Loading.Saving.Components;
-using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components;
-using Assets.Scripts.Core.ChunkCore.Saving.Components;
-using ChunkCore.ChunksContainerScripts;
-using ChunkCore.ChunksContainerScripts.Components;
-using ChunkCore.Loading.Components;
+using _Scripts.Apart.Extensions.Ecs;
+using _Scripts.Core.ChunkCore.ChunkLogic.ChunkSerialization;
+using _Scripts.Core.ChunkCore.ChunkLogic.ChunkSerialization.Elements;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components;
+using _Scripts.Core.ChunkCore.ChunkLogic.Saving.Components;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components.Elements;
 using Cysharp.Threading.Tasks;
 using Leopotam.EcsLite;
 
-namespace Assets.Scripts.Core.ChunkCore.Saving.Systems
+namespace _Scripts.Core.ChunkCore.ChunkLogic.Saving.Systems
 {
 	public class ChunkSaveSystem : IEcsPreInitSystem, IEcsInitSystem, IEcsRunSystem
 	{

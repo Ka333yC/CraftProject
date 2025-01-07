@@ -1,24 +1,15 @@
 ﻿using System;
-using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components;
-using Assets.Scripts.Core.GraphicsCore.ChunkGraphicsCore.MeshUpdating.Components;
+using _Scripts.Apart.Extensions.Ecs;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components.Elements;
+using _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.Components;
+using _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.MeshGeneration.Components;
+using _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.MeshPartsContainerLogic.Components;
 using Cysharp.Threading.Tasks;
-using GraphicsCore.ChunkGraphicsCore.LifeTimeControl.Components;
 using Leopotam.EcsLite;
-using MeshCreation;
-using System.Collections.Generic;
-using UnityEngine;
-using Extensions;
-using System.Linq;
-using Assets.Scripts.Core.GraphicsCore.ChunkGraphicsCore.MeshPartsContainerUpdating.Components;
-using ChunkCore.ChunksContainerScripts.Components;
-using ChunkCore.ChunksContainerScripts;
-using ChunkCore;
-using Assets.Scripts.Core.GraphicsCore.ChunkGraphicsCore.MeshPartsContainerUpdating.WallUpdating.Components;
-using Extensions.Ecs;
-using System.Diagnostics;
-using Assets.Scripts.Apart.Extensions.Ecs;
 
-namespace Assets.Scripts.Core.GraphicsCore.ChunkGraphicsCore.MeshPartsContainerUpdating.Systems
+namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.MeshPartsContainerLogic.Systems
 {
 	public class MeshPartsContainerInitializer : IEcsPreInitSystem, IEcsInitSystem, IEcsRunSystem
 	{

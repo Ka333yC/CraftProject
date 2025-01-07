@@ -1,13 +1,8 @@
-﻿using Assets.Scripts.Apart.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TempScripts;
+﻿using _Scripts.Apart.Extensions;
+using _Scripts.TempScripts;
 using UnityEngine;
 
-namespace Assets.Scripts.Implementation.ObjectPhysics.GroundCheck
+namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.GroundCheck
 {
 	public class GroundChecker
 	{

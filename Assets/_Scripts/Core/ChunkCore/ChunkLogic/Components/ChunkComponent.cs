@@ -1,9 +1,8 @@
 using System.Threading;
-using Assets._Scripts.Core.ChunkCore.ChunkLogic.Components;
-using Assets.Scripts.Core.ChunkCore.ChunkLogic.Components.Elements;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components.Elements;
 using UnityEngine;
 
-namespace Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components
+namespace _Scripts.Core.ChunkCore.ChunkLogic.Components
 {
 	public struct ChunkComponent
 	{

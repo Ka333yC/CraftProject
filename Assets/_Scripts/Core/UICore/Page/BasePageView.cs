@@ -1,10 +1,9 @@
-using Assets.Assets.Scripts.Core.UICore.Page;
-using Assets.Assets.Scripts.Core.UICore.PopUp;
 using System.Linq;
+using _Scripts.Core.UICore.PopUp;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.Core.UICore.Core
+namespace _Scripts.Core.UICore.Page
 {
 	[RequireComponent(typeof(BasePageAnimator), typeof(CanvasGroup))]
 	public abstract class BasePageView : MonoBehaviour
@@ -75,7 +74,7 @@ namespace Assets.Scripts.Core.UICore.Core
 		}
 
 		/// <summary>
-		/// Метод для вызова на нажатие escape button
+		/// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ escape button
 		/// </summary>
 		public virtual void Escape()
 		{

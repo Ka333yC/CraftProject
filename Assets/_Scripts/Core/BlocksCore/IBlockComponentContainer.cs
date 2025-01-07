@@ -1,4 +1,4 @@
-﻿namespace Assets._Scripts.Core.BlocksCore
+﻿namespace _Scripts.Core.BlocksCore
 {
 	public interface IBlockComponentContainer
 	{

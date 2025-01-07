@@ -1,12 +1,7 @@
 ﻿using DataBase.Commands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Scripts.Core.ChunkCore.Saving.ChunkSerialization.ChunkInDatabaseCommands
+namespace _Scripts.Implementation.DataBaseImplementation.GameWorldDB.Tables.ChunkInDatabaseTable.Commands
 {
 	public class SelectChunkIdInDatabaseWhereGridPositionCommand : ICommand
 	{

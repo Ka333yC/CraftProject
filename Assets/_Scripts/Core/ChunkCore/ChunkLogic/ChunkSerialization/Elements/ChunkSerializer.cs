@@ -1,8 +1,7 @@
-﻿using Cysharp.Threading.Tasks;
-using Leopotam.EcsLite;
-using System.Threading;
+﻿using System.Threading;
+using Cysharp.Threading.Tasks;
 
-namespace Assets.Scripts.Core.ChunkCore.ChunkLogic.Loading.Saving.Components
+namespace _Scripts.Core.ChunkCore.ChunkLogic.ChunkSerialization.Elements
 {
 	public abstract class ChunkSerializer
 	{

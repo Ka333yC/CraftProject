@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Assets.Scripts.Implementation.ObjectPhysics.InBlockCheck2.Components
+﻿namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.InBlockCheck.Components
 {
 	public struct IntersectionWithBlockBoundsContainerComponent
 	{

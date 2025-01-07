@@ -1,13 +1,9 @@
-﻿using Assets.Scripts.Core.ChunkCore.Saving.Systems;
-using Assets.Scripts.Implementation.Chunk.Loading.TerrainGeneration.Systems;
+﻿using System.Collections.Generic;
+using _Scripts.Implementation.ChunkImplementation.Generation.Systems;
+using _Scripts.Implementation.ChunkImplementation.Serialization.Systems;
 using Leopotam.EcsLite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Assets.Scripts.Implementation.Chunk
+namespace _Scripts.Implementation.ChunkImplementation
 {
 	public static class ChunkImplementationSystems
 	{

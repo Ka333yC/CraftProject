@@ -1,17 +1,11 @@
-﻿using Leopotam.EcsLite;
-using ChunkCore;
-using PhysicsCore.ObjectPhysics.Components;
-using PhysicsCore.ObjectPhysics.PositionUpdater.Components;
-using Assets.Scripts.Implementation.ObjectPhysics.PositionsUpdate.Components;
+﻿using System;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.Components;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components.Elements;
+using Leopotam.EcsLite;
 using UnityEngine;
-using Assets.Scripts.Core.ObjectPhysicsCore.PositionsUpdate;
-using Assets.Scripts.Implementation.ObjectPhysics.InBlockCheck2.Components;
-using Assets.Scripts.Implementation.ObjectPhysics.InBlockCheck2;
-using System;
-using Assets.Scripts.Core.ObjectPhysicsCore.PositionsUpdate.Components;
-using UnityEngine.UIElements;
 
-namespace PhysicsCore.ObjectPhysics.PositionUpdater.Systems
+namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Systems
 {
 	public class ObjectPhysicsPositionsUpdater : IEcsPreInitSystem, IEcsInitSystem, IEcsRunSystem
 	{

@@ -1,6 +1,6 @@
 ﻿using Zenject;
 
-namespace Assets.Scripts.Undone.SettingsCore
+namespace _Scripts.Core.SettingsCore
 {
 	public class SettingsSystemsManagerInstaller : MonoInstaller
 	{

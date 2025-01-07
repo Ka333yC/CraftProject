@@ -1,7 +1,6 @@
 ﻿using System;
-using ChunkCore;
 
-namespace PhysicsCore.ChunkPhysicsCore.BlockPhysics
+namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.BlockPhysics
 {
 	[Serializable]
 	public class BlockFully

@@ -1,6 +1,6 @@
-﻿using Assets.Scripts.InventoryCore;
+﻿using _Scripts.Core.InventoryCore.ItemLogic;
 
-namespace Assets.Scripts.Core.InventoryCore
+namespace _Scripts.Core.InventoryCore.SlotLogic
 {
 	public interface IInventorySlotFilter
 	{

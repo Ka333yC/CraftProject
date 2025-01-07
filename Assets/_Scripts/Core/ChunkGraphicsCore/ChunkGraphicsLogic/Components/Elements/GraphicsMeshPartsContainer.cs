@@ -1,15 +1,13 @@
-﻿using Assets.Scripts.Core.ChunkGraphicsCore.ChunkGraphicsScripts.Components.Elements.BlockGraphicsGetters;
-using Assets.Scripts.Core.MeshCreation;
-using ChunkCore;
-using Extensions;
-using GraphicsCore.ChunkGraphicsCore.BlockGraphics;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
+using _Scripts.Apart.Extensions;
+using _Scripts.Core.ChunkGraphicsCore.BlockGraphics;
+using _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.Components.Elements.BlockGraphicsGetters;
+using _Scripts.Core.MeshWrap;
 using UnityEngine;
 
-namespace Assets.Scripts.Core.ChunkGraphicsCore.ChunkGraphicsScripts.Components.Elements
+namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.Components.Elements
 {
 	public class GraphicsMeshPartsContainer : IDisposable
 	{
@@ -40,12 +38,8 @@ namespace Assets.Scripts.Core.ChunkGraphicsCore.ChunkGraphicsScripts.Components.
 
 		public void UpdateWallMeshes(Face wall, CancellationToken token)
 		{
-			Vector3Int updateMeshesFrom = new Vector3Int();
-			Vector3Int updateMeshesTo = new Vector3Int();
-			Vector3Int cacheBlockGraphicsFrom = new Vector3Int();
-			Vector3Int cacheBlockGraphicsTo = new Vector3Int();
-			GetWallBounds(wall, out updateMeshesFrom, out updateMeshesTo,
-				out cacheBlockGraphicsFrom, out cacheBlockGraphicsTo);
+			GetWallBounds(wall, out var updateMeshesFrom, out var updateMeshesTo,
+				out var cacheBlockGraphicsFrom, out var cacheBlockGraphicsTo);
 			using CachedBlocksGraphicsGetter cachedBlocksGraphicsGetter =
 				new CachedBlocksGraphicsGetter(_blocksGraphicsGetter);
 			cachedBlocksGraphicsGetter.CacheBlocksGraphics(cacheBlockGraphicsFrom, cacheBlockGraphicsTo);

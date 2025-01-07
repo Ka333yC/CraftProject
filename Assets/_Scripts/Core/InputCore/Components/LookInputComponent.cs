@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Input.Components
+namespace _Scripts.Core.InputCore.Components
 {
 	public struct LookInputComponent
 	{

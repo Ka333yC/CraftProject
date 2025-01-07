@@ -1,8 +1,7 @@
-﻿using Assets.Scripts.Core.UICore.Core;
-using UnityEngine;
+﻿using UnityEngine;
 using Zenject;
 
-namespace Assets.Assets.Scripts.Core.UICore.PopUp
+namespace _Scripts.Core.UICore.PopUp
 {
 	[RequireComponent(typeof(BasePopUpAnimator), typeof(CanvasGroup))]
 	public class BasePopUpView : MonoBehaviour

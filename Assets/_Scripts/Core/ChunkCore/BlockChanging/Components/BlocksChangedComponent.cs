@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace ChunkCore.OnBlockChanged.Components
+namespace _Scripts.Core.ChunkCore.BlockChanging.Components
 {
 	public struct BlocksChangedComponent
 	{

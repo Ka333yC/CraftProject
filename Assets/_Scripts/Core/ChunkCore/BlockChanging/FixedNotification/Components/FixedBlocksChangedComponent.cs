@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace ChunkCore.OnBlockChanged.FixedNotification.Components
+namespace _Scripts.Core.ChunkCore.BlockChanging.FixedNotification.Components
 {
 	public struct FixedBlocksChangedComponent
 	{

@@ -1,6 +1,6 @@
 ﻿using Leopotam.EcsLite;
 
-namespace Extensions.Ecs
+namespace _Scripts.Apart.Extensions.Ecs
 {
 	public static class EcsPoolsExtensions
 	{

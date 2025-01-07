@@ -1,7 +1,8 @@
-﻿using Leopotam.EcsLite;
-using ChunkCore.ChunksContainerScripts.Components;
+﻿using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components.Elements;
+using Leopotam.EcsLite;
 
-namespace ChunkCore.ChunksContainerScripts.Systems
+namespace _Scripts.Core.ChunkCore.ChunksContainerLogic.Systems
 {
 	public class ChunksContainerCreator : IEcsPreInitSystem, IEcsInitSystem
 	{

@@ -1,23 +1,19 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using _Scripts.Apart.Extensions.Ecs;
+using _Scripts.Core.ChunkCore.ChunkLogic.ChunkGeneration;
+using _Scripts.Core.ChunkCore.ChunkLogic.ChunkGeneration.Elements;
+using _Scripts.Core.ChunkCore.ChunkLogic.ChunkSerialization;
+using _Scripts.Core.ChunkCore.ChunkLogic.ChunkSerialization.Elements;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components.Fixed;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components.Standart;
+using _Scripts.Core.ChunkCore.ChunkLogic.Saving.Components;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components.Elements;
+using Cysharp.Threading.Tasks;
 using Leopotam.EcsLite;
-using ChunkCore.LifeTimeControl;
-using ChunkCore.Loading.Components;
-using System;
-using System.Linq;
-using System.Threading;
-using UnityEngine;
-using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components;
-using ChunkCore.ChunksContainerScripts.Components;
-using ChunkCore.ChunksContainerScripts;
-using Assets.Scripts.Apart.Extensions.Ecs;
-using Assets.Scripts.Core.ChunkCore.Saving.Components;
-using Assets.Scripts.Core.ChunkCore.ChunkLogic.Components.Elements;
-using Assets.Scripts.Core.ChunkCore.ChunkLogic.Loading.Saving.Components;
-using TempScripts.TerrainGeneration;
-using Assets.Scripts.Core.ChunkCore.ChunkLogic.Loading.TerrainGeneration.Components;
-using Assets._Scripts.Core.BlocksCore;
 
-namespace ChunkCore.Loading.Systems
+namespace _Scripts.Core.ChunkCore.ChunkLogic.Systems
 {
 	public class ChunkInitializer : IEcsPreInitSystem, IEcsInitSystem, IEcsRunSystem
 	{

@@ -1,23 +1,19 @@
-﻿using System;
-using System.Data.Common;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
-using Assets._Scripts.Core.BlocksCore;
-using Assets.Scripts.Core.ChunkCore.ChunkLogic.Components.Elements;
-using Assets.Scripts.Core.ChunkCore.ChunkLogic.Loading.Saving.Components;
-using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components;
-using Assets.Scripts.Core.ChunkCore.Saving;
-using Assets.Scripts.Core.ChunkCore.Saving.Components;
-using Assets.Scripts.Undone;
-using ChunkCore;
+using _Scripts.Core;
+using _Scripts.Core.BlocksCore;
+using _Scripts.Core.ChunkCore.ChunkLogic.ChunkSerialization.Elements;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components.Elements;
+using _Scripts.Implementation.DataBaseImplementation.GameWorldDB;
+using _Scripts.Implementation.DataBaseImplementation.GameWorldDB.Tables.ChunkInDatabaseTable;
 using Cysharp.Threading.Tasks;
 using DataBaseManagement;
 using Leopotam.EcsLite;
 using Newtonsoft.Json;
-using TempScripts;
 using UnityEngine;
 
-namespace Assets.Scripts.Core.DataSave
+namespace _Scripts.Implementation.ChunkImplementation.Serialization
 {
 	public class CompressedChunksSerializer : ChunkSerializer
 	{

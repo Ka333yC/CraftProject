@@ -1,8 +1,8 @@
-﻿using Assets._Scripts.Core.BlocksCore;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using _Scripts.Core.BlocksCore;
 using UnityEngine;
 
-namespace GraphicsCore.ChunkGraphicsCore.BlockGraphics
+namespace _Scripts.Core.ChunkGraphicsCore.BlockGraphics
 {
 	public interface IGraphicsBlockComponentContainer : IBlockComponentContainer
 	{

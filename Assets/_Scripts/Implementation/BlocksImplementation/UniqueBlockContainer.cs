@@ -1,19 +1,11 @@
-﻿using Assets._Scripts.Core.BlocksCore;
-using Assets.Scripts.Realization.Blocks.BlockDataPresentation;
-using ChunkCore.BlockData;
-using Leopotam.EcsLite;
+﻿using System.Collections.Generic;
+using _Scripts.Core.BlocksCore;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Pool;
 using Zenject;
-using static Assets._Scripts.Core.BlocksCore.Block;
+using static _Scripts.Core.BlocksCore.Block;
 
-namespace Assets._Scripts.Implementation.BlocksImplementation
+namespace _Scripts.Implementation.BlocksImplementation
 {
 	[CreateAssetMenu(fileName = "UniqueBlockContainer", menuName = "Blocks/Unique block container")]
 	public class UniqueBlockContainer : BlockContainer, ISerializableBlockContainer

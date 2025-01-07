@@ -1,18 +1,12 @@
-﻿using Assets.Scripts.Apart.Extensions;
-using Assets.Scripts.Implementation.ObjectPhysics.InBlockCheck2.Components;
-using ChunkCore;
-using Extensions.Ecs;
+﻿using System;
+using _Scripts.Apart.Extensions.Ecs;
+using _Scripts.Core.Extensions;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.Components;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.InBlockCheck.Components;
 using Leopotam.EcsLite;
-using PhysicsCore.ObjectPhysics.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TempScripts;
 using UnityEngine;
 
-namespace Assets.Scripts.Implementation.ObjectPhysics.InBlockCheck2.Systems
+namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.InBlockCheck.Systems
 {
 	public class IntersectionWithBlockBoundsUpdater : IEcsPreInitSystem, IEcsInitSystem, IEcsRunSystem
 	{

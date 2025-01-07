@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using Assets._Scripts.Core.BlocksCore;
-using ChunkCore;
-using MeshCreation.Preset;
+﻿using _Scripts.Core.BlocksCore;
+using _Scripts.Core.MeshWrap;
 using UnityEngine;
 
-namespace GraphicsCore.ChunkGraphicsCore.BlockGraphics
+namespace _Scripts.Core.ChunkGraphicsCore.BlockGraphics
 {
 	public interface IGraphicsBlockComponent : IBlockComponent
 	{

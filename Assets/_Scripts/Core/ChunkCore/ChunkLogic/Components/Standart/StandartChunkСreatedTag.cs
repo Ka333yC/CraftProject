@@ -1,4 +1,4 @@
-﻿namespace ChunkCore.LifeTimeControl.Components.Standart
+﻿namespace _Scripts.Core.ChunkCore.ChunkLogic.Components.Standart
 {
 	public struct StandartChunkСreatedTag
 	{

@@ -1,18 +1,11 @@
-﻿using Assets._Scripts.Core.BlocksCore;
-using Assets._Scripts.Implementation.InventoryImplementation;
-using Assets.Scripts.Core.ChunkGraphicsCore;
-using Assets.Scripts.Core.InventoryCore.ItemLogic;
-using Assets.Scripts.InventoryCore;
-using ChunkCore.LifeTimeControl;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using _Scripts.Core.BlocksCore;
+using _Scripts.Core.ChunkGraphicsCore;
+using _Scripts.Core.InventoryCore.ItemLogic;
+using _Scripts.Implementation.InventoryImplementation;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.Undone.WorldsCore
+namespace _Scripts.TempScripts
 {
 	public class TempInitializer : MonoInstaller
 	{

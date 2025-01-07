@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Assets.Scripts.Core.GraphicsCore.ChunkGraphicsCore.MeshPartsContainerUpdating.WallUpdating.Mark.Components
+﻿namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.MeshPartsContainerLogic.WallUpdate.Components
 {
 	public struct BehindWallsMarkedDirtyTag
 	{

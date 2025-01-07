@@ -1,10 +1,9 @@
-﻿using ChunkCore;
-using GraphicsCore.ChunkGraphicsCore.BlockGraphics;
-using MeshCreation.Preset;
-using System.Collections.Generic;
+﻿using _Scripts.Core;
+using _Scripts.Core.ChunkGraphicsCore.BlockGraphics;
+using _Scripts.Core.MeshWrap;
 using UnityEngine;
 
-namespace Realization.Blocks.Cube.Graphics
+namespace _Scripts.Implementation.BlocksImplementation.Graphics.StandartBlockGraphics
 {
 	public class StandartBlockGraphics : IGraphicsBlockComponent
 	{

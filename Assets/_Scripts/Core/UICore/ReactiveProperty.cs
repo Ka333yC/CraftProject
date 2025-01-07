@@ -1,6 +1,6 @@
 using System;
 
-namespace Assets.Scripts.Core.UICore
+namespace _Scripts.Core.UICore
 {
 	public class ReactiveProperty<T>
 	{

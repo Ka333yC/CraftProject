@@ -1,13 +1,10 @@
-using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components;
-using Assets.Scripts.Core.ChunkPhysicsCore.ChunkPhysicsScripts.Components.Elements.BlockPhysicsGetters;
-using ChunkCore;
-using ChunkCore.Loading.Components;
-using GraphicsCore.ChunkGraphicsCore.LifeTimeControl.Components;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components;
+using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.Components;
+using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.Components.Elements;
+using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.Components.Elements.BlockPhysicsGetters;
 using Leopotam.EcsLite;
-using PhysicsCore.ChunkPhysicsCore.LifeTimeControl.Components;
-using System;
 
-namespace PhysicsCore.ChunkPhysicsCore.LifeTimeControl.Systems
+namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.Systems
 {
 	public class ChunkPhysicsCreator : IEcsPreInitSystem, IEcsRunSystem
 	{

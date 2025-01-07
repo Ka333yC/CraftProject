@@ -1,4 +1,4 @@
-﻿namespace PhysicsCore.ChunkPhysicsCore.Cache.ChunkPhysicsMeshColliderPoolScripts.Components
+﻿namespace _Scripts.Core.ChunkCore.ChunkLogic.Pools.Components
 {
 	public struct ChunkGameObjectPoolComponent
 	{

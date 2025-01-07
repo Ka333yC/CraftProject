@@ -1,7 +1,6 @@
 using DataBase.Commands;
-using System;
 
-namespace Assets.Scripts.Core.WorldsCore.WorldSettingsTable.WorldSettingsCommands
+namespace _Scripts.Implementation.DataBaseImplementation.WorldsDataDB.Tables.WorldParametersTable.Commands
 {
 	public class ExistsWorldParametersWhereNameCommand : ICommand
 	{

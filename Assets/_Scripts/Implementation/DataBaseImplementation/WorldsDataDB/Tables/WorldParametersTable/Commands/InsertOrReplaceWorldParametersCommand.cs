@@ -1,8 +1,6 @@
-using Assets.Scripts.Core.ChunkCore.Saving;
 using DataBase.Commands;
-using System;
 
-namespace Assets.Scripts.Core.WorldsCore.WorldSettingsCommands
+namespace _Scripts.Implementation.DataBaseImplementation.WorldsDataDB.Tables.WorldParametersTable.Commands
 {
 	public class InsertOrReplaceWorldParametersCommand : ICommand
 	{

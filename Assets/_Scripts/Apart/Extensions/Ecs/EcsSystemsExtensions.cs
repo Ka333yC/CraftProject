@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Assets.Scripts.Apart.Extensions.Ecs;
+using _Scripts.Apart.Extensions.Ecs.DelHere;
 using Leopotam.EcsLite;
 
-namespace Extensions.Ecs
+namespace _Scripts.Apart.Extensions.Ecs
 {
 	public static class EcsSystemsExtensions
 	{

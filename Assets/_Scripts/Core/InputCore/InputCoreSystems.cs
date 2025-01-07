@@ -1,9 +1,9 @@
-﻿using Leopotam.EcsLite;
-using System.Collections.Generic;
-using Input.Components;
-using Assets.Scripts.Apart.Extensions.Ecs;
+﻿using System.Collections.Generic;
+using _Scripts.Apart.Extensions.Ecs.DelHere;
+using _Scripts.Core.InputCore.Components;
+using Leopotam.EcsLite;
 
-namespace Assets.Scripts.Core.InputCore
+namespace _Scripts.Core.InputCore
 {
 	public static class InputCoreSystems
 	{

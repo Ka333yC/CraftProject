@@ -1,13 +1,7 @@
-﻿using Assets.Scripts.Core.InventoryCore.ItemLogic;
-using Assets.Scripts.InventoryCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using _Scripts.Core.InventoryCore.ItemLogic;
 using UnityEngine;
 
-namespace Assets._Scripts.Implementation.InventoryImplementation
+namespace _Scripts.Implementation.InventoryImplementation
 {
 	public abstract class ItemContainer : ScriptableObject, IItemContainer
 	{

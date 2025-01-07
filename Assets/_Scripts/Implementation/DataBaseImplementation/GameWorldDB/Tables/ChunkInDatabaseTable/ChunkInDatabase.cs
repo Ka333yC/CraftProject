@@ -1,10 +1,9 @@
-using Assets.Scripts.Core.ChunkCore.Saving.ChunkInDatabaseCommands;
-using Assets.Scripts.Core.ChunkCore.Saving.ChunkSerialization.ChunkInDatabaseCommands;
+using _Scripts.Implementation.DataBaseImplementation.GameWorldDB.Tables.ChunkInDatabaseTable.Commands;
 using UnityEngine;
 
-namespace Assets.Scripts.Core.ChunkCore.Saving
+namespace _Scripts.Implementation.DataBaseImplementation.GameWorldDB.Tables.ChunkInDatabaseTable
 {
-	// TODO: добавить dimension
+	// TODO: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ dimension
 	public class ChunkInDatabase
 	{
 		public int? Id { get; set; }

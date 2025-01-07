@@ -1,11 +1,10 @@
-﻿using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using _Scripts.Core.InputCore.Components;
 using Leopotam.EcsLite;
-using Input.Components;
-using Assets.Scripts.Core.InputCore.MonoBehaviourInputHandlers;
+using UnityEngine;
+using UnityEngine.InputSystem;
 using Zenject;
 
-namespace Input.MonoBehaviourHandlers
+namespace _Scripts.Core.InputCore.MonoBehaviourInputHandlers
 {
 	public class LookInputHandler : MonoBehaviour, IInputHandler
 	{

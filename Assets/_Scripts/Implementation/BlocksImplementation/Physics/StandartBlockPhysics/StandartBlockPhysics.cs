@@ -1,10 +1,8 @@
-﻿using ChunkCore;
-using MeshCreation.Preset;
-using PhysicsCore.ChunkPhysicsCore.BlockPhysics;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using _Scripts.Core;
+using _Scripts.Core.MeshWrap;
+using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.BlockPhysics;
 
-namespace Realization.Blocks.Cube.Physics
+namespace _Scripts.Implementation.BlocksImplementation.Physics.StandartBlockPhysics
 {
 	public class StandartBlockPhysics : IPhysicsBlockComponent
 	{

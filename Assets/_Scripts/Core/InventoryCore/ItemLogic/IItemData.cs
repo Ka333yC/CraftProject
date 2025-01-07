@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.InventoryCore
+namespace _Scripts.Core.InventoryCore.ItemLogic
 {
 	public interface IItemData
 	{

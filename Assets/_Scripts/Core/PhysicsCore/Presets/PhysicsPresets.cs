@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Scripts.PhysicsCore
+namespace _Scripts.Core.PhysicsCore.Presets
 {
 	[CreateAssetMenu(fileName = "PhysicsPresets", menuName = "Global settings/Physics presets")]
 	public class PhysicsPresets : ScriptableObject

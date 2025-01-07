@@ -1,17 +1,17 @@
 ﻿using System;
-using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components;
-using ChunkCore.ChunksContainerScripts;
-using ChunkCore.ChunksContainerScripts.Components;
-using ChunkCore.LifeTimeControl.Components.Fixed;
-using ChunkCore.LifeTimeControl.Components.Standart;
-using ChunkCore.Loading.Components;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components.Fixed;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components.Standart;
+using _Scripts.Core.ChunkCore.ChunkLogic.Pools;
+using _Scripts.Core.ChunkCore.ChunkLogic.Pools.Components;
+using _Scripts.Core.ChunkCore.ChunkLogic.Saving.Components;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components.Elements;
 using Cysharp.Threading.Tasks;
 using Leopotam.EcsLite;
-using PhysicsCore.ChunkPhysicsCore.Cache.ChunkPhysicsMeshColliderPoolScripts;
-using PhysicsCore.ChunkPhysicsCore.Cache.ChunkPhysicsMeshColliderPoolScripts.Components;
 using UnityEngine;
 
-namespace Assets.Scripts.Core.ChunkCore.LifeTimeControl.Systems
+namespace _Scripts.Core.ChunkCore.ChunkLogic.Systems
 {
 	public class ChunkDestroyer : IEcsPreInitSystem, IEcsInitSystem, IEcsRunSystem
 	{

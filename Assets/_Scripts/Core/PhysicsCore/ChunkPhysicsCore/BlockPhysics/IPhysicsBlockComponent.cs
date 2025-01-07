@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
-using Assets._Scripts.Core.BlocksCore;
-using ChunkCore;
-using MeshCreation.Preset;
-using UnityEngine;
+﻿using _Scripts.Core.BlocksCore;
+using _Scripts.Core.MeshWrap;
 
-namespace PhysicsCore.ChunkPhysicsCore.BlockPhysics
+namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.BlockPhysics
 {
 	public interface IPhysicsBlockComponent : IBlockComponent
 	{

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Assets.Scripts.Core
+namespace _Scripts.Core.Pause
 {
 	public class PauseManager
 	{

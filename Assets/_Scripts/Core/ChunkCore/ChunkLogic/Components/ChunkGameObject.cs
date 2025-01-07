@@ -1,12 +1,6 @@
-﻿using ChunkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets._Scripts.Core.ChunkCore.ChunkLogic.Components
+namespace _Scripts.Core.ChunkCore.ChunkLogic.Components
 {
 	[RequireComponent(typeof(MeshFilter), typeof(MeshCollider))]
 	public class ChunkGameObject : MonoBehaviour

@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Assets.Scripts.InventoryCore;
+using _Scripts.Core.InventoryCore.ItemLogic;
+using _Scripts.Core.InventoryCore.SlotLogic;
 
-namespace Assets.Scripts.Core.InventoryCore
+namespace _Scripts.Core.InventoryCore
 {
 	public class InventorySlotsContainer : IEnumerable<InventorySlot>
 	{

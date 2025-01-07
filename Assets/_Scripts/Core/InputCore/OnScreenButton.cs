@@ -1,9 +1,9 @@
-﻿using UnityEngine.EventSystems;
+﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.Layouts;
-using UnityEngine;
 using UnityEngine.InputSystem.OnScreen;
 
-namespace Assets.Scripts.Core.InputCore
+namespace _Scripts.Core.InputCore
 {
 	public class OnScreenButton : OnScreenControl, IPointerDownHandler, IPointerUpHandler
 	{

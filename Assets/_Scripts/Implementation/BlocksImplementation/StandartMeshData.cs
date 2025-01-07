@@ -1,9 +1,10 @@
-﻿using ChunkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using _Scripts.Core;
+using _Scripts.Core.MeshWrap;
 using UnityEngine;
-namespace MeshCreation.Preset
+
+namespace _Scripts.Implementation.BlocksImplementation
 {
 	[CreateAssetMenu(fileName = "MeshData", menuName = "Blocks/Standart mesh data")]
 	public class StandartMeshData : ScriptableObject

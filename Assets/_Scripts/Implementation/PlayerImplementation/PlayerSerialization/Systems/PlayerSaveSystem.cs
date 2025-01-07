@@ -1,19 +1,13 @@
-﻿using Assets.Scripts.Apart.Extensions.Ecs;
-using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components;
-using Assets.Scripts.Core.ChunkCore.Saving.Components;
-using Assets.Scripts.Undone.PlayerCore.Saving.Components;
-using ChunkCore.ChunksContainerScripts.Components;
+﻿using System;
+using _Scripts.Apart.Extensions.Ecs;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.Components;
+using _Scripts.Core.PlayerCore.Components;
+using _Scripts.Implementation.PlayerImplementation.PlayerSerialization.Components;
 using Cysharp.Threading.Tasks;
 using Leopotam.EcsLite;
-using PhysicsCore.ObjectPhysics.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Zenject;
 
-namespace Assets.Scripts.Undone.PlayerCore.Saving.Systems
+namespace _Scripts.Implementation.PlayerImplementation.PlayerSerialization.Systems
 {
 	public class PlayerSaveSystem : IEcsPreInitSystem, IEcsInitSystem, IEcsRunSystem
 	{

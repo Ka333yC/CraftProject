@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Assets._Scripts.Core.ChunkCore.ChunkLogic.Components;
-using ObjectPoolPattern;
-using UnityEngine;
+using _Scripts.Apart.ObjectPoolPattern;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components;
 
-namespace PhysicsCore.ChunkPhysicsCore.Cache.ChunkPhysicsMeshColliderPoolScripts
+namespace _Scripts.Core.ChunkCore.ChunkLogic.Pools
 {
 	public class ChunkGameObjectPool : IPool<ChunkGameObject>
 	{

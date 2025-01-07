@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Assets.Scripts.InventoryCore;
+using _Scripts.Core.InventoryCore.ItemLogic;
 using JetBrains.Annotations;
 
-namespace Assets.Scripts.Core.InventoryCore
+namespace _Scripts.Core.InventoryCore.SlotLogic
 {
 	public class InventorySlot
 	{

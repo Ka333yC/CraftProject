@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Scripts.Core.ObjectPhysicsCore.PositionsUpdate
+namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components.Elements
 {
 	public class ObjectPhysicsPositionsContainer
 	{

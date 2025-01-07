@@ -1,19 +1,9 @@
-﻿using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components;
-using Assets.Scripts.Core.ObjectPhysicsCore.InBlockCheck.Components;
-using Assets.Scripts.Core.ObjectPhysicsCore.InSimulatedChunkCheck.Components;
-using Assets.Scripts.Core.PhysicsCore.ChunkPhysicsCore.MeshUpdating.Components;
-using Assets.Scripts.Core.PhysicsCore.ObjectPhysics.PhysicsDeactivating;
-using Assets.Scripts.Core.PhysicsCore.ObjectPhysics.PhysicsDeactivating.Components;
+﻿using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.Components;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.InBlockCheck.Components;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.InSimulatedChunkCheck.Components;
 using Leopotam.EcsLite;
-using PhysicsCore.ChunkPhysicsCore.LifeTimeControl.Components;
-using PhysicsCore.ObjectPhysics.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Assets.Scripts.Core.ObjectPhysicsCore.PhysicsDeactivation.Systems
+namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.Systems
 {
 	public class PhysicsDeactivationSystem : IEcsPreInitSystem, IEcsRunSystem
 	{

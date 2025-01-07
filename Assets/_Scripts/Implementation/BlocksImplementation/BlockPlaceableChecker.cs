@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Scripts.Realization.Blocks.BlockDataPresentation
+namespace _Scripts.Implementation.BlocksImplementation
 {
 	public abstract class BlockPlaceableChecker : ScriptableObject
 	{

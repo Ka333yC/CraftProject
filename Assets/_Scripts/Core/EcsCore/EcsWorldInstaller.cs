@@ -1,8 +1,7 @@
-﻿using Assets.Scripts.Core.EcsCore;
-using Leopotam.EcsLite;
+﻿using Leopotam.EcsLite;
 using Zenject;
 
-namespace Assets.Scripts.Core
+namespace _Scripts.Core.EcsCore
 {
 	public class EcsWorldInstaller : MonoInstaller
 	{

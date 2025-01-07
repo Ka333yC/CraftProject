@@ -1,14 +1,9 @@
-﻿using Assets.Scripts.Core.ChunkCore.ChunksContainerScripts;
-using ChunkCore.LifeTimeControl;
-using Leopotam.EcsLite;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Leopotam.EcsLite;
 using UnityEngine;
 
-namespace ChunkCore.ChunksContainerScripts
+namespace _Scripts.Core.ChunkCore.ChunksContainerLogic.Components.Elements
 {
 	public class ChunksContainer
 	{

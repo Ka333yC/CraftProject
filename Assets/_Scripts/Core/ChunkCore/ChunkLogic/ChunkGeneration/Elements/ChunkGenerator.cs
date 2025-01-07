@@ -1,13 +1,7 @@
-﻿using Assets._Scripts.Core.BlocksCore;
-using Assets.Scripts.Core.ChunkCore.ChunkLogic.Components.Elements;
-using Assets.Scripts.Undone.TerrainGeneration;
-using ChunkCore;
-using ChunkCore.LifeTimeControl;
+﻿using _Scripts.Core.BlocksCore;
 using Cysharp.Threading.Tasks;
-using System.Threading;
-using UnityEngine;
 
-namespace TempScripts.TerrainGeneration
+namespace _Scripts.Core.ChunkCore.ChunkLogic.ChunkGeneration.Elements
 {
 	public abstract class ChunkGenerator
 	{

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts
+namespace _Scripts.Core
 {
 	public class MainThreadEventExecutor : MonoBehaviour
 	{

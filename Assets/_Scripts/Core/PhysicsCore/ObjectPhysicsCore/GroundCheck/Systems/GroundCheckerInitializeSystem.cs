@@ -1,13 +1,8 @@
-﻿using Leopotam.EcsLite;
-using PhysicsCore.ObjectPhysics.Components;
-using PhysicsCore.ObjectPhysics.GroundChecking.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.Components;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.GroundCheck.Components;
+using Leopotam.EcsLite;
 
-namespace Assets.Scripts.Implementation.ObjectPhysics.GroundCheck.Systems
+namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.GroundCheck.Systems
 {
 	public class GroundCheckerInitializeSystem : IEcsPreInitSystem, IEcsRunSystem
 	{

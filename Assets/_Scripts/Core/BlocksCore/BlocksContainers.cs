@@ -1,12 +1,10 @@
-﻿using Assets.Scripts.Core.InventoryCore.ItemLogic;
-using Assets.Scripts.Core.InventoryCore.ItemLogic.BlockItem;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
+using _Scripts.Core.InventoryCore.ItemLogic;
 using Zenject;
 
-namespace Assets._Scripts.Core.BlocksCore
+namespace _Scripts.Core.BlocksCore
 {
 	public class BlocksContainers : IEnumerable<IBlockContainer>
 	{

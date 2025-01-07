@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.Core.ChunkCore.Saving.Components
+﻿namespace _Scripts.Core.ChunkCore.ChunkLogic.Saving.Components
 {
 	public struct NeedSaveChunkTag
 	{

@@ -3,7 +3,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Assets.Scripts.Apart.EditorScripts
+namespace _Scripts.Apart.EditorScripts
 {
 	public static class MeshCreatorInEditor
 	{

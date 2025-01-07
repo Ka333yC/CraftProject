@@ -1,12 +1,7 @@
-﻿using Assets._Scripts.Core.BlocksCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using _Scripts.Core.BlocksCore;
 using UnityEngine;
 
-namespace Assets._Scripts.Implementation.BlocksImplementation
+namespace _Scripts.Implementation.BlocksImplementation
 {
 	public abstract class BlockContainer : ScriptableObject, IBlockContainer
 	{

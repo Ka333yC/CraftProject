@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Zenject;
 
-namespace Assets.Assets.Scripts.Core.UICore.PopUp
+namespace _Scripts.Core.UICore.PopUp
 {
 	public abstract class PopUpInstaller : MonoInstaller
 	{

@@ -1,7 +1,4 @@
-﻿using System;
-using ChunkCore;
-
-namespace Assets.Scripts.Core.GraphicsCore.ChunkGraphicsCore.MeshPartsContainerUpdating.WallUpdating.Components
+﻿namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.MeshPartsContainerLogic.WallUpdate.Components
 {
 	public struct DirtyWallsComponent
 	{

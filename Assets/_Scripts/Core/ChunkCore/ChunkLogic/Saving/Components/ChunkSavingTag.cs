@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components
+﻿namespace _Scripts.Core.ChunkCore.ChunkLogic.Saving.Components
 {
 	public struct ChunkSavingTag
 	{

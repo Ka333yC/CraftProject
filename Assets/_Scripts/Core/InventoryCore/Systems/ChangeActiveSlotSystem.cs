@@ -1,8 +1,7 @@
-﻿using Assets.Scripts.Core.InventoryCore;
-using Assets.Scripts.Core.PlayerCore.Components;
+﻿using _Scripts.Core.InventoryCore.Components;
 using Leopotam.EcsLite;
 
-namespace Assets.Scripts.Core.PlayerCore.ActiveSlot.Systems
+namespace _Scripts.Core.InventoryCore.Systems
 {
 	public class ChangeActiveSlotSystem : IEcsPreInitSystem, IEcsRunSystem
 	{

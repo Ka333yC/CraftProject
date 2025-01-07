@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Linq;
-using System.Threading;
-using UnityEngine;
 using System.Collections.Generic;
-using Extensions;
-using ChunkCore;
-using PhysicsCore.ChunkPhysicsCore.BlockPhysics;
-using Assets.Scripts.Core.MeshCreation;
-using Assets.Scripts.Core.ChunkPhysicsCore.ChunkPhysicsScripts.Components.Elements.BlockPhysicsGetters;
-using Assets.Scripts.Core.ChunkGraphicsCore.ChunkGraphicsScripts.Components.Elements;
-using Assets.Scripts.Core.ChunkGraphicsCore.ChunkGraphicsScripts.Components.Elements.BlockGraphicsGetters;
+using System.Threading;
+using _Scripts.Apart.Extensions;
+using _Scripts.Core.MeshWrap;
+using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.BlockPhysics;
+using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.Components.Elements.BlockPhysicsGetters;
+using UnityEngine;
 
-namespace PhysicsCore.ChunkPhysicsCore.LifeTimeControl
+namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.Components.Elements
 {
 	public class ColliderMeshPartsContainer : IDisposable
 	{

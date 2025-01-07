@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace PhysicsCore.ObjectPhysics.PositionUpdater.Components
+namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components
 {
 	public struct BlockPositionChangedComponent
 	{

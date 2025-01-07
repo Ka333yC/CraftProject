@@ -1,13 +1,7 @@
-﻿using Assets.Scripts.Core.ChunkCore.Saving.ChunkInDatabaseCommands;
-using Assets.Scripts.Core.PlayerCore.Saving.PlayerInDatabseCommands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using _Scripts.Implementation.DataBaseImplementation.GameWorldDB.Tables.PlayerInDatabaseTable.Commands;
 using UnityEngine;
 
-namespace Assets.Scripts.Core.PlayerCore
+namespace _Scripts.Implementation.DataBaseImplementation.GameWorldDB.Tables.PlayerInDatabaseTable
 {
 	public class PlayerInDatabase
 	{

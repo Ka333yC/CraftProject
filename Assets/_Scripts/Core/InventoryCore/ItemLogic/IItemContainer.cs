@@ -1,6 +1,4 @@
-﻿using Assets.Scripts.InventoryCore;
-
-namespace Assets.Scripts.Core.InventoryCore.ItemLogic
+﻿namespace _Scripts.Core.InventoryCore.ItemLogic
 {
 	public interface IItemContainer : IItemData
 	{

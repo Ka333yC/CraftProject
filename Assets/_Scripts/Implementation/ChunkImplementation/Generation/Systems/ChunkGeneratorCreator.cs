@@ -1,18 +1,10 @@
-﻿using Assets._Scripts.Core.BlocksCore;
-using Assets.Scripts.Core.ChunkCore.ChunkLogic.Loading.TerrainGeneration.Components;
-using Assets.Scripts.Core.ChunkCore.Saving.Components;
+﻿using _Scripts.Core.BlocksCore;
+using _Scripts.Core.ChunkCore.ChunkLogic.ChunkGeneration;
+using _Scripts.TempScripts;
 using Leopotam.EcsLite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TempScripts;
-using TempScripts.TerrainGeneration;
-using UnityEngine.Rendering.VirtualTexturing;
 using Zenject;
 
-namespace Assets.Scripts.Implementation.Chunk.Loading.TerrainGeneration.Systems
+namespace _Scripts.Implementation.ChunkImplementation.Generation.Systems
 {
 	public class ChunkGeneratorCreator : IEcsInitSystem
 	{

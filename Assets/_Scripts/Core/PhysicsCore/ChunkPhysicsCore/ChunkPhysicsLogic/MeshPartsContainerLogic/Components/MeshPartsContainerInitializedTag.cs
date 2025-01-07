@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Assets.Scripts.Core.PhysicsCore.ChunkPhysicsCore.MeshPartsContainerUpdating.Components
+﻿namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.MeshPartsContainerLogic.Components
 {
 	public struct MeshPartsContainerInitializedTag
 	{

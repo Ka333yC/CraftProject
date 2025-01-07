@@ -1,17 +1,8 @@
-﻿using Assets.Scripts.Core.ChunkPhysicsCore.ChunkPhysicsScripts.Components.Elements.BlockPhysicsGetters;
-using Assets.Scripts.Core.ChunkPhysicsCore.ChunkPhysicsScripts.Components.Elements;
-using PhysicsCore.ChunkPhysicsCore.BlockPhysics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.BlockPhysics;
 using UnityEngine;
-using UnityEngine.Pool;
-using GraphicsCore.ChunkGraphicsCore.BlockGraphics;
-using ChunkCore;
 
-namespace Assets.Scripts.Core.ChunkPhysicsCore.ChunkPhysicsScripts.Components.Elements.BlockPhysicsGetters
+namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.Components.Elements.BlockPhysicsGetters
 {
 	public class CachedBlocksPhysicsGetter : IBlocksPhysicsGetter, IDisposable
 	{

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Assets.Scripts.InventoryCore
+namespace _Scripts.Core.InventoryCore.ItemLogic
 {
 	public abstract class Item
 	{

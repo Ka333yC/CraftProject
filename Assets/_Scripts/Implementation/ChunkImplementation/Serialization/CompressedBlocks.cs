@@ -1,12 +1,8 @@
-
-using Assets._Scripts.Core.BlocksCore;
-using ChunkCore.LifeTimeControl;
-using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using TempScripts;
+using _Scripts.Core.BlocksCore;
+using Newtonsoft.Json;
 
-namespace Assets.Scripts.Core.ChunkCore.Saving
+namespace _Scripts.Implementation.ChunkImplementation.Serialization
 {
 	public class CompressedBlocks
 	{
@@ -25,7 +21,7 @@ namespace Assets.Scripts.Core.ChunkCore.Saving
 		}
 
 		/// <summary>
-		///  Добавление начинается с индекса 0, 0, 0
+		///  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 0, 0, 0
 		/// </summary>
 		public void AddLast(Block block) 
 		{
@@ -44,7 +40,7 @@ namespace Assets.Scripts.Core.ChunkCore.Saving
 		}
 
 		/// <summary>
-		///  Удаление начинается с последнего добавленного индекса, то есть с 15, 15, 15
+		///  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ 15, 15, 15
 		/// </summary>
 		public Block PopLast() 
 		{

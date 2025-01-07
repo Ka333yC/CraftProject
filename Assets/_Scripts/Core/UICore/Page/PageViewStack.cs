@@ -1,9 +1,8 @@
-using Assets.Scripts.Core.UICore.Core;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Assets.Scripts.Core.UICore
+namespace _Scripts.Core.UICore.Page
 {
 	public class PageViewStack : IEnumerable<BasePageView>
 	{
@@ -11,10 +10,10 @@ namespace Assets.Scripts.Core.UICore
 
 		public void OpenView(BasePageView viewToOpen)
 		{
-			// Скрываем последнюю вью
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 			var viewToMoveOut = _viewStack.LastOrDefault();
 			viewToMoveOut?.MoveOut();
-			// Открываем новую вью перед последней
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			_viewStack.AddLast(viewToOpen);
 			viewToOpen.PageStack = this;
 			viewToOpen.Open();
@@ -22,11 +21,11 @@ namespace Assets.Scripts.Core.UICore
 
 		public void CloseLastView()
 		{
-			// Закрываем последнюю вью
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 			var viewToClose = _viewStack.Last();
 			_viewStack.RemoveLast();
 			viewToClose.Close();
-			// Показываем новую последнюю вью
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 			var viewToShow = _viewStack.LastOrDefault();
 			viewToShow?.MoveIn();
 		}

@@ -1,10 +1,10 @@
 ﻿using System;
 using UnityEngine.InputSystem;
-using static UnityEngine.InputSystem.InputAction;
 using UnityEngine.InputSystem.EnhancedTouch;
+using static UnityEngine.InputSystem.InputAction;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
-namespace Assets.Scripts.Core.InputCore.MonoBehaviourInputHandlers
+namespace _Scripts.Core.InputCore
 {
 	public class FingerInputAction : IDisposable
 	{

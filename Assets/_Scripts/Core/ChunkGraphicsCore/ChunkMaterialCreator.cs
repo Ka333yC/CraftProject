@@ -1,12 +1,10 @@
-using Assets._Scripts.Core.BlocksCore;
-using ChunkCore.LifeTimeControl;
-using GraphicsCore.ChunkGraphicsCore.BlockGraphics;
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using _Scripts.Core.BlocksCore;
+using _Scripts.Core.ChunkGraphicsCore.BlockGraphics;
 using UnityEngine;
 
-namespace Assets.Scripts.Core.ChunkGraphicsCore
+namespace _Scripts.Core.ChunkGraphicsCore
 {
 	public class ChunkGraphicsTextureCreator
 	{
@@ -19,7 +17,7 @@ namespace Assets.Scripts.Core.ChunkGraphicsCore
 
 		public Texture2D CreateTexture()
 		{
-			// Делаю так, потому что https://gamedev.stackexchange.com/questions/133717/unity-texture-on-plane-fades-at-angle-generating-mipmaps
+			// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ https://gamedev.stackexchange.com/questions/133717/unity-texture-on-plane-fades-at-angle-generating-mipmaps
 			var packedTexture = PackTextures();
 			var mainTexture = new Texture2D(packedTexture.width, packedTexture.height);
 			mainTexture.filterMode = FilterMode.Point;

@@ -1,7 +1,7 @@
-﻿using Assets.Scripts.Core.ChunkGraphicsCore.ChunkGraphicsScripts.Components.Elements;
-using UnityEngine;
+﻿using _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.Components.Elements;
+using _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.Components.Elements.BlockGraphicsGetters;
 
-namespace GraphicsCore.ChunkGraphicsCore.LifeTimeControl.Components
+namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.Components
 {
 	public struct ChunkGraphicsComponent
 	{

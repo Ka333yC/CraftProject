@@ -1,15 +1,13 @@
-﻿using Assets._Scripts.Core.BlocksCore;
-using Assets.Scripts.Apart.Extensions;
-using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components;
-using Assets.Scripts.Undone.TerrainGeneration;
-using ChunkCore;
-using ChunkCore.LifeTimeControl;
+﻿using System;
+using _Scripts.Core;
+using _Scripts.Core.BlocksCore;
+using _Scripts.Core.ChunkCore.ChunkLogic.ChunkGeneration.Elements;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components;
 using Cysharp.Threading.Tasks;
 using Leopotam.EcsLite;
-using System;
 using UnityEngine;
 
-namespace TempScripts.TerrainGeneration
+namespace _Scripts.Implementation.ChunkImplementation.Generation
 {
 	public class OverworldChunkGenerator : ChunkGenerator
 	{

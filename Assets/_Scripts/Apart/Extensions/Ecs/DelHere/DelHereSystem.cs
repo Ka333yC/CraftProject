@@ -1,6 +1,6 @@
 ﻿using Leopotam.EcsLite;
 
-namespace Assets.Scripts.Apart.Extensions.Ecs
+namespace _Scripts.Apart.Extensions.Ecs.DelHere
 {
 	public class DelHereSystem<T> : IEcsPreInitSystem, IEcsRunSystem where T : struct
 	{

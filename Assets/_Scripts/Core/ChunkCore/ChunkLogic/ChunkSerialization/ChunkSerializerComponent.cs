@@ -1,6 +1,6 @@
-﻿using Assets.Scripts.Core.ChunkCore.ChunkLogic.Loading.Saving.Components;
+﻿using _Scripts.Core.ChunkCore.ChunkLogic.ChunkSerialization.Elements;
 
-namespace Assets.Scripts.Core.ChunkCore.Saving.Components
+namespace _Scripts.Core.ChunkCore.ChunkLogic.ChunkSerialization
 {
 	public struct ChunkSerializerComponent
 	{

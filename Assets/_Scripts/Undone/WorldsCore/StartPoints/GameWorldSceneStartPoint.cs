@@ -1,19 +1,10 @@
-using Assets.Scripts.Core.ChunkCore.Saving;
-using Assets.Scripts.Core.UICore.Core;
-using Assets.Scripts.Core.UICore;
-using Assets.Scripts.Core.WorldsCore;
-using System;
+using _Scripts.Implementation.PlayerImplementation;
+using _Scripts.Implementation.PlayerImplementation.PlayerSerialization;
+using Leopotam.EcsLite;
 using UnityEngine;
 using Zenject;
-using TempScripts;
-using Assets.Scripts.Core.PlayerCore.FindCoordinatesToSpawn;
-using Assets.Scripts.Undone.PlayerCore.Saving;
-using Leopotam.EcsLite;
-using Assets._Scripts;
-using Assets._Scripts.Core.BlocksCore;
-using Cysharp.Threading.Tasks;
 
-namespace Assets.Scripts.Undone
+namespace _Scripts.Undone.WorldsCore.StartPoints
 {
 	public class GameWorldSceneStartPoint : MonoBehaviour
 	{

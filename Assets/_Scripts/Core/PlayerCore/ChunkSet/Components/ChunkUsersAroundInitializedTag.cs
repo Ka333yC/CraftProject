@@ -1,4 +1,4 @@
-﻿namespace ChunkCore.LifeTimeControl.Components
+﻿namespace _Scripts.Core.PlayerCore.ChunkSet.Components
 {
 	public struct ChunkUsersAroundInitializedTag
 	{

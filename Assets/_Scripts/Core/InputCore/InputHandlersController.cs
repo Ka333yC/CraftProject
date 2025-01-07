@@ -1,10 +1,9 @@
 ﻿using System.Linq;
-using Assets.Scripts.Core.InputCore.MonoBehaviourInputHandlers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
 
-namespace Input.MonoBehaviourHandlers
+namespace _Scripts.Core.InputCore
 {
 	public class InputHandlersController : MonoBehaviour
 	{

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using static Assets._Scripts.Core.BlocksCore.Block;
+using static _Scripts.Core.BlocksCore.Block;
 
-namespace Assets._Scripts.Core.BlocksCore
+namespace _Scripts.Core.BlocksCore
 {
 	public class AirBlockContainer : IBlockContainer
 	{

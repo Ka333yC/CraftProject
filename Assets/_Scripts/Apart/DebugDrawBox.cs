@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.TempScripts
+namespace _Scripts.Apart
 {
 	public class DebugDrawBox
 	{

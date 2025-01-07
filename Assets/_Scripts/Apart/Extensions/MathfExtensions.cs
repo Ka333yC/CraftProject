@@ -1,4 +1,4 @@
-﻿namespace Extensions
+﻿namespace _Scripts.Apart.Extensions
 {
 	public class MathfExtensions
 	{

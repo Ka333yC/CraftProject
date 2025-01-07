@@ -1,21 +1,14 @@
-﻿using Assets.Scripts.Core.ChunkCore.Saving;
-using Assets.Scripts.Undone;
-using Assets.Scripts.Undone.TerrainGeneration;
-using ChunkCore.LifeTimeControl;
-using Cysharp.Threading.Tasks;
-using DataBaseManagement;
+﻿using System;
 using System.Threading;
-using System;
-using System.Threading.Tasks;
-using TempScripts.TerrainGeneration;
+using _Scripts.Core.ChunkCore.ChunkLogic.ChunkGeneration.Elements;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components;
+using _Scripts.Core.PhysicsCore.Presets;
+using _Scripts.Implementation.BlocksImplementation;
+using Leopotam.EcsLite;
 using UnityEngine;
 using Zenject;
-using Leopotam.EcsLite;
-using Assets.Scripts.PhysicsCore;
-using Assets._Scripts.Implementation.BlocksImplementation;
-using Assets._Scripts.Core.ChunkCore.ChunkLogic.Components;
 
-namespace TempScripts
+namespace _Scripts.TempScripts
 {
 	public class Singleton : MonoBehaviour
 	{

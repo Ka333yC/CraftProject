@@ -1,7 +1,8 @@
-using Assets.Assets.Scripts.Core.UICore.PopUp;
+using _Scripts.Core.UICore.Page;
+using _Scripts.Core.UICore.PopUp;
 using Zenject;
 
-namespace Assets.Scripts.Core.UICore.Core
+namespace _Scripts.Core.UICore
 {
 	public class ViewFactory
 	{

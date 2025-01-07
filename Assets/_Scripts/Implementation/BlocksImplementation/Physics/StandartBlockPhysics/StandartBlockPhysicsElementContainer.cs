@@ -1,14 +1,8 @@
-﻿using System.Collections.Generic;
-using Assets._Scripts.Core.BlocksCore;
-using ChunkCore.BlockData;
-using Leopotam.EcsLite;
-using MeshCreation.Preset;
-using PhysicsCore.ChunkPhysicsCore.BlockPhysics;
-using TempScripts;
+﻿using _Scripts.Core.BlocksCore;
+using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.BlockPhysics;
 using UnityEngine;
-using Zenject;
 
-namespace Realization.Blocks.Cube.Physics
+namespace _Scripts.Implementation.BlocksImplementation.Physics.StandartBlockPhysics
 {
 	[CreateAssetMenu(fileName = "BlockPhysicsElement", menuName = "Blocks/Physics/Standart block physics element")]
 	public class StandartBlockPhysicsElementContainer : BlockComponentContainer, IPhysicsBlockComponentContainer

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ChunkCore
+namespace _Scripts.Core
 {
 	public static class ChunkConstantData
 	{

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Scripts.Implementation.ObjectPhysics.PositionsUpdate.Components
+namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components
 {
 	public struct ObjectPhysicsPositionsComponent
 	{

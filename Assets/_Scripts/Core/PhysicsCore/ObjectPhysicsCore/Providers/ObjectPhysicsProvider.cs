@@ -1,7 +1,7 @@
-﻿using PhysicsCore.ObjectPhysics.Components;
+﻿using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.Components;
 using Voody.UniLeo.Lite;
 
-namespace PhysicsCore.ObjectPhysics.Providers
+namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.Providers
 {
 	public class ObjectPhysicsProvider : MonoProvider<ObjectPhysicsComponent>
 	{

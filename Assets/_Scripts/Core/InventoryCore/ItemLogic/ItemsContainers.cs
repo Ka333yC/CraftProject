@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Assets.Scripts.Core.InventoryCore.ItemLogic.AirItem;
 
-namespace Assets.Scripts.Core.InventoryCore.ItemLogic
+namespace _Scripts.Core.InventoryCore.ItemLogic
 {
 	public class ItemsContainers : IEnumerable<IItemContainer>
 	{

@@ -1,7 +1,7 @@
-﻿using Leopotam.EcsLite;
-using PhysicsCore.ChunkPhysicsCore.Cache.ChunkPhysicsMeshColliderPoolScripts.Components;
+﻿using _Scripts.Core.ChunkCore.ChunkLogic.Pools.Components;
+using Leopotam.EcsLite;
 
-namespace PhysicsCore.ChunkPhysicsCore.Cache.ChunkPhysicsMeshColliderPoolScripts.Systems
+namespace _Scripts.Core.ChunkCore.ChunkLogic.Pools.Systems
 {
 	public class ChunkGameObjectPoolCreator : IEcsPreInitSystem, IEcsInitSystem
 	{

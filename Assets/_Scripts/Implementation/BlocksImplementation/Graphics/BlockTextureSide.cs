@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace GraphicsCore.ChunkGraphicsCore.BlockGraphics
+namespace _Scripts.Implementation.BlocksImplementation.Graphics
 {
 	[Serializable]
 	public class BlockTextureSide

@@ -1,9 +1,7 @@
-﻿using Assets._Scripts.Core.BlocksCore;
-using Assets.Scripts.Core.InventoryCore.ItemLogic.BlockItem;
-using Assets.Scripts.InventoryCore;
+﻿using _Scripts.Core.BlocksCore;
 using UnityEngine;
 
-namespace Assets.Scripts.Core.InventoryCore.ItemLogic.AirItem
+namespace _Scripts.Core.InventoryCore.ItemLogic
 {
 	public class AirItemContainer : IItemContainer, IBlockItemData
 	{

@@ -1,18 +1,14 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Assets._Scripts.Core.BlocksCore;
-using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components;
-using ChunkCore;
-using ChunkCore.ChunksContainerScripts;
-using ChunkCore.ChunksContainerScripts.Components;
-using ChunkCore.Loading.Components;
+﻿using _Scripts.Core;
+using _Scripts.Core.BlocksCore;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components.Elements;
+using _Scripts.TempScripts;
 using Cysharp.Threading.Tasks;
 using Leopotam.EcsLite;
-using TempScripts;
 using UnityEngine;
 
-namespace Assets.Scripts.Core.PlayerCore.FindCoordinatesToSpawn
+namespace _Scripts.Implementation.PlayerImplementation
 {
 	// TODO: возможен бесконечный поиск, если мир был уничтожен до того, как позиция найдена. Добавить отмену
 	// при уничтожении мира

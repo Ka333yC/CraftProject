@@ -1,6 +1,4 @@
-using System;
-
-namespace Assets.Scripts.Core
+namespace _Scripts.Undone.WorldsCore
 {
 	public class ScenesIndexes
 	{

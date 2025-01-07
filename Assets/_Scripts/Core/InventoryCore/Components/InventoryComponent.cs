@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.Core.InventoryCore
+﻿namespace _Scripts.Core.InventoryCore.Components
 {
 	public struct InventoryComponent
 	{

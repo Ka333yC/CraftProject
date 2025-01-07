@@ -1,7 +1,7 @@
-using System;
+using _Scripts.Undone.WorldsCore;
 using Zenject;
 
-namespace Assets.Scripts.Core.WorldsCore
+namespace _Scripts.Implementation.DataBaseImplementation.WorldsDataDB
 {
 	public class WorldsDataInstaller : MonoInstaller 
 	{

@@ -1,17 +1,9 @@
-﻿using Assets._Scripts.Core.BlocksCore;
-using Assets._Scripts.Implementation.BlocksImplementation;
-using Assets.Scripts.Realization.Blocks.BlockDataPresentation;
-using ChunkCore.LifeTimeControl;
-using GraphicsCore.ChunkGraphicsCore.BlockGraphics;
-using Leopotam.EcsLite;
-using System.ComponentModel;
-using System.Linq;
-using TempScripts;
+﻿using _Scripts.Core.BlocksCore;
 using UnityEngine;
 using Zenject;
-using static Assets._Scripts.Core.BlocksCore.Block;
+using static _Scripts.Core.BlocksCore.Block;
 
-namespace ChunkCore.BlockData
+namespace _Scripts.Implementation.BlocksImplementation
 {
 	[CreateAssetMenu(fileName = "SharedBlockContainer", menuName = "Blocks/Shared block container")]
 	public class SharedBlockContainer : BlockContainer

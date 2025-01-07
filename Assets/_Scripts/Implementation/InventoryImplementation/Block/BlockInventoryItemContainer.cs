@@ -1,13 +1,9 @@
-﻿using System;
-using Assets._Scripts.Core.BlocksCore;
-using Assets._Scripts.Implementation.BlocksImplementation;
-using Assets._Scripts.Implementation.InventoryImplementation;
-using Assets.Scripts.Core.InventoryCore.ItemLogic.BlockItem;
-using Assets.Scripts.InventoryCore;
-using ChunkCore.BlockData;
+﻿using _Scripts.Core.BlocksCore;
+using _Scripts.Core.InventoryCore.ItemLogic;
+using _Scripts.Implementation.BlocksImplementation;
 using UnityEngine;
 
-namespace Assets.Scripts.Realization.Blocks.InventoryBlockPresentation
+namespace _Scripts.Implementation.InventoryImplementation.Block
 {
 	[CreateAssetMenu(fileName = "BlockInventoryItemContainer", menuName = "Blocks/Items/Block item container")]
 	public class BlockInventoryItemContainer : ItemContainer, IBlockItemData

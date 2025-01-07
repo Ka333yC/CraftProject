@@ -1,7 +1,6 @@
-﻿using Assets._Scripts.Core.BlocksCore;
-using Assets.Scripts.InventoryCore;
+﻿using _Scripts.Core.BlocksCore;
 
-namespace Assets.Scripts.Core.InventoryCore.ItemLogic.BlockItem
+namespace _Scripts.Core.InventoryCore.ItemLogic
 {
 	public interface IBlockItemData : IItemData
 	{

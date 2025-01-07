@@ -1,4 +1,4 @@
-﻿namespace ObjectPoolPattern
+﻿namespace _Scripts.Apart.ObjectPoolPattern
 {
 	public interface IPool<T>
 	{

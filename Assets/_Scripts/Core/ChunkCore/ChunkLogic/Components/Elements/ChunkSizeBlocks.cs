@@ -1,12 +1,9 @@
-﻿using Assets._Scripts.Core.BlocksCore;
-using ChunkCore;
-using ChunkCore.LifeTimeControl;
-using System;
-using System.Threading;
+﻿using System;
+using _Scripts.Core.BlocksCore;
 using UnityEngine;
-using static Assets._Scripts.Core.BlocksCore.Block;
+using static _Scripts.Core.BlocksCore.Block;
 
-namespace Assets.Scripts.Core.ChunkCore.ChunkLogic.Components.Elements
+namespace _Scripts.Core.ChunkCore.ChunkLogic.Components.Elements
 {
 	public class ChunkSizeBlocks : IDisposable
 	{

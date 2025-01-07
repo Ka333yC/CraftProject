@@ -1,8 +1,7 @@
-using Assets.Scripts.Core.UICore.Core;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.Core.UICore.Installers
+namespace _Scripts.Core.UICore.Page
 {
 	public abstract class PageInstaller : MonoInstaller
 	{

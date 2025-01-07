@@ -1,8 +1,7 @@
 using DataBase.Commands;
-using System;
 using UnityEngine;
 
-namespace Assets.Scripts.Core.ChunkCore.Saving.ChunkInDatabaseCommands
+namespace _Scripts.Implementation.DataBaseImplementation.GameWorldDB.Tables.ChunkInDatabaseTable.Commands
 {
 	public class SelectChunkInDatabaseWhereGridPositionCommand : ICommand
 	{

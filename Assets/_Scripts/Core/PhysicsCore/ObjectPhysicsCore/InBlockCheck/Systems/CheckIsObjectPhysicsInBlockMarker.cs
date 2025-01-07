@@ -1,17 +1,12 @@
-﻿using ChunkCore.OnBlockChanged.FixedNotification.Components;
-using ChunkCore;
-using Extensions.Ecs;
+﻿using System;
+using _Scripts.Apart.Extensions.Ecs;
+using _Scripts.Core.ChunkCore.BlockChanging.FixedNotification.Components;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components.Fixed;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.InBlockCheck.Components;
 using Leopotam.EcsLite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components;
-using Assets.Scripts.Implementation.ObjectPhysics.InBlockCheck2.Components;
-using ChunkCore.Loading.Components;
 
-namespace Assets.Scripts.Implementation.ObjectPhysics.InBlockCheck2.Systems
+namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.InBlockCheck.Systems
 {
 	public class CheckIsObjectPhysicsInBlockMarker : IEcsPreInitSystem, IEcsInitSystem, IEcsRunSystem
 	{

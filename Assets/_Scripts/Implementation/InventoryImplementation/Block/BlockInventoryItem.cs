@@ -1,12 +1,9 @@
-﻿using System;
-using Assets._Scripts.Core.BlocksCore;
-using Assets.Scripts.Realization.Blocks.InventoryBlockPresentation;
-using ChunkCore.LifeTimeControl;
-using ChunkCore.OnBlockChanged.Components;
-using TempScripts;
+﻿using _Scripts.Core.ChunkCore.BlockChanging.Components;
+using _Scripts.Core.InventoryCore.ItemLogic;
+using _Scripts.TempScripts;
 using UnityEngine;
 
-namespace Assets.Scripts.InventoryCore
+namespace _Scripts.Implementation.InventoryImplementation.Block
 {
 	public class BlockInventoryItem : Item
 	{
@@ -53,7 +50,7 @@ namespace Assets.Scripts.InventoryCore
 			return isUsed;
 		}
 
-		private static void SetBlock(Vector3Int worldPosition, Block block)
+		private static void SetBlock(Vector3Int worldPosition, Core.BlocksCore.Block block)
 		{
 			var world = Singleton.Instance.EcsWorld;
 			var setBlockPool = world.GetPool<SetBlockComponent>();

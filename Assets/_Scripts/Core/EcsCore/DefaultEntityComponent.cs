@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.Core.EcsCore
+﻿namespace _Scripts.Core.EcsCore
 {
 	public struct DefaultEntityComponent
 	{

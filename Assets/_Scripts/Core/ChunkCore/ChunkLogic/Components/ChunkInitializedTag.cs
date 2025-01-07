@@ -1,4 +1,4 @@
-﻿namespace ChunkCore.Loading.Components
+﻿namespace _Scripts.Core.ChunkCore.ChunkLogic.Components
 {
 	public struct ChunkInitializedTag
 	{

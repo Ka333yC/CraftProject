@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace ChunkCore
+namespace _Scripts.Core
 {
 	public class ChunkSizeArrayPool<T>
 	{

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Assets.Scripts.Core.ChunkCore.ChunksContainerScripts
+namespace _Scripts.Core.ChunkCore.ChunksContainerLogic.Components.Elements
 {
 	public class ChunkData
 	{

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace PhysicsCore.ObjectPhysics.PositionUpdater.StandartNotification.Components
+namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.StandartNotification.Components
 {
 	public struct StandartGridPositionChangedComponent
 	{

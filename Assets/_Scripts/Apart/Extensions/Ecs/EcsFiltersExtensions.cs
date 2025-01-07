@@ -1,7 +1,7 @@
 
 using Leopotam.EcsLite;
 
-namespace Assets.Scripts.Apart.Extensions.Ecs
+namespace _Scripts.Apart.Extensions.Ecs
 {
 	public static class EcsFiltersExtensions
 	{

@@ -1,18 +1,12 @@
-﻿using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components;
-using Assets.Scripts.Core.ChunkCore.Saving;
-using Assets.Scripts.Core.PlayerCore;
+﻿using System.Threading.Tasks;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.Components;
+using _Scripts.Implementation.DataBaseImplementation.GameWorldDB;
+using _Scripts.Implementation.DataBaseImplementation.GameWorldDB.Tables.PlayerInDatabaseTable;
 using DataBaseManagement;
 using Leopotam.EcsLite;
-using PhysicsCore.ObjectPhysics.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Scripts.Undone.PlayerCore.Saving
+namespace _Scripts.Implementation.PlayerImplementation.PlayerSerialization
 {
 	public class PlayersSerializer
 	{

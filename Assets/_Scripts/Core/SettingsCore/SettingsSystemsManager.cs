@@ -1,7 +1,7 @@
-﻿using Cysharp.Threading.Tasks;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 
-namespace Assets.Scripts.Undone.SettingsCore
+namespace _Scripts.Core.SettingsCore
 {
 	public class SettingsSystemsManager
 	{

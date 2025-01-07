@@ -1,24 +1,19 @@
-﻿using Assets.Scripts.Apart.ZenjectToEcs;
-using Assets.Scripts.Core.GraphicsCore;
-using Assets.Scripts.Core.InputCore;
-using Assets.Scripts.Core.InventoryCore;
-using Assets.Scripts.Core.PhysicsCore;
-using Assets.Scripts.Core.PlayerCore;
-using Assets.Scripts.Implementation.Chunk;
-using ChunkCore;
-using Extensions.Ecs;
+﻿using _Scripts.Apart.Extensions;
+using _Scripts.Apart.Extensions.Ecs;
+using _Scripts.Core.ChunkCore;
+using _Scripts.Core.ChunkGraphicsCore;
+using _Scripts.Core.InputCore;
+using _Scripts.Core.InventoryCore;
+using _Scripts.Core.PhysicsCore.ChunkPhysicsCore;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore;
+using _Scripts.Core.PlayerCore;
+using _Scripts.Implementation.ChunkImplementation;
 using Leopotam.EcsLite;
-using PhysicsCore.ObjectPhysics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
-using Zenject;
 using Voody.UniLeo.Lite;
+using Zenject;
 
-namespace Assets._Scripts
+namespace _Scripts
 {
 	public class EcsGameStartup : MonoBehaviour
 	{

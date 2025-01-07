@@ -1,12 +1,7 @@
-﻿using PhysicsCore.ChunkPhysicsCore.BlockPhysics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.BlockPhysics;
 using UnityEngine;
 
-namespace Assets.Scripts.Core.ChunkPhysicsCore.ChunkPhysicsScripts.Components.Elements.BlockPhysicsGetters
+namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.Components.Elements.BlockPhysicsGetters
 {
 	public interface IBlocksPhysicsGetter
 	{

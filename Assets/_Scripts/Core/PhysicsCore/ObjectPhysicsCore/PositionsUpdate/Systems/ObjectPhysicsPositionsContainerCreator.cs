@@ -1,14 +1,8 @@
-﻿using Assets.Scripts.Implementation.ObjectPhysics.InBlockCheck2.Components;
-using Assets.Scripts.Implementation.ObjectPhysics.InBlockCheck2;
+﻿using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components;
+using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components.Elements;
 using Leopotam.EcsLite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Assets.Scripts.Core.ObjectPhysicsCore.PositionsUpdate.Components;
 
-namespace Assets.Scripts.Core.ObjectPhysicsCore.PositionsUpdate.Systems
+namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Systems
 {
 	public class ObjectPhysicsPositionsContainerCreator : IEcsInitSystem
 	{

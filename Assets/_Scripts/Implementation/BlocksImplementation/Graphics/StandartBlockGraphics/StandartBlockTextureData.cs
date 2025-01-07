@@ -1,12 +1,11 @@
-﻿using ChunkCore;
-using Extensions;
-using GraphicsCore.ChunkGraphicsCore.BlockGraphics;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using _Scripts.Apart.Extensions;
+using _Scripts.Core;
 using UnityEngine;
 
-namespace Realization.Blocks.Cube.Graphics
+namespace _Scripts.Implementation.BlocksImplementation.Graphics.StandartBlockGraphics
 {
 	[Serializable]
 	public class StandartBlockTextureData

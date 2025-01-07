@@ -1,10 +1,10 @@
-﻿using Assets.Scripts.Apart.Extensions.Ecs;
-using Assets.Scripts.Core.PlayerCore.ActiveSlot.Systems;
-using Assets.Scripts.Core.PlayerCore.Components;
+﻿using System.Collections.Generic;
+using _Scripts.Apart.Extensions.Ecs.DelHere;
+using _Scripts.Core.InventoryCore.Components;
+using _Scripts.Core.InventoryCore.Systems;
 using Leopotam.EcsLite;
-using System.Collections.Generic;
 
-namespace Assets.Scripts.Core.InventoryCore
+namespace _Scripts.Core.InventoryCore
 {
 	public static class InventoryCoreSystems
 	{

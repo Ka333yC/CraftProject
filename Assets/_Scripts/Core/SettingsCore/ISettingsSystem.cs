@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.Undone.SettingsCore
+﻿namespace _Scripts.Core.SettingsCore
 {
 	public interface ISettingsSystem
 	{

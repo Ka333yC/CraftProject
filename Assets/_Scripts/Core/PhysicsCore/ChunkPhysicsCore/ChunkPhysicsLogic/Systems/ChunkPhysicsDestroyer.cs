@@ -1,9 +1,8 @@
-﻿using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components;
+﻿using _Scripts.Core.ChunkCore.ChunkLogic.Components;
+using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.Components;
 using Leopotam.EcsLite;
-using PhysicsCore.ChunkPhysicsCore.LifeTimeControl.Components;
-using System;
 
-namespace PhysicsCore.ChunkPhysicsCore.LifeTimeControl.Systems
+namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.Systems
 {
 	public class ChunkPhysicsDestroyer : IEcsPreInitSystem, IEcsRunSystem
 	{

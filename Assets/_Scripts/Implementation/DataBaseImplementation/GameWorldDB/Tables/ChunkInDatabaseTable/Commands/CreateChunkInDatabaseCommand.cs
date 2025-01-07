@@ -1,8 +1,6 @@
-using ChunkCore.LifeTimeControl;
 using DataBase.Commands;
-using System;
 
-namespace Assets.Scripts.Core.ChunkCore.Saving.ChunkInDatabaseCommands
+namespace _Scripts.Implementation.DataBaseImplementation.GameWorldDB.Tables.ChunkInDatabaseTable.Commands
 {
 	public class CreateChunkInDatabaseCommand : ICommand
 	{

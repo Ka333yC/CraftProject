@@ -1,12 +1,8 @@
-using Assets._Scripts.Undone.WorldsCore;
-using Assets.Scripts.Core.ChunkCore.Saving;
-using DataBaseManagement;
-using Mono.Data.Sqlite;
 using System;
-using System.IO;
-using UnityEngine;
+using _Scripts.Implementation.DataBaseImplementation.WorldsDataDB.Tables.WorldParametersTable;
+using DataBaseManagement;
 
-namespace Assets.Scripts.Core.WorldsCore
+namespace _Scripts.Implementation.DataBaseImplementation.WorldsDataDB
 {
 	public class WorldsDataDBCommandExecutor : IDisposable
 	{

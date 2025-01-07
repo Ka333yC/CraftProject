@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Assets.Scripts.Core.ChunkGraphicsCore.MeshPartsContainerUpdating.WallUpdating.Components
+﻿namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.MeshPartsContainerLogic.WallUpdate.Components
 {
 	public struct MeshPartsContainerWallGeneratingTag
 	{

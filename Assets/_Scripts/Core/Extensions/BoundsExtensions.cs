@@ -1,12 +1,6 @@
-﻿using ChunkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Scripts.Apart.Extensions
+namespace _Scripts.Core.Extensions
 {
 	public static class BoundsExtensions
 	{

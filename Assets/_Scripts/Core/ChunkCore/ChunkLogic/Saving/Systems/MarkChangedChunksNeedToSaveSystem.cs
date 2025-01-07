@@ -1,9 +1,9 @@
-﻿using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components;
+﻿using _Scripts.Core.ChunkCore.BlockChanging.FixedNotification.Components;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components;
+using _Scripts.Core.ChunkCore.ChunkLogic.Saving.Components;
 using Leopotam.EcsLite;
-using Assets.Scripts.Core.ChunkCore.Saving.Components;
-using ChunkCore.OnBlockChanged.FixedNotification.Components;
 
-namespace Assets.Scripts.Core.ChunkCore.Saving.Systems
+namespace _Scripts.Core.ChunkCore.ChunkLogic.Saving.Systems
 {
 	public class MarkChangedChunksNeedToSaveSystem : IEcsPreInitSystem, IEcsRunSystem
 	{

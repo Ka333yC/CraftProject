@@ -1,20 +1,17 @@
 ﻿using System;
-using Assets.Scripts.Core.ChunkCore.LifeTimeControl.Components;
-using ChunkCore.ChunksContainerScripts.Components;
-using ChunkCore.LifeTimeControl.Components.Fixed;
-using ChunkCore.LifeTimeControl.Components.Standart;
-using Leopotam.EcsLite;
 using System.Threading;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components.Elements;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components.Fixed;
+using _Scripts.Core.ChunkCore.ChunkLogic.Components.Standart;
+using _Scripts.Core.ChunkCore.ChunkLogic.Pools;
+using _Scripts.Core.ChunkCore.ChunkLogic.Pools.Components;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components;
+using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components.Elements;
+using Leopotam.EcsLite;
 using UnityEngine;
-using ChunkCore.ChunksContainerScripts;
-using Assets.Scripts.Core.ChunkCore.ChunkLogic.Components.Elements;
-using Zenject;
-using Assets._Scripts.Core.BlocksCore;
-using PhysicsCore.ChunkPhysicsCore.Cache.ChunkPhysicsMeshColliderPoolScripts;
-using PhysicsCore.ChunkPhysicsCore.Cache.ChunkPhysicsMeshColliderPoolScripts.Components;
-using ChunkCore;
 
-namespace Assets.Scripts.Core.ChunkCore.LifeTimeControl.Systems
+namespace _Scripts.Core.ChunkCore.ChunkLogic.Systems
 {
 	public class ChunkCreator : IEcsPreInitSystem, IEcsInitSystem, IEcsRunSystem
 	{

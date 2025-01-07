@@ -1,11 +1,13 @@
-using Cysharp.Threading.Tasks;
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using _Scripts.Implementation.DataBaseImplementation.WorldsDataDB;
+using _Scripts.Implementation.DataBaseImplementation.WorldsDataDB.Tables.WorldParametersTable;
+using Cysharp.Threading.Tasks;
 using UnityEngine.SceneManagement;
 using Zenject;
 
-namespace Assets.Scripts.Core.WorldsCore
+namespace _Scripts.Undone.WorldsCore
 {
 	public class WorldLauncher
 	{
@@ -39,7 +41,7 @@ namespace Assets.Scripts.Core.WorldsCore
 			{
 				if(!reader.Read())
 				{
-					throw new ArgumentException("Запрос ничего не вернул.");
+					throw new ArgumentException("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.");
 				}
 
 				worldParameters.Id = worldId;

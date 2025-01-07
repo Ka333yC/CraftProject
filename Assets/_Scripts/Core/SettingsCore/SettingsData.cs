@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
-namespace Assets.Scripts.Undone.SettingsCore
+namespace _Scripts.Core.SettingsCore
 {
 	public class SettingsData
 	{
