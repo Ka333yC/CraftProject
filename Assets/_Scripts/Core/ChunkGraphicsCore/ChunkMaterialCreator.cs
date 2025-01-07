@@ -17,7 +17,7 @@ namespace _Scripts.Core.ChunkGraphicsCore
 
 		public Texture2D CreateTexture()
 		{
-			// ����� ���, ������ ��� https://gamedev.stackexchange.com/questions/133717/unity-texture-on-plane-fades-at-angle-generating-mipmaps
+			// делаю так потому что https://gamedev.stackexchange.com/questions/133717/unity-texture-on-plane-fades-at-angle-generating-mipmaps
 			var packedTexture = PackTextures();
 			var mainTexture = new Texture2D(packedTexture.width, packedTexture.height);
 			mainTexture.filterMode = FilterMode.Point;

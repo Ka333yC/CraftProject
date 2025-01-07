@@ -3,6 +3,7 @@
 // Copyright (c) 2012-2023 Leopotam <leopotam@yandex.ru>
 // ----------------------------------------------------------------------------
 
+using Codice.CM.Client.Differences;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -116,8 +117,10 @@ namespace Leopotam.EcsLite {
 #if DEBUG || LEOECSLITE_WORLD_EVENTS
             _eventListeners = new List<IEcsWorldEventListener> (4);
 #endif
-            _destroyed = false;
-        }
+			_destroyed = false;
+			// Создаю энтити с id = 0, чтобы была возможность иметь default значение
+			GetPool<DefaultEntityComponent>().Add(NewEntity());
+		}
 
         public void Destroy () {
 #if DEBUG && !LEOECSLITE_NO_SANITIZE_CHECKS

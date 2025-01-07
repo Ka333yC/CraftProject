@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 7034141085717134919}
   - component: {fileID: 5155813553093266466}
   m_Layer: 0
-  m_Name: WorldsDataInstaller
+  m_Name: GameWorldsDataInstaller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
