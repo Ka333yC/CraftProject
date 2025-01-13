@@ -1,4 +1,5 @@
 ﻿using _Scripts.Core.InputCore.Components;
+using Assets._Scripts.Implementation.InputImplementation.MonoBehaviourInputHandlers;
 using Leopotam.EcsLite;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,7 +7,7 @@ using Zenject;
 
 namespace _Scripts.Core.InputCore.MonoBehaviourInputHandlers
 {
-	public class TapInputHandler : MonoBehaviour, IInputHandler
+	public class TapInputHandler : MonoBehaviourInputHandler
 	{
 		[SerializeField] 
 		private string _actionName = "Interaction";
@@ -38,20 +39,19 @@ namespace _Scripts.Core.InputCore.MonoBehaviourInputHandlers
 			_fingerAction.Dispose();
 		}
 
-		public void Initailize(InputActionMap actionMap)
+		public override void Initailize(InputActionMap actionMap)
 		{
-			var action = actionMap.FindAction(_actionName);
-			_fingerAction = new FingerInputAction(action);
+			_fingerAction = new FingerInputAction(actionMap, _actionName);
 			_fingerAction.OnActionStarted += ActionStarted;
 			_fingerAction.OnActionCancelled += ActionCanceled;
 		}
 
-		public void Enable()
+		public override void Enable()
 		{
 			_fingerAction.Enable();
 		}
 
-		public void Disable()
+		public override void Disable()
 		{
 			_fingerAction.Disable();
 		}

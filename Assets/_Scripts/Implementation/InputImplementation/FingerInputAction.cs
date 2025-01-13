@@ -8,11 +8,11 @@ namespace _Scripts.Core.InputCore
 {
 	public class FingerInputAction : IDisposable
 	{
-		private InputAction _action;
+		private readonly InputAction _action;
 
-		public FingerInputAction(InputAction action)
+		public FingerInputAction(InputActionMap actionMap, string actionNameOrId, bool throwIfNotFound = false)
 		{
-			_action = action;
+			_action = actionMap.FindAction(actionNameOrId, throwIfNotFound);
 			_action.started += ActionStarted;
 			Touch.onFingerUp += ActionCancelled;
 		}

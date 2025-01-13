@@ -1,4 +1,5 @@
 ﻿using _Scripts.Core.InputCore.Components;
+using Assets._Scripts.Implementation.InputImplementation.MonoBehaviourInputHandlers;
 using Leopotam.EcsLite;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -7,7 +8,7 @@ using static UnityEngine.InputSystem.InputAction;
 
 namespace _Scripts.Core.InputCore.MonoBehaviourInputHandlers
 {
-	public class WalkInputHandler : MonoBehaviour, IInputHandler
+	public class WalkInputHandler : MonoBehaviourInputHandler
 	{
 		[SerializeField] 
 		private string _actionName = "Walk";
@@ -53,7 +54,7 @@ namespace _Scripts.Core.InputCore.MonoBehaviourInputHandlers
 			walkInput.Input = _lastPerformedInput;
 		}
 
-		public void Initailize(InputActionMap actionMap)
+		public override void Initailize(InputActionMap actionMap)
 		{
 			_action = actionMap.FindAction(_actionName);
 			_action.started += ActionStarted;
@@ -61,12 +62,12 @@ namespace _Scripts.Core.InputCore.MonoBehaviourInputHandlers
 			_action.canceled += ActionCanceled;
 		}
 
-		public void Enable()
+		public override void Enable()
 		{
 			_action.Enable();
 		}
 
-		public void Disable()
+		public override void Disable()
 		{
 			_action.Disable();
 		}
