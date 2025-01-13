@@ -1,13 +1,8 @@
-﻿using _Scripts.Implementation.DataBaseImplementation.WorldsDataDB.Tables.WorldParametersTable;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
+using _Scripts.Implementation.DataBaseImplementation.GameWorldsDataDB.Tables.GameWorldParametersTable;
 using UnityEngine;
 
-namespace Assets._Scripts.Implementation.SceneManagement
+namespace _Scripts.Implementation.SceneManagement.GameWorldScene
 {
 	[CreateAssetMenu(fileName = "CustomGameWorldParameters", menuName = "Game world parameters")]
 	public class CustomGameWorldParameters : ScriptableObject

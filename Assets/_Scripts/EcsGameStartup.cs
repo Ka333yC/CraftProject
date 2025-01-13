@@ -8,6 +8,7 @@ using _Scripts.Core.PhysicsCore.ChunkPhysicsCore;
 using _Scripts.Core.PhysicsCore.ObjectPhysicsCore;
 using _Scripts.Core.PlayerCore;
 using _Scripts.Implementation.ChunkImplementation;
+using _Scripts.Implementation.InputImplementation;
 using Leopotam.EcsLite;
 using UnityEngine;
 using Voody.UniLeo.Lite;

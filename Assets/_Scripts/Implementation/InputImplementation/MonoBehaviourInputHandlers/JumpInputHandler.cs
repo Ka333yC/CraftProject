@@ -1,12 +1,11 @@
-﻿using _Scripts.Core.InputCore.Components;
-using Assets._Scripts.Implementation.InputImplementation.MonoBehaviourInputHandlers;
+﻿using _Scripts.Implementation.InputImplementation.Components;
 using Leopotam.EcsLite;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
 using static UnityEngine.InputSystem.InputAction;
 
-namespace _Scripts.Core.InputCore.MonoBehaviourInputHandlers
+namespace _Scripts.Implementation.InputImplementation.MonoBehaviourInputHandlers
 {
 	public class JumpInputHandler : MonoBehaviourInputHandler
 	{

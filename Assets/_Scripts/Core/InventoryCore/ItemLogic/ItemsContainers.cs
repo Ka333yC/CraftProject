@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Zenject;
 
 namespace _Scripts.Core.InventoryCore.ItemLogic
 {
 	public class ItemsContainers : IEnumerable<IItemContainer>
 	{
 		private readonly List<IItemContainer> _containers = new List<IItemContainer>();
+
+		[Inject]
+		private DiContainer _diContainer;
 
 		public IItemContainer this[int itemId] 
 		{
@@ -21,7 +25,9 @@ namespace _Scripts.Core.InventoryCore.ItemLogic
 			_containers.AddRange(containers);
 			for(int i = 0; i < _containers.Count; i++)
 			{
-				_containers[i].Initialize(i);
+				var container = _containers[i];
+				_diContainer.Inject(container);
+				container.Initialize(i);
 			}
 		}
 

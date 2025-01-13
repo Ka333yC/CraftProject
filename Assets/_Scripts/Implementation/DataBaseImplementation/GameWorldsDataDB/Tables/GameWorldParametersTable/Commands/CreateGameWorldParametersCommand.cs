@@ -1,6 +1,6 @@
 using DataBase.Commands;
 
-namespace _Scripts.Implementation.DataBaseImplementation.WorldsDataDB.Tables.WorldParametersTable.Commands
+namespace _Scripts.Implementation.DataBaseImplementation.GameWorldsDataDB.Tables.GameWorldParametersTable.Commands
 {
 	public class CreateGameWorldParametersCommand : ICommand
 	{

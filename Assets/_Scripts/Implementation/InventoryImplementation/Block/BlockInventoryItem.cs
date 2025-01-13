@@ -1,6 +1,6 @@
 ﻿using _Scripts.Core.ChunkCore.BlockChanging.Components;
 using _Scripts.Core.InventoryCore.ItemLogic;
-using _Scripts.TempScripts;
+using Leopotam.EcsLite;
 using UnityEngine;
 
 namespace _Scripts.Implementation.InventoryImplementation.Block
@@ -8,10 +8,12 @@ namespace _Scripts.Implementation.InventoryImplementation.Block
 	public class BlockInventoryItem : Item
 	{
 		private readonly BlockInventoryItemContainer _itemContainer;
+		private readonly EcsWorld _world;
 
-		public BlockInventoryItem(BlockInventoryItemContainer itemContainer)
+		public BlockInventoryItem(BlockInventoryItemContainer itemContainer, EcsWorld world)
 		{
 			_itemContainer = itemContainer;
+			_world = world;
 		}
 
 		public override IItemData ItemData
@@ -22,9 +24,11 @@ namespace _Scripts.Implementation.InventoryImplementation.Block
 			}
 		}
 
-		public override Item Duplicate()
+		public override Item Clone()
 		{
-			return new BlockInventoryItem(_itemContainer);
+			var result = new BlockInventoryItem(_itemContainer, _world);
+			result.Count = Count;
+			return result;
 		}
 
 		public bool Use(Vector3Int worldPosition)
@@ -50,11 +54,10 @@ namespace _Scripts.Implementation.InventoryImplementation.Block
 			return isUsed;
 		}
 
-		private static void SetBlock(Vector3Int worldPosition, Core.BlocksCore.Block block)
+		private void SetBlock(Vector3Int worldPosition, Core.BlocksCore.Block block)
 		{
-			var world = Singleton.Instance.EcsWorld;
-			var setBlockPool = world.GetPool<SetBlockComponent>();
-			var entity = world.NewEntity();
+			var setBlockPool = _world.GetPool<SetBlockComponent>();
+			var entity = _world.NewEntity();
 			ref var setBlock = ref setBlockPool.Add(entity);
 			setBlock.WorldPosition = worldPosition;
 			setBlock.Block = block;

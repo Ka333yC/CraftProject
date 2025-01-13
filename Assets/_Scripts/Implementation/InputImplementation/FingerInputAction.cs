@@ -4,7 +4,7 @@ using UnityEngine.InputSystem.EnhancedTouch;
 using static UnityEngine.InputSystem.InputAction;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
-namespace _Scripts.Core.InputCore
+namespace _Scripts.Implementation.InputImplementation
 {
 	public class FingerInputAction : IDisposable
 	{

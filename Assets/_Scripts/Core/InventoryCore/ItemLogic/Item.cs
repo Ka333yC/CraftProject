@@ -25,10 +25,7 @@ namespace _Scripts.Core.InventoryCore.ItemLogic
 			}
 		}
 
-		/// <summary>
-		/// Count не копируется
-		/// </summary>
-		public abstract Item Duplicate();
+		public abstract Item Clone();
 
 		public virtual bool IsSimilar(Item item) 
 		{
@@ -55,7 +52,7 @@ namespace _Scripts.Core.InventoryCore.ItemLogic
 
 		public virtual Item Split(int splittedItemCount)
 		{
-			var result = Duplicate();
+			var result = Clone();
 			result.Count = splittedItemCount;
 			Count -= splittedItemCount;
 			return result;

@@ -1,14 +1,9 @@
 ﻿using _Scripts.Core.InputCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
 
-namespace Assets._Scripts.Implementation.InputImplementation.MonoBehaviourInputHandlers
+namespace _Scripts.Implementation.InputImplementation.MonoBehaviourInputHandlers
 {
 	public abstract class MonoBehaviourInputHandler : MonoBehaviour, IInputHandler
 	{

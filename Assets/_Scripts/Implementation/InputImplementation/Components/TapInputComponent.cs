@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _Scripts.Core.InputCore.Components
+namespace _Scripts.Implementation.InputImplementation.Components
 {
 	public struct TapInputComponent
 	{

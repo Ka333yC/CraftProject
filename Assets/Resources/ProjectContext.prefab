@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 7034141085717134919}
   - component: {fileID: 5155813553093266466}
   m_Layer: 0
-  m_Name: GameWorldsDataInstaller
+  m_Name: GlobalDataInstaller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -188,7 +188,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3557564181853711114}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa5143efe070cae48ba8235a158989ae, type: 3}
+  m_Script: {fileID: 11500000, guid: 0af02cb58ca9ecb45a01c8d5f2f632dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7143527408534287783

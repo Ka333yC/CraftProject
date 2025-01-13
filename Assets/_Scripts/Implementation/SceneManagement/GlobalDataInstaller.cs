@@ -1,8 +1,7 @@
-using _Scripts.Core.InventoryCore.ItemLogic;
-using _Scripts.Undone.WorldsCore;
+using _Scripts.Implementation.DataBaseImplementation.GameWorldsDataDB;
 using Zenject;
 
-namespace _Scripts.Implementation.DataBaseImplementation.WorldsDataDB
+namespace _Scripts.Implementation.SceneManagement
 {
 	public class GlobalDataInstaller : MonoInstaller 
 	{

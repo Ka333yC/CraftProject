@@ -1,7 +1,9 @@
 ﻿using _Scripts.Core.BlocksCore;
 using _Scripts.Core.InventoryCore.ItemLogic;
 using _Scripts.Implementation.BlocksImplementation;
+using Leopotam.EcsLite;
 using UnityEngine;
+using Zenject;
 
 namespace _Scripts.Implementation.InventoryImplementation.Block
 {
@@ -15,6 +17,9 @@ namespace _Scripts.Implementation.InventoryImplementation.Block
 		[SerializeField] 
 		private BlockContainer _blockContainer;
 
+		[Inject]
+		private EcsWorld _world;
+
 		private int _id;
 
 		public IBlockContainer BlockContainer => _blockContainer;
@@ -24,13 +29,19 @@ namespace _Scripts.Implementation.InventoryImplementation.Block
 
 		public override Item Create()
 		{
-			return new BlockInventoryItem(this);
+			return new BlockInventoryItem(this, _world);
 		}
 
 		public override void Initialize(int id)
 		{
 			_id = id;
 			_blockContainer.Id = id;
+		}
+
+		[Inject]
+		private void Inject(DiContainer diContainer) 
+		{
+			diContainer.Inject(_blockContainer);
 		}
 	}
 }

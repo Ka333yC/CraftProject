@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using _Scripts.Apart.Extensions.Ecs.DelHere;
-using _Scripts.Core.InputCore.Components;
+using _Scripts.Implementation.InputImplementation.Components;
 using Leopotam.EcsLite;
 
-namespace _Scripts.Core.InputCore
+namespace _Scripts.Implementation.InputImplementation
 {
 	public static class InputImplementationSystems
 	{

@@ -5,7 +5,7 @@ using _Scripts.Implementation.InventoryImplementation;
 using UnityEngine;
 using Zenject;
 
-namespace _Scripts.TempScripts
+namespace _Scripts.Undone.StartPoints
 {
 	public class ItemsTempInitializer : MonoBehaviour
 	{

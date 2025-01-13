@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e39b8596dbb84784384eee993710c7ac, type: 3}
+  m_Script: {fileID: 11500000, guid: 9adf528b769ffc44c8067981d4c1a152, type: 3}
   m_Name: DebugGameWorldParameters
   m_EditorClassIdentifier: 
   _id: -1
-  _name: debug_world
+  _name: custom_world
   _seed: 0

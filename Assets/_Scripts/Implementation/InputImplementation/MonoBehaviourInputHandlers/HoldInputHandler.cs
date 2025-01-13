@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using _Scripts.Core.InputCore.Components;
-using Assets._Scripts.Implementation.InputImplementation.MonoBehaviourInputHandlers;
+using _Scripts.Implementation.InputImplementation.Components;
 using Leopotam.EcsLite;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
 
-namespace _Scripts.Core.InputCore.MonoBehaviourInputHandlers
+namespace _Scripts.Implementation.InputImplementation.MonoBehaviourInputHandlers
 {
 	public class HoldInputHandler : MonoBehaviourInputHandler
 	{

@@ -1,8 +1,8 @@
 using System;
-using _Scripts.Implementation.DataBaseImplementation.WorldsDataDB.Tables.WorldParametersTable;
+using _Scripts.Implementation.DataBaseImplementation.GameWorldsDataDB.Tables.GameWorldParametersTable;
 using DataBaseManagement;
 
-namespace _Scripts.Implementation.DataBaseImplementation.WorldsDataDB
+namespace _Scripts.Implementation.DataBaseImplementation.GameWorldsDataDB
 {
 	public class GameWorldsDBCommandExecutor : IDisposable
 	{

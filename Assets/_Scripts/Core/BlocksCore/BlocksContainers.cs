@@ -2,14 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using _Scripts.Core.InventoryCore.ItemLogic;
-using Zenject;
 
 namespace _Scripts.Core.BlocksCore
 {
 	public class BlocksContainers : IEnumerable<IBlockContainer>
 	{
 		private readonly List<IBlockContainer> _containers = new List<IBlockContainer>();
-		private readonly DiContainer _diContainer;
 		private readonly ItemsContainers _itemsContainers;
 
 		public Block Air { get; private set; }
@@ -22,9 +20,8 @@ namespace _Scripts.Core.BlocksCore
 			}
 		}
 
-		public BlocksContainers(DiContainer diContainer, ItemsContainers itemsContainers)
+		public BlocksContainers(ItemsContainers itemsContainers)
 		{
-			_diContainer = diContainer;
 			_itemsContainers = itemsContainers;
 		}
 
@@ -35,8 +32,7 @@ namespace _Scripts.Core.BlocksCore
 			{
 				if(blockContainer != null)
 				{
-					_diContainer.Inject(blockContainer);
-					blockContainer.Initialize();
+					blockContainer?.Initialize();
 				}
 			}
 

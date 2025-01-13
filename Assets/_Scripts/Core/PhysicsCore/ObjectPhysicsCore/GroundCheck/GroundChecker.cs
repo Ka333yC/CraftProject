@@ -6,7 +6,7 @@ namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.GroundCheck
 {
 	public class GroundChecker
 	{
-		private static readonly Collider[] _overlapedColliders = new Collider[1024];
+		private static readonly Collider[] _overlapedColliders = new Collider[128];
 
 		private readonly Rigidbody _rigidbody;
 		private readonly Collider _collider;

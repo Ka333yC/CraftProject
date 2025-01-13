@@ -3,7 +3,7 @@ using _Scripts.Core.UICore.Page;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.Undone
+namespace _Scripts.Undone.StartPoints
 {
 	public class StartMenuSceneStartPoint : MonoBehaviour
 	{

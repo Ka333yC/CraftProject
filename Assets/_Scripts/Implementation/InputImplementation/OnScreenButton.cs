@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.Layouts;
 using UnityEngine.InputSystem.OnScreen;
 
-namespace _Scripts.Core.InputCore
+namespace _Scripts.Implementation.InputImplementation
 {
 	public class OnScreenButton : OnScreenControl, IPointerDownHandler, IPointerUpHandler
 	{

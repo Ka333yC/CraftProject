@@ -4,7 +4,6 @@ using _Scripts.Core.ChunkCore.ChunkLogic.ChunkGeneration.Elements;
 using _Scripts.Core.ChunkCore.ChunkLogic.Components;
 using _Scripts.Core.PhysicsCore.Presets;
 using _Scripts.Implementation.BlocksImplementation;
-using Leopotam.EcsLite;
 using UnityEngine;
 using Zenject;
 
@@ -18,8 +17,6 @@ namespace _Scripts.TempScripts
 		//private WorldLauncher _worldLauncher;
 		[Inject]
 		private PhysicsPresets _physicsPresets;
-		[Inject]
-		private EcsWorld _ecsWorld;
 
 		public static Singleton Instance { get; private set; }
 
@@ -36,8 +33,6 @@ namespace _Scripts.TempScripts
 		public NoiseSettings NoiseSettings { get; private set; }
 
 		public PhysicsPresets PhysicsSettings => _physicsPresets;
-
-		public EcsWorld EcsWorld => _ecsWorld;
 
 		private void Awake()
 		{

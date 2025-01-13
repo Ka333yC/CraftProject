@@ -1,20 +1,20 @@
-using _Scripts.Core.UICore;
-using _Scripts.Core.UICore.Page;
-using _Scripts.Implementation.DataBaseImplementation.GameWorldDB;
-using _Scripts.Implementation.DataBaseImplementation.WorldsDataDB;
-using _Scripts.Implementation.DataBaseImplementation.WorldsDataDB.Tables.WorldParametersTable;
-using _Scripts.Implementation.PlayerImplementation;
-using _Scripts.Implementation.PlayerImplementation.PlayerSerialization;
-using _Scripts.TempScripts;
-using Assets._Scripts.Implementation.SceneManagement;
-using Leopotam.EcsLite;
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using _Scripts.Core.UICore;
+using _Scripts.Core.UICore.Page;
+using _Scripts.Implementation.DataBaseImplementation.GameWorldDB;
+using _Scripts.Implementation.DataBaseImplementation.GameWorldsDataDB;
+using _Scripts.Implementation.DataBaseImplementation.GameWorldsDataDB.Tables.GameWorldParametersTable;
+using _Scripts.Implementation.PlayerImplementation;
+using _Scripts.Implementation.PlayerImplementation.PlayerSerialization;
+using _Scripts.Implementation.SceneManagement;
+using _Scripts.Implementation.SceneManagement.GameWorldScene;
+using _Scripts.Implementation.UIImplementation.GameWorldSceneUI.MainGameWorldPage;
 using UnityEngine;
 using Zenject;
 
-namespace _Scripts.Undone.WorldsCore.StartPoints
+namespace _Scripts.Undone.StartPoints
 {
 	public class GameWorldSceneStartPoint : MonoBehaviour
 	{
@@ -49,8 +49,8 @@ namespace _Scripts.Undone.WorldsCore.StartPoints
 
 			_ecsGameStartup.enabled = true;
 
-			//var mainGameWorldView = _viewFactory.CreatePage<MainGameWorldView>();
-			//_viewStack.OpenView(mainGameWorldView);
+			var mainGameWorldView = _viewFactory.CreatePage<MainGameWorldView>();
+			_viewStack.OpenView(mainGameWorldView);
 
 			SpawnPlayer();
 		}
