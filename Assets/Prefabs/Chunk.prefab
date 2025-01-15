@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2392429814631326006}
   - component: {fileID: 8421530848139884212}
   - component: {fileID: 3345022460761111687}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Chunk
   m_TagString: Untagged
   m_Icon: {fileID: 0}

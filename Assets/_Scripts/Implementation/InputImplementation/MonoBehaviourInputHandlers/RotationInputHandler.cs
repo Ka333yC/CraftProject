@@ -6,7 +6,7 @@ using Zenject;
 
 namespace _Scripts.Implementation.InputImplementation.MonoBehaviourInputHandlers
 {
-	public class LookInputHandler : MonoBehaviourInputHandler
+	public class RotationInputHandler : MonoBehaviourInputHandler
 	{
 		[SerializeField] 
 		private string _actionName = "Look";
@@ -14,16 +14,16 @@ namespace _Scripts.Implementation.InputImplementation.MonoBehaviourInputHandlers
 		[Inject]
 		private EcsWorld _world;
 
-		private EcsPool<LookInputComponent> _lookInputPool;
+		private EcsPool<RotationInputComponent> _rotationInputPool;
 		private FingerInputAction _fingerAction;
 		private Vector2 _lastFrameFingerPosition;
 
 		private void Start()
 		{
-			_lookInputPool = _world.GetPool<LookInputComponent>();
+			_rotationInputPool = _world.GetPool<RotationInputComponent>();
 		}
 
-		private void Update()
+		private void FixedUpdate()
 		{
 			if(!_fingerAction.IsActive)
 			{
@@ -39,9 +39,9 @@ namespace _Scripts.Implementation.InputImplementation.MonoBehaviourInputHandlers
 			}
 
 			var inputEntity = _world.NewEntity();
-			ref var lookInput = ref _lookInputPool.Add(inputEntity);
+			ref var rotationInput = ref _rotationInputPool.Add(inputEntity);
 			delta.y *= -1;
-			lookInput.PointerDeltaInput = delta;
+			rotationInput.PointerDeltaInput = delta;
 			_lastFrameFingerPosition = fingerScreenPosition;
 		}
 

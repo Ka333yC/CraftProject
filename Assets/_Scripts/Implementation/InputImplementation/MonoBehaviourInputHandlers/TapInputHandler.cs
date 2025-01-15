@@ -1,4 +1,5 @@
-﻿using _Scripts.Implementation.InputImplementation.Components;
+﻿using System;
+using _Scripts.Implementation.InputImplementation.Components;
 using Leopotam.EcsLite;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -20,6 +21,7 @@ namespace _Scripts.Implementation.InputImplementation.MonoBehaviourInputHandlers
 		private FingerInputAction _fingerAction;
 		private double _actionStartTime;
 		private Vector2 _startPressPosition;
+		private Vector2? _inputToNotify;
 
 		public Vector2? Input { get; private set; }
 
@@ -28,9 +30,18 @@ namespace _Scripts.Implementation.InputImplementation.MonoBehaviourInputHandlers
 			_tapInputPool = _world.GetPool<TapInputComponent>();
 		}
 
-		private void LateUpdate()
+		private void FixedUpdate()
 		{
 			Input = null;
+			if (!_inputToNotify.HasValue)
+			{
+				return;
+			}
+			
+			var useInputEntity = _world.NewEntity();
+			ref var tapInput = ref _tapInputPool.Add(useInputEntity);
+			tapInput.ScreenPointerPositionInput = _inputToNotify.Value;
+			Input = _inputToNotify.Value;
 		}
 
 		private void OnDestroy()
@@ -65,10 +76,7 @@ namespace _Scripts.Implementation.InputImplementation.MonoBehaviourInputHandlers
 		{
 			if(Time.realtimeSinceStartup - _actionStartTime < _useDuration)
 			{
-				var useInputEntity = _world.NewEntity();
-				ref var tapInput = ref _tapInputPool.Add(useInputEntity);
-				tapInput.ScreenPointerPositionInput = _startPressPosition;
-				Input = _startPressPosition;
+				_inputToNotify = _startPressPosition;
 			}
 
 			_startPressPosition = Vector2.zero;

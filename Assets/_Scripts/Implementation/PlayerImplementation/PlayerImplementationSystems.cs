@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using _Scripts.Implementation.PlayerImplementation.Movement.Systems;
 using _Scripts.Implementation.PlayerImplementation.PlayerSerialization.Systems;
+using Input.Systems;
 using Leopotam.EcsLite;
 
 namespace _Scripts.Implementation.PlayerImplementation
@@ -10,10 +12,13 @@ namespace _Scripts.Implementation.PlayerImplementation
 		{
 			return new List<IEcsSystem>()
 			{
-#region 
+				// Сохранение
 				new MarkChangedPlayersNeedToSaveSystem(),
 				new PlayerSaveSystem(),
-#endregion
+				// Обработка ввода
+				new PlayerRotationProcessSystem(),
+				new PlayerWalkProcessSystem(),
+				new PlayerJumpProcessSystem(),
 			};
 		}
 	}

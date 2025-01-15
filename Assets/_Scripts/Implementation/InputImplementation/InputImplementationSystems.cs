@@ -7,13 +7,13 @@ namespace _Scripts.Implementation.InputImplementation
 {
 	public static class InputImplementationSystems
 	{
-		public static IEnumerable<IEcsSystem> GetPostStandardDelSystems()
+		public static IEnumerable<IEcsSystem> GetPostFixedDelSystems()
 		{
 			return new List<IEcsSystem>()
 			{
 				new DelHereSystem<WalkInputComponent>(),
 				new DelHereSystem<JumpInputTag>(),
-				new DelHereSystem<LookInputComponent>(),
+				new DelHereSystem<RotationInputComponent>(),
 				new DelHereSystem<HoldInputComponent>(),
 				new DelHereSystem<TapInputComponent>(),
 			};

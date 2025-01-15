@@ -311,6 +311,7 @@ GameObject:
   - component: {fileID: 4411102048064401157}
   - component: {fileID: 5623293179523697143}
   - component: {fileID: 5846128745457314887}
+  - component: {fileID: 7375735546280242143}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -411,6 +412,24 @@ MonoBehaviour:
     FullSizeCollider: {fileID: 646891231370273362}
     HorizontalDrag: 10
     VerticalDrag: 0
+--- !u!114 &7375735546280242143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7703652865888514851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1effd95115f84ee5967099e804cd86cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value:
+    HorizontalVelocityUnderControl: 16
+    MaxHorizontalVelocity: 8
+    HorizontalAcceleration: 150
+    JumpPower: 20
+    RotatableTransform: {fileID: 7703652866425623100}
 --- !u!1 &7703652866425623107
 GameObject:
   m_ObjectHideFlags: 0

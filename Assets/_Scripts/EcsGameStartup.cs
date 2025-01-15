@@ -9,6 +9,7 @@ using _Scripts.Core.PhysicsCore.ObjectPhysicsCore;
 using _Scripts.Core.PlayerCore;
 using _Scripts.Implementation.ChunkImplementation;
 using _Scripts.Implementation.InputImplementation;
+using _Scripts.Implementation.PlayerImplementation;
 using Leopotam.EcsLite;
 using UnityEngine;
 using Voody.UniLeo.Lite;
@@ -98,12 +99,13 @@ namespace _Scripts
 			_fixedUpdateSystems.AddRange(ChunkImplementationSystems.GetFixedInitCreatorSystems());
 
 			_fixedUpdateSystems.AddRange(ChunkCoreSystems.GetFixedSystems());
-			// _fixedUpdateSystems.AddRange(InputProcessSystems.GetFixedSystems());
 			_fixedUpdateSystems.AddRange(ObjectPhysicsCoreSystems.GetFixedSystems());
 			_fixedUpdateSystems.AddRange(ChunkPhysicsCoreSystems.GetFixedSystems());
 			_fixedUpdateSystems.AddRange(PlayerCoreSystems.GetFixedSystems());
+			_fixedUpdateSystems.AddRange(PlayerImplementationSystems.GetFixedSystems());
 
 			_fixedUpdateSystems.AddRange(ChunkCoreSystems.GetPostFixedDelSystems());
+			_fixedUpdateSystems.AddRange(InputImplementationSystems.GetPostFixedDelSystems());
 
 			_container.InjectEcsSystems(_fixedUpdateSystems);
 		}
@@ -119,7 +121,6 @@ namespace _Scripts
 
 			_standardUpdateSystems.AddRange(ChunkCoreSystems.GetPostStandardDelSystems());
 			_standardUpdateSystems.AddRange(ObjectPhysicsCoreSystems.GetPostStandardDelSystems());
-			_standardUpdateSystems.AddRange(InputImplementationSystems.GetPostStandardDelSystems());
 
 			_container.InjectEcsSystems(_standardUpdateSystems);
 		}

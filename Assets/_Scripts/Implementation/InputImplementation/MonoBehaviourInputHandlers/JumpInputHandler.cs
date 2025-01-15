@@ -16,6 +16,7 @@ namespace _Scripts.Implementation.InputImplementation.MonoBehaviourInputHandlers
 		private EcsWorld _world;
 
 		private EcsPool<JumpInputTag> _jumpInputPool;
+		private EcsFilter _jumpInputFilter;
 		private InputAction _action;
 		private bool _isActionStarted;
 
@@ -30,11 +31,15 @@ namespace _Scripts.Implementation.InputImplementation.MonoBehaviourInputHandlers
 		private void Start()
 		{
 			_jumpInputPool = _world.GetPool<JumpInputTag>();
+			_jumpInputFilter = _world
+				.Filter<JumpInputTag>()
+				.End();
+			_isActionStarted = true;
 		}
 
-		private void Update()
+		private void FixedUpdate()
 		{
-			if(!_isActionStarted)
+			if(!_isActionStarted || _jumpInputFilter.GetEntitiesCount() > 0)
 			{
 				return;
 			}

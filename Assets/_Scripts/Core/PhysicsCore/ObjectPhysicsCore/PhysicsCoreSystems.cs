@@ -51,11 +51,6 @@ namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore
 				new CheckIsObjectPhysicsInBlockMarker(),
 				new ObjectPhysicsInBlockCheckerSystem(),
 				new PhysicsDeactivationSystem(),
-
-				//new HorizontalMovementHandlerSystem(),
-				//new DelHereSystem<MovementDirectionComponent>(),
-				//new JumpHandlerSystem(),
-				//new DelHereSystem<JumpTag>(),
 			};
 		}
 

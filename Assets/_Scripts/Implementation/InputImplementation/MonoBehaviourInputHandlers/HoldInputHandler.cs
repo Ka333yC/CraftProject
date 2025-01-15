@@ -33,7 +33,7 @@ namespace _Scripts.Implementation.InputImplementation.MonoBehaviourInputHandlers
 			_holdInputPool = _world.GetPool<HoldInputComponent>();
 		}
 
-		private void Update()
+		private void FixedUpdate()
 		{
 			if(!_isPressHoldedAtOnePosition || !_fingerAction.IsActive)
 			{

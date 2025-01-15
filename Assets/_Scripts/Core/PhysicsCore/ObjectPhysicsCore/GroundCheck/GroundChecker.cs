@@ -30,7 +30,7 @@ namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.GroundCheck
 
 		public bool IsGrounded() 
 		{
-			if(Mathf.Abs(_rigidbody.velocity.y) > Singleton.Instance.PhysicsSettings.SlightlyVelocityMagnitude / 3)
+			if(Mathf.Abs(_rigidbody.velocity.y) > Singleton.Instance.PhysicsSettings.SlightlyVelocityByAxis)
 			{
 				return false;
 			}
@@ -38,10 +38,10 @@ namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.GroundCheck
 			var bounds = _collider.bounds;
 			var boxCastCenter = bounds.center;
 			boxCastCenter.y -= bounds.size.y / 2;
-			var overlapedCollidersCount = Physics.OverlapBoxNonAlloc(boxCastCenter,
+			var overlappedCollidersCount = Physics.OverlapBoxNonAlloc(boxCastCenter,
 				_boxCastHalfSize, _overlapedColliders);
 			var groundLayer = Singleton.Instance.PhysicsSettings.GroundLayer;
-			for(int i = 0; i < overlapedCollidersCount; i++)
+			for(int i = 0; i < overlappedCollidersCount; i++)
 			{
 				if(groundLayer.Has(_overlapedColliders[i].gameObject.layer))
 				{

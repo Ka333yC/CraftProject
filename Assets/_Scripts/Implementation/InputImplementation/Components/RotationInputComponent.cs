@@ -2,7 +2,7 @@
 
 namespace _Scripts.Implementation.InputImplementation.Components
 {
-	public struct LookInputComponent
+	public struct RotationInputComponent
 	{
 		/// <summary>
 		/// Дельта передвижения pointer'a по экрану

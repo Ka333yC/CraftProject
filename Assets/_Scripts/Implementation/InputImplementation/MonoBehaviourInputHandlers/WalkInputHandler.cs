@@ -41,7 +41,7 @@ namespace _Scripts.Implementation.InputImplementation.MonoBehaviourInputHandlers
 			_walkInputPool = _world.GetPool<WalkInputComponent>();
 		}
 
-		private void Update()
+		private void FixedUpdate()
 		{
 			if(!_isActionStarted)
 			{

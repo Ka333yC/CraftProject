@@ -20,5 +20,7 @@ namespace _Scripts.Core.PhysicsCore.Presets
 
 		[field: SerializeField]
 		public MeshColliderCookingOptions CookingOptions { get; private set; }
+	
+		public float SlightlyVelocityByAxis => SlightlyVelocityMagnitude / 3;
 	}
 }
