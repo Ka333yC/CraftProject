@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _Scripts.Implementation.PlayerImplementation.Movement
 {
@@ -10,8 +11,8 @@ namespace _Scripts.Implementation.PlayerImplementation.Movement
         public float HorizontalVelocityUnderControl;
         public float MaxHorizontalVelocity;
         public float HorizontalAcceleration;
-        [Header("Vertical movement")]
-        public float JumpPower;
+		[Header("Vertical movement")]
+        public float JumpHeight;
         [Header("Rotation movement")]
         // Transform объекта, который будет поворачиваться 
         public Transform RotatableTransform;

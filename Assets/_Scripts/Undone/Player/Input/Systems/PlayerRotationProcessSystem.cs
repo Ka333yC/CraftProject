@@ -49,9 +49,9 @@ namespace Input.Systems
 				playerRotationComponent.Rotation = playerRotation;
 			}
 			
-			foreach(var rotationInputEntity in _rotationInputFilter)
+			foreach(var inputEntity in _rotationInputFilter)
 			{
-				var lookInput = _rotationInputPool.Get(rotationInputEntity).PointerDeltaInput;
+				var lookInput = _rotationInputPool.Get(inputEntity).PointerDeltaInput;
 				HandleRotationInput(lookInput);
 			}
 		}

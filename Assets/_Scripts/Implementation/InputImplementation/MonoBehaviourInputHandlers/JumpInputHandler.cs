@@ -34,7 +34,6 @@ namespace _Scripts.Implementation.InputImplementation.MonoBehaviourInputHandlers
 			_jumpInputFilter = _world
 				.Filter<JumpInputTag>()
 				.End();
-			_isActionStarted = true;
 		}
 
 		private void FixedUpdate()

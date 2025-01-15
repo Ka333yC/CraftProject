@@ -36,9 +36,9 @@ namespace _Scripts.Implementation.PlayerImplementation.Movement.Systems
 
 		public void Run(IEcsSystems systems)
 		{
-			foreach (var walkInputEntity in _walkInputFilter)
+			foreach (var inputEntity in _walkInputFilter)
 			{
-				var walkInput = _walkInputPool.Get(walkInputEntity).Input;
+				var walkInput = _walkInputPool.Get(inputEntity).Input;
 				HandleWalkInput(walkInput);
 			}
 		}
