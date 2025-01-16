@@ -4,6 +4,7 @@ using System;
 using System.Data;
 using System.IO;
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 
 namespace DataBaseManagement
 {
@@ -13,8 +14,6 @@ namespace DataBaseManagement
 
 		private SqliteConnection _connection;
 		private Stream _databaseStream;
-
-		public event Action<string, UpdateEventType, long> OnDatabaseUpdated;
 
 		public bool IsOpen
 		{
@@ -49,9 +48,9 @@ namespace DataBaseManagement
 			}
 		}
 
-		public Task OpenConnectionAsync(string pathToDatabase)
+		public UniTask OpenConnectionAsync(string pathToDatabase)
 		{
-			return Task.Run(() => OpenConnection(pathToDatabase));
+			return UniTask.RunOnThreadPool(() => OpenConnection(pathToDatabase));
 		}
 
 		public int ExecuteNonQuery(ICommand command)
@@ -63,16 +62,14 @@ namespace DataBaseManagement
 					throw new InvalidOperationException("Database is not open");
 				}
 
-				using(var sqliteCommand = CreateCommand(command))
-				{
-					return sqliteCommand.ExecuteNonQuery();
-				}
+				using var sqliteCommand = CreateCommand(command);
+				return sqliteCommand.ExecuteNonQuery();
 			}
 		}
 
-		public Task<int> ExecuteNonQueryAsync(ICommand command)
+		public UniTask<int> ExecuteNonQueryAsync(ICommand command)
 		{
-			return Task.Run(() => ExecuteNonQuery(command));
+			return UniTask.RunOnThreadPool(() => ExecuteNonQuery(command));
 		}
 
 		public object ExecuteScalar(ICommand command)
@@ -84,16 +81,14 @@ namespace DataBaseManagement
 					throw new InvalidOperationException("Database is not open");
 				}
 
-				using(var sqliteCommand = CreateCommand(command))
-				{
-					return sqliteCommand.ExecuteScalar();
-				}
+				using var sqliteCommand = CreateCommand(command);
+				return sqliteCommand.ExecuteScalar();
 			}
 		}
 
-		public Task<object> ExecuteScalarAsync(ICommand command)
+		public UniTask<object> ExecuteScalarAsync(ICommand command)
 		{
-			return Task.Run(() => ExecuteScalar(command));
+			return UniTask.RunOnThreadPool(() => ExecuteScalar(command));
 		}
 
 		public void ExecuteReader(ICommand command, Action<SqliteDataReader> readAction)
@@ -111,9 +106,9 @@ namespace DataBaseManagement
 			}
 		}
 
-		public Task ExecuteReaderAsync(ICommand command, Action<SqliteDataReader> readAction)
+		public UniTask ExecuteReaderAsync(ICommand command, Action<SqliteDataReader> readAction)
 		{
-			return Task.Run(() => ExecuteReader(command, readAction));
+			return UniTask.RunOnThreadPool(() => ExecuteReader(command, readAction));
 		}
 
 		private SqliteCommand CreateCommand(ICommand command)

@@ -25,7 +25,7 @@ namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.MeshGeneration.Syst
 		private EcsPool<ChunkGraphicsComponent> _chunkGraphicsPool;
 		private EcsPool<ChunkGraphicsDirtyMeshComponent> _dirtyMeshPool;
 		private EcsPool<ChunkGraphicsMeshGeneratingTag> _meshGeneratingPool;
-		private EcsFilter _meshGeneratingFilter;
+		private EcsFilter _chunksWithMeshGeneratingFilter;
 		private EcsFilter _chunksToGenerateMeshFilter;
 
 		public void PreInit(IEcsSystems systems)
@@ -35,7 +35,7 @@ namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.MeshGeneration.Syst
 			_chunkGraphicsPool = _world.GetPool<ChunkGraphicsComponent>();
 			_dirtyMeshPool = _world.GetPool<ChunkGraphicsDirtyMeshComponent>();
 			_meshGeneratingPool = _world.GetPool<ChunkGraphicsMeshGeneratingTag>();
-			_meshGeneratingFilter = _world
+			_chunksWithMeshGeneratingFilter = _world
 				.Filter<ChunkGraphicsMeshGeneratingTag>()
 				.End();
 			_chunksToGenerateMeshFilter = _world
@@ -54,7 +54,7 @@ namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.MeshGeneration.Syst
 
 		public void Run(IEcsSystems systems)
 		{
-			if(_meshGeneratingFilter.Any() || !_chunksToGenerateMeshFilter.Any())
+			if(_chunksWithMeshGeneratingFilter.Any() || !_chunksToGenerateMeshFilter.Any())
 			{
 				return;
 			}

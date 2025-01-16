@@ -18,11 +18,8 @@ namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.Components.Elements
 		private readonly EcsPool<ChunkGraphicsComponent> _chunkGraphicsPool;
 
 		public BlocksGraphicsGetter ForwardBlocksGraphicsGetter { get; private set; }
-
 		public BlocksGraphicsGetter BackBlocksGraphicsGetter { get; private set; }
-
 		public BlocksGraphicsGetter RightBlocksGraphicsGetter { get; private set; }
-
 		public BlocksGraphicsGetter LeftBlocksGraphicsGetter { get; private set; }
 
 		public BlocksGraphicsGetter(int chunkEntity, EcsWorld world)

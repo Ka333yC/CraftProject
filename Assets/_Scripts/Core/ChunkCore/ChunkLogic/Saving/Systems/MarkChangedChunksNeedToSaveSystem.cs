@@ -8,13 +8,13 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Saving.Systems
 	public class MarkChangedChunksNeedToSaveSystem : IEcsPreInitSystem, IEcsRunSystem
 	{
 		private EcsPool<NeedSaveChunkTag> _needSaveChunkPool;
-		private EcsFilter _chunksChangedFilter;
+		private EcsFilter _changedChunksFilter;
 
 		public void PreInit(IEcsSystems systems)
 		{
 			EcsWorld world = systems.GetWorld();
 			_needSaveChunkPool = world.GetPool<NeedSaveChunkTag>();
-			_chunksChangedFilter = world
+			_changedChunksFilter = world
 				.Filter<ChunkComponent>()
 				.Inc<FixedBlocksChangedComponent>()
 				.Exc<NeedSaveChunkTag>()
@@ -23,7 +23,7 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Saving.Systems
 
 		public void Run(IEcsSystems systems)
 		{
-			foreach(var chunkEntity in _chunksChangedFilter)
+			foreach(var chunkEntity in _changedChunksFilter)
 			{
 				_needSaveChunkPool.Add(chunkEntity);
 			}

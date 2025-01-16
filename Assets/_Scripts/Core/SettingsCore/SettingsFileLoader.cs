@@ -8,13 +8,13 @@ namespace _Scripts.Core.SettingsCore
 {
 	public class SettingsFileLoader
 	{
-		private const string _fileName = "settings.json";
+		private const string FileName = "settings.json";
 
 		private readonly string _settingsFilePath;
 
 		public SettingsFileLoader()
 		{
-			_settingsFilePath = Path.Combine(Application.persistentDataPath, _fileName);
+			_settingsFilePath = Path.Combine(Application.persistentDataPath, FileName);
 		}
 
 		public async UniTask Write(SettingsData settingsData) 

@@ -17,9 +17,10 @@ namespace _Scripts.Implementation.ChunkImplementation.Generation.Systems
 			var pool = world.GetPool<ChunkGeneratorComponent>();
 			var entity = world.NewEntity();
 			ref var component = ref pool.Add(entity);
-			component.ChunkGenerator = new OverworldChunkGenerator(systems.GetWorld(),
+			// component.ChunkGenerator = new OverworldChunkGenerator(systems.GetWorld(),
+			// 	0, Singleton.Instance.NoiseSettings, _blocksContainers);
+			component.ChunkGenerator = new ClassicFlatChunkGenerator(systems.GetWorld(),
 				0, Singleton.Instance.NoiseSettings, _blocksContainers);
-			//component.ChunkGenerator = new ClassicFlatChunkGenerator(Singleton.Instance.NoiseSettings);
 		}
 	}
 }

@@ -17,25 +17,23 @@ namespace _Scripts.Implementation.PlayerImplementation.PlayerSerialization.Syste
 		private PlayersSerializer _playersSerializer;
 
 		private EcsWorld _world;
-		private EcsPool<ObjectPhysicsComponent> _objectPhysicsPool;
 		private EcsPool<PlayerSavingTag> _playerSavingPool;
 		private EcsPool<NeedSavePlayerTag> _needSavePlayerTagPool;
-		private EcsFilter _playerToSaveFilter;
-		private EcsFilter _playerSavingFilter;
+		private EcsFilter _playersToSaveFilter;
+		private EcsFilter _playersSavingFilter;
 
 		public void PreInit(IEcsSystems systems)
 		{
 			_world = systems.GetWorld();
-			_objectPhysicsPool = _world.GetPool<ObjectPhysicsComponent>();
 			_playerSavingPool = _world.GetPool<PlayerSavingTag>();
 			_needSavePlayerTagPool = _world.GetPool<NeedSavePlayerTag>();
-			_playerToSaveFilter = _world
+			_playersToSaveFilter = _world
 				.Filter<PlayerComponent>()
 				.Inc<ObjectPhysicsComponent>()
 				.Inc<NeedSavePlayerTag>()
 				.Exc<PlayerSavingTag>()
 				.End();
-			_playerSavingFilter = _world
+			_playersSavingFilter = _world
 				.Filter<PlayerSavingTag>()
 				.End();
 		}
@@ -47,12 +45,12 @@ namespace _Scripts.Implementation.PlayerImplementation.PlayerSerialization.Syste
 
 		public void Run(IEcsSystems systems)
 		{
-			if(_playerSavingFilter.Any() || !_playerToSaveFilter.Any())
+			if(_playersSavingFilter.Any() || !_playersToSaveFilter.Any())
 			{
 				return;
 			}
 
-			foreach(int playerEntity in _playerToSaveFilter)
+			foreach(int playerEntity in _playersToSaveFilter)
 			{
 				SavePlayer(playerEntity).Forget();
 			}

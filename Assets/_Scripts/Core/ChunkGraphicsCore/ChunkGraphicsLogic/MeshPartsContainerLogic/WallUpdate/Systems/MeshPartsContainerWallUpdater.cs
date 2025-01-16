@@ -23,8 +23,8 @@ namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.MeshPartsContainerL
 		private EcsPool<DirtyWallsComponent> _dirtyWallsPool;
 		private EcsPool<MeshPartsContainerWallGeneratingTag> _generatingPool;
 		private EcsPool<ChunkGraphicsDirtyMeshComponent> _dirtyMeshPool;
-		private EcsFilter _chunkToUpdateWallFilter;
-		private EcsFilter _generatingFilter;
+		private EcsFilter _chunksToUpdateWallFilter;
+		private EcsFilter _wallGeneratingFilter;
 
 		public void PreInit(IEcsSystems systems)
 		{
@@ -34,14 +34,14 @@ namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.MeshPartsContainerL
 			_dirtyWallsPool = _world.GetPool<DirtyWallsComponent>();
 			_generatingPool = _world.GetPool<MeshPartsContainerWallGeneratingTag>();
 			_dirtyMeshPool = _world.GetPool<ChunkGraphicsDirtyMeshComponent>();
-			_chunkToUpdateWallFilter = _world
+			_chunksToUpdateWallFilter = _world
 				.Filter<DirtyWallsComponent>()
 				.Inc<ChunkComponent>()
 				.Inc<ChunkGraphicsComponent>()
 				.Inc<MeshPartsContainerInitializedTag>()
 				.Exc<MeshPartsContainerWallGeneratingTag>()
 				.End();
-			_generatingFilter = _world
+			_wallGeneratingFilter = _world
 				.Filter<MeshPartsContainerWallGeneratingTag>()
 				.End();
 		}
@@ -53,12 +53,12 @@ namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.MeshPartsContainerL
 
 		public void Run(IEcsSystems systems)
 		{
-			if(_generatingFilter.Any() || !_chunkToUpdateWallFilter.Any())
+			if(_wallGeneratingFilter.Any() || !_chunksToUpdateWallFilter.Any())
 			{
 				return;
 			}
 
-			var chunk = _chunksContainer.GetChunkWithLowestPriority(_chunkToUpdateWallFilter);
+			var chunk = _chunksContainer.GetChunkWithLowestPriority(_chunksToUpdateWallFilter);
 			UpdateWall(chunk).Forget();
 		}
 

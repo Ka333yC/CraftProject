@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using _Scripts.Implementation.DataBaseImplementation.GameWorldDB;
 using _Scripts.Implementation.DataBaseImplementation.GameWorldsDataDB;
 using _Scripts.Implementation.DataBaseImplementation.GameWorldsDataDB.Tables.GameWorldParametersTable;
+using Cysharp.Threading.Tasks;
 using DataBase.DataBase.Commands;
 using DataBase.DataBase.Commands.DataBaseCommands;
 using DataBaseManagement;
@@ -19,14 +20,14 @@ namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.CreateNewWorl
 			_commandExecutor = gameWorldsDBCommandExecutor.CommandExecutor;
 		}
 
-		public async Task<int> CreateWorld(string worldName)
+		public async UniTask<int> CreateWorld(string worldName)
 		{
 			var worldInDatabase = CreateWorldSettings(worldName);
 			var insertOrReplaceCommand = GameWorldParameters.InsertOrReplaceCommand;
 			insertOrReplaceCommand.Value = worldInDatabase;
 			var insertCommandWithRowId = new SeveralCommand(insertOrReplaceCommand,
 				new LastInsertRowIdCommand());
-			var worldId = await _commandExecutor.ExecuteScalarAsync(insertCommandWithRowId).ConfigureAwait(false);
+			var worldId = await _commandExecutor.ExecuteScalarAsync(insertCommandWithRowId);
 			return Convert.ToInt32(worldId);
 		}
 
@@ -35,7 +36,7 @@ namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.CreateNewWorl
 			return value.Trim(' ');
 		}
 
-		public async Task<bool> HasWorldWithName(string worldName)
+		public async UniTask<bool> HasWorldWithName(string worldName)
 		{
 			var command = GameWorldParameters.ExistsWhereNameCommand;
 			command.Name = worldName;

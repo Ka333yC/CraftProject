@@ -17,16 +17,14 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Saving.Systems
 		private ChunkSerializer _chunkSerializer;
 
 		private EcsWorld _world;
-		private EcsPool<ChunkComponent> _chunkPool;
 		private EcsPool<ChunkSavingTag> _chunkSavingPool;
 		private EcsPool<NeedSaveChunkTag> _needSaveChunkPool;
 		private EcsFilter _chunksToSaveFilter;
-		private EcsFilter _chunkSavingFilter;
+		private EcsFilter _savingChunksFilter;
 
 		public void PreInit(IEcsSystems systems)
 		{
 			_world = systems.GetWorld();
-			_chunkPool = _world.GetPool<ChunkComponent>();
 			_chunkSavingPool = _world.GetPool<ChunkSavingTag>();
 			_needSaveChunkPool = _world.GetPool<NeedSaveChunkTag>();
 			_chunksToSaveFilter = _world
@@ -35,7 +33,7 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Saving.Systems
 				.Inc<NeedSaveChunkTag>()
 				.Exc<ChunkSavingTag>()
 				.End();
-			_chunkSavingFilter = _world
+			_savingChunksFilter = _world
 				.Filter<ChunkSavingTag>()
 				.End();
 		}
@@ -49,7 +47,7 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Saving.Systems
 
 		public void Run(IEcsSystems systems)
 		{
-			if(_chunkSavingFilter.Any() || !_chunksToSaveFilter.Any())
+			if(_savingChunksFilter.Any() || !_chunksToSaveFilter.Any())
 			{
 				return;
 			}

@@ -7,7 +7,7 @@ namespace _Scripts.Core.BlocksCore
 	{
 		public readonly bool IsShared;
 
-		private readonly List<IBlockComponent> _сomponents = new List<IBlockComponent>(1);
+		private readonly List<IBlockComponent> _components = new List<IBlockComponent>(1);
 
 		public int Id => Container.Id;
 		public IBlockContainer Container { get; set; }
@@ -19,18 +19,18 @@ namespace _Scripts.Core.BlocksCore
 
 		public void AddComponent(IBlockComponent component)
 		{
-			_сomponents.Add(component);
+			_components.Add(component);
 		}
 
 		public void Release()
 		{
 			Container = null;
-			_сomponents.Clear();
+			_components.Clear();
 		}
 
 		public bool TryGetComponent<T>(out T result) where T : IBlockComponent
 		{
-			foreach(var component in _сomponents)
+			foreach(var component in _components)
 			{
 				if(component is T)
 				{

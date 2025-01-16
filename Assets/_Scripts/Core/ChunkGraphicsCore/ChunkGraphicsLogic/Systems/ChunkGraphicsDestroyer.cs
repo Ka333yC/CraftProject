@@ -7,13 +7,13 @@ namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.Systems
 	public class ChunkGraphicsDestroyer : IEcsPreInitSystem, IEcsRunSystem
 	{
 		private EcsPool<ChunkGraphicsComponent> _chunkGraphicsPool;
-		private EcsFilter _chunkGraphicsToDestroyFilter;
+		private EcsFilter _chunksGraphicsToDestroyFilter;
 
 		public void PreInit(IEcsSystems systems)
 		{
 			EcsWorld world = systems.GetWorld();
 			_chunkGraphicsPool = world.GetPool<ChunkGraphicsComponent>();
-			_chunkGraphicsToDestroyFilter = world
+			_chunksGraphicsToDestroyFilter = world
 				.Filter<ChunkGraphicsComponent>()
 				.Exc<ChunkComponent>()
 				.End();
@@ -21,7 +21,7 @@ namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.Systems
 
 		public void Run(IEcsSystems systems)
 		{
-			foreach(int chunkGraphicsEntity in _chunkGraphicsToDestroyFilter)
+			foreach(int chunkGraphicsEntity in _chunksGraphicsToDestroyFilter)
 			{
 				DestroyChunkGraphics(chunkGraphicsEntity);
 			}

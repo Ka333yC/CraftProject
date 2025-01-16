@@ -21,10 +21,10 @@ namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.MeshParts
 		private EcsPool<ChunkComponent> _chunkPool;
 		private EcsPool<ChunkPhysicsComponent> _chunkPhysicsPool;
 		private EcsPool<DirtyWallsComponent> _dirtyWallsPool;
-		private EcsPool<MeshPartsContainerWallGeneratingTag> _generatingPool;
+		private EcsPool<MeshPartsContainerWallGeneratingTag> _wallGeneratingPool;
 		private EcsPool<ChunkPhysicsDirtyMeshTag> _dirtyMeshPool;
-		private EcsFilter _chunkToUpdateWallFilter;
-		private EcsFilter _generatingFilter;
+		private EcsFilter _chunksToUpdateWallFilter;
+		private EcsFilter _wallGeneratingFilter;
 
 		public void PreInit(IEcsSystems systems)
 		{
@@ -32,16 +32,16 @@ namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.MeshParts
 			_chunkPool = _world.GetPool<ChunkComponent>();
 			_chunkPhysicsPool = _world.GetPool<ChunkPhysicsComponent>();
 			_dirtyWallsPool = _world.GetPool<DirtyWallsComponent>();
-			_generatingPool = _world.GetPool<MeshPartsContainerWallGeneratingTag>();
+			_wallGeneratingPool = _world.GetPool<MeshPartsContainerWallGeneratingTag>();
 			_dirtyMeshPool = _world.GetPool<ChunkPhysicsDirtyMeshTag>();
-			_chunkToUpdateWallFilter = _world
+			_chunksToUpdateWallFilter = _world
 				.Filter<DirtyWallsComponent>()
 				.Inc<ChunkComponent>()
 				.Inc<ChunkPhysicsComponent>()
 				.Inc<MeshPartsContainerInitializedTag>()
 				.Exc<MeshPartsContainerWallGeneratingTag>()
 				.End();
-			_generatingFilter = _world
+			_wallGeneratingFilter = _world
 				.Filter<MeshPartsContainerWallGeneratingTag>()
 				.End();
 		}
@@ -53,12 +53,12 @@ namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.MeshParts
 
 		public void Run(IEcsSystems systems)
 		{
-			if(_generatingFilter.Any() || !_chunkToUpdateWallFilter.Any())
+			if(_wallGeneratingFilter.Any() || !_chunksToUpdateWallFilter.Any())
 			{
 				return;
 			}
 
-			var chunk = _chunksContainer.GetChunkWithLowestPriority(_chunkToUpdateWallFilter);
+			var chunk = _chunksContainer.GetChunkWithLowestPriority(_chunksToUpdateWallFilter);
 			UpdateWall(chunk).Forget();
 		}
 
@@ -71,7 +71,7 @@ namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.MeshParts
 			_dirtyWallsPool.Del(chunkEntity);
 			try
 			{
-				_generatingPool.Add(chunkEntity);
+				_wallGeneratingPool.Add(chunkEntity);
 				await UniTask.RunOnThreadPool(() => UpdateWalls(chunkPhysics, dirtyWalls, token),
 					cancellationToken: token);
 				_dirtyMeshPool.AddIfNotHas(chunkEntity);
@@ -81,7 +81,7 @@ namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.MeshParts
 			}
 			finally
 			{
-				_generatingPool.Del(chunkEntity);
+				_wallGeneratingPool.Del(chunkEntity);
 			}
 		}
 

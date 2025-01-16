@@ -1488,7 +1488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ecsGameStartup: {fileID: 793464810}
   _itemsInitializer: {fileID: 375821044}
-  _playerPrefab: {fileID: 7703652865888514851, guid: 482bb19348044b74bbb53789e1a94854, type: 3}
+  _playerPrefab: {fileID: 7695720959031120674, guid: 482bb19348044b74bbb53789e1a94854, type: 3}
   _debugGameWorldParameters: {fileID: 11400000, guid: c57a716067cb70f41981c8fae7916777, type: 2}
 --- !u!1 &1559698127
 GameObject:

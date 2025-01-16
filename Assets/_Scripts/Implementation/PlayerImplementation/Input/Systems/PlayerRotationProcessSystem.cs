@@ -13,8 +13,8 @@ namespace Input.Systems
 		private EcsPool<MovementParametersComponent> _movementParametersPool;
 		private EcsPool<PlayerRotationComponent> _playerRotationPool;
 		private EcsFilter _rotationInputFilter;
-		private EcsFilter _playerToInitializeFilter;
-		private EcsFilter _playerToRotateFilter;
+		private EcsFilter _playersToInitializeFilter;
+		private EcsFilter _playersToRotateFilter;
 
 		public void PreInit(IEcsSystems systems)
 		{
@@ -25,13 +25,13 @@ namespace Input.Systems
 			_rotationInputFilter = world
 				.Filter<RotationInputComponent>()
 				.End();
-			_playerToInitializeFilter = world
+			_playersToInitializeFilter = world
 				.Filter<PlayerComponent>()
 				.Inc<ObjectPhysicsComponent>()
 				.Inc<MovementParametersComponent>()
 				.Exc<PlayerRotationComponent>()
 				.End();
-			_playerToRotateFilter = world
+			_playersToRotateFilter = world
 				.Filter<PlayerComponent>()
 				.Inc<ObjectPhysicsComponent>()
 				.Inc<MovementParametersComponent>()
@@ -41,7 +41,7 @@ namespace Input.Systems
 
 		public void Run(IEcsSystems systems)
 		{
-			foreach(var playerEntity in _playerToInitializeFilter)
+			foreach(var playerEntity in _playersToInitializeFilter)
 			{
 				ref var playerRotationComponent = ref _playerRotationPool.Add(playerEntity);
 				var playerRotation = 
@@ -58,7 +58,7 @@ namespace Input.Systems
 
 		private void HandleRotationInput(Vector3 pointerDeltaInput)
 		{
-			foreach(var playerEntity in _playerToRotateFilter)
+			foreach(var playerEntity in _playersToRotateFilter)
 			{
 				ref var movementParameters = ref _movementParametersPool.Get(playerEntity);
 				ref var rotation = ref _playerRotationPool.Get(playerEntity);

@@ -17,9 +17,8 @@ namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.InBlockCheck.Systems
 		private ChunksContainer _chunksContainer;
 
 		private EcsPool<ChunkComponent> _chunkPool;
-		private EcsPool<ObjectPhysicsComponent> _objectPhysicsPool;
 		private EcsPool<IntersectionWithBlockBoundsComponent> _intersectionWithBlockBoundsPool;
-		private EcsPool<CheckIsObjectPhysicsInBlockTag> _needCheckIsObjectPhysicsInBlockPool;
+		private EcsPool<CheckIsObjectPhysicsInBlockTag> _checkIsObjectPhysicsInBlockPool;
 		private EcsPool<ObjectPhysicsInBlockTag> _objectPhysicsInBlockPool;
 		private EcsFilter _objectPhysicsToCheckFilter;
 
@@ -27,9 +26,8 @@ namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.InBlockCheck.Systems
 		{
 			var world = systems.GetWorld();
 			_chunkPool = world.GetPool<ChunkComponent>();
-			_objectPhysicsPool = world.GetPool<ObjectPhysicsComponent>();
 			_intersectionWithBlockBoundsPool = world.GetPool<IntersectionWithBlockBoundsComponent>();
-			_needCheckIsObjectPhysicsInBlockPool = world.GetPool<CheckIsObjectPhysicsInBlockTag>();
+			_checkIsObjectPhysicsInBlockPool = world.GetPool<CheckIsObjectPhysicsInBlockTag>();
 			_objectPhysicsInBlockPool = world.GetPool<ObjectPhysicsInBlockTag>();
 			_objectPhysicsToCheckFilter = world
 				.Filter<ObjectPhysicsComponent>()
@@ -47,7 +45,6 @@ namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.InBlockCheck.Systems
 		{
 			foreach(var objectPhysicsEntity in _objectPhysicsToCheckFilter)
 			{
-				ref var objectPhysics = ref _objectPhysicsPool.Get(objectPhysicsEntity);
 				bool isIntersectsWithBlock = IsObjectPhysicsIntersectsWithBlockPhysics(objectPhysicsEntity);
 				if(isIntersectsWithBlock && !_objectPhysicsInBlockPool.Has(objectPhysicsEntity))
 				{
@@ -58,7 +55,7 @@ namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.InBlockCheck.Systems
 					_objectPhysicsInBlockPool.Del(objectPhysicsEntity);
 				}
 
-				_needCheckIsObjectPhysicsInBlockPool.Del(objectPhysicsEntity);
+				_checkIsObjectPhysicsInBlockPool.Del(objectPhysicsEntity);
 			}
 		}
 
@@ -83,7 +80,9 @@ namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.InBlockCheck.Systems
 		{
 			var gridPosition = ChunkConstantData.WorldToGridPosition(blockWorldPosition);
 			var blockPositionInChunk = ChunkConstantData.WorldToBlockPositionInChunk(blockWorldPosition);
-			if(!_chunksContainer.TryGetChunk(gridPosition, out int chunkEntity))
+			if(blockPositionInChunk.y >= ChunkConstantData.ChunkScale.y ||
+			   blockPositionInChunk.y < 0 ||
+			   !_chunksContainer.TryGetChunk(gridPosition, out int chunkEntity))
 			{
 				return false;
 			}

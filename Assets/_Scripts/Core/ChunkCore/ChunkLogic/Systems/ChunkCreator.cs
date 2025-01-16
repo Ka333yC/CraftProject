@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using _Scripts.Core.BlocksCore;
 using _Scripts.Core.ChunkCore.ChunkLogic.Components;
 using _Scripts.Core.ChunkCore.ChunkLogic.Components.Elements;
 using _Scripts.Core.ChunkCore.ChunkLogic.Components.Fixed;
@@ -10,11 +11,15 @@ using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components;
 using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components.Elements;
 using Leopotam.EcsLite;
 using UnityEngine;
+using Zenject;
 
 namespace _Scripts.Core.ChunkCore.ChunkLogic.Systems
 {
 	public class ChunkCreator : IEcsPreInitSystem, IEcsInitSystem, IEcsRunSystem
 	{
+		[Inject]
+		private BlocksContainers _blocksContainers;
+		
 		private ChunksContainer _chunksContainer;
 		private ChunkGameObjectPool _chunkGameObjectPool;
 
@@ -39,10 +44,14 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Systems
 
 		public void Run(IEcsSystems systems)
 		{
-			if(_chunksContainer.TryGetPositionWithoutChunkEntity(out var gridPosition))
+			if(!_chunksContainer.TryGetPositionWithoutChunkEntity(out var gridPosition))
 			{
-				CreateChunk(gridPosition, systems);
+				return;
 			}
+			
+			var chunkEntity = CreateChunk(gridPosition, systems);
+			_fixedChunkСreatedPool.Add(chunkEntity);
+			_standardChunkСreatedPool.Add(chunkEntity);
 		}
 
 		private int CreateChunk(Vector3Int gridPosition, IEcsSystems systems)
@@ -53,10 +62,8 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Systems
 			chunk.GridPosition = gridPosition;
 			chunk.GameObject = _chunkGameObjectPool.Get();
 			chunk.GameObject.GridPosition = gridPosition;
-			chunk.Blocks = new ChunkSizeBlocks();
+			chunk.Blocks = new ChunkSizeBlocks(_blocksContainers.Air);
 			chunk.CancellationTokenSource = new CancellationTokenSource();
-			_fixedChunkСreatedPool.Add(chunkEntity);
-			_standardChunkСreatedPool.Add(chunkEntity);
 			_chunksContainer.SetChunkEntity(gridPosition, chunkEntity);
 			return chunkEntity;
 		}

@@ -8,16 +8,14 @@ namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.Systems
 {
 	public class ChunkGraphicsCreator : IEcsPreInitSystem, IEcsRunSystem
 	{
-		private EcsPool<ChunkComponent> _chunkPool;
 		private EcsPool<ChunkGraphicsComponent> _chunkGraphicsPool;
-		private EcsFilter _chunkWithoutChunkGraphicsFilter;
+		private EcsFilter _chunksWithoutChunkGraphicsFilter;
 
 		public void PreInit(IEcsSystems systems)
 		{
 			EcsWorld world = systems.GetWorld();
-			_chunkPool = world.GetPool<ChunkComponent>();
 			_chunkGraphicsPool = world.GetPool<ChunkGraphicsComponent>();
-			_chunkWithoutChunkGraphicsFilter = world
+			_chunksWithoutChunkGraphicsFilter = world
 				.Filter<ChunkComponent>()
 				.Inc<ChunkInitializedTag>()
 				.Exc<ChunkGraphicsComponent>()
@@ -26,7 +24,7 @@ namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.Systems
 
 		public void Run(IEcsSystems systems)
 		{
-			foreach(var chunkWithoutChunkGraphicsEntity in _chunkWithoutChunkGraphicsFilter)
+			foreach(var chunkWithoutChunkGraphicsEntity in _chunksWithoutChunkGraphicsFilter)
 			{
 				CreateChunkGraphics(chunkWithoutChunkGraphicsEntity, systems.GetWorld());
 			}

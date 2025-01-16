@@ -2,6 +2,7 @@
 using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.Components;
 using _Scripts.Implementation.DataBaseImplementation.GameWorldDB;
 using _Scripts.Implementation.DataBaseImplementation.GameWorldDB.Tables.PlayerInDatabaseTable;
+using Cysharp.Threading.Tasks;
 using DataBaseManagement;
 using Leopotam.EcsLite;
 using UnityEngine;
@@ -34,7 +35,7 @@ namespace _Scripts.Implementation.PlayerImplementation.PlayerSerialization
 			await WriteToDatabase(playerInDatabase);
 		}
 
-		public async Task<Vector3?> GetSavedPosition() 
+		public async UniTask<Vector3?> GetSavedPosition() 
 		{
 			Vector3? result = null;
 			var selectCommand =
@@ -51,7 +52,7 @@ namespace _Scripts.Implementation.PlayerImplementation.PlayerSerialization
 				float y = reader.GetFloat(1);
 				float z = reader.GetFloat(2);
 				result = new Vector3(x, y, z);
-			}).ConfigureAwait(false);
+			});
 
 			return result;
 		}

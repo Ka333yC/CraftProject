@@ -10,13 +10,13 @@ namespace _Scripts.Implementation.PlayerImplementation.PlayerSerialization.Syste
 	public class MarkChangedPlayersNeedToSaveSystem : IEcsPreInitSystem, IEcsRunSystem
 	{
 		private EcsPool<NeedSavePlayerTag> _needSavePlayerPool;
-		private EcsFilter _playerChangedPositionFilter;
+		private EcsFilter _playersChangedPositionFilter;
 
 		public void PreInit(IEcsSystems systems)
 		{
 			var world = systems.GetWorld();
 			_needSavePlayerPool = world.GetPool<NeedSavePlayerTag>();
-			_playerChangedPositionFilter = world
+			_playersChangedPositionFilter = world
 				.Filter<PlayerComponent>()
 				.Inc<ObjectPhysicsComponent>()
 				.Inc<BlockPositionChangedComponent>()
@@ -25,7 +25,7 @@ namespace _Scripts.Implementation.PlayerImplementation.PlayerSerialization.Syste
 
 		public void Run(IEcsSystems systems)
 		{
-			foreach(var playerEntity in _playerChangedPositionFilter)
+			foreach(var playerEntity in _playersChangedPositionFilter)
 			{
 				_needSavePlayerPool.AddIfNotHas(playerEntity);
 			}

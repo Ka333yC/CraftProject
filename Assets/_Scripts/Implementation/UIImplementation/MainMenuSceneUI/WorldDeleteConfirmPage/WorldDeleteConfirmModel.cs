@@ -3,6 +3,7 @@ using System.IO;
 using System.Threading.Tasks;
 using _Scripts.Implementation.DataBaseImplementation.GameWorldsDataDB;
 using _Scripts.Implementation.DataBaseImplementation.GameWorldsDataDB.Tables.GameWorldParametersTable;
+using Cysharp.Threading.Tasks;
 using DataBaseManagement;
 
 namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.WorldDeleteConfirmPage
@@ -16,14 +17,14 @@ namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.WorldDeleteCo
 			_commandExecutor = gameWorldsDBCommandExecutor.CommandExecutor;
 		}
 
-		public async Task DeleteWorld(int worldId)
+		public async UniTask DeleteWorld(int worldId)
 		{
 			var worldFolderPath = await GetWorldFolderPath(worldId);
 			Directory.Delete(worldFolderPath, true);
 			await DeleteRecordFromDatabase(worldId);
 		}
 
-		private async Task<string> GetWorldFolderPath(int worldId)
+		private async UniTask<string> GetWorldFolderPath(int worldId)
 		{
 			var command = GameWorldParameters.SelectWhereIdCommand;
 			command.Id = worldId;
@@ -41,7 +42,7 @@ namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.WorldDeleteCo
 			return worldFolderPath;
 		}
 
-		private async Task DeleteRecordFromDatabase(int worldId)
+		private async UniTask DeleteRecordFromDatabase(int worldId)
 		{
 			var command = GameWorldParameters.DeleteCommand;
 			command.Id = worldId;

@@ -12,28 +12,27 @@ namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.Component
 {
 	public class BlocksPhysicsGetter : IBlocksPhysicsGetter, IDisposable
 	{
-		private readonly ChunkSizeBlocks _blocks;
-
 		private readonly EcsPool<ChunkPhysicsComponent> _chunkPhysicsPool;
 		private readonly EcsPool<ChunksContainerComponent> _chunksContainerPool;
 		private readonly EcsFilter _chunksContainerFilter;
 
+		private readonly ChunkSizeBlocks _blocks;
+
 		public BlocksPhysicsGetter ForwardBlocksPhysicsGetter { get; private set; }
-
 		public BlocksPhysicsGetter BackBlocksPhysicsGetter { get; private set; }
-
 		public BlocksPhysicsGetter RightBlocksPhysicsGetter { get; private set; }
-
 		public BlocksPhysicsGetter LeftBlocksPhysicsGetter { get; private set; }
 
 		public BlocksPhysicsGetter(int chunkEntity, EcsWorld world)
 		{
 			_chunkPhysicsPool = world.GetPool<ChunkPhysicsComponent>();
 			_chunksContainerPool = world.GetPool<ChunksContainerComponent>();
+			var chunkPool = world.GetPool<ChunkComponent>();
 			_chunksContainerFilter = world
 				.Filter<ChunksContainerComponent>()
 				.End();
-			var chunk = world.GetPool<ChunkComponent>().Get(chunkEntity);
+			
+			var chunk = chunkPool.Get(chunkEntity);
 			_blocks = chunk.Blocks;
 			var gridPosition = chunk.GridPosition;
 			CacheBlocksPhysicsContainers(gridPosition);

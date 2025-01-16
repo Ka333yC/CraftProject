@@ -14,7 +14,7 @@ namespace _Scripts.Implementation.PlayerImplementation.Movement.Systems
 		private EcsPool<ObjectPhysicsComponent> _objectPhysicsPool;
 		private EcsPool<PlayerRotationComponent> _playerRotationPool;
 		private EcsFilter _walkInputFilter;
-		private EcsFilter _playerToMoveFilter;
+		private EcsFilter _playersToMoveFilter;
 
 		public void PreInit(IEcsSystems systems)
 		{
@@ -26,7 +26,7 @@ namespace _Scripts.Implementation.PlayerImplementation.Movement.Systems
 			_walkInputFilter = world
 				.Filter<WalkInputComponent>()
 				.End();
-			_playerToMoveFilter = world
+			_playersToMoveFilter = world
 				.Filter<PlayerComponent>()
 				.Inc<ObjectPhysicsComponent>()
 				.Inc<MovementParametersComponent>()
@@ -45,7 +45,7 @@ namespace _Scripts.Implementation.PlayerImplementation.Movement.Systems
 
 		private void HandleWalkInput(Vector2 walkInput)
 		{
-			foreach (var playerEntity in _playerToMoveFilter)
+			foreach (var playerEntity in _playersToMoveFilter)
 			{
 				var rigidbody = _objectPhysicsPool.Get(playerEntity).Rigidbody;
 				var movementParameters = _movementParametersPool.Get(playerEntity);
@@ -53,12 +53,13 @@ namespace _Scripts.Implementation.PlayerImplementation.Movement.Systems
 				var rotation = Quaternion.Euler(rotationEuler);
 				var direction = rotation * Vector3.right * walkInput.x +
 					rotation * Vector3.forward * walkInput.y;
-				ApplyMove(rigidbody, ref movementParameters, direction);
+				direction.y = 0;
+				ApplyMove(rigidbody, direction, ref movementParameters);
 			}
-		}
+		}	
 		
-		private void ApplyMove(Rigidbody rigidbody, ref MovementParametersComponent movementParameters, 
-			Vector3 direction)
+		private void ApplyMove(Rigidbody rigidbody, Vector3 direction, 
+			ref MovementParametersComponent movementParameters)
 		{
 			var horizontalVelocity = rigidbody.velocity;
 			horizontalVelocity.y = 0;
@@ -67,19 +68,17 @@ namespace _Scripts.Implementation.PlayerImplementation.Movement.Systems
 				return;
 			}
 
-			var horizontalDirection = new Vector3(direction.x, 0, direction.z);
-			horizontalDirection.Normalize();
-			var velocityToAdd = horizontalDirection * movementParameters.HorizontalAcceleration 
-				* Time.fixedDeltaTime;
-			var resultVelocity = rigidbody.velocity + velocityToAdd;
-			resultVelocity.y = 0;
-			if(resultVelocity.magnitude > movementParameters.MaxHorizontalVelocity)
+			var velocityToAdd = movementParameters.HorizontalAcceleration  * Time.fixedDeltaTime
+				* direction.normalized;
+			var resultHorizontalVelocity = rigidbody.velocity + velocityToAdd;
+			resultHorizontalVelocity.y = 0;
+			if(resultHorizontalVelocity.magnitude > movementParameters.MaxHorizontalVelocity)
 			{
-				resultVelocity = resultVelocity.normalized * movementParameters.MaxHorizontalVelocity;
+				resultHorizontalVelocity = resultHorizontalVelocity.normalized * movementParameters.MaxHorizontalVelocity;
 			}
 
-			resultVelocity.y = rigidbody.velocity.y;
-			rigidbody.velocity = resultVelocity;
+			resultHorizontalVelocity.y = rigidbody.velocity.y;
+			rigidbody.velocity = resultHorizontalVelocity;
 		}
 	}
 }

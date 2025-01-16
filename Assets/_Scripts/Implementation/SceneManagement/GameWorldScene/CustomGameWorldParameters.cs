@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using _Scripts.Implementation.DataBaseImplementation.GameWorldsDataDB.Tables.GameWorldParametersTable;
+using UnityEditor;
 using UnityEngine;
 
 namespace _Scripts.Implementation.SceneManagement.GameWorldScene
@@ -22,6 +23,22 @@ namespace _Scripts.Implementation.SceneManagement.GameWorldScene
 			worldParameters.Seed = _seed;
 			worldParameters.WorldFolderPath = Path.Combine(Application.persistentDataPath, worldParameters.Name);
 			return worldParameters;
+		}
+	}
+
+	[CustomEditor(typeof(CustomGameWorldParameters))]
+	public class CustomGameWorldParametersButton : Editor
+	{
+		public override void OnInspectorGUI()
+		{
+			DrawDefaultInspector();
+			var customGameWorldParameters = (CustomGameWorldParameters)target;
+			if(!GUILayout.Button("Delete world folder"))
+			{
+				return;
+			}
+
+			Directory.Delete(customGameWorldParameters.GetGameWorldParameters().WorldFolderPath, true);
 		}
 	}
 }

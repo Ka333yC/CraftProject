@@ -8,16 +8,14 @@ namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.Systems
 {
 	public class ChunkPhysicsCreator : IEcsPreInitSystem, IEcsRunSystem
 	{
-		private EcsPool<ChunkComponent> _chunkPool;
-		private EcsPool<ChunkPhysicsComponent> _chunksPhysicsPool;
-		private EcsFilter _chunkWithoutChunkPhysicsFilter;
+		private EcsPool<ChunkPhysicsComponent> _chunkPhysicsPool;
+		private EcsFilter _chunksWithoutChunkPhysicsFilter;
 
 		public void PreInit(IEcsSystems systems)
 		{
 			EcsWorld world = systems.GetWorld();
-			_chunkPool = world.GetPool<ChunkComponent>();
-			_chunksPhysicsPool = world.GetPool<ChunkPhysicsComponent>();
-			_chunkWithoutChunkPhysicsFilter = world
+			_chunkPhysicsPool = world.GetPool<ChunkPhysicsComponent>();
+			_chunksWithoutChunkPhysicsFilter = world
 				.Filter<ChunkComponent>()
 				.Inc<ChunkInitializedTag>()
 				.Exc<ChunkPhysicsComponent>()
@@ -26,7 +24,7 @@ namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.Systems
 
 		public void Run(IEcsSystems systems)
 		{
-			foreach(var chunkWithoutChunkPhysicsEntity in _chunkWithoutChunkPhysicsFilter)
+			foreach(var chunkWithoutChunkPhysicsEntity in _chunksWithoutChunkPhysicsFilter)
 			{
 				CreateChunkPhysics(chunkWithoutChunkPhysicsEntity, systems.GetWorld());
 			}
@@ -34,7 +32,7 @@ namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.Systems
 
 		private void CreateChunkPhysics(int chunkEntity, EcsWorld world)
 		{
-			ref var chunkPhysics = ref _chunksPhysicsPool.Add(chunkEntity);
+			ref var chunkPhysics = ref _chunkPhysicsPool.Add(chunkEntity);
 			chunkPhysics.BlocksPhysicsGetter = new BlocksPhysicsGetter(chunkEntity, world);
 			chunkPhysics.MeshPartsContainer = new ColliderMeshPartsContainer(chunkPhysics.BlocksPhysicsGetter);
 		}

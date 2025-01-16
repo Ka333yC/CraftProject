@@ -8,12 +8,13 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Components.Elements
 	public class ChunkSizeBlocks : IDisposable
 	{
 		private readonly Block[,,] _blocks;
+		private readonly Block _airBlock;
 
 		public Block this[int x, int y, int z]
 		{
 			get
 			{
-				return _blocks[x, y, z];
+				return _blocks[x, y, z] ?? _airBlock;
 			}
 
 			set
@@ -34,9 +35,10 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Components.Elements
 			set => this[position.x, position.y, position.z] = value;
 		} 
 
-		public ChunkSizeBlocks()
+		public ChunkSizeBlocks(Block airBlock)
 		{
 			_blocks = ChunkSizeArrayPool<Block>.Shared.Rent();
+			_airBlock = airBlock;
 		}
 
 		public void Dispose()

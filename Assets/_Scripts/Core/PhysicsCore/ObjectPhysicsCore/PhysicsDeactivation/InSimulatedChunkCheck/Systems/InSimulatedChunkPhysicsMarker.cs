@@ -18,18 +18,16 @@ namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.InSimulatedChunkCheck.Syst
 		private ObjectPhysicsPositionsContainer _objectPhysicsPositionsContainer;
 
 		private EcsPool<ChunkComponent> _chunkPool;
-		private EcsPool<ObjectPhysicsComponent> _objectPhysicsPool;
 		private EcsPool<ObjectPhysicsPositionsComponent> _objectPhysicsPositionsPool;
 		private EcsPool<InSimulatedChunkPhysicsTag> _inSimulatedChunkPhysicsPool;
 		private EcsPool<ChunkPhysicsSimulatedTag> _chunkPhysicsSimulatedPool;
 		private EcsFilter _objectPhysicsChangedGridPositionFilter;
-		private EcsFilter _chunkPhysicsBecomeSimulatedFilter;
+		private EcsFilter _chunksPhysicsBecomeSimulatedFilter;
 
 		public void PreInit(IEcsSystems systems)
 		{
 			var world = systems.GetWorld();
 			_chunkPool = world.GetPool<ChunkComponent>();
-			_objectPhysicsPool = world.GetPool<ObjectPhysicsComponent>();
 			_objectPhysicsPositionsPool = world.GetPool<ObjectPhysicsPositionsComponent>();
 			_inSimulatedChunkPhysicsPool = world.GetPool<InSimulatedChunkPhysicsTag>();
 			_chunkPhysicsSimulatedPool = world.GetPool<ChunkPhysicsSimulatedTag>();
@@ -37,9 +35,10 @@ namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.InSimulatedChunkCheck.Syst
 				.Filter<ObjectPhysicsComponent>()
 				.Inc<GridPositionChangedComponent>()
 				.End();
-			_chunkPhysicsBecomeSimulatedFilter = world
+			_chunksPhysicsBecomeSimulatedFilter = world
 				.Filter<ChunkPhysicsComponent>()
 				.Inc<ChunkPhysicsBecomeSimulatedTag>()
+				.Inc<ChunkPhysicsSimulatedTag>()
 				.Inc<ChunkComponent>()
 				.End();
 		}
@@ -68,7 +67,7 @@ namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.InSimulatedChunkCheck.Syst
 				}
 			}
 
-			foreach(var chunkEntity in _chunkPhysicsBecomeSimulatedFilter)
+			foreach(var chunkEntity in _chunksPhysicsBecomeSimulatedFilter)
 			{
 				var gridPosition = _chunkPool.Get(chunkEntity).GridPosition;
 				if(_objectPhysicsPositionsContainer.TryGetEntitiesByGridPosition(gridPosition, 
@@ -76,7 +75,7 @@ namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.InSimulatedChunkCheck.Syst
 				{
 					foreach(var objectPhysicsEntity in objectPhysicsEntities)
 					{
-						_inSimulatedChunkPhysicsPool.Add(objectPhysicsEntity);
+						_inSimulatedChunkPhysicsPool.AddIfNotHas(objectPhysicsEntity);
 					}
 				}
 			}

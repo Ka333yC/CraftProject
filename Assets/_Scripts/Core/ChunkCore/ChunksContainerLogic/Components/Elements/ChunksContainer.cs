@@ -5,6 +5,8 @@ using UnityEngine;
 
 namespace _Scripts.Core.ChunkCore.ChunksContainerLogic.Components.Elements
 {
+	// гле-то есть баг, из-за которого удаляется ещё не созданный чанк, в идеале переделать весь ChunksContainer
+	// т.к. он сам по себе непонятно и неоптимально
 	public class ChunksContainer
 	{
 		private readonly Dictionary<Vector3Int, ChunkData> _chunkDataByGridPosition =
@@ -126,7 +128,7 @@ namespace _Scripts.Core.ChunkCore.ChunksContainerLogic.Components.Elements
 					}
 				}
 			}
-			catch(Exception)
+			catch(IndexOutOfRangeException)
 			{
 			}
 

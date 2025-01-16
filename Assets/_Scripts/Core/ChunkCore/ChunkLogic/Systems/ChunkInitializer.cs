@@ -29,7 +29,7 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Systems
 		private EcsPool<StandardChunkInitializedNotificationTag> _standardChunkInitializedNotificationPool;
 		private EcsPool<NeedSaveChunkTag> _needSaveChunkPool;
 		private EcsFilter _uninitializedChunksFilter;
-		private EcsFilter _chunkInitializingFilter;
+		private EcsFilter _chunksInitializingFilter;
 
 		public void PreInit(IEcsSystems systems)
 		{
@@ -44,7 +44,7 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Systems
 				.Filter<ChunkComponent>()
 				.Exc<ChunkInitializedTag>()
 				.End();
-			_chunkInitializingFilter = _world
+			_chunksInitializingFilter = _world
 				.Filter<ChunkInitializingTag>()
 				.End();
 		}
@@ -59,7 +59,7 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Systems
 
 		public void Run(IEcsSystems systems)
 		{
-			if(_chunkInitializingFilter.Any() || !_uninitializedChunksFilter.Any())
+			if(_chunksInitializingFilter.Any() || !_uninitializedChunksFilter.Any())
 			{
 				return;
 			}

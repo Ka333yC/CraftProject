@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using _Scripts.Core.PlayerCore;
 using _Scripts.Core.UICore;
 using _Scripts.Core.UICore.Page;
 using _Scripts.Implementation.DataBaseImplementation.GameWorldDB;
@@ -11,6 +12,7 @@ using _Scripts.Implementation.PlayerImplementation.PlayerSerialization;
 using _Scripts.Implementation.SceneManagement;
 using _Scripts.Implementation.SceneManagement.GameWorldScene;
 using _Scripts.Implementation.UIImplementation.GameWorldSceneUI.MainGameWorldPage;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -23,7 +25,7 @@ namespace _Scripts.Undone.StartPoints
 		[SerializeField]
 		private ItemsTempInitializer _itemsInitializer;
 		[SerializeField]
-		private GameObject _playerPrefab;
+		private Player _playerPrefab;
 		[SerializeField]
 		private CustomGameWorldParameters _debugGameWorldParameters;
 
@@ -52,7 +54,7 @@ namespace _Scripts.Undone.StartPoints
 			var mainGameWorldView = _viewFactory.CreatePage<MainGameWorldView>();
 			_viewStack.OpenView(mainGameWorldView);
 
-			SpawnPlayer();
+			await SpawnPlayer();
 		}
 
 		private async Task<GameWorldParameters> GetWorldParameters() 
@@ -90,7 +92,7 @@ namespace _Scripts.Undone.StartPoints
 			return worldParameters;
 		}
 
-		private async Task OpenGameWorldDataBase(GameWorldParameters worldParameters) 
+		private async UniTask OpenGameWorldDataBase(GameWorldParameters worldParameters) 
 		{
 			if(!Directory.Exists(worldParameters.WorldFolderPath))
 			{
@@ -100,7 +102,7 @@ namespace _Scripts.Undone.StartPoints
 			await _gameWorldDBCommandExecutor.Initialize(worldParameters);
 		}
 
-		private async void SpawnPlayer()
+		private async UniTask SpawnPlayer()
 		{
 			var playersSerializer = _container.Instantiate<PlayersSerializer>();
 			var spawnPosition = await playersSerializer.GetSavedPosition();

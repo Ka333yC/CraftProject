@@ -58,14 +58,14 @@ namespace _Scripts.Implementation.ChunkImplementation.Serialization
 			return true;
 		}
 
-		private async Task WriteToDatabase(ChunkInDatabase chunkInDatabase) 
+		private async UniTask WriteToDatabase(ChunkInDatabase chunkInDatabase) 
 		{
 			var insertOrReplaceCommand = ChunkInDatabase.InsertOrReplaceCommand;
 			insertOrReplaceCommand.Chunk = chunkInDatabase;
 			await _commandExecutor.ExecuteNonQueryAsync(insertOrReplaceCommand);
 		}
 
-		private async Task<int?> GetChunkIdInDatabase(Vector3Int gridPosition)
+		private async UniTask<int?> GetChunkIdInDatabase(Vector3Int gridPosition)
 		{
 			int? result = null;
 			var selectChunkIdCommand =
@@ -79,12 +79,12 @@ namespace _Scripts.Implementation.ChunkImplementation.Serialization
 				}
 
 				result = reader.GetInt32(0);
-			}).ConfigureAwait(false);
+			});
 
 			return result;
 		}
 
-		private async Task<ChunkInDatabase> GetChunkInDatabase(Vector3Int gridPosition)
+		private async UniTask<ChunkInDatabase> GetChunkInDatabase(Vector3Int gridPosition)
 		{
 			ChunkInDatabase result = null;
 			var selectChunkCommand =
@@ -101,26 +101,26 @@ namespace _Scripts.Implementation.ChunkImplementation.Serialization
 				result.Id = reader.GetInt32(0);
 				result.SetGridPosition(gridPosition);
 				result.SerializedBlocks = reader.GetString(1);
-			}).ConfigureAwait(false);
+			});
 
 			return result;
 		}
 
 		private string SerializeBlocks(ChunkSizeBlocks blocks)
 		{
-			var сompressedBlocks = new CompressedBlocks(_blocksContainers);
+			var compressedBlocks = new CompressedBlocks(_blocksContainers);
 			for(int y = 0; y < ChunkConstantData.ChunkScale.y; y++)
 			{
 				for(int x = 0; x < ChunkConstantData.ChunkScale.x; x++)
 				{
 					for(int z = 0; z < ChunkConstantData.ChunkScale.z; z++)
 					{
-						сompressedBlocks.AddLast(blocks[x, y, z]);
+						compressedBlocks.AddLast(blocks[x, y, z]);
 					}
 				}
 			}
 
-			return JsonConvert.SerializeObject(сompressedBlocks);
+			return JsonConvert.SerializeObject(compressedBlocks);
 		}
 
 		private void PopulateBlocks(ChunkSizeBlocks blocks, string serializedBlocks, CancellationToken token)

@@ -16,7 +16,7 @@ namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.MeshPartsContainerL
 	{
 		private ChunksContainer _chunksContainer;
 
-		private EcsPool<BlocksChangedComponent> _blockChangedPool;
+		private EcsPool<BlocksChangedComponent> _blocksChangedPool;
 		private EcsPool<ChunkComponent> _chunkPool;
 		private EcsPool<ChunkGraphicsComponent> _chunkGraphicsPool;
 		private EcsPool<ChunkGraphicsDirtyMeshComponent> _dirtyMeshPool;
@@ -25,7 +25,7 @@ namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.MeshPartsContainerL
 		public void PreInit(IEcsSystems systems)
 		{
 			var world = systems.GetWorld();
-			_blockChangedPool = world.GetPool<BlocksChangedComponent>();
+			_blocksChangedPool = world.GetPool<BlocksChangedComponent>();
 			_chunkGraphicsPool = world.GetPool<ChunkGraphicsComponent>();
 			_dirtyMeshPool = world.GetPool<ChunkGraphicsDirtyMeshComponent>();
 			_chunkPool = world.GetPool<ChunkComponent>();
@@ -46,7 +46,7 @@ namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.MeshPartsContainerL
 			foreach(var chunkEntity in _chunksGraphicsWithChangedBlocksFilter)
 			{
 				var changedBlockPositions =
-					_blockChangedPool.Get(chunkEntity).ChangedBlocksPositions;
+					_blocksChangedPool.Get(chunkEntity).ChangedBlocksPositions;
 				UpdateGraphics(chunkEntity, changedBlockPositions);
 			}
 		}

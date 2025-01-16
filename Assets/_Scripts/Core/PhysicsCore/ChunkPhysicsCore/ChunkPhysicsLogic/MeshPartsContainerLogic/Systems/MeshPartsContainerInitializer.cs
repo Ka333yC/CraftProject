@@ -22,7 +22,7 @@ namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.MeshParts
 		private EcsPool<MeshPartsContainerInitializingTag> _initializingPool;
 		private EcsPool<ChunkPhysicsDirtyMeshTag> _dirtyMeshPool;
 		private EcsFilter _chunksToInitializeFilter;
-		private EcsFilter _initializingFilter;
+		private EcsFilter _containerInitializingFilter;
 
 		public void PreInit(IEcsSystems systems)
 		{
@@ -38,7 +38,7 @@ namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.MeshParts
 				.Exc<MeshPartsContainerInitializedTag>()
 				.Exc<MeshPartsContainerInitializingTag>()
 				.End();
-			_initializingFilter = _world
+			_containerInitializingFilter = _world
 				.Filter<MeshPartsContainerInitializingTag>()
 				.End();
 		}
@@ -50,7 +50,7 @@ namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.MeshParts
 
 		public void Run(IEcsSystems systems)
 		{
-			if(_initializingFilter.Any() || !_chunksToInitializeFilter.Any())
+			if(_containerInitializingFilter.Any() || !_chunksToInitializeFilter.Any())
 			{
 				return;
 			}

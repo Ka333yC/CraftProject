@@ -17,8 +17,8 @@ namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.MeshParts
 
 		private EcsPool<ChunkComponent> _chunkPool;
 		private EcsPool<ChunkPhysicsComponent> _chunkPhysicsPool;
-		private EcsPool<MeshPartsContainerInitializedTag> _meshPartsContainerInitializedPool;
-		private EcsPool<MeshPartsContainerInitializingTag> _meshPartsContainerInitializingPool;
+		private EcsPool<MeshPartsContainerInitializedTag> _initializedPool;
+		private EcsPool<MeshPartsContainerInitializingTag> _initializingPool;
 		private EcsPool<DirtyWallsComponent> _dirtyWallsPool;
 		private EcsPool<BehindWallsMarkedDirtyTag> _behindWallsMarkedDirtyPool;
 		private EcsFilter _chunksToMarkDirtyWallsFilter;
@@ -28,8 +28,8 @@ namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.MeshParts
 			var world = systems.GetWorld();
 			_chunkPool = world.GetPool<ChunkComponent>();
 			_chunkPhysicsPool = world.GetPool<ChunkPhysicsComponent>();
-			_meshPartsContainerInitializedPool = world.GetPool<MeshPartsContainerInitializedTag>();
-			_meshPartsContainerInitializingPool = world.GetPool<MeshPartsContainerInitializingTag>();
+			_initializedPool = world.GetPool<MeshPartsContainerInitializedTag>();
+			_initializingPool = world.GetPool<MeshPartsContainerInitializingTag>();
 			_dirtyWallsPool = world.GetPool<DirtyWallsComponent>();
 			_behindWallsMarkedDirtyPool = world.GetPool<BehindWallsMarkedDirtyTag>();
 			_chunksToMarkDirtyWallsFilter = world
@@ -70,8 +70,8 @@ namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.MeshParts
 		{
 			if(!_chunksContainer.TryGetChunk(gridPosition, out int chunkEntity) ||
 				!_chunkPhysicsPool.Has(chunkEntity) ||
-				!(_meshPartsContainerInitializedPool.Has(chunkEntity) ||
-				_meshPartsContainerInitializingPool.Has(chunkEntity)))
+				!(_initializedPool.Has(chunkEntity) ||
+					_initializingPool.Has(chunkEntity)))
 			{
 				return;
 			}

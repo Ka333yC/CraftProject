@@ -46,7 +46,8 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Systems
 		{
 			if(_chunksContainer.TryGetChunkEntityWithoutChunkUsers(out var chunkEntity) &&
 				!_chunkInitializingPool.Has(chunkEntity) &&
-				!_chunkSavingPool.Has(chunkEntity))
+				!_chunkSavingPool.Has(chunkEntity) &&
+				!_isChunkDestroying)
 			{
 				DestroyChunk(chunkEntity);
 			}
