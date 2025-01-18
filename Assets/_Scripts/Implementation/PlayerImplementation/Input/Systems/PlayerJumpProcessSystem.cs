@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace _Scripts.Implementation.PlayerImplementation.Movement.Systems
 {
-	public class PlayerJumpProcessSystem: IEcsPreInitSystem, IEcsRunSystem
+	public class PlayerJumpProcessSystem : IEcsPreInitSystem, IEcsRunSystem
 	{
 		private EcsPool<ObjectPhysicsComponent> _objectPhysicsPool;
 		private EcsPool<MovementParametersComponent> _movementParametersPool;

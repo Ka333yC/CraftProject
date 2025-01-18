@@ -313,6 +313,7 @@ GameObject:
   - component: {fileID: 5623293179523697143}
   - component: {fileID: 5846128745457314887}
   - component: {fileID: 7375735546280242143}
+  - component: {fileID: 868169420631279361}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -443,6 +444,26 @@ MonoBehaviour:
     HorizontalAcceleration: 150
     JumpHeight: 1.25
     RotatableTransform: {fileID: 7703652866425623100}
+--- !u!114 &868169420631279361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7703652865888514851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ceedc17df594234be8cae7e1313ab56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slotsCount: 9
+  _itemsOnStart:
+  - {fileID: 11400000, guid: ec6d7020540413341b4ae257883398c8, type: 2}
+  - {fileID: 11400000, guid: 46f305d52a935df4c95446fa925f3453, type: 2}
+  - {fileID: 11400000, guid: e1197ce0abe748b49aa6ce856bfa0ded, type: 2}
+  - {fileID: 11400000, guid: 5662e420736bd824ab122c9048520f3a, type: 2}
+  - {fileID: 11400000, guid: 690e957c20c358d439563878e529d843, type: 2}
+  - {fileID: 11400000, guid: ae6bb3163cfbf514fbc46b64b5618691, type: 2}
 --- !u!1 &7703652866425623107
 GameObject:
   m_ObjectHideFlags: 0

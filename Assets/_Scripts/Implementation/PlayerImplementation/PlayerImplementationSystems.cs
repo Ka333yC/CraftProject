@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using _Scripts.Implementation.PlayerImplementation.Input.Systems;
 using _Scripts.Implementation.PlayerImplementation.Movement.Systems;
 using _Scripts.Implementation.PlayerImplementation.PlayerSerialization.Systems;
 using Input.Systems;
@@ -19,6 +20,7 @@ namespace _Scripts.Implementation.PlayerImplementation
 				new PlayerRotationProcessSystem(),
 				new PlayerWalkProcessSystem(),
 				new PlayerJumpProcessSystem(),
+				new PlayerInteractionProcessSystem(),
 			};
 		}
 	}

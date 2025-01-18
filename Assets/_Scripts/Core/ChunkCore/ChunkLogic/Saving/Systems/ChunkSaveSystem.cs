@@ -16,7 +16,6 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Saving.Systems
 		private ChunksContainer _chunksContainer;
 		private ChunkSerializer _chunkSerializer;
 
-		private EcsWorld _world;
 		private EcsPool<ChunkSavingTag> _chunkSavingPool;
 		private EcsPool<NeedSaveChunkTag> _needSaveChunkPool;
 		private EcsFilter _chunksToSaveFilter;
@@ -24,16 +23,16 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Saving.Systems
 
 		public void PreInit(IEcsSystems systems)
 		{
-			_world = systems.GetWorld();
-			_chunkSavingPool = _world.GetPool<ChunkSavingTag>();
-			_needSaveChunkPool = _world.GetPool<NeedSaveChunkTag>();
-			_chunksToSaveFilter = _world
+			var world = systems.GetWorld();
+			_chunkSavingPool = world.GetPool<ChunkSavingTag>();
+			_needSaveChunkPool = world.GetPool<NeedSaveChunkTag>();
+			_chunksToSaveFilter = world
 				.Filter<ChunkComponent>()
 				.Inc<ChunkInitializedTag>()
 				.Inc<NeedSaveChunkTag>()
 				.Exc<ChunkSavingTag>()
 				.End();
-			_savingChunksFilter = _world
+			_savingChunksFilter = world
 				.Filter<ChunkSavingTag>()
 				.End();
 		}

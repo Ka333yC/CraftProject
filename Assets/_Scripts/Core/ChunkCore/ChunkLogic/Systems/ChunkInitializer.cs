@@ -21,7 +21,6 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Systems
 		private ChunkSerializer _chunkSerializer;
 		private ChunkGenerator _chunkGenerator;
 
-		private EcsWorld _world;
 		private EcsPool<ChunkComponent> _chunkPool;
 		private EcsPool<ChunkInitializingTag> _chunkInitializingPool;
 		private EcsPool<ChunkInitializedTag> _chunkInitializedPool;
@@ -33,18 +32,18 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Systems
 
 		public void PreInit(IEcsSystems systems)
 		{
-			_world = systems.GetWorld();
-			_chunkPool = _world.GetPool<ChunkComponent>();
-			_chunkInitializingPool = _world.GetPool<ChunkInitializingTag>();
-			_chunkInitializedPool = _world.GetPool<ChunkInitializedTag>();
-			_fixedChunkInitializedNotificationPool = _world.GetPool<FixedChunkInitializedNotificationTag>();
-			_standardChunkInitializedNotificationPool = _world.GetPool<StandardChunkInitializedNotificationTag>();
-			_needSaveChunkPool = _world.GetPool<NeedSaveChunkTag>();
-			_uninitializedChunksFilter = _world
+			var world = systems.GetWorld();
+			_chunkPool = world.GetPool<ChunkComponent>();
+			_chunkInitializingPool = world.GetPool<ChunkInitializingTag>();
+			_chunkInitializedPool = world.GetPool<ChunkInitializedTag>();
+			_fixedChunkInitializedNotificationPool = world.GetPool<FixedChunkInitializedNotificationTag>();
+			_standardChunkInitializedNotificationPool = world.GetPool<StandardChunkInitializedNotificationTag>();
+			_needSaveChunkPool = world.GetPool<NeedSaveChunkTag>();
+			_uninitializedChunksFilter = world
 				.Filter<ChunkComponent>()
 				.Exc<ChunkInitializedTag>()
 				.End();
-			_chunksInitializingFilter = _world
+			_chunksInitializingFilter = world
 				.Filter<ChunkInitializingTag>()
 				.End();
 		}

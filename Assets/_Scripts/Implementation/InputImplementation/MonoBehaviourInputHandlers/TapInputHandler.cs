@@ -33,7 +33,7 @@ namespace _Scripts.Implementation.InputImplementation.MonoBehaviourInputHandlers
 		private void FixedUpdate()
 		{
 			Input = null;
-			if (!_inputToNotify.HasValue)
+			if(!_inputToNotify.HasValue)
 			{
 				return;
 			}
@@ -42,6 +42,7 @@ namespace _Scripts.Implementation.InputImplementation.MonoBehaviourInputHandlers
 			ref var tapInput = ref _tapInputPool.Add(useInputEntity);
 			tapInput.ScreenPointerPositionInput = _inputToNotify.Value;
 			Input = _inputToNotify.Value;
+			_inputToNotify = null;
 		}
 
 		private void OnDestroy()
