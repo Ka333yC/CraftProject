@@ -36,7 +36,7 @@ namespace _Scripts.Implementation.PlayerImplementation
 			{
 #region Inventory
 				new DelHereSystem<ActiveSlotChangedComponent>(),
-				new ChangeActiveSlotSystem(),
+				new ChangePlayerActiveSlotSystem(),
 #endregion
 			};
 		}

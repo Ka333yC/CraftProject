@@ -4,19 +4,19 @@ using Leopotam.EcsLite;
 
 namespace _Scripts.Core.InventoryCore.Systems
 {
-	public class ChangeActiveSlotSystem : IEcsPreInitSystem, IEcsRunSystem
+	public class ChangePlayerActiveSlotSystem : IEcsPreInitSystem, IEcsRunSystem
 	{
-		private EcsPool<InventoryComponent> _inventoryPool;
 		private EcsPool<SetActiveSlotComponent> _setActiveSlotPool;
 		private EcsPool<ActiveSlotChangedComponent> _activeSlotChangedPool;
+		private EcsPool<PlayerComponent> _playerPool;
 		private EcsFilter _playerInventoriesToChangeActiveSlotFilter;
 
 		public void PreInit(IEcsSystems systems)
 		{
 			EcsWorld world = systems.GetWorld();
-			_inventoryPool = world.GetPool<InventoryComponent>();
 			_setActiveSlotPool = world.GetPool<SetActiveSlotComponent>();
 			_activeSlotChangedPool = world.GetPool<ActiveSlotChangedComponent>();
+			_playerPool = world.GetPool<PlayerComponent>();
 			_playerInventoriesToChangeActiveSlotFilter = world
 				.Filter<SetActiveSlotComponent>()
 				.Inc<PlayerComponent>()
@@ -26,13 +26,14 @@ namespace _Scripts.Core.InventoryCore.Systems
 
 		public void Run(IEcsSystems systems)
 		{
-			foreach(var inventoryEntity in _playerInventoriesToChangeActiveSlotFilter)
+			foreach(var playerEntity in _playerInventoriesToChangeActiveSlotFilter)
 			{
-				ref var inventory = ref _inventoryPool.Get(inventoryEntity);
-				int previousActiveSlotIndex = inventory.ActiveSlotIndex;
-				var setActiveSlot = _setActiveSlotPool.Get(inventoryEntity);
-				inventory.ActiveSlotIndex = setActiveSlot.NewActiveSlotIndex;
-				NotifyActiveSlotChanged(inventoryEntity, previousActiveSlotIndex);
+				ref var player = ref _playerPool.Get(playerEntity);
+				int previousActiveSlotIndex = player.ActiveSlotIndex;
+				ref var setActiveSlot = ref _setActiveSlotPool.Get(playerEntity);
+				player.ActiveSlotIndex = setActiveSlot.NewActiveSlotIndex;
+				NotifyActiveSlotChanged(playerEntity, previousActiveSlotIndex);
+				_setActiveSlotPool.Del(playerEntity);
 			}
 		}
 

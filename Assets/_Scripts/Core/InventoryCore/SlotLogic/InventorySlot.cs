@@ -1,56 +1,56 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using _Scripts.Core.InventoryCore.ItemLogic;
 using JetBrains.Annotations;
+using UnityEngine;
 
 namespace _Scripts.Core.InventoryCore.SlotLogic
 {
 	public class InventorySlot
 	{
-		public readonly List<IInventorySlotFilter> Filters = new List<IInventorySlotFilter>(0);
-
-		public InventorySlotsContainer Container;
+		protected readonly IInventorySlotFilter[] _filters;
 
 		private Item _item;
 
 		/// <summary>
-		/// Вызывается если изменился сам Item или свойство у Item
+		/// Вызывается если изменился сам Item или одно из его свойств
 		/// </summary>
 		public event Action OnItemChanged;
 
 		[CanBeNull]
 		public Item Item 
 		{
-			get 
-			{
-				return _item;
-			}
-
+			get => _item;
 			protected set
 			{
 				if(_item != null)
 				{
 					_item.OnChanged -= InvokeOnItemChanged;
-					_item.OnChanged -= SetItemNullIfCountZero;
+					_item.OnChanged -= SetNullToItemIfCountIsZero;
 				}
 
 				_item = value;
 				if(_item != null)
 				{
 					_item.OnChanged += InvokeOnItemChanged;
-					_item.OnChanged += SetItemNullIfCountZero;
+					_item.OnChanged += SetNullToItemIfCountIsZero;
 				}
 
 				InvokeOnItemChanged();
 			}
 		}
 
-		public bool HasItem 
+		public bool HasItem => Item != null;
+
+		public InventorySlot()
 		{
-			get 
-			{
-				return Item != null;
-			}
+			_filters = Array.Empty<IInventorySlotFilter>();
+		}
+
+		public InventorySlot(IEnumerable<IInventorySlotFilter> filters)
+		{
+			_filters = filters.ToArray();
 		}
 
 		public virtual bool TryAddItem(Item sourceItem, int count)
@@ -66,12 +66,21 @@ namespace _Scripts.Core.InventoryCore.SlotLogic
 				return true;
 			}
 
-			return Item.TryAdd(sourceItem, count);
+			// ReSharper disable once PossibleNullReferenceException
+			if(!Item.IsSimilar(sourceItem))
+			{
+				return false;
+			}
+			
+			var fitsCount = Mathf.Min(Item.Count + count, Item.ItemData.StackSize) - Item.Count;
+			sourceItem.Count -= fitsCount;
+			Item.Count += fitsCount;
+			return true;
 		}
 
 		public virtual bool IsPassFilters(Item item)
 		{
-			foreach(var filter in Filters)
+			foreach(var filter in _filters)
 			{
 				if(!filter.IsPass(item))
 				{
@@ -87,9 +96,9 @@ namespace _Scripts.Core.InventoryCore.SlotLogic
 			OnItemChanged?.Invoke();
 		}
 
-		protected void SetItemNullIfCountZero() 
+		protected void SetNullToItemIfCountIsZero() 
 		{
-			if(Item != null && Item.Count <= 0)
+			if(Item != null && Item.Count == 0)
 			{
 				Item = null;
 			}

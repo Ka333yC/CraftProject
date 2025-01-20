@@ -3,7 +3,6 @@
 // Copyright (c) 2012-2023 Leopotam <leopotam@yandex.ru>
 // ----------------------------------------------------------------------------
 
-using Codice.CM.Client.Differences;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -118,7 +117,7 @@ namespace Leopotam.EcsLite {
             _eventListeners = new List<IEcsWorldEventListener> (4);
 #endif
 			_destroyed = false;
-			// Создаю энтити с id = 0, чтобы была возможность иметь default значение
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ id = 0, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ default пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			GetPool<DefaultEntityComponent>().Add(NewEntity());
 		}
 

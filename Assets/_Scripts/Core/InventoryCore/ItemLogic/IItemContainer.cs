@@ -2,6 +2,7 @@
 {
 	public interface IItemContainer : IItemData
 	{
+		public void Initialize(int id);
 		public Item Create();
 	}
 }

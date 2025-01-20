@@ -1,7 +1,10 @@
 ﻿using System.IO;
 using _Scripts.Implementation.DataBaseImplementation.GameWorldsDataDB.Tables.GameWorldParametersTable;
-using UnityEditor;
 using UnityEngine;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace _Scripts.Implementation.SceneManagement.GameWorldScene
 {
@@ -10,8 +13,10 @@ namespace _Scripts.Implementation.SceneManagement.GameWorldScene
 	{
 		[SerializeField]
 		private int _id = -1;
+
 		[SerializeField]
 		private string _name = "custom_world";
+
 		[SerializeField]
 		private int _seed = 0;
 
@@ -26,6 +31,7 @@ namespace _Scripts.Implementation.SceneManagement.GameWorldScene
 		}
 	}
 
+#if UNITY_EDITOR
 	[CustomEditor(typeof(CustomGameWorldParameters))]
 	public class CustomGameWorldParametersButton : Editor
 	{
@@ -41,4 +47,5 @@ namespace _Scripts.Implementation.SceneManagement.GameWorldScene
 			Directory.Delete(customGameWorldParameters.GetGameWorldParameters().WorldFolderPath, true);
 		}
 	}
+#endif
 }

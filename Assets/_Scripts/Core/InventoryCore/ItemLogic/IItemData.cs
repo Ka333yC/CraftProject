@@ -7,7 +7,5 @@ namespace _Scripts.Core.InventoryCore.ItemLogic
 		public int Id { get; }
 		public short StackSize { get; }
 		public Sprite Icon { get; }
-
-		public void Initialize(int id);
 	}
 }

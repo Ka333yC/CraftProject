@@ -2,7 +2,6 @@
 {
 	public struct InventoryComponent
 	{
-		public InventorySlotsContainer SlotsContainer;
-		public int ActiveSlotIndex;
+		public Inventory Inventory;
 	}
 }

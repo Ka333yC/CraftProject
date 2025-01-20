@@ -15,7 +15,6 @@ namespace _Scripts.Core.PlayerCore
 	{
 		[SerializeField]
 		private int _slotsCount = 9;
-		[FormerlySerializedAs("_items")]
 		[SerializeField]
 		private BlockInventoryItemContainer[] _itemsOnStart;
 
@@ -30,17 +29,17 @@ namespace _Scripts.Core.PlayerCore
 		public void Convert(int entity, EcsWorld world)
 		{
 			var pool = world.GetPool<InventoryComponent>();
-			ref var inventory = ref pool.Add(entity);
-			var inventoryContainer = new InventorySlotsContainer();
-			inventory.SlotsContainer = inventoryContainer;
+			ref var inventoryComponent = ref pool.Add(entity);
+			var inventory = new Inventory();
+			inventoryComponent.Inventory = inventory;
 			for(int i = 0; i < _slotsCount; i++)
 			{
-				inventoryContainer.AddSlot(new InventorySlot());
+				inventory.AddSlot(new InventorySlot());
 			}
 
 			foreach(var t in _itemsOnStart)
 			{
-				inventoryContainer.TryAddItem(t.Create(), 1);
+				inventory.TryAddItem(t.Create(), 1);
 			}
 		}
 	}

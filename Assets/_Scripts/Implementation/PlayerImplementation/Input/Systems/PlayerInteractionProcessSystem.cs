@@ -196,8 +196,9 @@ namespace _Scripts.Implementation.PlayerImplementation.Input.Systems
 		{
 			foreach(var playerEntity in _playersFilter)
 			{
-				var inventory = _inventoryPool.Get(playerEntity);
-				var item = inventory.SlotsContainer[inventory.ActiveSlotIndex].Item;
+				ref var inventory = ref _inventoryPool.Get(playerEntity);
+				ref var player = ref _playerPool.Get(playerEntity);
+				var item = inventory.Inventory[player.ActiveSlotIndex].Item;
 				if(item is BlockInventoryItem blockInventoryItem)
 				{
 					blockInventoryItem.Use(worldPosition);

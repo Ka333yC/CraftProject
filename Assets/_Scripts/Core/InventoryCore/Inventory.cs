@@ -5,7 +5,7 @@ using _Scripts.Core.InventoryCore.SlotLogic;
 
 namespace _Scripts.Core.InventoryCore
 {
-	public class InventorySlotsContainer : IEnumerable<InventorySlot>
+	public class Inventory : IEnumerable<InventorySlot>
 	{
 		protected readonly List<InventorySlot> _container = new List<InventorySlot>(1);
 
@@ -30,14 +30,13 @@ namespace _Scripts.Core.InventoryCore
 		public void AddSlot(InventorySlot slot) 
 		{
 			_container.Add(slot);
-			slot.Container = this;
 		}
 
 		public bool TryAddItem(Item sourceItem, int count) 
 		{
 			int startSourceItemCount = sourceItem.Count;
 			// Пытаемся добавить в такой же предмет, куда можно "стакнуть"
-			if(TryAddItem(sourceItem, count, true)) 
+			if(TryAddItem(sourceItem, count, false)) 
 			{
 				int addedCount = startSourceItemCount - sourceItem.Count;
 				count -= addedCount;
@@ -46,19 +45,19 @@ namespace _Scripts.Core.InventoryCore
 			// Если ещё остались предметы для добавления, пытаемся добавить в пустые слоты
 			if(count != 0)
 			{
-				TryAddItem(sourceItem, count, false);
+				TryAddItem(sourceItem, count, true);
 			}
 
 			return startSourceItemCount != sourceItem.Count;
 		}
 
-		private bool TryAddItem(Item sourceItem, int count, bool hasItem) 
+		private bool TryAddItem(Item sourceItem, int count, bool isSlotEmpty) 
 		{
 			bool isAdded = false;
 			int startSourceItemCount = sourceItem.Count;
 			foreach(var slot in _container)
 			{
-				if(slot.HasItem == hasItem && slot.TryAddItem(sourceItem, count))
+				if(slot.HasItem != isSlotEmpty && slot.TryAddItem(sourceItem, count))
 				{
 					int addedCount = startSourceItemCount - sourceItem.Count;
 					count -= addedCount;

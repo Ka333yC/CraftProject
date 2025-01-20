@@ -5,33 +5,12 @@ namespace _Scripts.Core.InventoryCore.ItemLogic
 {
 	public class AirItemContainer : IItemContainer, IBlockItemData
 	{
-		private AirBlockContainer _blockContainer = new AirBlockContainer();
+		private readonly AirBlockContainer _blockContainer = new AirBlockContainer();
 
 		public int Id { get; private set; }
-
-		public short StackSize
-		{
-			get
-			{
-				return 0;
-			}
-		}
-
-		public Sprite Icon
-		{
-			get 
-			{
-				return null;
-			}
-		}
-
-		public IBlockContainer BlockContainer 
-		{
-			get
-			{
-				return _blockContainer;
-			}
-		} 
+		public short StackSize => 0;
+		public Sprite Icon => null;
+		public IBlockContainer BlockContainer => _blockContainer;
 
 		public Item Create()
 		{
