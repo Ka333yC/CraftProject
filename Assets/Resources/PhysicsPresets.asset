@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0065f2270f28ef40aad13993ed5c70f, type: 3}
   m_Name: PhysicsPresets
   m_EditorClassIdentifier: 
-  <SlightlyVelocityMagnitude>k__BackingField: 0.0003
+  <SlightlyVelocityMagnitude>k__BackingField: 0.003
   <GroundCheckDistance>k__BackingField: 0.05
   <IgnoreAllLayer>k__BackingField:
     serializedVersion: 2

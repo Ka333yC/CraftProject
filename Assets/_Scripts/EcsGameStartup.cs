@@ -117,7 +117,7 @@ namespace _Scripts
 
 			_standardUpdateSystems.AddRange(ChunkCoreSystems.GetStandardSystems());
 			_standardUpdateSystems.AddRange(ChunkGraphicsCoreSystems.GetStandardSystems());
-			_standardUpdateSystems.AddRange(InventoryCoreSystems.GetStandardSystems());
+			_standardUpdateSystems.AddRange(PlayerImplementationSystems.GetStandardSystems());
 
 			_standardUpdateSystems.AddRange(ChunkCoreSystems.GetPostStandardDelSystems());
 			_standardUpdateSystems.AddRange(ObjectPhysicsCoreSystems.GetPostStandardDelSystems());
@@ -127,10 +127,6 @@ namespace _Scripts
 
 		private void AddSystemsToLateUpdate()
 		{
-			//_lateUpdateSystems
-			//	.Add(new ChangeLookHandlerSystem())
-			//	.DelHere<ChangeLookDirectionComponent>();
-
 			_container.InjectEcsSystems(_lateUpdateSystems);
 		}
 

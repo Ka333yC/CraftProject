@@ -1,5 +1,6 @@
 ﻿using _Scripts.Core.UICore;
 using _Scripts.Core.UICore.Page;
+using _Scripts.Implementation.UIImplementation.MainMenuSceneUI.MainMenuPage;
 using UnityEngine;
 using Zenject;
 
@@ -14,8 +15,8 @@ namespace _Scripts.Undone.StartPoints
 
 		private void Start()
 		{
-			// var mainMenu = _viewFactory.CreatePage<MainMenuView>();
-			// _viewStack.OpenView(mainMenu);
+			var mainMenu = _viewFactory.CreatePage<MainMenuView>();
+			_viewStack.OpenView(mainMenu);
 		}
 	}
 }

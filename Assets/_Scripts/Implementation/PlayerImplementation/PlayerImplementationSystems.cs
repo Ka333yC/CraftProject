@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+using _Scripts.Apart.Extensions.Ecs.DelHere;
+using _Scripts.Core.InventoryCore.Components;
+using _Scripts.Core.InventoryCore.Systems;
 using _Scripts.Implementation.PlayerImplementation.Input.Systems;
 using _Scripts.Implementation.PlayerImplementation.Movement.Systems;
 using _Scripts.Implementation.PlayerImplementation.PlayerSerialization.Systems;
@@ -13,14 +16,28 @@ namespace _Scripts.Implementation.PlayerImplementation
 		{
 			return new List<IEcsSystem>()
 			{
+#region Сохранение
 				// Сохранение
 				new MarkChangedPlayersNeedToSaveSystem(),
 				new PlayerSaveSystem(),
-				// Обработка ввода
+#endregion
+#region Обработка ввода
 				new PlayerRotationProcessSystem(),
 				new PlayerWalkProcessSystem(),
 				new PlayerJumpProcessSystem(),
 				new PlayerInteractionProcessSystem(),
+			};
+#endregion
+		}
+		
+		public static IEnumerable<IEcsSystem> GetStandardSystems()
+		{
+			return new List<IEcsSystem>()
+			{
+#region Inventory
+				new DelHereSystem<ActiveSlotChangedComponent>(),
+				new ChangeActiveSlotSystem(),
+#endregion
 			};
 		}
 	}
