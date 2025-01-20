@@ -3,7 +3,7 @@ using Zenject;
 
 namespace _Scripts.Implementation.SceneManagement
 {
-	public class GlobalDataInstaller : MonoInstaller 
+	public class GlobalDataInstaller : MonoInstaller
 	{
 		public override void InstallBindings()
 		{

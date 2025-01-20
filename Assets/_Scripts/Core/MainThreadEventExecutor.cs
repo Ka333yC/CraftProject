@@ -1,45 +1,52 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace _Scripts.Core
 {
 	public class MainThreadEventExecutor : MonoBehaviour
 	{
-		private static volatile bool _adEventsQueueEmpty = true;
-		private static List<Action> _adEventsQueue = new List<Action>();
+		private static readonly object _lock = new object();
+		private static readonly List<Action> _actionsQueue = new List<Action>();
+		private static volatile bool _actionsQueueEmpty = true;
 
 		public static void ExecuteInUpdate(Action action)
 		{
-			lock(_adEventsQueue)
+			lock(_lock)
 			{
-				_adEventsQueue.Add(action);
-				_adEventsQueueEmpty = false;
+				_actionsQueue.Add(action);
+				_actionsQueueEmpty = false;
 			}
 		}
 
 		private void Update()
 		{
-			if(_adEventsQueueEmpty)
+			if(_actionsQueueEmpty)
 			{
 				return;
 			}
 
-			List<Action> list = new List<Action>();
-			lock(_adEventsQueue)
+			Action[] actionsToExecute;
+			lock(_lock)
 			{
-				list.AddRange(_adEventsQueue);
-				_adEventsQueue.Clear();
-				_adEventsQueueEmpty = true;
+				var actionsCount = _actionsQueue.Count;
+				actionsToExecute = System.Buffers.ArrayPool<Action>.Shared.Rent(actionsCount);
+				for(int i = 0; i < actionsCount; i++)
+				{
+					actionsToExecute[i] = _actionsQueue[i];
+				}
+				
+				_actionsQueue.Clear();
+				_actionsQueueEmpty = true;
 			}
 
-			foreach(Action item in list)
+			foreach(Action action in actionsToExecute)
 			{
-				if(item.Target != null)
-				{
-					item();
-				}
+				action?.Invoke();
 			}
+			
+			System.Buffers.ArrayPool<Action>.Shared.Return(actionsToExecute);
 		}
 	}
 }
