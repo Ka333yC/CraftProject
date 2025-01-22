@@ -10,6 +10,7 @@ namespace _Scripts.Core.InventoryCore.ItemLogic
 		public event Action OnChanged;
 
 		public abstract IItemData ItemData { get; }
+		
 		public virtual int Count 
 		{
 			get => _count;
@@ -30,6 +31,19 @@ namespace _Scripts.Core.InventoryCore.ItemLogic
 		public virtual bool IsSimilar(Item item) 
 		{
 			return item != null && ItemData == item.ItemData;
+		}
+
+		public virtual int Add(Item sourceItem, int count)
+		{
+			if(!IsSimilar(sourceItem))
+			{
+				return 0;
+			}
+			
+			var fitsCount = Mathf.Min(_count + count, ItemData.StackSize) - Count;
+			sourceItem.Count -= fitsCount;
+			Count += fitsCount;
+			return fitsCount;
 		}
 
 		public virtual Item Split(int splittedItemCount)

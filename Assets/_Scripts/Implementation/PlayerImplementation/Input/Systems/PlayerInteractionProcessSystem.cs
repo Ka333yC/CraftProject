@@ -30,7 +30,7 @@ namespace _Scripts.Implementation.PlayerImplementation.Input.Systems
 		private EcsWorld _world;
 		private EcsPool<ChunkComponent> _chunkDataPool;
 		private EcsPool<ChunkInitializedTag> _chunkInitializedPool;
-		private EcsPool<InventoryComponent> _inventoryPool;
+		private EcsPool<PlayerInventoryComponent> _playerInventoryPool;
 		private EcsPool<PlayerComponent> _playerPool;
 		private EcsPool<PlayerInteractionComponent> _playerInteractionPool;
 		private EcsPool<HoldInputComponent> _holdInputPool;
@@ -45,7 +45,7 @@ namespace _Scripts.Implementation.PlayerImplementation.Input.Systems
 			_world = systems.GetWorld();
 			_chunkDataPool = _world.GetPool<ChunkComponent>();
 			_chunkInitializedPool = _world.GetPool<ChunkInitializedTag>();
-			_inventoryPool = _world.GetPool<InventoryComponent>();
+			_playerInventoryPool = _world.GetPool<PlayerInventoryComponent>();
 			_playerPool = _world.GetPool<PlayerComponent>();
 			_playerInteractionPool = _world.GetPool<PlayerInteractionComponent>();
 			_holdInputPool = _world.GetPool<HoldInputComponent>();
@@ -58,12 +58,12 @@ namespace _Scripts.Implementation.PlayerImplementation.Input.Systems
 				.End();
 			_playersToInitializeFilter = _world
 				.Filter<PlayerComponent>()
-				.Inc<InventoryComponent>()
+				.Inc<PlayerInventoryComponent>()
 				.Exc<PlayerInteractionComponent>()
 				.End();
 			_playersFilter = _world
 				.Filter<PlayerComponent>()
-				.Inc<InventoryComponent>()
+				.Inc<PlayerInventoryComponent>()
 				.Inc<PlayerInteractionComponent>()
 				.End();
 		}
@@ -196,9 +196,9 @@ namespace _Scripts.Implementation.PlayerImplementation.Input.Systems
 		{
 			foreach(var playerEntity in _playersFilter)
 			{
-				ref var inventory = ref _inventoryPool.Get(playerEntity);
+				ref var inventory = ref _playerInventoryPool.Get(playerEntity);
 				ref var player = ref _playerPool.Get(playerEntity);
-				var item = inventory.Inventory[player.ActiveSlotIndex].Item;
+				var item = inventory.Toolbar[inventory.ActiveSlotIndex].Item;
 				if(item is BlockInventoryItem blockInventoryItem)
 				{
 					blockInventoryItem.Use(worldPosition);

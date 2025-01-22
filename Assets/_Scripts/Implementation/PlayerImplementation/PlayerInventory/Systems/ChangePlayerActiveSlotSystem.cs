@@ -8,7 +8,7 @@ namespace _Scripts.Core.InventoryCore.Systems
 	{
 		private EcsPool<SetActiveSlotComponent> _setActiveSlotPool;
 		private EcsPool<ActiveSlotChangedComponent> _activeSlotChangedPool;
-		private EcsPool<PlayerComponent> _playerPool;
+		private EcsPool<PlayerInventoryComponent> _playerInventoryPool;
 		private EcsFilter _playerInventoriesToChangeActiveSlotFilter;
 
 		public void PreInit(IEcsSystems systems)
@@ -16,11 +16,11 @@ namespace _Scripts.Core.InventoryCore.Systems
 			EcsWorld world = systems.GetWorld();
 			_setActiveSlotPool = world.GetPool<SetActiveSlotComponent>();
 			_activeSlotChangedPool = world.GetPool<ActiveSlotChangedComponent>();
-			_playerPool = world.GetPool<PlayerComponent>();
+			_playerInventoryPool = world.GetPool<PlayerInventoryComponent>();
 			_playerInventoriesToChangeActiveSlotFilter = world
 				.Filter<SetActiveSlotComponent>()
 				.Inc<PlayerComponent>()
-				.Inc<InventoryComponent>()
+				.Inc<PlayerInventoryComponent>()
 				.End();
 		}
 
@@ -28,10 +28,10 @@ namespace _Scripts.Core.InventoryCore.Systems
 		{
 			foreach(var playerEntity in _playerInventoriesToChangeActiveSlotFilter)
 			{
-				ref var player = ref _playerPool.Get(playerEntity);
-				int previousActiveSlotIndex = player.ActiveSlotIndex;
+				ref var playerInventory = ref _playerInventoryPool.Get(playerEntity);
+				int previousActiveSlotIndex = playerInventory.ActiveSlotIndex;
 				ref var setActiveSlot = ref _setActiveSlotPool.Get(playerEntity);
-				player.ActiveSlotIndex = setActiveSlot.NewActiveSlotIndex;
+				playerInventory.ActiveSlotIndex = setActiveSlot.NewActiveSlotIndex;
 				NotifyActiveSlotChanged(playerEntity, previousActiveSlotIndex);
 				_setActiveSlotPool.Del(playerEntity);
 			}

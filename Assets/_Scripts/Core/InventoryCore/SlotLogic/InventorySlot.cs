@@ -9,7 +9,7 @@ namespace _Scripts.Core.InventoryCore.SlotLogic
 {
 	public class InventorySlot
 	{
-		protected readonly IInventorySlotFilter[] _filters;
+		private readonly List<IInventorySlotFilter> _filters;
 
 		private Item _item;
 
@@ -22,7 +22,7 @@ namespace _Scripts.Core.InventoryCore.SlotLogic
 		public Item Item 
 		{
 			get => _item;
-			protected set
+			private set
 			{
 				if(_item != null)
 				{
@@ -41,44 +41,46 @@ namespace _Scripts.Core.InventoryCore.SlotLogic
 			}
 		}
 
-		public bool HasItem => Item != null;
+		public bool HasItem => _item != null;
 
 		public InventorySlot()
 		{
-			_filters = Array.Empty<IInventorySlotFilter>();
+			_filters = new List<IInventorySlotFilter>(0);
 		}
 
-		public InventorySlot(IEnumerable<IInventorySlotFilter> filters)
+		public InventorySlot(List<IInventorySlotFilter> filters)
 		{
-			_filters = filters.ToArray();
+			_filters = filters;
 		}
 
-		public virtual bool TryAddItem(Item sourceItem, int count)
+		public bool TrySetItem(Item item)
 		{
-			if(!IsPassFilters(sourceItem)) 
+			if(!IsPassFilters(item))
 			{
 				return false;
 			}
 
-			if(!HasItem)
-			{
-				Item = sourceItem.Split(count);
-				return true;
-			}
-
-			// ReSharper disable once PossibleNullReferenceException
-			if(!Item.IsSimilar(sourceItem))
-			{
-				return false;
-			}
-			
-			var fitsCount = Mathf.Min(Item.Count + count, Item.ItemData.StackSize) - Item.Count;
-			sourceItem.Count -= fitsCount;
-			Item.Count += fitsCount;
+			Item = item;
 			return true;
 		}
 
-		public virtual bool IsPassFilters(Item item)
+		public int AddItem(Item sourceItem, int count)
+		{
+			if(!IsPassFilters(sourceItem))
+			{
+				return 0;
+			}
+			
+			if(!HasItem)
+			{
+				Item = sourceItem.Split(count);
+				return count;
+			}
+
+			return _item.Add(sourceItem, count);
+		}
+
+		public bool IsPassFilters(Item item)
 		{
 			foreach(var filter in _filters)
 			{

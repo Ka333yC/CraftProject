@@ -1,7 +1,7 @@
 ﻿namespace _Scripts.Core.PlayerCore
 {
-	public class PlayerConstantData
+	public static class PlayerConstantData
 	{
-		public int InventorySize = 9;
+		public const int ToolbarSize = 9;
 	}
 }

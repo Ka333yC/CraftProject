@@ -11,13 +11,7 @@ namespace _Scripts.Core.InventoryCore.ItemLogic
 		[Inject]
 		private DiContainer _diContainer;
 
-		public IItemContainer this[int itemId] 
-		{
-			get 
-			{
-				return _containers[itemId];
-			}
-		}
+		public IItemContainer this[int itemId] => _containers[itemId];
 
 		public void Initialize(params IItemContainer[] containers)
 		{

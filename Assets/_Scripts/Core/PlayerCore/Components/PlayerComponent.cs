@@ -7,7 +7,5 @@ namespace _Scripts.Core.PlayerCore.Components
 	public struct PlayerComponent
 	{
 		public Camera Camera;
-		[HideInInspector]
-		public int ActiveSlotIndex;
 	}
 }
