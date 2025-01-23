@@ -4,7 +4,7 @@ using UnityEngine;
 namespace _Scripts.Implementation.UIImplementation.Animations
 {
 	[CreateAssetMenu(fileName = "AnimationParameters", menuName = "Animation parameters/Page/Position animation parameters")]
-	public class PositionAnimatorParameters : ScriptableObject
+	public class PagePositionAnimatorParameters : ScriptableObject
 	{
 		[field: SerializeField]
 		public PositionAnimationParameter ShowAnimationParameter

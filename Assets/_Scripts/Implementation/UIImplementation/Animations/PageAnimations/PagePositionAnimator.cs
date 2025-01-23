@@ -9,7 +9,7 @@ namespace _Scripts.Implementation.UIImplementation.Animations
 	public class PagePositionAnimator : BasePageAnimator
 	{
 		[SerializeField] 
-		private PositionAnimatorParameters _animatorParameters;
+		private PagePositionAnimatorParameters _animatorParameters;
 
 		private Sequence _nowAnimation;
 		private RectTransform _transform;

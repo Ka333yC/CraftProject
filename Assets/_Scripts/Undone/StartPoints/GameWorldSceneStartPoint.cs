@@ -12,6 +12,7 @@ using _Scripts.Implementation.PlayerImplementation.PlayerSerialization;
 using _Scripts.Implementation.SceneManagement;
 using _Scripts.Implementation.SceneManagement.GameWorldScene;
 using _Scripts.Implementation.UIImplementation.GameWorldSceneUI.MainGameWorldPage;
+using _Scripts.Implementation.UIImplementation.GameWorldSceneUI.PlayerToolbarPopUp;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
@@ -55,6 +56,9 @@ namespace _Scripts.Undone.StartPoints
 			_viewStack.OpenView(mainGameWorldView);
 
 			await SpawnPlayer();
+
+			var toolbarPopUp = _viewFactory.CreatePopUp<PlayerToolbarPopUpView>();
+			_viewStack.ActiveView.PopUpStack.OpenView(toolbarPopUp);
 		}
 
 		private async Task<GameWorldParameters> GetWorldParameters() 
@@ -113,6 +117,7 @@ namespace _Scripts.Undone.StartPoints
 			}
 
 			Instantiate(_playerPrefab, spawnPosition.Value, Quaternion.identity);
+			await UniTask.Yield();
 		}
 	}
 }

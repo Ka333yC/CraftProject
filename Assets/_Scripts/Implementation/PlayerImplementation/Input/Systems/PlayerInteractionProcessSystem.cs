@@ -198,7 +198,7 @@ namespace _Scripts.Implementation.PlayerImplementation.Input.Systems
 			{
 				ref var inventory = ref _playerInventoryPool.Get(playerEntity);
 				ref var player = ref _playerPool.Get(playerEntity);
-				var item = inventory.Toolbar[inventory.ActiveSlotIndex].Item;
+				var item = inventory.Toolbar.ActiveSlot.Item;
 				if(item is BlockInventoryItem blockInventoryItem)
 				{
 					blockInventoryItem.Use(worldPosition);

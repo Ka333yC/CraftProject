@@ -7,6 +7,8 @@ namespace _Scripts.Core.UICore.Page
 	public class PageViewStack : IEnumerable<BasePageView>
 	{
 		private readonly LinkedList<BasePageView> _viewStack = new LinkedList<BasePageView>();
+		
+		public BasePageView ActiveView => _viewStack.Last.Value;
 
 		public void OpenView(BasePageView viewToOpen)
 		{

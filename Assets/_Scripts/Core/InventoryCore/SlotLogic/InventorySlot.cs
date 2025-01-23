@@ -18,7 +18,6 @@ namespace _Scripts.Core.InventoryCore.SlotLogic
 		/// </summary>
 		public event Action OnItemChanged;
 
-		[CanBeNull]
 		public Item Item 
 		{
 			get => _item;
@@ -71,13 +70,13 @@ namespace _Scripts.Core.InventoryCore.SlotLogic
 				return 0;
 			}
 			
-			if(!HasItem)
+			if(HasItem)
 			{
-				Item = sourceItem.Split(count);
-				return count;
+				return _item.Add(sourceItem, count);
 			}
 
-			return _item.Add(sourceItem, count);
+			Item = sourceItem.Split(count);
+			return count;
 		}
 
 		public bool IsPassFilters(Item item)

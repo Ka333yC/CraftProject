@@ -15,11 +15,11 @@ namespace _Scripts.Core.PlayerCore
 	public class PlayerInventoryProvider: BaseMonoProvider, IConvertToEntity
 	{
 		[SerializeField]
-		private BlockInventoryItemContainer[] _itemsOnStart;
+		private BlockInventoryItemContainer[] _itemsOnStart = Array.Empty<BlockInventoryItemContainer>();
 
 		private void OnValidate()
 		{
-			if(_itemsOnStart != null && _itemsOnStart.Length >= PlayerConstantData.ToolbarSize)
+			if(_itemsOnStart.Length >= PlayerConstantData.ToolbarSize)
 			{
 				Array.Resize(ref _itemsOnStart, PlayerConstantData.ToolbarSize);
 			}

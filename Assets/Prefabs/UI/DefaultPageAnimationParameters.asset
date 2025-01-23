@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cbf00f14e1152834388f70c9de439e26, type: 3}
-  m_Name: DefaultAnimationParameters
+  m_Name: DefaultPageAnimationParameters
   m_EditorClassIdentifier: 
   <ShowAnimationParameter>k__BackingField:
     <AnimationStartPosition>k__BackingField: {x: 0, y: 0}
