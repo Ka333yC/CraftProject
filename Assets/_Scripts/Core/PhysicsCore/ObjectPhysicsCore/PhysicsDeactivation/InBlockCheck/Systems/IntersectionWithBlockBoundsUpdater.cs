@@ -109,7 +109,7 @@ namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.InBlockCheck.Systems
 				return pool.Get(entity).Container;
 			}
 
-			throw new Exception($"{typeof(IntersectionWithBlockBoundsContainerComponent).Name} not found");
+			throw new Exception($"{nameof(IntersectionWithBlockBoundsContainerComponent)} not found");
 		}
 	}
 }

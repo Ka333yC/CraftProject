@@ -12,10 +12,10 @@ namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.Components.Elements
 {
 	public class BlocksGraphicsGetter : IBlocksGraphicsGetter, IDisposable
 	{
+		private readonly EcsPool<ChunkGraphicsComponent> _chunkGraphicsPool;
+
 		private readonly ChunkSizeBlocks _blocks;
 		private readonly ChunksContainer _chunksContainer;
-
-		private readonly EcsPool<ChunkGraphicsComponent> _chunkGraphicsPool;
 
 		public BlocksGraphicsGetter ForwardBlocksGraphicsGetter { get; private set; }
 		public BlocksGraphicsGetter BackBlocksGraphicsGetter { get; private set; }
@@ -25,11 +25,12 @@ namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.Components.Elements
 		public BlocksGraphicsGetter(int chunkEntity, EcsWorld world)
 		{
 			_chunkGraphicsPool = world.GetPool<ChunkGraphicsComponent>();
-			var chunk = world.GetPool<ChunkComponent>().Get(chunkEntity);
-			_blocks = chunk.Blocks;
+			
 			_chunksContainer = GetChunksContainer(world);
-			var gridPosition = chunk.GridPosition;
-			CacheBlocksGraphicsContainers(gridPosition);
+			var chunkPool = world.GetPool<ChunkComponent>();
+			var chunk = chunkPool.Get(chunkEntity);
+			_blocks = chunk.Blocks;
+			CacheBlocksGraphicsContainers(chunk.GridPosition);
 		}
 
 		public void Dispose()
@@ -67,35 +68,34 @@ namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.Components.Elements
 
 		private void CacheBlocksGraphicsContainers(Vector3Int gridPosition)
 		{
-			ChunkGraphicsComponent? borderChunkGraphics;
-			borderChunkGraphics = GetChunkGraphics(gridPosition + Vector3Int.forward);
-			if(borderChunkGraphics.HasValue)
+			Vector3Int borderPosition = gridPosition + Vector3Int.forward;
+			if(TryGetChunkGraphics(borderPosition, out var borderChunkGraphics))
 			{
-				var borderBlocksGraphicsGetter = borderChunkGraphics.Value.BlocksGraphicsGetter;
+				var borderBlocksGraphicsGetter = borderChunkGraphics.BlocksGraphicsGetter;
 				ForwardBlocksGraphicsGetter = borderBlocksGraphicsGetter;
 				borderBlocksGraphicsGetter.BackBlocksGraphicsGetter = this;
 			}
 
-			borderChunkGraphics = GetChunkGraphics(gridPosition + Vector3Int.back);
-			if(borderChunkGraphics.HasValue)
+			borderPosition = gridPosition + Vector3Int.back;
+			if(TryGetChunkGraphics(borderPosition, out borderChunkGraphics))
 			{
-				var borderBlocksGraphicsGetter = borderChunkGraphics.Value.BlocksGraphicsGetter;
+				var borderBlocksGraphicsGetter = borderChunkGraphics.BlocksGraphicsGetter;
 				BackBlocksGraphicsGetter = borderBlocksGraphicsGetter;
 				borderBlocksGraphicsGetter.ForwardBlocksGraphicsGetter = this;
 			}
 
-			borderChunkGraphics = GetChunkGraphics(gridPosition + Vector3Int.right);
-			if(borderChunkGraphics.HasValue)
+			borderPosition = gridPosition + Vector3Int.right;
+			if(TryGetChunkGraphics(borderPosition, out borderChunkGraphics))
 			{
-				var borderBlocksGraphicsGetter = borderChunkGraphics.Value.BlocksGraphicsGetter;
+				var borderBlocksGraphicsGetter = borderChunkGraphics.BlocksGraphicsGetter;
 				RightBlocksGraphicsGetter = borderBlocksGraphicsGetter;
 				borderBlocksGraphicsGetter.LeftBlocksGraphicsGetter = this;
 			}
 
-			borderChunkGraphics = GetChunkGraphics(gridPosition + Vector3Int.left);
-			if(borderChunkGraphics.HasValue)
+			borderPosition = gridPosition + Vector3Int.left;
+			if(TryGetChunkGraphics(borderPosition, out borderChunkGraphics))
 			{
-				var borderBlocksGraphicsGetter = borderChunkGraphics.Value.BlocksGraphicsGetter;
+				var borderBlocksGraphicsGetter = borderChunkGraphics.BlocksGraphicsGetter;
 				LeftBlocksGraphicsGetter = borderBlocksGraphicsGetter;
 				borderBlocksGraphicsGetter.RightBlocksGraphicsGetter = this;
 			}
@@ -128,15 +128,17 @@ namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.Components.Elements
 			}
 		}
 
-		private ChunkGraphicsComponent? GetChunkGraphics(Vector3Int gridPosition)
+		private bool TryGetChunkGraphics(Vector3Int gridPosition, out ChunkGraphicsComponent result)
 		{
 			if(!_chunksContainer.TryGetChunk(gridPosition, out int chunkEntity) ||
-				!_chunkGraphicsPool.Has(chunkEntity))
+			   !_chunkGraphicsPool.Has(chunkEntity))
 			{
-				return null;
+				result = default;
+				return false;
 			}
 
-			return _chunkGraphicsPool.Get(chunkEntity);
+			result = _chunkGraphicsPool.Get(chunkEntity);
+			return true;
 		}
 
 		private ref ChunksContainer GetChunksContainer(EcsWorld world)
@@ -148,7 +150,7 @@ namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.Components.Elements
 				return ref chunksContainerPool.Get(entity).ChunksContainer;
 			}
 
-			throw new Exception($"{typeof(ChunksContainerComponent).Name} not found");
+			throw new Exception($"{nameof(ChunksContainerComponent)} not found");
 		}
 	}
 }

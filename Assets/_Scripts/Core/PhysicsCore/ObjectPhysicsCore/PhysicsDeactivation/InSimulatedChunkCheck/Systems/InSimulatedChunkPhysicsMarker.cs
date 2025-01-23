@@ -92,7 +92,7 @@ namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.InSimulatedChunkCheck.Syst
 				return pool.Get(entity).ChunksContainer;
 			}
 
-			throw new Exception($"{typeof(ChunksContainerComponent).Name} not found");
+			throw new Exception($"{nameof(ChunksContainerComponent)} not found");
 		}
 
 		private ObjectPhysicsPositionsContainer GetObjectPhysicsPositionsContainer(EcsWorld world)
@@ -107,7 +107,7 @@ namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.InSimulatedChunkCheck.Syst
 				return pool.Get(entity).Container;
 			}
 
-			throw new Exception($"{typeof(ObjectPhysicsPositionsContainerComponent).Name} not found");
+			throw new Exception($"{nameof(ObjectPhysicsPositionsContainerComponent)} not found");
 		}
 	}
 }

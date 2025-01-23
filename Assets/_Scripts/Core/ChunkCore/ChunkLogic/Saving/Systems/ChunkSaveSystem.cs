@@ -83,7 +83,7 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Saving.Systems
 				return pool.Get(entity).ChunksContainer;
 			}
 
-			throw new Exception($"{typeof(ChunksContainerComponent).Name} not found");
+			throw new Exception($"{nameof(ChunksContainerComponent)} not found");
 		}
 
 		private ChunkSerializer GetChunkSerializer(EcsWorld world)
@@ -97,7 +97,7 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Saving.Systems
 				return pool.Get(entity).ChunkSerializer;
 			}
 
-			throw new Exception($"{typeof(ChunkSerializerComponent).Name} not found");
+			throw new Exception($"{nameof(ChunkSerializerComponent)} not found");
 		}
 	}
 }

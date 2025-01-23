@@ -85,7 +85,7 @@ namespace _Scripts.Core.ChunkCore.BlockChanging.Systems
 				return pool.Get(entity).ChunksContainer;
 			}
 
-			throw new Exception($"{typeof(ChunksContainerComponent).Name} not found");
+			throw new Exception($"{nameof(ChunksContainerComponent)} not found");
 		}
 	}
 }

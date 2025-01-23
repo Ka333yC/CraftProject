@@ -138,7 +138,7 @@ namespace _Scripts.Core.ChunkGraphicsCore.ChunkGraphicsLogic.MeshGeneration.Syst
 				return pool.Get(entity).ChunksContainer;
 			}
 
-			throw new Exception($"{typeof(ChunksContainerComponent).Name} not found");
+			throw new Exception($"{nameof(ChunksContainerComponent)} not found");
 		}
 	}
 }

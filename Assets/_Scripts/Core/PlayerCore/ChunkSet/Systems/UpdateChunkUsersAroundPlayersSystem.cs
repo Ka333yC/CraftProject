@@ -136,7 +136,7 @@ namespace _Scripts.Core.PlayerCore.ChunkSet.Systems
 				return pool.Get(entity).ChunksContainer;
 			}
 
-			throw new Exception($"{typeof(ChunksContainerComponent).Name} not found");
+			throw new Exception($"{nameof(ChunksContainerComponent)} not found");
 		}
 	}
 }

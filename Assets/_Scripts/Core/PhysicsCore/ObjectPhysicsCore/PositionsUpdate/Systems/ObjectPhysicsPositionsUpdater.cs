@@ -130,7 +130,7 @@ namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Systems
 				return pool.Get(entity).Container;
 			}
 
-			throw new Exception($"{typeof(ObjectPhysicsPositionsContainerComponent).Name} not found");
+			throw new Exception($"{nameof(ObjectPhysicsPositionsContainerComponent)} not found");
 		}
 	}
 }

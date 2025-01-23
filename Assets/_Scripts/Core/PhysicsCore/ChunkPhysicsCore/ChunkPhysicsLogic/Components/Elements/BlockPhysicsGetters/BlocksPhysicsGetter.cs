@@ -13,9 +13,8 @@ namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.Component
 	public class BlocksPhysicsGetter : IBlocksPhysicsGetter, IDisposable
 	{
 		private readonly EcsPool<ChunkPhysicsComponent> _chunkPhysicsPool;
-		private readonly EcsPool<ChunksContainerComponent> _chunksContainerPool;
-		private readonly EcsFilter _chunksContainerFilter;
 
+		private readonly ChunksContainer _chunksContainer;
 		private readonly ChunkSizeBlocks _blocks;
 
 		public BlocksPhysicsGetter ForwardBlocksPhysicsGetter { get; private set; }
@@ -26,16 +25,12 @@ namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.Component
 		public BlocksPhysicsGetter(int chunkEntity, EcsWorld world)
 		{
 			_chunkPhysicsPool = world.GetPool<ChunkPhysicsComponent>();
-			_chunksContainerPool = world.GetPool<ChunksContainerComponent>();
+
+			_chunksContainer = GetChunksContainer(world);
 			var chunkPool = world.GetPool<ChunkComponent>();
-			_chunksContainerFilter = world
-				.Filter<ChunksContainerComponent>()
-				.End();
-			
 			var chunk = chunkPool.Get(chunkEntity);
 			_blocks = chunk.Blocks;
-			var gridPosition = chunk.GridPosition;
-			CacheBlocksPhysicsContainers(gridPosition);
+			CacheBlocksPhysicsContainers(chunk.GridPosition);
 		}
 
 		public void Dispose()
@@ -73,35 +68,34 @@ namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.Component
 
 		private void CacheBlocksPhysicsContainers(Vector3Int gridPosition)
 		{
-			ChunkPhysicsComponent? borderChunkPhysics;
-			borderChunkPhysics = GetChunkPhysics(gridPosition + Vector3Int.forward);
-			if(borderChunkPhysics.HasValue)
+			Vector3Int borderPosition = gridPosition + Vector3Int.forward;
+			if(TryGetChunkPhysics(borderPosition, out var borderChunkPhysics))
 			{
-				var borderBlocksPhysicsGetter = borderChunkPhysics.Value.BlocksPhysicsGetter;
+				var borderBlocksPhysicsGetter = borderChunkPhysics.BlocksPhysicsGetter;
 				ForwardBlocksPhysicsGetter = borderBlocksPhysicsGetter;
 				borderBlocksPhysicsGetter.BackBlocksPhysicsGetter = this;
 			}
 
-			borderChunkPhysics = GetChunkPhysics(gridPosition + Vector3Int.back);
-			if(borderChunkPhysics.HasValue)
+			borderPosition = gridPosition + Vector3Int.back;
+			if(TryGetChunkPhysics(borderPosition, out borderChunkPhysics))
 			{
-				var borderBlocksPhysicsGetter = borderChunkPhysics.Value.BlocksPhysicsGetter;
+				var borderBlocksPhysicsGetter = borderChunkPhysics.BlocksPhysicsGetter;
 				BackBlocksPhysicsGetter = borderBlocksPhysicsGetter;
 				borderBlocksPhysicsGetter.ForwardBlocksPhysicsGetter = this;
 			}
 
-			borderChunkPhysics = GetChunkPhysics(gridPosition + Vector3Int.right);
-			if(borderChunkPhysics.HasValue)
+			borderPosition = gridPosition + Vector3Int.right;
+			if(TryGetChunkPhysics(borderPosition, out borderChunkPhysics))
 			{
-				var borderBlocksPhysicsGetter = borderChunkPhysics.Value.BlocksPhysicsGetter;
+				var borderBlocksPhysicsGetter = borderChunkPhysics.BlocksPhysicsGetter;
 				RightBlocksPhysicsGetter = borderBlocksPhysicsGetter;
 				borderBlocksPhysicsGetter.LeftBlocksPhysicsGetter = this;
 			}
 
-			borderChunkPhysics = GetChunkPhysics(gridPosition + Vector3Int.left);
-			if(borderChunkPhysics.HasValue)
+			borderPosition = gridPosition + Vector3Int.left;
+			if(TryGetChunkPhysics(borderPosition, out borderChunkPhysics))
 			{
-				var borderBlocksPhysicsGetter = borderChunkPhysics.Value.BlocksPhysicsGetter;
+				var borderBlocksPhysicsGetter = borderChunkPhysics.BlocksPhysicsGetter;
 				LeftBlocksPhysicsGetter = borderBlocksPhysicsGetter;
 				borderBlocksPhysicsGetter.RightBlocksPhysicsGetter = this;
 			}
@@ -134,26 +128,31 @@ namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.Component
 			}
 		}
 
-		private ChunkPhysicsComponent? GetChunkPhysics(Vector3Int gridPosition)
+		private bool TryGetChunkPhysics(Vector3Int gridPosition, out ChunkPhysicsComponent result)
 		{
-			var chunksContainer = GetChunksContainer();
-			if(!chunksContainer.TryGetChunk(gridPosition, out int chunkEntity) ||
-				!_chunkPhysicsPool.Has(chunkEntity))
+			if(!_chunksContainer.TryGetChunk(gridPosition, out int chunkEntity) ||
+			   !_chunkPhysicsPool.Has(chunkEntity))
 			{
-				return null;
+				result = default;	
+				return false;
 			}
 
-			return _chunkPhysicsPool.Get(chunkEntity);
+			result = _chunkPhysicsPool.Get(chunkEntity);
+			return true;
 		}
 
-		private ref ChunksContainer GetChunksContainer()
+		private ChunksContainer GetChunksContainer(EcsWorld world)
 		{
-			foreach(var entity in _chunksContainerFilter)
+			var pool = world.GetPool<ChunksContainerComponent>();
+			var filter = world
+				.Filter<ChunksContainerComponent>()
+				.End();
+			foreach(var entity in filter)
 			{
-				return ref _chunksContainerPool.Get(entity).ChunksContainer;
+				return pool.Get(entity).ChunksContainer;
 			}
 
-			throw new Exception($"{typeof(ChunksContainerComponent).Name} not found");
+			throw new Exception($"{nameof(ChunksContainerComponent)} not found");
 		}
 	}
 }

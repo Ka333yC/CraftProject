@@ -68,7 +68,7 @@ namespace _Scripts.Implementation.UIImplementation.GameWorldSceneUI.PlayerToolba
 				return ref playerInventoryPool.Get(playerEntity);
 			}
 
-			throw new Exception($"{typeof(PlayerInventoryComponent).Name} not found");
+			throw new Exception($"{nameof(PlayerInventoryComponent)} not found");
 		}
 	}
 }

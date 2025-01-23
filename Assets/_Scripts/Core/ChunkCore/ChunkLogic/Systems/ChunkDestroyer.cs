@@ -103,7 +103,7 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Systems
 				return pool.Get(entity).ChunksContainer;
 			}
 
-			throw new Exception($"{typeof(ChunksContainerComponent).Name} not found");
+			throw new Exception($"{nameof(ChunksContainerComponent)} not found");
 		}
 
 		private ChunkGameObjectPool GetChunkGameObjectPool(EcsWorld world)
@@ -117,7 +117,7 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Systems
 				return componentPool.Get(entity).Pool;
 			}
 
-			throw new Exception($"{typeof(ChunkGameObjectPoolComponent).Name} not found");
+			throw new Exception($"{nameof(ChunkGameObjectPoolComponent)} not found");
 		}
 	}
 }
