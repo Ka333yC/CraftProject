@@ -1,4 +1,5 @@
 ﻿using _Scripts.Apart.Extensions;
+using _Scripts.Core.PhysicsCore.Presets;
 using _Scripts.TempScripts;
 using UnityEngine;
 
@@ -6,22 +7,24 @@ namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.GroundCheck
 {
 	public class GroundChecker
 	{
-		private static readonly Collider[] _overlapedColliders = new Collider[128];
+		private static readonly Collider[] _overlappedColliders = new Collider[128];
 
 		private readonly Rigidbody _rigidbody;
 		private readonly Collider _collider;
+		private readonly PhysicsPresets _physicsPresets;
 		private readonly Vector3 _boxCastHalfSize; // Считаем без значения y
 
-		public GroundChecker(Rigidbody rigidbody, Collider collider)
+		public GroundChecker(Rigidbody rigidbody, Collider collider, PhysicsPresets physicsPresets)
 		{
 			_rigidbody = rigidbody;
 			_collider = collider;
+			_physicsPresets = physicsPresets;
 			var boundsSize = collider.bounds.size;
 			// Домножаю на 2 на всякий случай, т.к. OverlapBox может захватить площадь сбоку, а не снизу
 			Vector3 boxCastSize = new Vector3()
 			{
 				x = boundsSize.x - Physics.defaultContactOffset * 2,
-				y = Singleton.Instance.PhysicsSettings.GroundCheckDistance,
+				y = _physicsPresets.GroundCheckDistance,
 				z = boundsSize.z - Physics.defaultContactOffset * 2,
 			};
 
@@ -30,7 +33,7 @@ namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.GroundCheck
 
 		public bool IsGrounded() 
 		{
-			if(Mathf.Abs(_rigidbody.velocity.y) > Singleton.Instance.PhysicsSettings.GroundCheckAllowedVelocity)
+			if(Mathf.Abs(_rigidbody.velocity.y) > _physicsPresets.GroundCheckAllowedVelocity)
 			{
 				return false;
 			}
@@ -39,11 +42,11 @@ namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.GroundCheck
 			var boxCastCenter = bounds.center;
 			boxCastCenter.y -= bounds.size.y / 2;
 			var overlappedCollidersCount = Physics.OverlapBoxNonAlloc(boxCastCenter,
-				_boxCastHalfSize, _overlapedColliders);
-			var groundLayer = Singleton.Instance.PhysicsSettings.GroundLayer;
+				_boxCastHalfSize, _overlappedColliders);
+			var groundLayer = _physicsPresets.GroundLayer;
 			for(int i = 0; i < overlappedCollidersCount; i++)
 			{
-				if(groundLayer.Has(_overlapedColliders[i].gameObject.layer))
+				if(groundLayer.Has(_overlappedColliders[i].gameObject.layer))
 				{
 					return true;
 				}

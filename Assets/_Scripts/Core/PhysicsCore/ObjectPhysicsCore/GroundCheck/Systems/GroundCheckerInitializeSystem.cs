@@ -1,11 +1,16 @@
 ﻿using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.Components;
 using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.GroundCheck.Components;
+using _Scripts.Core.PhysicsCore.Presets;
 using Leopotam.EcsLite;
+using Zenject;
 
 namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.GroundCheck.Systems
 {
 	public class GroundCheckerInitializeSystem : IEcsPreInitSystem, IEcsRunSystem
 	{
+		[Inject]
+		private PhysicsPresets _physicsPresets;
+		
 		private EcsPool<GroundCheckerInitializedTag> _groundCheckerInitializedPool;
 		private EcsPool<ObjectPhysicsComponent> _objectPhysicsPool;
 		private EcsFilter _objectPhysicsToInitializeGroundCheckerFilter;
@@ -27,7 +32,7 @@ namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.GroundCheck.Systems
 			{
 				ref var objectPhysics = ref _objectPhysicsPool.Get(objectPhysicsEntity);
 				objectPhysics.GroundChecker = new GroundChecker(objectPhysics.Rigidbody,
-					objectPhysics.FullSizeCollider);
+					objectPhysics.FullSizeCollider, _physicsPresets);
 				_groundCheckerInitializedPool.Add(objectPhysicsEntity);
 			}
 		}

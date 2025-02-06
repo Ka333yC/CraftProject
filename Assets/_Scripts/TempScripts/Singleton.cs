@@ -11,13 +11,6 @@ namespace _Scripts.TempScripts
 {
 	public class Singleton : MonoBehaviour
 	{
-		//[Inject]
-		//private GameWorldDBCommandExecutor _commandExecutor;
-		//[Inject]
-		//private WorldLauncher _worldLauncher;
-		[Inject]
-		private PhysicsPresets _physicsPresets;
-
 		public static Singleton Instance { get; private set; }
 
 		[field: SerializeField]
@@ -26,13 +19,8 @@ namespace _Scripts.TempScripts
 		[field: SerializeField]
 		public BlockContainer BlockToSpawn { get; private set; } // В DI
 
-		//[field: SerializeField]
-		//public EcsGameStartup EcsGameStartup { get; private set; } // В DI
-
 		[field: SerializeField]
 		public NoiseSettings NoiseSettings { get; private set; }
-
-		public PhysicsPresets PhysicsSettings => _physicsPresets;
 
 		private void Awake()
 		{
