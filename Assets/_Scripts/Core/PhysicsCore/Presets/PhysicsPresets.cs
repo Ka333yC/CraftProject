@@ -13,6 +13,9 @@ namespace _Scripts.Core.PhysicsCore.Presets
 		public float GroundCheckDistance { get; private set; } = 0.05f;
 
 		[field: SerializeField]
+		public float GroundCheckAllowedVelocity { get; private set; } = 0.5f;
+		
+		[field: SerializeField]
 		public LayerMask IgnoreAllLayer { get; private set; }
 
 		[field: SerializeField]
@@ -20,7 +23,5 @@ namespace _Scripts.Core.PhysicsCore.Presets
 
 		[field: SerializeField]
 		public MeshColliderCookingOptions CookingOptions { get; private set; }
-	
-		public float SlightlyVelocityByAxis => SlightlyVelocityMagnitude / 3;
 	}
 }

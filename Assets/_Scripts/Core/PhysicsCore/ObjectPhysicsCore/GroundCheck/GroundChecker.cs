@@ -30,7 +30,7 @@ namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.GroundCheck
 
 		public bool IsGrounded() 
 		{
-			if(Mathf.Abs(_rigidbody.velocity.y) > Singleton.Instance.PhysicsSettings.SlightlyVelocityByAxis)
+			if(Mathf.Abs(_rigidbody.velocity.y) > Singleton.Instance.PhysicsSettings.GroundCheckAllowedVelocity)
 			{
 				return false;
 			}

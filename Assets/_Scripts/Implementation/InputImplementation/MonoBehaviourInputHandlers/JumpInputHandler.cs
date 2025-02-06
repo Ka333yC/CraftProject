@@ -18,7 +18,7 @@ namespace _Scripts.Implementation.InputImplementation.MonoBehaviourInputHandlers
 		private EcsPool<JumpInputTag> _jumpInputPool;
 		private EcsFilter _jumpInputFilter;
 		private InputAction _action;
-		private bool _isActionStarted;
+		private bool _isActionStarted = true;
 
 		public bool Input
 		{
