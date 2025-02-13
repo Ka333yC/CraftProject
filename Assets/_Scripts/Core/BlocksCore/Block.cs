@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace _Scripts.Core.BlocksCore
@@ -7,7 +8,7 @@ namespace _Scripts.Core.BlocksCore
 	{
 		public readonly bool IsShared;
 
-		private readonly List<IBlockComponent> _components = new List<IBlockComponent>(1);
+		private readonly List<IBlockComponent> _components = new List<IBlockComponent>(2);
 
 		public int Id => Container.Id;
 		public IBlockContainer Container { get; set; }
@@ -26,6 +27,19 @@ namespace _Scripts.Core.BlocksCore
 		{
 			Container = null;
 			_components.Clear();
+		}
+
+		public T GetComponent<T>() where T : IBlockComponent
+		{
+			foreach(var component in _components)
+			{
+				if(component is T)
+				{
+					return (T)component;
+				}
+			}
+
+			throw new ArgumentException();
 		}
 
 		public bool TryGetComponent<T>(out T result) where T : IBlockComponent
