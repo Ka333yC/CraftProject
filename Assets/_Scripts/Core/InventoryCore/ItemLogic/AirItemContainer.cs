@@ -20,7 +20,7 @@ namespace _Scripts.Core.InventoryCore.ItemLogic
 		public void Initialize(int id)
 		{
 			Id = id;
-			_blockContainer.Id = id;
+			_blockContainer.Initialize(id);
 		}
 	}
 }

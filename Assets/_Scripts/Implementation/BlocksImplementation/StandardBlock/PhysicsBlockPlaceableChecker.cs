@@ -1,4 +1,6 @@
-﻿using _Scripts.Apart.Extensions;
+﻿using System;
+using _Scripts.Apart.Extensions;
+using _Scripts.Core.BlocksCore;
 using _Scripts.Core.PhysicsCore.Presets;
 using _Scripts.Implementation.BlocksImplementation;
 using UnityEngine;
@@ -6,8 +8,8 @@ using Zenject;
 
 namespace _Scripts.Implementation.Blocks.StandardBlock.Physics
 {
-	[CreateAssetMenu(fileName = "PhysicsPlaceableChecker", menuName = "Blocks/Physics/Physics placeable checker")]
-	public class PhysicsBlockPlaceableChecker : BlockPlaceableChecker
+	[Serializable]
+	public class PhysicsBlockPlaceableChecker : IBlockPlaceableChecker
 	{
 		[SerializeField] 
 		private Vector3 _boxSizeToCheck;
@@ -15,7 +17,7 @@ namespace _Scripts.Implementation.Blocks.StandardBlock.Physics
 		[Inject]
 		private PhysicsPresets _physicsPresets;
 
-		public override bool IsPlaceable(Vector3Int worldPosition)
+		public bool IsPlaceable(Vector3Int worldPosition)
 		{
 			var boxSizeToCheckHalfSize = _boxSizeToCheck / 2;
 			Vector3 center = new Vector3(worldPosition.x + boxSizeToCheckHalfSize.x,

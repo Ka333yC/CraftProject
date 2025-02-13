@@ -8,17 +8,19 @@ namespace _Scripts.Implementation.BlocksImplementation
 	[CreateAssetMenu(fileName = "SharedBlockContainer", menuName = "Blocks/Shared block container")]
 	public class SharedBlockContainer : BlockContainer
 	{
-		[SerializeField]
-		private BlockComponentContainer[] _blockComponentContainers;
-		[SerializeField]
-		private BlockPlaceableChecker[] _blockPlaceableCheckers;
+		[SerializeReference, SubclassSelector]
+		private IBlockComponentContainer[] _blockComponentContainers;
+		[SerializeReference, SubclassSelector]
+		private IBlockPlaceableChecker[] _blockPlaceableCheckers;
 
+		private int _id;
 		private Block _sharedBlock;
 
-		public override int Id { get; set; }
+		public override int Id => _id;
 
-		public override void Initialize()
+		public override void Initialize(int id)
 		{
+			_id = id;
 			_sharedBlock = BlockPool.Shared.Rent(true);
 			_sharedBlock.Container = this;
 			foreach(var componentContainer in _blockComponentContainers)

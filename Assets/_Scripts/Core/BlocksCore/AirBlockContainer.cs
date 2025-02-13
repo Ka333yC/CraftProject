@@ -7,15 +7,16 @@ namespace _Scripts.Core.BlocksCore
 	{
 		private readonly Block _air;
 
-		public int Id { get; set; }
+		public int Id { get; private set; }
 
 		public AirBlockContainer()
 		{
 			_air = BlockPool.Shared.Rent(true);
 		}
 
-		public void Initialize()
+		public void Initialize(int id)
 		{
+			Id = id;
 			_air.Container = this;
 		}
 

@@ -28,14 +28,6 @@ namespace _Scripts.Core.BlocksCore
 		public void Initialize()
 		{
 			CacheBlockContainers();
-			foreach(var blockContainer in _containers)
-			{
-				if(blockContainer != null)
-				{
-					blockContainer?.Initialize();
-				}
-			}
-
 			SetAirBlock();
 		}
 

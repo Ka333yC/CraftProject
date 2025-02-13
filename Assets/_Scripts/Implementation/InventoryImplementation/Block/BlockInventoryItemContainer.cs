@@ -35,7 +35,7 @@ namespace _Scripts.Implementation.InventoryImplementation.Block
 		public override void Initialize(int id)
 		{
 			_id = id;
-			_blockContainer.Id = id;
+			_blockContainer.Initialize(id);
 		}
 
 		[Inject]

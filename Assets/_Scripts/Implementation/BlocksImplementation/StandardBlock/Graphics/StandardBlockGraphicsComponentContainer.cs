@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using _Scripts.Apart.Extensions;
@@ -8,8 +9,8 @@ using UnityEngine;
 
 namespace _Scripts.Implementation.Blocks.StandardBlock.Graphics
 {
-	[CreateAssetMenu(fileName = "BlockGraphicsComponent", menuName = "Blocks/Graphics/Standard block graphics component")]
-	public class StandardBlockGraphicsComponentContainer : BlockComponentContainer, IGraphicsBlockComponentContainer
+	[Serializable]
+	public class StandardBlockGraphicsComponentContainer : IGraphicsBlockComponentContainer
 	{
 		[field: SerializeField] 
 		public StandardMeshData MeshData { get; private set; }
@@ -20,7 +21,7 @@ namespace _Scripts.Implementation.Blocks.StandardBlock.Graphics
 		[field: SerializeField] 
 		public BlockTransparency Transparency { get; private set; }
 
-		public override void InitializeBlock(Block block)
+		public void InitializeBlock(Block block)
 		{
 			block.AddComponent(new StandardBlockGraphics(this));
 		}

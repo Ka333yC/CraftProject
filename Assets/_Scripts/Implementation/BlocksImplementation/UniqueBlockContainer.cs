@@ -10,17 +10,19 @@ namespace _Scripts.Implementation.BlocksImplementation
 	[CreateAssetMenu(fileName = "UniqueBlockContainer", menuName = "Blocks/Unique block container")]
 	public class UniqueBlockContainer : BlockContainer, ISerializableBlockContainer
 	{
-		[SerializeField]
-		private BlockComponentContainer[] _blockComponentContainers;
-		[SerializeField]
-		private BlockPlaceableChecker[] _blockPlaceableCheckers;
+		[SerializeReference, SubclassSelector]
+		private IBlockComponentContainer[] _blockComponentContainers;
+		[SerializeReference, SubclassSelector]
+		private IBlockPlaceableChecker[] _blockPlaceableCheckers;
 
+		private int _id;
 		private ISerializableBlockComponentContainer[] _serializableBlockComponentContainers;
 
-		public override int Id { get; set; }
+		public override int Id => _id;
 
-		public override void Initialize()
+		public override void Initialize(int id)
 		{
+			_id = id;
 			_serializableBlockComponentContainers = GetSerializableBlockComponentContainers().ToArray();
 		}
 
