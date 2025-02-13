@@ -1,8 +1,7 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace _Scripts.Implementation.PlayerImplementation.Movement
+namespace _Scripts.Implementation.PlayerImplementation.Input.Components
 {
     [Serializable]
     public struct MovementParametersComponent

@@ -192,6 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af02cb58ca9ecb45a01c8d5f2f632dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _chunkPrefab: {fileID: 3345022460761111687, guid: dd25d63bd1a156849b97f91979187917, type: 3}
 --- !u!1 &7143527408534287783
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,7 +406,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11414302, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
       propertyPath: m_Size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11414302, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
       propertyPath: m_Value

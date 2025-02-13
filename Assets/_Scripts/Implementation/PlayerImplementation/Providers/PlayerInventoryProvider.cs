@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using _Scripts.Core.InventoryCore;
-using _Scripts.Core.InventoryCore.Components;
-using _Scripts.Core.InventoryCore.SlotLogic;
+using _Scripts.Core.PlayerCore;
 using _Scripts.Implementation.InventoryImplementation.Block;
-using _Scripts.Implementation.PlayerImplementation.Inventory;
+using _Scripts.Implementation.PlayerImplementation.PlayerInventory;
+using _Scripts.Implementation.PlayerImplementation.PlayerInventory.Components;
 using Leopotam.EcsLite;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Voody.UniLeo.Lite;
 
-namespace _Scripts.Core.PlayerCore
+namespace _Scripts.Implementation.PlayerImplementation.Providers
 {
 	public class PlayerInventoryProvider: BaseMonoProvider, IConvertToEntity
 	{

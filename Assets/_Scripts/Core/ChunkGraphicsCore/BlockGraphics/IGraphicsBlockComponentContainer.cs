@@ -6,7 +6,7 @@ namespace _Scripts.Core.ChunkGraphicsCore.BlockGraphics
 {
 	public interface IGraphicsBlockComponentContainer : IBlockComponentContainer
 	{
-		public IEnumerable<Texture2D> GetTextures();
-		public void SetTexturesRects(IEnumerable<Rect> rects);
+		public Texture2D[] GetTextures();
+		public void SetTexturesRects(Rect[] rects);
 	}
 }

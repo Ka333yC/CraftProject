@@ -8,11 +8,12 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Pools
 	public class ChunkGameObjectPool : IPool<ChunkGameObject>
 	{
 		private readonly Queue<ChunkGameObject> _freeObjects = new Queue<ChunkGameObject>();
-		private ICreator<ChunkGameObject> _creator;
+		private readonly ICreator<ChunkGameObject> _creator;
 
-		public ChunkGameObjectPool()
+		public ChunkGameObjectPool(ICreator<ChunkGameObject> creator)
 		{
-			_creator = new ChunkGameObjectCreator();
+			// _creator = new ChunkGameObjectCreator();
+			_creator = creator;
 		}
 
 		public ChunkGameObject Get()

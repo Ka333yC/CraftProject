@@ -15,12 +15,12 @@ namespace _Scripts.Implementation.PlayerImplementation
 	public class PlayerSpawnPositionFinder
 	{
 		private EcsWorld _world;
-		private EcsPool<ChunkInitializedTag> _chunkInitializedPool;
-		private EcsPool<ChunkComponent> _chunkPool;
-		private EcsPool<ChunksContainerComponent> _chunksContainerPool;
-		private EcsFilter _chunksContainersFilter;
+		private readonly EcsPool<ChunkInitializedTag> _chunkInitializedPool;
+		private readonly EcsPool<ChunkComponent> _chunkPool;
+		private readonly EcsPool<ChunksContainerComponent> _chunksContainerPool;
+		private readonly EcsFilter _chunksContainersFilter;
 
-		private BlocksContainers _blocksContainers;
+		private readonly BlocksContainers _blocksContainers;
 
 		public PlayerSpawnPositionFinder(EcsWorld world, BlocksContainers blocksContainers)
 		{

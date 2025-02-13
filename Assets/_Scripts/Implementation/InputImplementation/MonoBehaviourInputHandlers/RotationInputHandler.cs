@@ -50,7 +50,7 @@ namespace _Scripts.Implementation.InputImplementation.MonoBehaviourInputHandlers
 			_fingerAction.Dispose();
 		}
 
-		public override void Initailize(InputActionMap actionMap)
+		public override void Initialize(InputActionMap actionMap)
 		{
 			_fingerAction = new FingerInputAction(actionMap, _actionName);
 			_fingerAction.OnActionStarted += ActionStarted;

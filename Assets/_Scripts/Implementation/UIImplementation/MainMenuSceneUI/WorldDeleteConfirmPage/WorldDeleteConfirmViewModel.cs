@@ -7,7 +7,7 @@ namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.WorldDeleteCo
 	{
 		public readonly ReactiveProperty<int> WorldId = new ReactiveProperty<int>();
 
-		private WorldDeleteConfirmModel _model;
+		private readonly WorldDeleteConfirmModel _model;
 
 		public event Action<int> OnWorldDeleted;
 

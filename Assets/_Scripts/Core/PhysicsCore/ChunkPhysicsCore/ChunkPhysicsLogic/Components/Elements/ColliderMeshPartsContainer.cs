@@ -11,7 +11,7 @@ namespace _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.Component
 {
 	public class ColliderMeshPartsContainer : IDisposable
 	{
-		private BlocksPhysicsGetter _blocksPhysicsGetter;
+		private readonly BlocksPhysicsGetter _blocksPhysicsGetter;
 		private readonly MeshPart[,,] _meshParts;
 		private readonly object _lock = new object();
 

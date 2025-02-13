@@ -53,7 +53,7 @@ namespace _Scripts.Implementation.InputImplementation.MonoBehaviourInputHandlers
 			walkInput.Input = _lastPerformedInput;
 		}
 
-		public override void Initailize(InputActionMap actionMap)
+		public override void Initialize(InputActionMap actionMap)
 		{
 			_action = actionMap.FindAction(_actionName);
 			_action.started += ActionStarted;

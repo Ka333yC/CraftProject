@@ -3,7 +3,7 @@ using _Scripts.Core.InventoryCore;
 using _Scripts.Core.InventoryCore.SlotLogic;
 using _Scripts.Core.PlayerCore;
 
-namespace _Scripts.Implementation.PlayerImplementation.Inventory
+namespace _Scripts.Implementation.PlayerImplementation.PlayerInventory
 {
 	public class Toolbar : StandardInventory
 	{

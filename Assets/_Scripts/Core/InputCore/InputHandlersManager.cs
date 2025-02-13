@@ -50,7 +50,7 @@ namespace _Scripts.Core.InputCore
 				return;
 			}
 
-			inputHandler.Initailize(_actionMap);
+			inputHandler.Initialize(_actionMap);
 			if(enabled)
 			{
 				inputHandler.Enable();
@@ -73,7 +73,7 @@ namespace _Scripts.Core.InputCore
 		{
 			foreach(var inputHandler in _inputHandlers)
 			{
-				inputHandler.Initailize(_actionMap);
+				inputHandler.Initialize(_actionMap);
 			}
 		}
 	}

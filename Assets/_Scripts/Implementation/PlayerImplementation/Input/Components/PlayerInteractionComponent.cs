@@ -1,6 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 
-namespace _Scripts.Implementation.PlayerImplementation.Movement
+namespace _Scripts.Implementation.PlayerImplementation.Input.Components
 {
 	public struct PlayerInteractionComponent
 	{

@@ -14,10 +14,7 @@ namespace _Scripts.TempScripts
 		public static Singleton Instance { get; private set; }
 
 		[field: SerializeField]
-		public ChunkGameObject ChunkPrefab { get; private set; } // В DI
-
-		[field: SerializeField]
-		public BlockContainer BlockToSpawn { get; private set; } // В DI
+		public BlockContainer BlockToSpawn { get; private set; }
 
 		[field: SerializeField]
 		public NoiseSettings NoiseSettings { get; private set; }

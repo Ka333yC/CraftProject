@@ -1,9 +1,9 @@
 ﻿using System;
-using _Scripts.Core.InventoryCore.Components;
 using _Scripts.Core.PlayerCore;
 using _Scripts.Core.PlayerCore.Components;
 using _Scripts.Core.UICore.PopUp;
-using _Scripts.Implementation.PlayerImplementation.Inventory;
+using _Scripts.Implementation.PlayerImplementation.PlayerInventory;
+using _Scripts.Implementation.PlayerImplementation.PlayerInventory.Components;
 using Leopotam.EcsLite;
 using UnityEngine;
 using UnityEngine.Serialization;

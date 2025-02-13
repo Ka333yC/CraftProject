@@ -1,7 +1,4 @@
-﻿using System;
-using _Scripts.Implementation.PlayerImplementation.Inventory;
-
-namespace _Scripts.Core.InventoryCore.Components
+﻿namespace _Scripts.Implementation.PlayerImplementation.PlayerInventory.Components
 {
 	public struct PlayerInventoryComponent
 	{

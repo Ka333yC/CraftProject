@@ -2,7 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-namespace _Scripts.TempScripts
+namespace _Scripts.Implementation.UIImplementation.GameWorldSceneUI.MainGameWorldPage.Elements
 {
 	public class FpsCounter : MonoBehaviour
 	{

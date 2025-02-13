@@ -18,7 +18,7 @@ namespace _Scripts.Implementation.InputImplementation.MonoBehaviourInputHandlers
 		private EcsPool<JumpInputTag> _jumpInputPool;
 		private EcsFilter _jumpInputFilter;
 		private InputAction _action;
-		private bool _isActionStarted = true;
+		private bool _isActionStarted;
 
 		public bool Input
 		{
@@ -47,7 +47,7 @@ namespace _Scripts.Implementation.InputImplementation.MonoBehaviourInputHandlers
 			_jumpInputPool.Add(inputEntity);
 		}
 
-		public override void Initailize(InputActionMap actionMap)
+		public override void Initialize(InputActionMap actionMap)
 		{
 			_action = actionMap.FindAction(_actionName);
 			_action.started += ActionStarted;

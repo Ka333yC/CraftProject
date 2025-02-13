@@ -14,7 +14,7 @@ namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.WorldsListPag
 		public readonly ReactiveProperty<int> SelectedWorldId = new ReactiveProperty<int>(-1);
 
 		private readonly WorldsListModel _model;
-		private CancellationTokenSource _cts = new CancellationTokenSource();
+		private readonly CancellationTokenSource _cts = new CancellationTokenSource();
 
 		[Inject]
 		private ScenesLauncher _worldLauncher;

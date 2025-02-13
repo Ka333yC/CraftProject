@@ -1,4 +1,4 @@
-﻿namespace _Scripts.Implementation.PlayerImplementation.Movement
+﻿namespace _Scripts.Implementation.PlayerImplementation.Input.Components
 {
 	public struct PlayerJumpVelocityComponent
 	{

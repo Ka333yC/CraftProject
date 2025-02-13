@@ -18,12 +18,12 @@ namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.WorldsListPag
 		[Inject]
 		private DiContainer _diContainer;
 
-		private CancellationTokenSource _token = new CancellationTokenSource();
+		private readonly CancellationTokenSource _token = new CancellationTokenSource();
 		private Task _fillTask = Task.CompletedTask;
-		private Dictionary<int, WorldListScrollCard> _usedCards =
+		private readonly Dictionary<int, WorldListScrollCard> _usedCards =
 			new Dictionary<int, WorldListScrollCard>();
-		private LinkedList<int> _worldsIdToCreate = new LinkedList<int>();
-		private LinkedList<int> _worldsIdToDelete = new LinkedList<int>();
+		private readonly LinkedList<int> _worldsIdToCreate = new LinkedList<int>();
+		private readonly LinkedList<int> _worldsIdToDelete = new LinkedList<int>();
 		private ScrollRect _scrollRect;
 
 		public event Action<int> OnCardSelected;

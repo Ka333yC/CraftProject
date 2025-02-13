@@ -4,7 +4,7 @@ using _Scripts.Core.UICore.Page;
 using DG.Tweening;
 using UnityEngine;
 
-namespace _Scripts.Implementation.UIImplementation.Animations
+namespace _Scripts.Implementation.UIImplementation.Animations.PageAnimations
 {
 	public class PagePositionAnimator : BasePageAnimator
 	{

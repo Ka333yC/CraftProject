@@ -15,7 +15,7 @@ namespace _Scripts.Implementation.InputImplementation.MonoBehaviourInputHandlers
 			_inputHandlersManager.AddInputHandler(this);
 		}
 
-		public abstract void Initailize(InputActionMap actionMap);
+		public abstract void Initialize(InputActionMap actionMap);
 		public abstract void Enable();
 		public abstract void Disable();
 	}

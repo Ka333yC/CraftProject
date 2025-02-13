@@ -29,50 +29,47 @@ namespace _Scripts.Core.ChunkGraphicsCore
 
 		private Texture2D PackTextures()
 		{
-			var graphicsElementContainers =
-				GetBlockGraphicsElementContainers();
-			var allTextures = GetTextures(graphicsElementContainers);
-			var packedTexure = new Texture2D(1, 1, TextureFormat.RGBA32, true);
-			Rect[] rects = packedTexure.PackTextures(allTextures.ToArray(), 0);
+			var graphicsComponentContainers = GetBlockGraphicsComponentContainers();
+			var allTextures = GetTextures(graphicsComponentContainers);
+			var packedTexture = new Texture2D(1, 1, TextureFormat.RGBA32, true);
+			Rect[] rects = packedTexture.PackTextures(allTextures.ToArray(), 0);
 			int i = 0;
-			foreach(var graphicsComponent in
-				graphicsElementContainers)
+			foreach(var graphicsComponent in graphicsComponentContainers)
 			{
 				int count = graphicsComponent.Value.Count();
 				var textureRects = rects.Skip(i).Take(count);
-				graphicsComponent.Key.SetTexturesRects(textureRects);
+				graphicsComponent.Key.SetTexturesRects(textureRects.ToArray());
 				i += count;
 			}
 
-			return packedTexure;
+			return packedTexture;
 		}
 
-		private Dictionary<IGraphicsBlockComponentContainer, IEnumerable<Texture2D>> 
-			GetBlockGraphicsElementContainers()
+		private Dictionary<IGraphicsBlockComponentContainer, IEnumerable<Texture2D>> GetBlockGraphicsComponentContainers()
 		{
-			var graphicsElementContainers =
+			var graphicsComponentContainers =
 				new Dictionary<IGraphicsBlockComponentContainer, IEnumerable<Texture2D>>();
 			foreach(var blockData in _blocksContainers)
 			{
 				if(blockData.TryGetComponentContainer(out IGraphicsBlockComponentContainer 
-					graphicsElementContainer))
+					graphicsComponentContainer))
 				{
-					IEnumerable<Texture2D> textures = graphicsElementContainer.GetTextures();
-					graphicsElementContainers.Add(graphicsElementContainer, textures);
+					IEnumerable<Texture2D> textures = graphicsComponentContainer.GetTextures();
+					graphicsComponentContainers.Add(graphicsComponentContainer, textures);
 				}
 			}
 
-			return graphicsElementContainers;
+			return graphicsComponentContainers;
 		}
 
 		private IEnumerable<Texture2D> GetTextures(Dictionary<IGraphicsBlockComponentContainer, 
-			IEnumerable<Texture2D>> graphicsElementContainers)
+			IEnumerable<Texture2D>> graphicsComponentContainers)
 		{
 			var allTextures = new List<Texture2D>();
-			foreach(var graphicsElementContainer
-				in graphicsElementContainers)
+			foreach(var graphicsComponentContainer
+				in graphicsComponentContainers)
 			{
-				allTextures.AddRange(graphicsElementContainer.Value);
+				allTextures.AddRange(graphicsComponentContainer.Value);
 			}
 
 			return allTextures;

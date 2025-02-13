@@ -1,11 +1,11 @@
 ﻿using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.Components;
 using _Scripts.Core.PlayerCore.Components;
 using _Scripts.Implementation.InputImplementation.Components;
-using _Scripts.Implementation.PlayerImplementation.Movement;
+using _Scripts.Implementation.PlayerImplementation.Input.Components;
 using Leopotam.EcsLite;
 using UnityEngine;
 
-namespace Input.Systems
+namespace _Scripts.Implementation.PlayerImplementation.Input.Systems
 {
 	public class PlayerRotationProcessSystem : IEcsPreInitSystem, IEcsRunSystem
 	{
