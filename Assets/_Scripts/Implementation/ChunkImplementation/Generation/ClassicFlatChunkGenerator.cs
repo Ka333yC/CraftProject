@@ -56,11 +56,13 @@ namespace _Scripts.Implementation.ChunkImplementation.Generation
 			{
 				return _blocksContainers[3].CreateBlock();
 			}
-			else if(y > 0 && y < 3)
+			
+			if(y < 3)
 			{
 				return _blocksContainers[1].CreateBlock();
 			}
-			else if(y == 3)
+			
+			if(y == 3)
 			{
 				return _blocksContainers[4].CreateBlock();
 			}
