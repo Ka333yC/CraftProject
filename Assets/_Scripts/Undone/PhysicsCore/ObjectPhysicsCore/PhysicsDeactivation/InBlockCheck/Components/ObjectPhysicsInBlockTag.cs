@@ -1,4 +1,4 @@
-﻿namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.InBlockCheck.Components
+﻿namespace _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.InBlockCheck.Components
 {
 	public struct ObjectPhysicsInBlockTag
 	{

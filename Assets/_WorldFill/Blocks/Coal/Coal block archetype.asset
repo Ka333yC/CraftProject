@@ -10,25 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3cada427177f74448058429b3bfb846, type: 3}
-  m_Name: Coal block container
+  m_Name: Coal block archetype
   m_EditorClassIdentifier: 
-  _blockComponentContainers:
-  - rid: 1525836581711380490
-  - rid: 1525836581711380491
+  _blockComponents:
+  - rid: 1525836598232219673
+  - rid: 1525836598232219667
   _blockPlaceableCheckers:
-  - rid: 1525836581711380481
+  - rid: 1525836598232219661
   references:
     version: 2
     RefIds:
-    - rid: 1525836581711380481
-      type: {class: PhysicsBlockPlaceableChecker, ns: _Scripts.Implementation.Blocks.StandardBlock.Physics, asm: Assembly-CSharp}
+    - rid: 1525836598232219661
+      type: {class: PhysicsBlockPlaceableChecker, ns: _Scripts.Implementation.BlocksImplementation.StandardBlock, asm: Assembly-CSharp}
       data:
         _boxSizeToCheck: {x: 1, y: 1, z: 1}
-    - rid: 1525836581711380490
-      type: {class: StandardBlockGraphicsComponentContainer, ns: _Scripts.Implementation.BlocksImplementation.StandardBlock.Graphics, asm: Assembly-CSharp}
+    - rid: 1525836598232219667
+      type: {class: StandardBlockPhysics, ns: _Scripts.Implementation.BlocksImplementation.StandardBlock.Physics, asm: Assembly-CSharp}
       data:
-        <MeshData>k__BackingField: {fileID: 11400000, guid: bb464c3d011a3274db79317a18ab4018, type: 2}
-        <TextureData>k__BackingField:
+        _meshData: {fileID: 11400000, guid: bb464c3d011a3274db79317a18ab4018, type: 2}
+    - rid: 1525836598232219673
+      type: {class: StandardBlockGraphics, ns: _Scripts.Implementation.BlocksImplementation.StandardBlock.Graphics, asm: Assembly-CSharp}
+      data:
+        _meshData: {fileID: 11400000, guid: bb464c3d011a3274db79317a18ab4018, type: 2}
+        _textureData:
           <FrontSide>k__BackingField:
             <Texture>k__BackingField: {fileID: 2800000, guid: c97e56439be2a03459acbb608f204dd2, type: 3}
           <BackSide>k__BackingField:
@@ -42,14 +46,10 @@ MonoBehaviour:
           <LeftSide>k__BackingField:
             <Texture>k__BackingField: {fileID: 2800000, guid: c97e56439be2a03459acbb608f204dd2, type: 3}
           <Other>k__BackingField: []
-        <Transparency>k__BackingField:
+        _transparency:
           IsForwardSideTransparent: 0
           IsBackSideTransparent: 0
           IsUpSideTransparent: 0
           IsDownSideTransparent: 0
           IsRightSideTransparent: 0
           IsLeftSideTransparent: 0
-    - rid: 1525836581711380491
-      type: {class: StandardBlockPhysicsComponentContainer, ns: _Scripts.Implementation.Blocks.StandardBlock.Physics, asm: Assembly-CSharp}
-      data:
-        <MeshData>k__BackingField: {fileID: 11400000, guid: bb464c3d011a3274db79317a18ab4018, type: 2}

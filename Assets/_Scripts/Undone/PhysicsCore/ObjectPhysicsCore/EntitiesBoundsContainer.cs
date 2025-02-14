@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using _Scripts.Core.Extensions;
 using UnityEngine;
 
-namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore
+namespace _Scripts.Undone.PhysicsCore.ObjectPhysicsCore
 {
 	public class EntitiesBoundsContainer
 	{

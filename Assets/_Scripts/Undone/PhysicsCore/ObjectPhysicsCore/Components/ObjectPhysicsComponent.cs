@@ -1,8 +1,8 @@
 ﻿using System;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.GroundCheck;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.GroundCheck;
 using UnityEngine;
 
-namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.Components
+namespace _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.Components
 {
 	[Serializable]
 	public struct ObjectPhysicsComponent

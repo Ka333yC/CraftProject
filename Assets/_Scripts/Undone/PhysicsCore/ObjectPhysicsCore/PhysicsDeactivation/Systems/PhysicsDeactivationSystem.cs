@@ -1,9 +1,9 @@
-﻿using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.Components;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.InBlockCheck.Components;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.InSimulatedChunkCheck.Components;
+﻿using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.Components;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.InBlockCheck.Components;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.InSimulatedChunkCheck.Components;
 using Leopotam.EcsLite;
 
-namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.Systems
+namespace _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.Systems
 {
 	public class PhysicsDeactivationSystem : IEcsPreInitSystem, IEcsRunSystem
 	{

@@ -1,21 +1,21 @@
 ﻿using System.Collections.Generic;
 using _Scripts.Apart.Extensions.Ecs.DelHere;
 using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.Components;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.BoundsUpdate.Components;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.BoundsUpdate.Systems;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.GroundCheck.Systems;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.InBlockCheck.Systems;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.InSimulatedChunkCheck.Components;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.InSimulatedChunkCheck.Systems;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.Systems;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.StandardNotification.Components;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.StandardNotification.Systems;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Systems;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.Systems;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.BoundsUpdate.Components;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.BoundsUpdate.Systems;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.GroundCheck.Systems;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.InBlockCheck.Systems;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.InSimulatedChunkCheck.Components;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.InSimulatedChunkCheck.Systems;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.Systems;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.StandardNotification.Components;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.StandardNotification.Systems;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Systems;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.Systems;
 using Leopotam.EcsLite;
 
-namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore
+namespace _Scripts.Undone.PhysicsCore.ObjectPhysicsCore
 {
 	public static class ObjectPhysicsCoreSystems
 	{

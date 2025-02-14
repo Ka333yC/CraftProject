@@ -2,10 +2,10 @@
 using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.Components;
 using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.MeshGeneration.Components;
 using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.MeshPartsContainerLogic.Components;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.InSimulatedChunkCheck.Components;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.InSimulatedChunkCheck.Components;
 using Leopotam.EcsLite;
 
-namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.InSimulatedChunkCheck.Systems
+namespace _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.InSimulatedChunkCheck.Systems
 {
 	public class ChunkPhysicsSimulatedMarker : IEcsPreInitSystem, IEcsRunSystem
 	{

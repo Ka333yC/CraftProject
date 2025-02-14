@@ -17,10 +17,10 @@ namespace _Scripts.Core.BlocksCore
 		public void Initialize(int id)
 		{
 			Id = id;
-			_air.Container = this;
+			_air.Archetype = this;
 		}
 
-		public Block CreateBlock()
+		public Block CreateBlock() 
 		{
 			return _air;
 		}
@@ -30,7 +30,7 @@ namespace _Scripts.Core.BlocksCore
 			return true;
 		}
 
-		public bool TryGetComponentContainer<T>(out T result) where T : IBlockComponentContainer
+		public bool TryGetComponent<T>(out T result) where T : IBlockComponent
 		{
 			result = default;
 			return false;

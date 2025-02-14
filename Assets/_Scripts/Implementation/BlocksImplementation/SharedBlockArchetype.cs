@@ -1,5 +1,6 @@
 ﻿using _Scripts.Core.BlocksCore;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 using static _Scripts.Core.BlocksCore.Block;
 
@@ -9,7 +10,7 @@ namespace _Scripts.Implementation.BlocksImplementation
 	public class SharedBlockArchetype : BlockArchetype
 	{
 		[SerializeReference, SubclassSelector]
-		private IBlockComponentContainer[] _blockComponentContainers;
+		private IBlockComponent[] _blockComponents;
 		[SerializeReference, SubclassSelector]
 		private IBlockPlaceableChecker[] _blockPlaceableCheckers;
 
@@ -22,10 +23,11 @@ namespace _Scripts.Implementation.BlocksImplementation
 		{
 			_id = id;
 			_sharedBlock = BlockPool.Shared.Rent(true);
-			_sharedBlock.Container = this;
-			foreach(var componentContainer in _blockComponentContainers)
+			_sharedBlock.Archetype = this;
+			foreach(var component in _blockComponents)
 			{
-				componentContainer.InitializeBlock(_sharedBlock);
+				var newComponent = component.Clone();
+				newComponent.InitializeBlock(_sharedBlock);
 			}
 		}
 
@@ -47,13 +49,13 @@ namespace _Scripts.Implementation.BlocksImplementation
 			return true;
 		}
 
-		public override bool TryGetComponentContainer<T>(out T result)
+		public override bool TryGetComponent<T>(out T result)
 		{
-			foreach(var componentContainer in _blockComponentContainers)
+			foreach(var component in _blockComponents)
 			{
-				if(componentContainer is T resultContainer)
+				if(component is T resultComponent)
 				{
-					result = resultContainer;
+					result = resultComponent;
 					return true;
 				}
 			}
@@ -63,11 +65,11 @@ namespace _Scripts.Implementation.BlocksImplementation
 		}
 
 		[Inject]
-		private void InjectDataContainers(DiContainer container)
+		private void Inject(DiContainer container)
 		{
-			foreach(var componentContainer in _blockComponentContainers)
+			foreach(var component in _blockComponents)
 			{
-				container.Inject(componentContainer);
+				container.Inject(component);
 			}
 
 			foreach(var placeableChecker in _blockPlaceableCheckers)

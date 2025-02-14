@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.BoundsUpdate.Components
+namespace _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.BoundsUpdate.Components
 {
 	public struct BoundsChangedComponent
 	{

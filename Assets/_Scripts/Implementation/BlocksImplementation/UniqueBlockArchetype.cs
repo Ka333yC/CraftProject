@@ -2,6 +2,7 @@
 using _Scripts.Core.BlocksCore;
 using Newtonsoft.Json;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 using static _Scripts.Core.BlocksCore.Block;
 
@@ -11,26 +12,26 @@ namespace _Scripts.Implementation.BlocksImplementation
 	public class UniqueBlockArchetype : BlockArchetype, ISerializableBlockArchetype
 	{
 		[SerializeReference, SubclassSelector]
-		private IBlockComponentContainer[] _blockComponentContainers;
+		private IBlockComponent[] _blockComponents;
 		[SerializeReference, SubclassSelector]
 		private IBlockPlaceableChecker[] _blockPlaceableCheckers;
 
 		private int _id;
-		private ISerializableBlockComponentContainer[] _serializableBlockComponentContainers;
+		private ISerializableBlockComponent[] _serializableBlockComponents;
 
 		public override int Id => _id;
 
 		public override void Initialize(int id)
 		{
 			_id = id;
-			_serializableBlockComponentContainers = GetSerializableBlockComponentContainers().ToArray();
+			_serializableBlockComponents = GetSerializableBlockComponents().ToArray();
 		}
 
 		public override Block CreateBlock()
 		{
 			var result = BlockPool.Shared.Rent(false);
-			result.Container = this;
-			foreach(var blockComponentContainer in _blockComponentContainers)
+			result.Archetype = this;
+			foreach(var blockComponentContainer in _blockComponents)
 			{
 				blockComponentContainer.InitializeBlock(result);
 			}
@@ -51,13 +52,13 @@ namespace _Scripts.Implementation.BlocksImplementation
 			return true;
 		}
 
-		public override bool TryGetComponentContainer<T>(out T result)
+		public override bool TryGetComponent<T>(out T result)
 		{
-			foreach(var componentContainer in _blockComponentContainers)
+			foreach(var component in _blockComponents)
 			{
-				if(componentContainer is T resultContainer)
+				if(component is T resultComponent)
 				{
-					result = resultContainer;
+					result = resultComponent;
 					return true;
 				}
 			}
@@ -69,7 +70,7 @@ namespace _Scripts.Implementation.BlocksImplementation
 		public string Serialize(Block block)
 		{
 			List<string> serializedData = UnityEngine.Pool.ListPool<string>.Get();
-			foreach(var componentContainer in _serializableBlockComponentContainers)
+			foreach(var componentContainer in _serializableBlockComponents)
 			{
 				serializedData.Add(componentContainer.Serialize(block));
 			}
@@ -82,12 +83,12 @@ namespace _Scripts.Implementation.BlocksImplementation
 		public Block CreateBlock(string serializedBlock)
 		{
 			var result = BlockPool.Shared.Rent(false);
-			result.Container = this;
+			result.Archetype = this;
 			List<string> serializedData = JsonConvert.DeserializeObject<List<string>>(serializedBlock);
 			int serializedDataIndex = 0;
-			foreach(var componentContainer in _blockComponentContainers)
+			foreach(var componentContainer in _blockComponents)
 			{
-				if(componentContainer is ISerializableBlockComponentContainer serializableComponent)
+				if(componentContainer is ISerializableBlockComponent serializableComponent)
 				{
 					serializableComponent.InitializeBlock(result, serializedData[serializedDataIndex++]);
 				}
@@ -103,9 +104,9 @@ namespace _Scripts.Implementation.BlocksImplementation
 		[Inject]
 		private void Inject(DiContainer container)
 		{
-			foreach(var componentContainer in _blockComponentContainers)
+			foreach(var component in _blockComponents)
 			{
-				container.Inject(componentContainer);
+				container.Inject(component);
 			}
 
 			foreach(var placeableChecker in _blockPlaceableCheckers)
@@ -114,14 +115,14 @@ namespace _Scripts.Implementation.BlocksImplementation
 			}
 		}
 
-		private List<ISerializableBlockComponentContainer> GetSerializableBlockComponentContainers() 
+		private List<ISerializableBlockComponent> GetSerializableBlockComponents() 
 		{
-			var result = new List<ISerializableBlockComponentContainer>();
-			foreach(var component in _blockComponentContainers)
+			var result = new List<ISerializableBlockComponent>();
+			foreach(var component in _blockComponents)
 			{
-				if(component is ISerializableBlockComponentContainer serializableComponentContainer)
+				if(component is ISerializableBlockComponent serializableComponent)
 				{
-					result.Add(serializableComponentContainer);
+					result.Add(serializableComponent);
 				}
 			}
 

@@ -1,10 +1,10 @@
-﻿using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.Components;
-using _Scripts.Core.PhysicsCore.Presets;
+﻿using _Scripts.Core.PhysicsCore.Presets;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.Components;
 using Leopotam.EcsLite;
 using UnityEngine;
 using Zenject;
 
-namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.Systems
+namespace _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.Systems
 {
 	public class ObjectPhysicsApplyCalculationsSystem : IEcsPreInitSystem, IEcsRunSystem
 	{

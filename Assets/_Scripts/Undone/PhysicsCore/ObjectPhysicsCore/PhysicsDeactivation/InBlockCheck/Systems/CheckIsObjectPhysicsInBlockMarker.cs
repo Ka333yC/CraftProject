@@ -1,12 +1,13 @@
 ﻿using System;
 using _Scripts.Apart.Extensions.Ecs;
+using _Scripts.Core;
 using _Scripts.Core.ChunkCore.BlockChanging.FixedNotification.Components;
 using _Scripts.Core.ChunkCore.ChunkLogic.Components;
 using _Scripts.Core.ChunkCore.ChunkLogic.Components.Fixed;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.InBlockCheck.Components;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.InBlockCheck.Components;
 using Leopotam.EcsLite;
 
-namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.InBlockCheck.Systems
+namespace _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.InBlockCheck.Systems
 {
 	public class CheckIsObjectPhysicsInBlockMarker : IEcsPreInitSystem, IEcsInitSystem, IEcsRunSystem
 	{

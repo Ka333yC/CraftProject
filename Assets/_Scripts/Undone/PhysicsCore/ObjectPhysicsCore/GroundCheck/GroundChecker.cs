@@ -1,9 +1,8 @@
 ﻿using _Scripts.Apart.Extensions;
 using _Scripts.Core.PhysicsCore.Presets;
-using _Scripts.TempScripts;
 using UnityEngine;
 
-namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.GroundCheck
+namespace _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.GroundCheck
 {
 	public class GroundChecker
 	{

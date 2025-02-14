@@ -1,11 +1,12 @@
 ﻿using System;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.Components;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components.Elements;
+using _Scripts.Core;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.Components;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components.Elements;
 using Leopotam.EcsLite;
 using UnityEngine;
 
-namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Systems
+namespace _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Systems
 {
 	public class ObjectPhysicsPositionsUpdater : IEcsPreInitSystem, IEcsInitSystem, IEcsRunSystem
 	{

@@ -1,5 +1,5 @@
 ﻿using System;
-using _Scripts.Implementation.Blocks.StandardBlock.Graphics;
+using _Scripts.Implementation.BlocksImplementation.StandardBlock.Graphics;
 using UnityEngine;
 
 namespace _Scripts.Implementation.BlocksImplementation.WoodLogBlock.Graphics

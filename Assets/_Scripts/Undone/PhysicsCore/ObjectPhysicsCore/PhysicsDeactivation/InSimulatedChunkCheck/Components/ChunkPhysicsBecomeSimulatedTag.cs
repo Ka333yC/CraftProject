@@ -1,4 +1,4 @@
-﻿namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.InSimulatedChunkCheck.Components
+﻿namespace _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.InSimulatedChunkCheck.Components
 {
 	public struct ChunkPhysicsBecomeSimulatedTag
 	{

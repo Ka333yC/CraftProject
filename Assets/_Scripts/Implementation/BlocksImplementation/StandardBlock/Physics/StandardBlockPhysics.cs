@@ -1,26 +1,38 @@
-﻿using _Scripts.Core;
+﻿using System;
+using _Scripts.Core;
+using _Scripts.Core.BlocksCore;
 using _Scripts.Core.MeshWrap;
 using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.BlockPhysics;
+using UnityEngine;
 
-namespace _Scripts.Implementation.Blocks.StandardBlock.Physics
+namespace _Scripts.Implementation.BlocksImplementation.StandardBlock.Physics
 {
+	[Serializable]
 	public class StandardBlockPhysics : IPhysicsBlockComponent
 	{
-		private readonly StandardBlockPhysicsComponentContainer _physicsElement;
+		[SerializeField]
+		private StandardMeshData _meshData;
 
-		public StandardBlockPhysics(StandardBlockPhysicsComponentContainer physicsElement)
+		public void InitializeBlock(Block block)
 		{
-			_physicsElement = physicsElement;
+			block.AddComponent(this);
+		}
+
+		public IBlockComponent Clone()
+		{
+			var result = new StandardBlockPhysics();
+			result._meshData = _meshData;
+			return result;
 		}
 
 		public bool IsFull(Face face)
 		{
-			return _physicsElement.MeshData.HasSide(face);
+			return _meshData.HasSide(face);
 		}
 
 		public MeshDataPart GetMeshDataPart(Face face)
 		{
-			return _physicsElement.MeshData.GetSide(face);
+			return _meshData.GetSide(face);
 		}
 	}
 }

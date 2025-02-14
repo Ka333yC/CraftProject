@@ -1,9 +1,9 @@
 ﻿using _Scripts.Core.Extensions;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.BoundsUpdate.Components;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.Components;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.BoundsUpdate.Components;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.Components;
 using Leopotam.EcsLite;
 
-namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.BoundsUpdate.Systems
+namespace _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.BoundsUpdate.Systems
 {
 	public class ObjectPhysicsBoundsUpdater : IEcsPreInitSystem, IEcsRunSystem
 	{

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components.Elements
+namespace _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components.Elements
 {
 	public class ObjectPhysicsPositionsContainer
 	{

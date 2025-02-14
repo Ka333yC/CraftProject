@@ -1,16 +1,17 @@
 ﻿using System;
 using _Scripts.Apart.Extensions;
+using _Scripts.Core;
 using _Scripts.Core.ChunkCore.ChunkLogic.Components;
 using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components;
 using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components.Elements;
 using _Scripts.Core.Extensions;
 using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.BlockPhysics;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.Components;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.InBlockCheck.Components;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.Components;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.InBlockCheck.Components;
 using Leopotam.EcsLite;
 using UnityEngine;
 
-namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.InBlockCheck.Systems
+namespace _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.InBlockCheck.Systems
 {
 	public class ObjectPhysicsInBlockCheckerSystem : IEcsPreInitSystem, IEcsInitSystem, IEcsRunSystem
 	{

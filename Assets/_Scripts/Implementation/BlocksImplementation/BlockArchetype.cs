@@ -10,6 +10,6 @@ namespace _Scripts.Implementation.BlocksImplementation
 		public abstract void Initialize(int id);
 		public abstract Block CreateBlock();
 		public abstract bool IsPlaceable(Vector3Int worldPosition);
-		public abstract bool TryGetComponentContainer<T>(out T result) where T : IBlockComponentContainer;
+		public abstract bool TryGetComponent<T>(out T result) where T : IBlockComponent;
 	}
 }

@@ -1,34 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using _Scripts.Apart.Extensions;
 using _Scripts.Core;
-using _Scripts.Implementation.BlocksImplementation;
 using UnityEngine;
 
-namespace _Scripts.Implementation.Blocks.StandardBlock.Graphics
+namespace _Scripts.Implementation.BlocksImplementation.StandardBlock.Graphics
 {
 	[Serializable]
 	public class StandardBlockTextureData
 	{
 		[field: SerializeField] 
 		public BlockTextureSide FrontSide { get; private set; }
-
 		[field: SerializeField] 
 		public BlockTextureSide BackSide { get; private set; }
-
 		[field: SerializeField] 
 		public BlockTextureSide TopSide { get; private set; }
-
 		[field: SerializeField] 
 		public BlockTextureSide BottomSide { get; private set; }
-
 		[field: SerializeField] 
 		public BlockTextureSide RightSide { get; private set; }
-
 		[field: SerializeField] 
 		public BlockTextureSide LeftSide { get; private set; }
-
 		[field: SerializeField] 
 		public BlockTextureSide[] Other { get; private set; }
 		

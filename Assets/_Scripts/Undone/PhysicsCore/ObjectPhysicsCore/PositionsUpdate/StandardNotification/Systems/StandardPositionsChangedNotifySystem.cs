@@ -1,9 +1,9 @@
-﻿using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.Components;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.StandardNotification.Components;
+﻿using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.Components;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.StandardNotification.Components;
 using Leopotam.EcsLite;
 
-namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.StandardNotification.Systems
+namespace _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.StandardNotification.Systems
 {
 	public class StandardPositionsChangedNotifySystem : IEcsPreInitSystem, IEcsRunSystem
 	{

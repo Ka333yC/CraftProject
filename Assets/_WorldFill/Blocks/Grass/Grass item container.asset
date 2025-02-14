@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stackSize: 64
   _icon: {fileID: 21300000, guid: 68720cc5b7dbfdd40b8de9781765b2e8, type: 3}
-  _blockContainer: {fileID: 11400000, guid: c33615c8c59d0bb4b9f9d12e8531455b, type: 2}
+  _blockArchetype: {fileID: 11400000, guid: c33615c8c59d0bb4b9f9d12e8531455b, type: 2}

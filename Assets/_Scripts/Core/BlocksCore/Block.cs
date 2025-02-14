@@ -10,8 +10,8 @@ namespace _Scripts.Core.BlocksCore
 
 		private readonly List<IBlockComponent> _components = new List<IBlockComponent>(2);
 
-		public int Id => Container.Id;
-		public IBlockArchetype Container { get; set; }
+		public int Id => Archetype.Id;
+		public IBlockArchetype Archetype { get; set; }
 
 		private Block(bool isShared)
 		{
@@ -25,7 +25,7 @@ namespace _Scripts.Core.BlocksCore
 
 		public void Release()
 		{
-			Container = null;
+			Archetype = null;
 			_components.Clear();
 		}
 

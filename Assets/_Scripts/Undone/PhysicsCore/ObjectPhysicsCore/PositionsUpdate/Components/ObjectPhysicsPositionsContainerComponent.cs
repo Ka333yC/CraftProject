@@ -1,6 +1,6 @@
-﻿using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components.Elements;
+﻿using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components.Elements;
 
-namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components
+namespace _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components
 {
 	public struct ObjectPhysicsPositionsContainerComponent
 	{

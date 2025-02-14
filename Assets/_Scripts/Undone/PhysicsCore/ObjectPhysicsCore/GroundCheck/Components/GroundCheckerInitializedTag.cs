@@ -1,4 +1,4 @@
-﻿namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.GroundCheck.Components
+﻿namespace _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.GroundCheck.Components
 {
 	public struct GroundCheckerInitializedTag
 	{

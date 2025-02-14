@@ -1,10 +1,10 @@
-﻿using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.Components;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.GroundCheck.Components;
-using _Scripts.Core.PhysicsCore.Presets;
+﻿using _Scripts.Core.PhysicsCore.Presets;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.Components;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.GroundCheck.Components;
 using Leopotam.EcsLite;
 using Zenject;
 
-namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.GroundCheck.Systems
+namespace _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.GroundCheck.Systems
 {
 	public class GroundCheckerInitializeSystem : IEcsPreInitSystem, IEcsRunSystem
 	{

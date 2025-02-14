@@ -40,7 +40,7 @@ namespace _Scripts.Implementation.ChunkImplementation.Serialization
 				_lastBlockIdIndex += 2;
 			}
 
-			if(block.Container is ISerializableBlockArchetype serializableContainer)
+			if(block.Archetype is ISerializableBlockArchetype serializableContainer)
 			{
 				var serializedData = serializableContainer.Serialize(block);
 				_serializedBlocksData.Push(serializedData);

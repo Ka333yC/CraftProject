@@ -4,13 +4,13 @@ using _Scripts.Core.ChunkCore.ChunkLogic.Components;
 using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components;
 using _Scripts.Core.ChunkCore.ChunksContainerLogic.Components.Elements;
 using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.ChunkPhysicsLogic.Components;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.Components;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.InSimulatedChunkCheck.Components;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components;
-using _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components.Elements;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.Components;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.InSimulatedChunkCheck.Components;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components;
+using _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PositionsUpdate.Components.Elements;
 using Leopotam.EcsLite;
 
-namespace _Scripts.Core.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.InSimulatedChunkCheck.Systems
+namespace _Scripts.Undone.PhysicsCore.ObjectPhysicsCore.PhysicsDeactivation.InSimulatedChunkCheck.Systems
 {
 	public class InSimulatedChunkPhysicsMarker : IEcsPreInitSystem, IEcsInitSystem, IEcsRunSystem
 	{

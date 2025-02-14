@@ -2,11 +2,10 @@
 using _Scripts.Apart.Extensions;
 using _Scripts.Core.BlocksCore;
 using _Scripts.Core.PhysicsCore.Presets;
-using _Scripts.Implementation.BlocksImplementation;
 using UnityEngine;
 using Zenject;
 
-namespace _Scripts.Implementation.Blocks.StandardBlock.Physics
+namespace _Scripts.Implementation.BlocksImplementation.StandardBlock
 {
 	[Serializable]
 	public class PhysicsBlockPlaceableChecker : IBlockPlaceableChecker
