@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab92e13647c44ae44a751898c3ad2f01, type: 3}
+  m_Name: Wood log block container
+  m_EditorClassIdentifier: 
+  _blockComponentContainers:
+  - rid: 1525836581711380501
+  - rid: 1525836581711380502
+  - rid: 1525836581711380503
+  _blockPlaceableCheckers:
+  - rid: 1525836581711380504
+  references:
+    version: 2
+    RefIds:
+    - rid: 1525836581711380501
+      type: {class: WoodLogBlockComponentContainer, ns: _Scripts.Implementation.BlocksImplementation.WoodLogBlock, asm: Assembly-CSharp}
+      data: 
+    - rid: 1525836581711380502
+      type: {class: WoodLogBlockGraphicsComponentContainer, ns: _Scripts.Implementation.BlocksImplementation.WoodLogBlock, asm: Assembly-CSharp}
+      data:
+        <MeshData>k__BackingField: {fileID: 11400000, guid: bb464c3d011a3274db79317a18ab4018, type: 2}
+        <TextureData>k__BackingField:
+          <VerticalRotationTextureData>k__BackingField:
+            <FrontSide>k__BackingField:
+              <Texture>k__BackingField: {fileID: 2800000, guid: a64fe6830b348c84ba576f4b7cd0d351, type: 3}
+            <BackSide>k__BackingField:
+              <Texture>k__BackingField: {fileID: 2800000, guid: a64fe6830b348c84ba576f4b7cd0d351, type: 3}
+            <TopSide>k__BackingField:
+              <Texture>k__BackingField: {fileID: 2800000, guid: b4477f5634eaf09428c0bfe3e8fe0226, type: 3}
+            <BottomSide>k__BackingField:
+              <Texture>k__BackingField: {fileID: 2800000, guid: b4477f5634eaf09428c0bfe3e8fe0226, type: 3}
+            <RightSide>k__BackingField:
+              <Texture>k__BackingField: {fileID: 2800000, guid: a64fe6830b348c84ba576f4b7cd0d351, type: 3}
+            <LeftSide>k__BackingField:
+              <Texture>k__BackingField: {fileID: 2800000, guid: a64fe6830b348c84ba576f4b7cd0d351, type: 3}
+            <Other>k__BackingField: []
+          <HorizontalByXRotationTextureData>k__BackingField:
+            <FrontSide>k__BackingField:
+              <Texture>k__BackingField: {fileID: 2800000, guid: a64fe6830b348c84ba576f4b7cd0d351, type: 3}
+            <BackSide>k__BackingField:
+              <Texture>k__BackingField: {fileID: 2800000, guid: a64fe6830b348c84ba576f4b7cd0d351, type: 3}
+            <TopSide>k__BackingField:
+              <Texture>k__BackingField: {fileID: 2800000, guid: a64fe6830b348c84ba576f4b7cd0d351, type: 3}
+            <BottomSide>k__BackingField:
+              <Texture>k__BackingField: {fileID: 2800000, guid: a64fe6830b348c84ba576f4b7cd0d351, type: 3}
+            <RightSide>k__BackingField:
+              <Texture>k__BackingField: {fileID: 2800000, guid: b4477f5634eaf09428c0bfe3e8fe0226, type: 3}
+            <LeftSide>k__BackingField:
+              <Texture>k__BackingField: {fileID: 2800000, guid: b4477f5634eaf09428c0bfe3e8fe0226, type: 3}
+            <Other>k__BackingField: []
+          <HorizontalByZRotationTextureData>k__BackingField:
+            <FrontSide>k__BackingField:
+              <Texture>k__BackingField: {fileID: 2800000, guid: b4477f5634eaf09428c0bfe3e8fe0226, type: 3}
+            <BackSide>k__BackingField:
+              <Texture>k__BackingField: {fileID: 2800000, guid: b4477f5634eaf09428c0bfe3e8fe0226, type: 3}
+            <TopSide>k__BackingField:
+              <Texture>k__BackingField: {fileID: 2800000, guid: a64fe6830b348c84ba576f4b7cd0d351, type: 3}
+            <BottomSide>k__BackingField:
+              <Texture>k__BackingField: {fileID: 2800000, guid: a64fe6830b348c84ba576f4b7cd0d351, type: 3}
+            <RightSide>k__BackingField:
+              <Texture>k__BackingField: {fileID: 2800000, guid: a64fe6830b348c84ba576f4b7cd0d351, type: 3}
+            <LeftSide>k__BackingField:
+              <Texture>k__BackingField: {fileID: 2800000, guid: a64fe6830b348c84ba576f4b7cd0d351, type: 3}
+            <Other>k__BackingField: []
+    - rid: 1525836581711380503
+      type: {class: StandardBlockPhysicsComponentContainer, ns: _Scripts.Implementation.Blocks.StandardBlock.Physics, asm: Assembly-CSharp}
+      data:
+        <MeshData>k__BackingField: {fileID: 11400000, guid: bb464c3d011a3274db79317a18ab4018, type: 2}
+    - rid: 1525836581711380504
+      type: {class: PhysicsBlockPlaceableChecker, ns: _Scripts.Implementation.Blocks.StandardBlock.Physics, asm: Assembly-CSharp}
+      data:
+        _boxSizeToCheck: {x: 0, y: 0, z: 0}

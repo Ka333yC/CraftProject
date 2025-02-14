@@ -1,13 +1,16 @@
 ﻿using System;
 using _Scripts.Core.BlocksCore;
+using UnityEngine;
 
 namespace _Scripts.Implementation.BlocksImplementation.WoodLogBlock
 {
+	[Serializable]
 	public class WoodLogBlockComponentContainer : ISerializableBlockComponentContainer
 	{
 		public void InitializeBlock(Block block)
 		{
-			block.AddComponent(new WoodLogBlockComponent());
+			var component = new WoodLogBlockComponent();
+			block.AddComponent(component);
 		}
 
 		public string Serialize(Block block)

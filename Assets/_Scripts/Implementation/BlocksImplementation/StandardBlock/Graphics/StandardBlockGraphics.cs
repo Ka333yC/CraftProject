@@ -3,30 +3,30 @@ using _Scripts.Core.ChunkGraphicsCore.BlockGraphics;
 using _Scripts.Core.MeshWrap;
 using UnityEngine;
 
-namespace _Scripts.Implementation.Blocks.StandardBlock.Graphics
+namespace _Scripts.Implementation.BlocksImplementation.StandardBlock.Graphics
 {
 	public class StandardBlockGraphics : IGraphicsBlockComponent
 	{
-		private readonly StandardBlockGraphicsComponentContainer _graphicsElement;
+		private readonly StandardBlockGraphicsComponentContainer _graphicsContainer;
 
 		public StandardBlockGraphics(StandardBlockGraphicsComponentContainer graphicsComponent)
 		{
-			_graphicsElement = graphicsComponent;
+			_graphicsContainer = graphicsComponent;
 		}
 
 		public bool IsTransparent(Face face)
 		{
-			return _graphicsElement.Transparency.IsTransparent(face);
+			return _graphicsContainer.Transparency.IsTransparent(face);
 		}
 
 		public MeshDataPart GetMeshDataPart(Face face)
 		{
-			return _graphicsElement.MeshData.GetSide(face);
+			return _graphicsContainer.MeshData.GetSide(face);
 		}
 
 		public Vector2[] GetUV(Face face)
 		{
-			return _graphicsElement.TextureData.GetSide(face).UV;
+			return _graphicsContainer.TextureData.GetSide(face).UV;
 		}
 	}
 }

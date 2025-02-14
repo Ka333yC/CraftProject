@@ -272,6 +272,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 690e957c20c358d439563878e529d843, type: 2}
   - {fileID: 11400000, guid: 5662e420736bd824ab122c9048520f3a, type: 2}
   - {fileID: 11400000, guid: ae6bb3163cfbf514fbc46b64b5618691, type: 2}
+  - {fileID: 11400000, guid: 53fa184345bb9de4fa0a841241264669, type: 2}
   _chunkMaterial: {fileID: 2100000, guid: 70cc2cd424e1aad488604ecc4ddd54ea, type: 2}
 --- !u!4 &375821045
 Transform:
@@ -792,7 +793,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fb63ebce9c47f542b8ff37fea751bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <ChunkPrefab>k__BackingField: {fileID: 3345022460761111687, guid: dd25d63bd1a156849b97f91979187917, type: 3}
   <BlockToSpawn>k__BackingField: {fileID: 11400000, guid: c33615c8c59d0bb4b9f9d12e8531455b, type: 2}
   <NoiseSettings>k__BackingField:
     <NoiseType>k__BackingField: 0

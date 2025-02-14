@@ -3,6 +3,6 @@
 	public interface ISerializableBlockContainer : IBlockContainer
 	{
 		public string Serialize(Block block);
-		public Block Deserialize(string serializedBlock);
+		public Block CreateBlock(string serializedBlock);
 	}
 }

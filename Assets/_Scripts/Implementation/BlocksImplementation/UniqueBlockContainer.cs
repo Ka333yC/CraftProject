@@ -79,7 +79,7 @@ namespace _Scripts.Implementation.BlocksImplementation
 			return result;
 		}
 
-		public Block Deserialize(string serializedBlock)
+		public Block CreateBlock(string serializedBlock)
 		{
 			var result = BlockPool.Shared.Rent(false);
 			result.Container = this;

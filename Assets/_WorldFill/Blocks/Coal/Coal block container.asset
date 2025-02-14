@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3cada427177f74448058429b3bfb846, type: 3}
-  m_Name: Coal block
+  m_Name: Coal block container
   m_EditorClassIdentifier: 
   _blockComponentContainers:
   - rid: 1525836581711380490
@@ -25,7 +25,7 @@ MonoBehaviour:
       data:
         _boxSizeToCheck: {x: 1, y: 1, z: 1}
     - rid: 1525836581711380490
-      type: {class: StandardBlockGraphicsComponentContainer, ns: _Scripts.Implementation.Blocks.StandardBlock.Graphics, asm: Assembly-CSharp}
+      type: {class: StandardBlockGraphicsComponentContainer, ns: _Scripts.Implementation.BlocksImplementation.StandardBlock.Graphics, asm: Assembly-CSharp}
       data:
         <MeshData>k__BackingField: {fileID: 11400000, guid: bb464c3d011a3274db79317a18ab4018, type: 2}
         <TextureData>k__BackingField:

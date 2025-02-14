@@ -4,6 +4,9 @@ using Newtonsoft.Json;
 
 namespace _Scripts.Implementation.ChunkImplementation.Serialization
 {
+	/// <summary>
+	/// Работает по прицнипу LIFO(стека)
+	/// </summary>
 	public class CompressedBlocks
 	{
 		private readonly BlocksContainers _blocksContainers;
@@ -14,15 +17,14 @@ namespace _Scripts.Implementation.ChunkImplementation.Serialization
 		private int _lastBlockId = -1;
 		[JsonProperty]
 		private int _lastBlockIdIndex = -2;
+		[JsonProperty]
+		private Stack<string> _serializedBlocksData = new Stack<string>();
 
 		public CompressedBlocks(BlocksContainers blocksContainers)
 		{
 			_blocksContainers = blocksContainers;
 		}
 
-		/// <summary>
-		///  ���������� ���������� � ������� 0, 0, 0
-		/// </summary>
 		public void AddLast(Block block) 
 		{
 			var blockId = block.Id;
@@ -37,11 +39,14 @@ namespace _Scripts.Implementation.ChunkImplementation.Serialization
 				_lastBlockId = blockId;
 				_lastBlockIdIndex += 2;
 			}
+
+			if(block.Container is ISerializableBlockContainer serializableContainer)
+			{
+				var serializedData = serializableContainer.Serialize(block);
+				_serializedBlocksData.Push(serializedData);
+			}
 		}
 
-		/// <summary>
-		///  �������� ���������� � ���������� ������������ �������, �� ���� � 15, 15, 15
-		/// </summary>
 		public Block PopLast() 
 		{
 			if(_blocksIdWithCount[_lastBlockIdIndex + 1] == 0)
@@ -51,7 +56,14 @@ namespace _Scripts.Implementation.ChunkImplementation.Serialization
 			}
 
 			_blocksIdWithCount[_lastBlockIdIndex + 1]--;
-			return _blocksContainers[_lastBlockId].CreateBlock();
+			var blockContainer = _blocksContainers[_lastBlockId];
+			if(blockContainer is ISerializableBlockContainer serializableContainer)
+			{
+				var serializedData = _serializedBlocksData.Pop();
+				return serializableContainer.CreateBlock(serializedData);
+			}
+			
+			return blockContainer.CreateBlock();
 		}
 	}
 }

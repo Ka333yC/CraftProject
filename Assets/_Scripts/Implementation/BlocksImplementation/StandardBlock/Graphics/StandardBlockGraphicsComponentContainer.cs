@@ -1,13 +1,13 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using _Scripts.Apart.Extensions;
 using _Scripts.Core.BlocksCore;
 using _Scripts.Core.ChunkGraphicsCore.BlockGraphics;
-using _Scripts.Implementation.BlocksImplementation;
+using _Scripts.Implementation.Blocks.StandardBlock.Graphics;
 using UnityEngine;
+using UnityEngine.Scripting.APIUpdating;
+using UnityEngine.Serialization;
 
-namespace _Scripts.Implementation.Blocks.StandardBlock.Graphics
+namespace _Scripts.Implementation.BlocksImplementation.StandardBlock.Graphics
 {
 	[Serializable]
 	public class StandardBlockGraphicsComponentContainer : IGraphicsBlockComponentContainer
