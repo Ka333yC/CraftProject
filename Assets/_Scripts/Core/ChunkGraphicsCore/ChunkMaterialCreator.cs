@@ -8,9 +8,9 @@ namespace _Scripts.Core.ChunkGraphicsCore
 {
 	public class ChunkGraphicsTextureCreator
 	{
-		private readonly BlocksContainers _blocksContainers;
+		private readonly BlocksArchetype _blocksContainers;
 
-		public ChunkGraphicsTextureCreator(BlocksContainers blocksContainers)
+		public ChunkGraphicsTextureCreator(BlocksArchetype blocksContainers)
 		{
 			_blocksContainers = blocksContainers;
 		}

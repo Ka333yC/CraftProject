@@ -3,6 +3,7 @@ using _Scripts.Core.InventoryCore.ItemLogic;
 using _Scripts.Implementation.BlocksImplementation;
 using Leopotam.EcsLite;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace _Scripts.Implementation.InventoryImplementation.Block
@@ -15,14 +16,14 @@ namespace _Scripts.Implementation.InventoryImplementation.Block
 		[SerializeField]
 		private Sprite _icon;
 		[SerializeField] 
-		private BlockContainer _blockContainer;
+		private BlockArchetype _blockArchetype;
 
 		[Inject]
 		private EcsWorld _world;
 
 		private int _id;
 
-		public IBlockContainer BlockContainer => _blockContainer;
+		public IBlockArchetype BlockArchetype => _blockArchetype;
 		public override int Id => _id;
 		public override short StackSize => _stackSize;
 		public override Sprite Icon => _icon;
@@ -35,13 +36,13 @@ namespace _Scripts.Implementation.InventoryImplementation.Block
 		public override void Initialize(int id)
 		{
 			_id = id;
-			_blockContainer.Initialize(id);
+			_blockArchetype.Initialize(id);
 		}
 
 		[Inject]
 		private void Inject(DiContainer diContainer) 
 		{
-			diContainer.Inject(_blockContainer);
+			diContainer.Inject(_blockArchetype);
 		}
 	}
 }

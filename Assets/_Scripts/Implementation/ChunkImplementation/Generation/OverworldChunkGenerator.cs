@@ -18,7 +18,7 @@ namespace _Scripts.Implementation.ChunkImplementation.Generation
 		private readonly int _maxDeviation = 4;
 
 		public OverworldChunkGenerator(EcsWorld world, int seed, NoiseSettings noiseSettings, 
-			BlocksContainers blocksContainers) : base(seed, noiseSettings, blocksContainers)
+			BlocksArchetype blocksContainers) : base(seed, noiseSettings, blocksContainers)
 		{
 			_chunksPool = world.GetPool<ChunkComponent>();
 

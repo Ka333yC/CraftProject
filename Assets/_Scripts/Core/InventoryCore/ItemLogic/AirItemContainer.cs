@@ -5,12 +5,12 @@ namespace _Scripts.Core.InventoryCore.ItemLogic
 {
 	public class AirItemContainer : IItemContainer, IBlockItemData
 	{
-		private readonly AirBlockContainer _blockContainer = new AirBlockContainer();
+		private readonly AirBlockArchetype _blockArchetype = new AirBlockArchetype();
 
 		public int Id { get; private set; }
 		public short StackSize => 0;
 		public Sprite Icon => null;
-		public IBlockContainer BlockContainer => _blockContainer;
+		public IBlockArchetype BlockArchetype => _blockArchetype;
 
 		public Item Create()
 		{
@@ -20,7 +20,7 @@ namespace _Scripts.Core.InventoryCore.ItemLogic
 		public void Initialize(int id)
 		{
 			Id = id;
-			_blockContainer.Initialize(id);
+			_blockArchetype.Initialize(id);
 		}
 	}
 }

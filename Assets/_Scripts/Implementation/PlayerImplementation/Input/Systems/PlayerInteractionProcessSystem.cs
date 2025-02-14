@@ -23,7 +23,7 @@ namespace _Scripts.Implementation.PlayerImplementation.Input.Systems
 		private const int HitDelay = 300;
 		
 		[Inject]
-		private BlocksContainers _blocksContainers;
+		private BlocksArchetype _blocksContainers;
 		
 		private ChunksContainer _chunksContainer;
 		

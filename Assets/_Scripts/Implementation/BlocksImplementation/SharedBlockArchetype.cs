@@ -5,8 +5,8 @@ using static _Scripts.Core.BlocksCore.Block;
 
 namespace _Scripts.Implementation.BlocksImplementation
 {
-	[CreateAssetMenu(fileName = "SharedBlockContainer", menuName = "Blocks/Shared block container")]
-	public class SharedBlockContainer : BlockContainer
+	[CreateAssetMenu(fileName = "SharedBlockArchetype", menuName = "Blocks/Shared block archetype")]
+	public class SharedBlockArchetype : BlockArchetype
 	{
 		[SerializeReference, SubclassSelector]
 		private IBlockComponentContainer[] _blockComponentContainers;

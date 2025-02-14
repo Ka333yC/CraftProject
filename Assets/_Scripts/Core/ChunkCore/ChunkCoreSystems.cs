@@ -23,7 +23,6 @@ namespace _Scripts.Core.ChunkCore
 			{
 				new ChunksContainerCreator(),
 				new ChunkGameObjectPoolCreator(),
-				// new BlockContainersInitializer(),
 			};
 		}
 

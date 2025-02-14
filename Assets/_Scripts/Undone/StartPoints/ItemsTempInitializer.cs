@@ -17,7 +17,7 @@ namespace _Scripts.Undone.StartPoints
 		[Inject]
 		private ItemsContainers _itemsContainer;
 		[Inject]
-		private BlocksContainers _blocksContainers;
+		private BlocksArchetype _blocksContainers;
 
 		public void Initialize()
 		{

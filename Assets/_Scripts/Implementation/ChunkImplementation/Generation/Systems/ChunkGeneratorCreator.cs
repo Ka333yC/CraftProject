@@ -9,7 +9,7 @@ namespace _Scripts.Implementation.ChunkImplementation.Generation.Systems
 	public class ChunkGeneratorCreator : IEcsInitSystem
 	{
 		[Inject]
-		private BlocksContainers _blocksContainers;
+		private BlocksArchetype _blocksContainers;
 
 		public void Init(IEcsSystems systems)
 		{

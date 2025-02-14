@@ -7,9 +7,9 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.ChunkGeneration.Elements
 	{
 		protected readonly int _seed;
 		protected readonly NoiseSettings _noiseSettings;
-		protected readonly BlocksContainers _blocksContainers;
+		protected readonly BlocksArchetype _blocksContainers;
 
-		public ChunkGenerator(int seed, NoiseSettings noiseSettings, BlocksContainers blocksContainers)
+		public ChunkGenerator(int seed, NoiseSettings noiseSettings, BlocksArchetype blocksContainers)
 		{
 			_seed = seed;
 			_noiseSettings = noiseSettings;

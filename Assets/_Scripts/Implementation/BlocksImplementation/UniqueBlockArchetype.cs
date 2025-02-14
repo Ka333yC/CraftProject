@@ -7,8 +7,8 @@ using static _Scripts.Core.BlocksCore.Block;
 
 namespace _Scripts.Implementation.BlocksImplementation
 {
-	[CreateAssetMenu(fileName = "UniqueBlockContainer", menuName = "Blocks/Unique block container")]
-	public class UniqueBlockContainer : BlockContainer, ISerializableBlockContainer
+	[CreateAssetMenu(fileName = "UniqueBlockArchetype", menuName = "Blocks/Unique block archetype")]
+	public class UniqueBlockArchetype : BlockArchetype, ISerializableBlockArchetype
 	{
 		[SerializeReference, SubclassSelector]
 		private IBlockComponentContainer[] _blockComponentContainers;

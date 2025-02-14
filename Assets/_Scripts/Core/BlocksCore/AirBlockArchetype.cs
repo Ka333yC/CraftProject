@@ -3,13 +3,13 @@ using static _Scripts.Core.BlocksCore.Block;
 
 namespace _Scripts.Core.BlocksCore
 {
-	public class AirBlockContainer : IBlockContainer
+	public class AirBlockArchetype : IBlockArchetype
 	{
 		private readonly Block _air;
 
 		public int Id { get; private set; }
 
-		public AirBlockContainer()
+		public AirBlockArchetype()
 		{
 			_air = BlockPool.Shared.Rent(true);
 		}

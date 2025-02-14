@@ -20,10 +20,10 @@ namespace _Scripts.Implementation.ChunkImplementation.Serialization
 		private readonly EcsPool<ChunkComponent> _chunksPool;
 
 		private readonly DataBaseCommandExecutor _commandExecutor;
-		private readonly BlocksContainers _blocksContainers;
+		private readonly BlocksArchetype _blocksContainers;
 
 		public CompressedChunksSerializer(EcsWorld world, GameWorldDBCommandExecutor commandExecutor,
-			BlocksContainers blocksContainers)
+			BlocksArchetype blocksContainers)
 		{
 			_chunksPool = world.GetPool<ChunkComponent>();
 

@@ -33,12 +33,12 @@ namespace _Scripts.Implementation.InventoryImplementation.Block
 
 		public bool Use(Vector3Int worldPosition)
 		{
-			if(!_itemContainer.BlockContainer.IsPlaceable(worldPosition))
+			if(!_itemContainer.BlockArchetype.IsPlaceable(worldPosition))
 			{
 				return false;
 			}
 
-			var block = _itemContainer.BlockContainer.CreateBlock();
+			var block = _itemContainer.BlockArchetype.CreateBlock();
 			SetBlock(worldPosition, block);
 			return true;
 		}

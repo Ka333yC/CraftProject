@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _Scripts.Implementation.BlocksImplementation
 {
-	public abstract class BlockContainer : ScriptableObject, IBlockContainer
+	public abstract class BlockArchetype : ScriptableObject, IBlockArchetype
 	{
 		public abstract int Id { get; }
 

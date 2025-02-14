@@ -43,7 +43,7 @@ namespace _Scripts.Implementation.SceneManagement.GameWorldScene
 		private void InstallBlocksContainers()
 		{
 			Container
-				.BindInterfacesAndSelfTo<BlocksContainers>()
+				.BindInterfacesAndSelfTo<BlocksArchetype>()
 				.FromNew()
 				.AsSingle();
 		}

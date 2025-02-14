@@ -11,7 +11,7 @@ namespace _Scripts.Core.BlocksCore
 		private readonly List<IBlockComponent> _components = new List<IBlockComponent>(2);
 
 		public int Id => Container.Id;
-		public IBlockContainer Container { get; set; }
+		public IBlockArchetype Container { get; set; }
 
 		private Block(bool isShared)
 		{

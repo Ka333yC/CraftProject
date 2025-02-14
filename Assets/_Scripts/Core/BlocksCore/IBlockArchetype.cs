@@ -2,7 +2,7 @@
 
 namespace _Scripts.Core.BlocksCore
 {
-	public interface IBlockContainer
+	public interface IBlockArchetype
 	{
 		public int Id { get; }
 

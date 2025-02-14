@@ -4,6 +4,6 @@ namespace _Scripts.Core.InventoryCore.ItemLogic
 {
 	public interface IBlockItemData : IItemData
 	{
-		public IBlockContainer BlockContainer { get; }
+		public IBlockArchetype BlockArchetype { get; }
 	}
 }

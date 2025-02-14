@@ -18,7 +18,7 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Systems
 	public class ChunkCreator : IEcsPreInitSystem, IEcsInitSystem, IEcsRunSystem
 	{
 		[Inject]
-		private BlocksContainers _blocksContainers;
+		private BlocksArchetype _blocksContainers;
 		
 		private ChunksContainer _chunksContainer;
 		private ChunkGameObjectPool _chunkGameObjectPool;

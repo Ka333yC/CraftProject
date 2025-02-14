@@ -14,7 +14,7 @@ namespace _Scripts.Implementation.ChunkImplementation.Generation
 		private readonly EcsPool<ChunkComponent> _chunksPool;
 
 		public ClassicFlatChunkGenerator(EcsWorld world, int seed, NoiseSettings noiseSettings,
-			BlocksContainers blocksContainers) : base(seed, noiseSettings, blocksContainers)
+			BlocksArchetype blocksContainers) : base(seed, noiseSettings, blocksContainers)
 		{
 			_chunksPool = world.GetPool<ChunkComponent>();
 		}

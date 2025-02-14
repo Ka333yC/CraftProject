@@ -20,9 +20,9 @@ namespace _Scripts.Implementation.PlayerImplementation
 		private readonly EcsPool<ChunksContainerComponent> _chunksContainerPool;
 		private readonly EcsFilter _chunksContainersFilter;
 
-		private readonly BlocksContainers _blocksContainers;
+		private readonly BlocksArchetype _blocksContainers;
 
-		public PlayerSpawnPositionFinder(EcsWorld world, BlocksContainers blocksContainers)
+		public PlayerSpawnPositionFinder(EcsWorld world, BlocksArchetype blocksContainers)
 		{
 			_world = world;
 			_chunkInitializedPool = world.GetPool<ChunkInitializedTag>();

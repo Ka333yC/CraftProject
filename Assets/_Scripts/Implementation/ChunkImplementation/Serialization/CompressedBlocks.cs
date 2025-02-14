@@ -9,7 +9,7 @@ namespace _Scripts.Implementation.ChunkImplementation.Serialization
 	/// </summary>
 	public class CompressedBlocks
 	{
-		private readonly BlocksContainers _blocksContainers;
+		private readonly BlocksArchetype _blocksContainers;
 
 		[JsonProperty]
 		private List<int> _blocksIdWithCount = new List<int>();
@@ -20,7 +20,7 @@ namespace _Scripts.Implementation.ChunkImplementation.Serialization
 		[JsonProperty]
 		private Stack<string> _serializedBlocksData = new Stack<string>();
 
-		public CompressedBlocks(BlocksContainers blocksContainers)
+		public CompressedBlocks(BlocksArchetype blocksContainers)
 		{
 			_blocksContainers = blocksContainers;
 		}
@@ -40,7 +40,7 @@ namespace _Scripts.Implementation.ChunkImplementation.Serialization
 				_lastBlockIdIndex += 2;
 			}
 
-			if(block.Container is ISerializableBlockContainer serializableContainer)
+			if(block.Container is ISerializableBlockArchetype serializableContainer)
 			{
 				var serializedData = serializableContainer.Serialize(block);
 				_serializedBlocksData.Push(serializedData);
@@ -56,14 +56,14 @@ namespace _Scripts.Implementation.ChunkImplementation.Serialization
 			}
 
 			_blocksIdWithCount[_lastBlockIdIndex + 1]--;
-			var blockContainer = _blocksContainers[_lastBlockId];
-			if(blockContainer is ISerializableBlockContainer serializableContainer)
+			var blockArchetype = _blocksContainers[_lastBlockId];
+			if(blockArchetype is ISerializableBlockArchetype serializableArchetype)
 			{
 				var serializedData = _serializedBlocksData.Pop();
-				return serializableContainer.CreateBlock(serializedData);
+				return serializableArchetype.CreateBlock(serializedData);
 			}
 			
-			return blockContainer.CreateBlock();
+			return blockArchetype.CreateBlock();
 		}
 	}
 }
