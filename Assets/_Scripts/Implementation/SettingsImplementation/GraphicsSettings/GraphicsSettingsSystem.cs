@@ -31,7 +31,7 @@ namespace _Scripts.Implementation.SettingsImplementation.GraphicsSettings
 
 		public void GetFrom(SettingsData settingsData)
 		{
-			if(settingsData.TryGet(nameof(LoadingRange), out int loadingRange))
+			if(settingsData.SavableData.TryGet(nameof(LoadingRange), out int loadingRange))
 			{
 				LoadingRange = loadingRange;
 			}
@@ -39,26 +39,11 @@ namespace _Scripts.Implementation.SettingsImplementation.GraphicsSettings
 			{
 				LoadingRange = 8;
 			}
-
-			if(settingsData.TryGet(nameof(_someObject), out _someObject))
-			{
-				_someObject.Add(UnityEngine.Random.Range(0, 110));
-				foreach(var value in _someObject)
-				{
-					Debug.Log(value);
-				}
-			}
-			else
-			{
-				_someObject = new List<int>();
-				_someObject.Add(UnityEngine.Random.Range(0, 110));
-			}
 		}
 
 		public void SetTo(SettingsData settingsData)
 		{
-			settingsData.Set(nameof(LoadingRange), LoadingRange);
-			settingsData.Set(nameof(_someObject), _someObject);
+			settingsData.SavableData.Set(nameof(LoadingRange), LoadingRange);
 		}
 	}
 }
