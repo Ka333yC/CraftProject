@@ -1,93 +1,63 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace _Scripts.Core.SettingsCore
 {
 	public class SettingsData
 	{
+		[JsonConverter(typeof(TypedDictionaryConverter))]
 		[JsonProperty]
-		private readonly Dictionary<string, bool> _boolSettings = new Dictionary<string, bool>();
+		private readonly Dictionary<string, object> _data = new Dictionary<string, object>();
 		[JsonProperty]
-		private readonly Dictionary<string, int> _intSettings = new Dictionary<string, int>();
-		[JsonProperty]
-		private readonly Dictionary<string, float> _floatSettings = new Dictionary<string, float>();
-		[JsonProperty]
-		private readonly Dictionary<string, string> _stringSettings = new Dictionary<string, string>();
+		private readonly Dictionary<string, Type> _dataTypes = new Dictionary<string, Type>();
 
-		public bool TryGetBool(string settingName, out bool settingValue)
+		/// <summary>
+		/// Throws InvalidCastException if the types do not match
+		/// </summary>
+		public bool TryGet<T>(string dataName, out T dataValue)
 		{
-			return _boolSettings.TryGetValue(settingName, out settingValue);
-		}
-
-		public bool TryGetInt(string settingName, out int settingValue)
-		{
-			return _intSettings.TryGetValue(settingName, out settingValue);
-		}
-
-		public bool TryGetFloat(string settingName, out float settingValue)
-		{
-			return _floatSettings.TryGetValue(settingName, out settingValue);
-		}
-
-		public bool TryGetString(string settingName, out string settingValue)
-		{
-			return _stringSettings.TryGetValue(settingName, out settingValue);
-		}
-
-		public void SetBool(string settingName, bool settingValue)
-		{
-			if(_boolSettings.ContainsKey(settingName))
+			if(_data.TryGetValue(dataName, out object savedDataValue))
 			{
-				_boolSettings[settingName] = settingValue;
+				dataValue = (T)savedDataValue;
+				return true;
 			}
-			else
+
+			dataValue = default;
+			return false;
+		}
+
+		public void Set<T>(string dataName, T dataValue)
+		{
+			if(_data.ContainsKey(dataName))
 			{
-				_boolSettings.Add(settingName, settingValue);
+				if(_dataTypes[dataName] != typeof(T))
+				{
+					throw new InvalidCastException();
+				}
+				
+				_data[dataName] = dataValue;
+			}
+			else 
+			{
+				_data.Add(dataName, dataValue);
+				_dataTypes.Add(dataName, typeof(T));
 			}
 		}
 
-		public void SetInt(string settingName, int settingValue)
+		public void Reset(string dataName)
 		{
-			if(_intSettings.ContainsKey(settingName))
+			if(_data.Remove(dataName))
 			{
-				_intSettings[settingName] = settingValue;
-			}
-			else
-			{
-				_intSettings.Add(settingName, settingValue);
+				_dataTypes.Remove(dataName);
 			}
 		}
 
-		public void SetFloat(string settingName, float settingValue)
+		public void ResetAll()
 		{
-			if(_floatSettings.ContainsKey(settingName))
-			{
-				_floatSettings[settingName] = settingValue;
-			}
-			else
-			{
-				_floatSettings.Add(settingName, settingValue);
-			}
-		}
-
-		public void SetString(string settingName, string settingValue)
-		{
-			if(_stringSettings.ContainsKey(settingName))
-			{
-				_stringSettings[settingName] = settingValue;
-			}
-			else
-			{
-				_stringSettings.Add(settingName, settingValue);
-			}
-		}
-
-		public void Reset()
-		{
-			_boolSettings.Clear();
-			_intSettings.Clear();
-			_floatSettings.Clear();
-			_stringSettings.Clear();
+			_data.Clear();
+			_dataTypes.Clear();
 		}
 	}
 }
