@@ -29,7 +29,7 @@ namespace _Scripts.Core.SettingsCore
 
 		private void WriteInternal(SettingsData settingsData) 
 		{
-			var serializedSettings = JsonConvert.SerializeObject(settingsData);
+			var serializedSettings = JsonConvert.SerializeObject(settingsData, Formatting.Indented);
 			File.WriteAllText(_settingsFilePath, serializedSettings);
 		}
 
