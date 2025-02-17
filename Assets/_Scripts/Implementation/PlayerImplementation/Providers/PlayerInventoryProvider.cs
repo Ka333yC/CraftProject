@@ -1,5 +1,6 @@
 ﻿using System;
 using _Scripts.Core.PlayerCore;
+using _Scripts.Implementation.InventoryImplementation;
 using _Scripts.Implementation.InventoryImplementation.Block;
 using _Scripts.Implementation.PlayerImplementation.PlayerInventory;
 using _Scripts.Implementation.PlayerImplementation.PlayerInventory.Components;
@@ -12,7 +13,7 @@ namespace _Scripts.Implementation.PlayerImplementation.Providers
 	public class PlayerInventoryProvider: BaseMonoProvider, IConvertToEntity
 	{
 		[SerializeField]
-		private BlockInventoryItemArchetype[] _itemsOnStart = Array.Empty<BlockInventoryItemArchetype>();
+		private ItemArchetype[] _itemsOnStart = Array.Empty<ItemArchetype>();
 
 		private void OnValidate()
 		{

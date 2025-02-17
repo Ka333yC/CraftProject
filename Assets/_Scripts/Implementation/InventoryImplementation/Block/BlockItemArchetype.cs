@@ -8,8 +8,8 @@ using Zenject;
 
 namespace _Scripts.Implementation.InventoryImplementation.Block
 {
-	[CreateAssetMenu(fileName = "BlockInventoryItemArchetype", menuName = "Items/Archetypes/Block item archetype")]
-	public class BlockInventoryItemArchetype : ItemArchetype, IBlockItemData
+	[CreateAssetMenu(fileName = "ItemArchetype", menuName = "Items/Archetypes/Block item archetype")]
+	public class BlockItemArchetype : ItemArchetype, IBlockItemData
 	{
 		[SerializeField]
 		private short _stackSize = 64;
@@ -23,14 +23,15 @@ namespace _Scripts.Implementation.InventoryImplementation.Block
 
 		private int _id;
 
-		public IBlockArchetype BlockArchetype => _blockArchetype;
+		public BlockArchetype BlockArchetype => _blockArchetype;
 		public override int Id => _id;
 		public override short StackSize => _stackSize;
 		public override Sprite Icon => _icon;
+		IBlockArchetype IBlockItemData.BlockArchetype => _blockArchetype;
 
 		public override Item Create()
 		{
-			return new BlockInventoryItem(this, _world);
+			return new BlockItem(this, _world);
 		}
 
 		public override void Initialize(int id)

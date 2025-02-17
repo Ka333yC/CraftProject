@@ -9,6 +9,7 @@ using _Scripts.Core.Extensions;
 using _Scripts.Core.PlayerCore.Components;
 using _Scripts.Implementation.InputImplementation.Components;
 using _Scripts.Implementation.InventoryImplementation.Block;
+using _Scripts.Implementation.InventoryImplementation.WoodLogBlock;
 using _Scripts.Implementation.PlayerImplementation.Input.Components;
 using _Scripts.Implementation.PlayerImplementation.PlayerInventory.Components;
 using Cysharp.Threading.Tasks;
@@ -199,9 +200,14 @@ namespace _Scripts.Implementation.PlayerImplementation.Input.Systems
 				ref var inventory = ref _playerInventoryPool.Get(playerEntity);
 				ref var player = ref _playerPool.Get(playerEntity);
 				var item = inventory.Toolbar.ActiveSlot.Item;
-				if(item is BlockInventoryItem blockInventoryItem)
+				if(item is BlockItem blockInventoryItem)
 				{
 					blockInventoryItem.Use(worldPosition);
+				}
+
+				if(item is WoodLogBlockItem woodLog)
+				{
+					woodLog.Use(worldPosition);
 				}
 			}
 		}

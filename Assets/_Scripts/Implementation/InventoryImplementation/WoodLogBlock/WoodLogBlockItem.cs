@@ -1,16 +1,18 @@
 ﻿using _Scripts.Core.ChunkCore.BlockChanging.Components;
 using _Scripts.Core.InventoryCore.ItemLogic;
+using _Scripts.Implementation.BlocksImplementation.WoodLogBlock;
+using _Scripts.Implementation.InventoryImplementation.Block;
 using Leopotam.EcsLite;
 using UnityEngine;
 
-namespace _Scripts.Implementation.InventoryImplementation.Block
+namespace _Scripts.Implementation.InventoryImplementation.WoodLogBlock
 {
-	public class BlockInventoryItem : Item
+	public class WoodLogBlockItem : Item
 	{
-		private readonly BlockInventoryItemArchetype _itemArchetype;
+		private readonly WoodLogBlockItemArchetype _itemArchetype;
 		private readonly EcsWorld _world;
 
-		public BlockInventoryItem(BlockInventoryItemArchetype itemArchetype, EcsWorld world)
+		public WoodLogBlockItem(WoodLogBlockItemArchetype itemArchetype, EcsWorld world)
 		{
 			_itemArchetype = itemArchetype;
 			_world = world;
@@ -20,7 +22,7 @@ namespace _Scripts.Implementation.InventoryImplementation.Block
 
 		public override Item Clone()
 		{
-			var result = new BlockInventoryItem(_itemArchetype, _world);
+			var result = new WoodLogBlockItem(_itemArchetype, _world);
 			result.Count = Count;
 			return result;
 		}
@@ -32,7 +34,7 @@ namespace _Scripts.Implementation.InventoryImplementation.Block
 				return false;
 			}
 
-			var block = _itemArchetype.BlockArchetype.CreateBlock();
+			var block = _itemArchetype.BlockArchetype.CreateBlock(WoodLogRotation.Vertical);
 			SetBlock(worldPosition, block);
 			return true;
 		}

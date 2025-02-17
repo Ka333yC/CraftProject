@@ -16,6 +16,14 @@ namespace _Scripts.Implementation.BlocksImplementation.WoodLogBlock
 			ValidateBlockPlaceableCheckers();
 		}
 
+		public Block CreateBlock(WoodLogRotation rotation)
+		{
+			var block = CreateBlock();
+			var woodLogComponent = block.GetComponent<WoodLogBlockComponent>();
+			woodLogComponent.Rotation = rotation;
+			return block;
+		}
+
 		private void ValidateBlockComponents()
 		{
 			if(_blockComponents.Length != 3)

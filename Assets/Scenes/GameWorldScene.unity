@@ -272,7 +272,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 690e957c20c358d439563878e529d843, type: 2}
   - {fileID: 11400000, guid: 5662e420736bd824ab122c9048520f3a, type: 2}
   - {fileID: 11400000, guid: ae6bb3163cfbf514fbc46b64b5618691, type: 2}
-  - {fileID: 11400000, guid: 53fa184345bb9de4fa0a841241264669, type: 2}
+  - {fileID: 11400000, guid: ab7927dcf381d6547a1383c9e61b8bb3, type: 2}
   - {fileID: 11400000, guid: 6f64334d79bd1c94aabaa24a63c00512, type: 2}
   _chunkMaterial: {fileID: 2100000, guid: 70cc2cd424e1aad488604ecc4ddd54ea, type: 2}
 --- !u!4 &375821045
