@@ -25,11 +25,11 @@ MonoBehaviour:
       data:
         _boxSizeToCheck: {x: 1, y: 1, z: 1}
     - rid: 1525836598232219664
-      type: {class: StandardBlockPhysics, ns: _Scripts.Implementation.BlocksImplementation.StandardBlock.Physics, asm: Assembly-CSharp}
+      type: {class: StandardBlockPhysicsComponent, ns: _Scripts.Implementation.BlocksImplementation.StandardBlock.Physics, asm: Assembly-CSharp}
       data:
         _meshData: {fileID: 11400000, guid: bb464c3d011a3274db79317a18ab4018, type: 2}
     - rid: 1525836598232219670
-      type: {class: StandardBlockGraphics, ns: _Scripts.Implementation.BlocksImplementation.StandardBlock.Graphics, asm: Assembly-CSharp}
+      type: {class: StandardBlockGraphicsComponent, ns: _Scripts.Implementation.BlocksImplementation.StandardBlock.Graphics, asm: Assembly-CSharp}
       data:
         _meshData: {fileID: 11400000, guid: bb464c3d011a3274db79317a18ab4018, type: 2}
         _textureData:

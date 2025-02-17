@@ -4,11 +4,13 @@ using _Scripts.Core.BlocksCore;
 using _Scripts.Core.MeshWrap;
 using _Scripts.Core.PhysicsCore.ChunkPhysicsCore.BlockPhysics;
 using UnityEngine;
+using UnityEngine.Scripting.APIUpdating;
+using UnityEngine.Serialization;
 
 namespace _Scripts.Implementation.BlocksImplementation.StandardBlock.Physics
 {
 	[Serializable]
-	public class StandardBlockPhysics : IPhysicsBlockComponent
+	public class StandardBlockPhysicsComponent : IPhysicsBlockComponent
 	{
 		[SerializeField]
 		private StandardMeshData _meshData;
@@ -20,7 +22,7 @@ namespace _Scripts.Implementation.BlocksImplementation.StandardBlock.Physics
 
 		public IBlockComponent Clone()
 		{
-			var result = new StandardBlockPhysics();
+			var result = new StandardBlockPhysicsComponent();
 			result._meshData = _meshData;
 			return result;
 		}

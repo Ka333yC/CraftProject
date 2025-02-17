@@ -9,22 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab92e13647c44ae44a751898c3ad2f01, type: 3}
+  m_Script: {fileID: 11500000, guid: 74bd161af91149898fd9a4f33ac8fec5, type: 3}
   m_Name: Wood log block archetype
   m_EditorClassIdentifier: 
   _blockComponents:
   - rid: 1525836598232219652
   - rid: 1525836598232219653
-  - rid: 1525836598232219654
+  - rid: 1525836666476167174
   _blockPlaceableCheckers:
-  - rid: 1525836598232219655
+  - rid: 1525836666476167175
   references:
     version: 2
     RefIds:
     - rid: 1525836598232219652
       type: {class: WoodLogBlockComponent, ns: _Scripts.Implementation.BlocksImplementation.WoodLogBlock, asm: Assembly-CSharp}
       data:
-        Rotation: 0
+        Rotation: 2
     - rid: 1525836598232219653
       type: {class: WoodLogBlockGraphicsComponent, ns: _Scripts.Implementation.BlocksImplementation.WoodLogBlock.Graphics, asm: Assembly-CSharp}
       data:
@@ -72,11 +72,11 @@ MonoBehaviour:
             <LeftSide>k__BackingField:
               <Texture>k__BackingField: {fileID: 2800000, guid: b4477f5634eaf09428c0bfe3e8fe0226, type: 3}
             <Other>k__BackingField: []
-    - rid: 1525836598232219654
-      type: {class: StandardBlockPhysics, ns: _Scripts.Implementation.BlocksImplementation.StandardBlock.Physics, asm: Assembly-CSharp}
+    - rid: 1525836666476167174
+      type: {class: StandardBlockPhysicsComponent, ns: _Scripts.Implementation.BlocksImplementation.StandardBlock.Physics, asm: Assembly-CSharp}
       data:
         _meshData: {fileID: 11400000, guid: bb464c3d011a3274db79317a18ab4018, type: 2}
-    - rid: 1525836598232219655
+    - rid: 1525836666476167175
       type: {class: PhysicsBlockPlaceableChecker, ns: _Scripts.Implementation.BlocksImplementation.StandardBlock, asm: Assembly-CSharp}
       data:
         _boxSizeToCheck: {x: 1, y: 1, z: 1}

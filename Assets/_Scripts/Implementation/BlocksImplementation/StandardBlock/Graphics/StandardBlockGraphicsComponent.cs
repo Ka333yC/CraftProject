@@ -5,12 +5,14 @@ using _Scripts.Core.BlocksCore;
 using _Scripts.Core.ChunkGraphicsCore.BlockGraphics;
 using _Scripts.Core.MeshWrap;
 using UnityEngine;
+using UnityEngine.Scripting.APIUpdating;
 using UnityEngine.Serialization;
 
 namespace _Scripts.Implementation.BlocksImplementation.StandardBlock.Graphics
 {
+	[MovedFrom(true, sourceClassName: "StandardBlockGraphics")]
 	[Serializable]
-	public class StandardBlockGraphics : IGraphicsBlockComponent
+	public class StandardBlockGraphicsComponent : IGraphicsBlockComponent
 	{
 		[SerializeField]
 		private StandardMeshData _meshData;
@@ -26,7 +28,7 @@ namespace _Scripts.Implementation.BlocksImplementation.StandardBlock.Graphics
 
 		public IBlockComponent Clone()
 		{
-			var result = new StandardBlockGraphics();
+			var result = new StandardBlockGraphicsComponent();
 			result._meshData = _meshData;
 			result._textureData = _textureData;
 			result._transparency = _transparency;

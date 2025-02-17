@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _Scripts.Core.BlocksCore;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -8,16 +9,15 @@ using static _Scripts.Core.BlocksCore.Block;
 
 namespace _Scripts.Implementation.BlocksImplementation
 {
-	[CreateAssetMenu(fileName = "UniqueBlockArchetype", menuName = "Blocks/Unique block archetype")]
-	public class UniqueBlockArchetype : BlockArchetype, ISerializableBlockArchetype
+	public abstract class UniqueBlockArchetype : BlockArchetype, ISerializableBlockArchetype
 	{
 		[SerializeReference, SubclassSelector]
-		private IBlockComponent[] _blockComponents;
+		protected IBlockComponent[] _blockComponents = Array.Empty<IBlockComponent>();
 		[SerializeReference, SubclassSelector]
-		private IBlockPlaceableChecker[] _blockPlaceableCheckers;
+		protected IBlockPlaceableChecker[] _blockPlaceableCheckers = Array.Empty<IBlockPlaceableChecker>();
 
-		private int _id;
-		private ISerializableBlockComponent[] _serializableBlockComponents;
+		protected int _id;
+		protected ISerializableBlockComponent[] _serializableBlockComponents;
 
 		public override int Id => _id;
 
@@ -31,9 +31,10 @@ namespace _Scripts.Implementation.BlocksImplementation
 		{
 			var result = BlockPool.Shared.Rent(false);
 			result.Archetype = this;
-			foreach(var blockComponentContainer in _blockComponents)
+			foreach(var component in _blockComponents)
 			{
-				blockComponentContainer.InitializeBlock(result);
+				var newComponent = component.Clone();
+				newComponent.InitializeBlock(result);
 			}
 
 			return result;
@@ -90,11 +91,27 @@ namespace _Scripts.Implementation.BlocksImplementation
 			{
 				if(componentContainer is ISerializableBlockComponent serializableComponent)
 				{
-					serializableComponent.InitializeBlock(result, serializedData[serializedDataIndex++]);
+					var newComponent = (ISerializableBlockComponent)serializableComponent.Clone();
+					newComponent.InitializeBlock(result, serializedData[serializedDataIndex++]);
 				}
 				else
 				{
-					componentContainer.InitializeBlock(result);
+					var newComponent = componentContainer.Clone();
+					newComponent.InitializeBlock(result);
+				}
+			}
+
+			return result;
+		}
+
+		protected List<ISerializableBlockComponent> GetSerializableBlockComponents() 
+		{
+			var result = new List<ISerializableBlockComponent>();
+			foreach(var component in _blockComponents)
+			{
+				if(component is ISerializableBlockComponent serializableComponent)
+				{
+					result.Add(serializableComponent);
 				}
 			}
 
@@ -113,20 +130,6 @@ namespace _Scripts.Implementation.BlocksImplementation
 			{
 				container.Inject(placeableChecker);
 			}
-		}
-
-		private List<ISerializableBlockComponent> GetSerializableBlockComponents() 
-		{
-			var result = new List<ISerializableBlockComponent>();
-			foreach(var component in _blockComponents)
-			{
-				if(component is ISerializableBlockComponent serializableComponent)
-				{
-					result.Add(serializableComponent);
-				}
-			}
-
-			return result;
 		}
 	}
 }

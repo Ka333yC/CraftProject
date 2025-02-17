@@ -6,7 +6,7 @@ using static _Scripts.Core.BlocksCore.Block;
 
 namespace _Scripts.Implementation.BlocksImplementation
 {
-	[CreateAssetMenu(fileName = "SharedBlockArchetype", menuName = "Blocks/Shared block archetype")]
+	[CreateAssetMenu(fileName = "BlockArchetype", menuName = "Blocks/Archetypes/Shared block archetype")]
 	public class SharedBlockArchetype : BlockArchetype
 	{
 		[SerializeReference, SubclassSelector]
