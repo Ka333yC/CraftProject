@@ -14,7 +14,7 @@ namespace _Scripts.Implementation.ChunkImplementation.Generation
 		private readonly EcsPool<ChunkComponent> _chunksPool;
 
 		public ClassicFlatChunkGenerator(EcsWorld world, int seed, NoiseSettings noiseSettings,
-			BlocksArchetype blocksContainers) : base(seed, noiseSettings, blocksContainers)
+			BlocksArchetypes blocksArchetypes) : base(seed, noiseSettings, blocksArchetypes)
 		{
 			_chunksPool = world.GetPool<ChunkComponent>();
 		}
@@ -54,20 +54,20 @@ namespace _Scripts.Implementation.ChunkImplementation.Generation
 
 			if(y == 0)
 			{
-				return _blocksContainers[3].CreateBlock();
+				return _blocksArchetypes[3].CreateBlock();
 			}
 			
 			if(y < 3)
 			{
-				return _blocksContainers[1].CreateBlock();
+				return _blocksArchetypes[1].CreateBlock();
 			}
 			
 			if(y == 3)
 			{
-				return _blocksContainers[4].CreateBlock();
+				return _blocksArchetypes[4].CreateBlock();
 			}
 
-			return _blocksContainers.Air;
+			return _blocksArchetypes.Air;
 		}
 	}
 }

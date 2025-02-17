@@ -12,7 +12,7 @@ namespace _Scripts.Implementation.PlayerImplementation.Providers
 	public class PlayerInventoryProvider: BaseMonoProvider, IConvertToEntity
 	{
 		[SerializeField]
-		private BlockInventoryItemContainer[] _itemsOnStart = Array.Empty<BlockInventoryItemContainer>();
+		private BlockInventoryItemArchetype[] _itemsOnStart = Array.Empty<BlockInventoryItemArchetype>();
 
 		private void OnValidate()
 		{

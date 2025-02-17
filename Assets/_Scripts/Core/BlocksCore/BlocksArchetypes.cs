@@ -5,10 +5,10 @@ using _Scripts.Core.InventoryCore.ItemLogic;
 
 namespace _Scripts.Core.BlocksCore
 {
-	public class BlocksArchetype : IEnumerable<IBlockArchetype>
+	public class BlocksArchetypes : IEnumerable<IBlockArchetype>
 	{
 		private readonly List<IBlockArchetype> _archetypes = new List<IBlockArchetype>();
-		private readonly ItemsContainers _itemsContainers;
+		private readonly ItemsArchetypes _itemsArchetypes;
 
 		public Block Air { get; private set; }
 
@@ -20,9 +20,9 @@ namespace _Scripts.Core.BlocksCore
 			}
 		}
 
-		public BlocksArchetype(ItemsContainers itemsContainers)
+		public BlocksArchetypes(ItemsArchetypes itemsArchetypes)
 		{
-			_itemsContainers = itemsContainers;
+			_itemsArchetypes = itemsArchetypes;
 		}
 
 		public void Initialize()
@@ -43,10 +43,10 @@ namespace _Scripts.Core.BlocksCore
 
 		private void CacheBlockArchetypes()
 		{
-			foreach(var itemContainer in _itemsContainers)
+			foreach(var itemArchetype in _itemsArchetypes)
 			{
 				IBlockArchetype blockArchetype = null;
-				if(itemContainer is IBlockItemData blockItemData)
+				if(itemArchetype is IBlockItemData blockItemData)
 				{
 					blockArchetype = blockItemData.BlockArchetype;
 				}
@@ -66,7 +66,7 @@ namespace _Scripts.Core.BlocksCore
 				}
 			}
 
-			throw new ArgumentException($"BlocksContainers has no {nameof(AirBlockArchetype)}");
+			throw new ArgumentException($"BlocksArchetypes has no {nameof(AirBlockArchetype)}");
 		}
 	}
 }

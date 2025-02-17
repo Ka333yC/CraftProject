@@ -9,7 +9,7 @@ namespace _Scripts.Implementation.ChunkImplementation.Generation.Systems
 	public class ChunkGeneratorCreator : IEcsInitSystem
 	{
 		[Inject]
-		private BlocksArchetype _blocksContainers;
+		private BlocksArchetypes _blocksArchetypes;
 
 		public void Init(IEcsSystems systems)
 		{
@@ -18,9 +18,9 @@ namespace _Scripts.Implementation.ChunkImplementation.Generation.Systems
 			var entity = world.NewEntity();
 			ref var component = ref pool.Add(entity);
 			// component.ChunkGenerator = new OverworldChunkGenerator(systems.GetWorld(),
-			// 	0, Singleton.Instance.NoiseSettings, _blocksContainers);
+			// 	0, Singleton.Instance.NoiseSettings, _blocksArchetypes);
 			component.ChunkGenerator = new ClassicFlatChunkGenerator(systems.GetWorld(),
-				0, Singleton.Instance.NoiseSettings, _blocksContainers);
+				0, Singleton.Instance.NoiseSettings, _blocksArchetypes);
 		}
 	}
 }

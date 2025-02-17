@@ -7,13 +7,13 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.ChunkGeneration.Elements
 	{
 		protected readonly int _seed;
 		protected readonly NoiseSettings _noiseSettings;
-		protected readonly BlocksArchetype _blocksContainers;
+		protected readonly BlocksArchetypes _blocksArchetypes;
 
-		public ChunkGenerator(int seed, NoiseSettings noiseSettings, BlocksArchetype blocksContainers)
+		public ChunkGenerator(int seed, NoiseSettings noiseSettings, BlocksArchetypes blocksArchetypes)
 		{
 			_seed = seed;
 			_noiseSettings = noiseSettings;
-			_blocksContainers = blocksContainers;
+			_blocksArchetypes = blocksArchetypes;
 		}
 
 		public abstract UniTask GenerateBlocks(int chunkEntity);

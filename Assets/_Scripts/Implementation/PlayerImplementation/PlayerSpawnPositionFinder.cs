@@ -20,9 +20,9 @@ namespace _Scripts.Implementation.PlayerImplementation
 		private readonly EcsPool<ChunksContainerComponent> _chunksContainerPool;
 		private readonly EcsFilter _chunksContainersFilter;
 
-		private readonly BlocksArchetype _blocksContainers;
+		private readonly BlocksArchetypes _blocksArchetypes;
 
-		public PlayerSpawnPositionFinder(EcsWorld world, BlocksArchetype blocksContainers)
+		public PlayerSpawnPositionFinder(EcsWorld world, BlocksArchetypes blocksArchetypes)
 		{
 			_world = world;
 			_chunkInitializedPool = world.GetPool<ChunkInitializedTag>();
@@ -32,7 +32,7 @@ namespace _Scripts.Implementation.PlayerImplementation
 				.Filter<ChunksContainerComponent>()
 				.End();
 
-			_blocksContainers = blocksContainers;
+			_blocksArchetypes = blocksArchetypes;
 		}
 
 		public async UniTask<Vector3> FindSpawnPosition() 
@@ -113,8 +113,8 @@ namespace _Scripts.Implementation.PlayerImplementation
 					for(int y = ChunkConstantData.ChunkScale.y - 3; y >= 0; y--)
 					{
 						if(blocks[x, y, z].Id == blockIdToSpawnOn &&
-							blocks[x, y + 1, z] == _blocksContainers.Air &&
-							blocks[x, y + 2, z] == _blocksContainers.Air)
+							blocks[x, y + 1, z] == _blocksArchetypes.Air &&
+							blocks[x, y + 2, z] == _blocksArchetypes.Air)
 						{
 							result = new Vector3Int(x, y, z);
 							return true;

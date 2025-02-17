@@ -18,7 +18,7 @@ namespace _Scripts.Implementation.ChunkImplementation.Generation
 		private readonly int _maxDeviation = 4;
 
 		public OverworldChunkGenerator(EcsWorld world, int seed, NoiseSettings noiseSettings, 
-			BlocksArchetype blocksContainers) : base(seed, noiseSettings, blocksContainers)
+			BlocksArchetypes blocksArchetypes) : base(seed, noiseSettings, blocksArchetypes)
 		{
 			_chunksPool = world.GetPool<ChunkComponent>();
 
@@ -66,22 +66,22 @@ namespace _Scripts.Implementation.ChunkImplementation.Generation
 
 			if(y == 0)
 			{
-				return _blocksContainers[2].CreateBlock();
+				return _blocksArchetypes[2].CreateBlock();
 			}
 
 			var noiseValue = _noise.GetNoise(position.x, position.z);
 			int maxHeightByY = _baseHeight + Mathf.FloorToInt(_maxDeviation * noiseValue);
 			if(y > maxHeightByY)
 			{
-				return _blocksContainers.Air;
+				return _blocksArchetypes.Air;
 			}
 			else if(y == maxHeightByY)
 			{
-				return _blocksContainers[4].CreateBlock();
+				return _blocksArchetypes[4].CreateBlock();
 			}
 			else if(y < maxHeightByY)
 			{
-				return _blocksContainers[1].CreateBlock();
+				return _blocksArchetypes[1].CreateBlock();
 			}
 
 			throw new ArgumentException("Unknown state");

@@ -3,6 +3,7 @@ using _Scripts.Core.ChunkGraphicsCore;
 using _Scripts.Core.InventoryCore.ItemLogic;
 using _Scripts.Implementation.InventoryImplementation;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace _Scripts.Undone.StartPoints
@@ -10,22 +11,22 @@ namespace _Scripts.Undone.StartPoints
 	public class ItemsTempInitializer : MonoBehaviour
 	{
 		[SerializeField]
-		private ItemContainer[] _itemContainers;
+		private ItemArchetype[] _itemArchetypes;
 		[SerializeField]
 		private Material _chunkMaterial;
 
 		[Inject]
-		private ItemsContainers _itemsContainer;
+		private ItemsArchetypes _itemsArchetypes;
 		[Inject]
-		private BlocksArchetype _blocksContainers;
+		private BlocksArchetypes _blocksArchetypes;
 
 		public void Initialize()
 		{
-			_itemsContainer.Initialize(_itemContainers);
+			_itemsArchetypes.Initialize(_itemArchetypes);
 
-			_blocksContainers.Initialize();
+			_blocksArchetypes.Initialize();
 
-			var textureCreator = new ChunkGraphicsTextureCreator(_blocksContainers);
+			var textureCreator = new ChunkGraphicsTextureCreator(_blocksArchetypes);
 			_chunkMaterial.mainTexture = textureCreator.CreateTexture();
 		}
 	}

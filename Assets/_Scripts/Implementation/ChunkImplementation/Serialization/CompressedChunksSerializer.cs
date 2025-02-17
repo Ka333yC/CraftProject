@@ -20,15 +20,15 @@ namespace _Scripts.Implementation.ChunkImplementation.Serialization
 		private readonly EcsPool<ChunkComponent> _chunksPool;
 
 		private readonly DataBaseCommandExecutor _commandExecutor;
-		private readonly BlocksArchetype _blocksContainers;
+		private readonly BlocksArchetypes _blocksArchetypes;
 
 		public CompressedChunksSerializer(EcsWorld world, GameWorldDBCommandExecutor commandExecutor,
-			BlocksArchetype blocksContainers)
+			BlocksArchetypes blocksArchetypes)
 		{
 			_chunksPool = world.GetPool<ChunkComponent>();
 
 			_commandExecutor = commandExecutor.CommandExecutor;
-			_blocksContainers = blocksContainers;
+			_blocksArchetypes = blocksArchetypes;
 		}
 
 		public override async UniTask Save(int chunkEntity) 
@@ -108,7 +108,7 @@ namespace _Scripts.Implementation.ChunkImplementation.Serialization
 
 		private string SerializeBlocks(ChunkSizeBlocks blocks)
 		{
-			var compressedBlocks = new CompressedBlocks(_blocksContainers);
+			var compressedBlocks = new CompressedBlocks(_blocksArchetypes);
 			for(int y = 0; y < ChunkConstantData.ChunkScale.y; y++)
 			{
 				for(int x = 0; x < ChunkConstantData.ChunkScale.x; x++)
@@ -125,7 +125,7 @@ namespace _Scripts.Implementation.ChunkImplementation.Serialization
 
 		private void PopulateBlocks(ChunkSizeBlocks blocks, string serializedBlocks, CancellationToken token)
 		{
-			var сompressedBlocks = new CompressedBlocks(_blocksContainers);
+			var сompressedBlocks = new CompressedBlocks(_blocksArchetypes);
 			JsonConvert.PopulateObject(serializedBlocks, сompressedBlocks);
 			for(int y = ChunkConstantData.ChunkScale.y - 1; y >= 0; y--)
 			{

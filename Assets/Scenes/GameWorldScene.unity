@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94b7bbd43e4c5024188acb3b8e27ce21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemContainers:
+  _itemArchetypes:
   - {fileID: 11400000, guid: ec6d7020540413341b4ae257883398c8, type: 2}
   - {fileID: 11400000, guid: 46f305d52a935df4c95446fa925f3453, type: 2}
   - {fileID: 11400000, guid: e1197ce0abe748b49aa6ce856bfa0ded, type: 2}

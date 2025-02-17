@@ -9,7 +9,7 @@ namespace _Scripts.Implementation.ChunkImplementation.Serialization
 	/// </summary>
 	public class CompressedBlocks
 	{
-		private readonly BlocksArchetype _blocksContainers;
+		private readonly BlocksArchetypes _blocksArchetypes;
 
 		[JsonProperty]
 		private List<int> _blocksIdWithCount = new List<int>();
@@ -20,9 +20,9 @@ namespace _Scripts.Implementation.ChunkImplementation.Serialization
 		[JsonProperty]
 		private Stack<string> _serializedBlocksData = new Stack<string>();
 
-		public CompressedBlocks(BlocksArchetype blocksContainers)
+		public CompressedBlocks(BlocksArchetypes blocksArchetypes)
 		{
-			_blocksContainers = blocksContainers;
+			_blocksArchetypes = blocksArchetypes;
 		}
 
 		public void AddLast(Block block) 
@@ -56,7 +56,7 @@ namespace _Scripts.Implementation.ChunkImplementation.Serialization
 			}
 
 			_blocksIdWithCount[_lastBlockIdIndex + 1]--;
-			var blockArchetype = _blocksContainers[_lastBlockId];
+			var blockArchetype = _blocksArchetypes[_lastBlockId];
 			if(blockArchetype is ISerializableBlockArchetype serializableArchetype)
 			{
 				var serializedData = _serializedBlocksData.Pop();

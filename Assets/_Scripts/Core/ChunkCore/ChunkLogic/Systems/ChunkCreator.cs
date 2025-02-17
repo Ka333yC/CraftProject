@@ -18,7 +18,7 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Systems
 	public class ChunkCreator : IEcsPreInitSystem, IEcsInitSystem, IEcsRunSystem
 	{
 		[Inject]
-		private BlocksArchetype _blocksContainers;
+		private BlocksArchetypes _blocksArchetypes;
 		
 		private ChunksContainer _chunksContainer;
 		private ChunkGameObjectPool _chunkGameObjectPool;
@@ -62,7 +62,7 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Systems
 			chunk.GridPosition = gridPosition;
 			chunk.GameObject = _chunkGameObjectPool.Get();
 			chunk.GameObject.GridPosition = gridPosition;
-			chunk.Blocks = new ChunkSizeBlocks(_blocksContainers.Air);
+			chunk.Blocks = new ChunkSizeBlocks(_blocksArchetypes.Air);
 			chunk.CancellationTokenSource = new CancellationTokenSource();
 			_chunksContainer.SetChunkEntity(gridPosition, chunkEntity);
 			return chunkEntity;

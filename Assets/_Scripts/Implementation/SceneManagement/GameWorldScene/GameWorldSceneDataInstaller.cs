@@ -12,8 +12,8 @@ namespace _Scripts.Implementation.SceneManagement.GameWorldScene
 		{
 			InstallEcsWorld();
 			InstallGameWorldDB();
-			InstallItemsContainers();
-			InstallBlocksContainers();
+			InstallItemsArchetypes();
+			InstallBlocksArchetypes();
 		}
 
 		private void InstallEcsWorld()
@@ -32,18 +32,18 @@ namespace _Scripts.Implementation.SceneManagement.GameWorldScene
 				.AsSingle();
 		}
 
-		private void InstallItemsContainers()
+		private void InstallItemsArchetypes()
 		{
 			Container
-				.BindInterfacesAndSelfTo<ItemsContainers>()
+				.BindInterfacesAndSelfTo<ItemsArchetypes>()
 				.FromNew()
 				.AsSingle();
 		}
 
-		private void InstallBlocksContainers()
+		private void InstallBlocksArchetypes()
 		{
 			Container
-				.BindInterfacesAndSelfTo<BlocksArchetype>()
+				.BindInterfacesAndSelfTo<BlocksArchetypes>()
 				.FromNew()
 				.AsSingle();
 		}

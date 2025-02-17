@@ -8,8 +8,8 @@ using Zenject;
 
 namespace _Scripts.Implementation.InventoryImplementation.Block
 {
-	[CreateAssetMenu(fileName = "BlockInventoryItemContainer", menuName = "Blocks/Items/Block item container")]
-	public class BlockInventoryItemContainer : ItemContainer, IBlockItemData
+	[CreateAssetMenu(fileName = "BlockInventoryItemArchetype", menuName = "Items/Archetypes/Block item archetype")]
+	public class BlockInventoryItemArchetype : ItemArchetype, IBlockItemData
 	{
 		[SerializeField]
 		private short _stackSize = 64;

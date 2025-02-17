@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _Scripts.Implementation.InventoryImplementation
 {
-	public abstract class ItemContainer : ScriptableObject, IItemContainer
+	public abstract class ItemArchetype : ScriptableObject, IItemArchetype
 	{
 		public abstract int Id { get; }
 		public abstract short StackSize { get; }

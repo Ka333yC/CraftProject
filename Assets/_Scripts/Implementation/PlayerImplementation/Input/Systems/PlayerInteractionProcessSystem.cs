@@ -23,7 +23,7 @@ namespace _Scripts.Implementation.PlayerImplementation.Input.Systems
 		private const int HitDelay = 300;
 		
 		[Inject]
-		private BlocksArchetype _blocksContainers;
+		private BlocksArchetypes _blocksArchetypes;
 		
 		private ChunksContainer _chunksContainer;
 		
@@ -111,7 +111,7 @@ namespace _Scripts.Implementation.PlayerImplementation.Input.Systems
 				Vector3Int? blockPositionOnDirection = null;
 				foreach(var blockPosition in blockPositions)
 				{
-					if(GetBlock(blockPosition) != _blocksContainers.Air)
+					if(GetBlock(blockPosition) != _blocksArchetypes.Air)
 					{
 						blockPositionOnDirection = blockPosition;
 						break;
@@ -123,7 +123,7 @@ namespace _Scripts.Implementation.PlayerImplementation.Input.Systems
 					return;
 				}
 
-				SetBlock(blockPositionOnDirection.Value, _blocksContainers.Air);
+				SetBlock(blockPositionOnDirection.Value, _blocksArchetypes.Air);
 				playerInteraction.HitDelayTask = UniTask.Delay(HitDelay);
 			}
 		}
@@ -139,7 +139,7 @@ namespace _Scripts.Implementation.PlayerImplementation.Input.Systems
 				Vector3Int? preventBlockPositionOnDirection = null;
 				foreach(var blockPosition in blockPositions)
 				{
-					if(GetBlock(blockPosition) != _blocksContainers.Air)
+					if(GetBlock(blockPosition) != _blocksArchetypes.Air)
 					{
 						isRayHitSolidBlock = true;
 						break;
@@ -169,14 +169,14 @@ namespace _Scripts.Implementation.PlayerImplementation.Input.Systems
 		{
 			if(worldPosition.y < 0 || worldPosition.y >= ChunkConstantData.ChunkScale.y)
 			{
-				return _blocksContainers.Air;
+				return _blocksArchetypes.Air;
 			}
 
 			var chunkGridPosition = ChunkConstantData.WorldToGridPosition(worldPosition);
 			if(!_chunksContainer.TryGetChunk(chunkGridPosition, out int chunkEntity) ||
 			   !_chunkInitializedPool.Has(chunkEntity))
 			{
-				return _blocksContainers.Air;
+				return _blocksArchetypes.Air;
 			}
 
 			Vector3Int blockPosition = ChunkConstantData.WorldToBlockPositionInChunk(worldPosition);

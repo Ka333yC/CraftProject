@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _Scripts.Core.InventoryCore.ItemLogic
 {
-	public class AirItemContainer : IItemContainer, IBlockItemData
+	public class AirItemArchetype : IItemArchetype, IBlockItemData
 	{
 		private readonly AirBlockArchetype _blockArchetype = new AirBlockArchetype();
 

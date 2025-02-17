@@ -7,38 +7,32 @@ namespace _Scripts.Implementation.InventoryImplementation.Block
 {
 	public class BlockInventoryItem : Item
 	{
-		private readonly BlockInventoryItemContainer _itemContainer;
+		private readonly BlockInventoryItemArchetype _itemArchetype;
 		private readonly EcsWorld _world;
 
-		public BlockInventoryItem(BlockInventoryItemContainer itemContainer, EcsWorld world)
+		public BlockInventoryItem(BlockInventoryItemArchetype itemArchetype, EcsWorld world)
 		{
-			_itemContainer = itemContainer;
+			_itemArchetype = itemArchetype;
 			_world = world;
 		}
 
-		public override IItemData ItemData
-		{
-			get
-			{
-				return _itemContainer;
-			}
-		}
+		public override IItemData ItemData => _itemArchetype;
 
 		public override Item Clone()
 		{
-			var result = new BlockInventoryItem(_itemContainer, _world);
+			var result = new BlockInventoryItem(_itemArchetype, _world);
 			result.Count = Count;
 			return result;
 		}
 
 		public bool Use(Vector3Int worldPosition)
 		{
-			if(!_itemContainer.BlockArchetype.IsPlaceable(worldPosition))
+			if(!_itemArchetype.BlockArchetype.IsPlaceable(worldPosition))
 			{
 				return false;
 			}
 
-			var block = _itemContainer.BlockArchetype.CreateBlock();
+			var block = _itemArchetype.BlockArchetype.CreateBlock();
 			SetBlock(worldPosition, block);
 			return true;
 		}
