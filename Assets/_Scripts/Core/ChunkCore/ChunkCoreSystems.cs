@@ -38,7 +38,7 @@ namespace _Scripts.Core.ChunkCore
 		{
 			return new List<IEcsSystem>()
 			{
-				new DelHereSystem<FixedChunkСreatedTag>(),
+				new DelHereSystem<FixedChunkCreatedTag>(),
 				new ChunkCreator(),
 				new DelHereSystem<FixedChunkDestroyedComponent>(),
 				new ChunkDestroyer(),
@@ -74,7 +74,7 @@ namespace _Scripts.Core.ChunkCore
 		{
 			return new List<IEcsSystem>()
 			{
-				new DelHereSystem<StandardChunkСreatedTag>(),
+				new DelHereSystem<StandardChunkCreatedTag>(),
 				new DelHereSystem<StandardChunkDestroyedComponent>(),
 				new DelHereSystem<StandardChunkInitializedNotificationTag>(),
 			};

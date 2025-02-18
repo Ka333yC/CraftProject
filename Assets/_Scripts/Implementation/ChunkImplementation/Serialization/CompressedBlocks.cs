@@ -17,8 +17,8 @@ namespace _Scripts.Implementation.ChunkImplementation.Serialization
 		private int _lastBlockId = -1;
 		[JsonProperty]
 		private int _lastBlockIdIndex = -2;
-		[JsonProperty]
-		private Stack<string> _serializedBlocksData = new Stack<string>();
+		[JsonProperty] // Не использую Stack<T>, потому что Newtonsoft.Json неправильно его десериализует
+		private LinkedList<string> _serializedBlocksDataStack = new LinkedList<string>();
 
 		public CompressedBlocks(BlocksArchetypes blocksArchetypes)
 		{
@@ -43,7 +43,7 @@ namespace _Scripts.Implementation.ChunkImplementation.Serialization
 			if(block.Archetype is ISerializableBlockArchetype serializableContainer)
 			{
 				var serializedData = serializableContainer.Serialize(block);
-				_serializedBlocksData.Push(serializedData);
+				_serializedBlocksDataStack.AddLast(serializedData);
 			}
 		}
 
@@ -59,7 +59,8 @@ namespace _Scripts.Implementation.ChunkImplementation.Serialization
 			var blockArchetype = _blocksArchetypes[_lastBlockId];
 			if(blockArchetype is ISerializableBlockArchetype serializableArchetype)
 			{
-				var serializedData = _serializedBlocksData.Pop();
+				var serializedData = _serializedBlocksDataStack.Last.Value;
+				_serializedBlocksDataStack.RemoveLast();
 				return serializableArchetype.CreateBlock(serializedData);
 			}
 			

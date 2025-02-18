@@ -7,6 +7,7 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Components.Elements
 {
 	public class ChunkSizeBlocks : IDisposable
 	{
+		private readonly object _lockObject = new object();
 		private readonly Block[,,] _blocks;
 		private readonly Block _airBlock;
 
@@ -14,18 +15,29 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Components.Elements
 		{
 			get
 			{
-				return _blocks[x, y, z] ?? _airBlock;
+				lock(_lockObject)
+				{
+					return IsDisposed ? _airBlock : _blocks[x, y, z];
+				}
 			}
 
 			set
 			{
-				var block = _blocks[x, y, z];
-				if(block != null && !block.IsShared)
+				lock(_lockObject)
 				{
-					ReleaseBlock(block);
-				}
+					if(IsDisposed)
+					{
+						return;
+					}
+					
+					var block = _blocks[x, y, z];
+					if(block != null && !block.IsShared)
+					{
+						ReleaseBlock(block);
+					}
 
-				_blocks[x, y, z] = value;
+					_blocks[x, y, z] = value;
+				}
 			}
 		}
 
@@ -35,6 +47,8 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Components.Elements
 			set => this[position.x, position.y, position.z] = value;
 		} 
 
+		public bool IsDisposed { get; private set; }
+
 		public ChunkSizeBlocks(Block airBlock)
 		{
 			_blocks = ChunkSizeArrayPool<Block>.Shared.Rent();
@@ -43,6 +57,11 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Components.Elements
 
 		public void Dispose()
 		{
+			lock(_lockObject)
+			{
+				IsDisposed = true;
+			}
+			
 			foreach(var block in _blocks)
 			{
 				// Проверка на null - это костыль. Если чанк ещё не инициализирован, то у него весь массив будет

@@ -24,15 +24,15 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Systems
 		private ChunkGameObjectPool _chunkGameObjectPool;
 
 		private EcsPool<ChunkComponent> _chunkPool;
-		private EcsPool<FixedChunkСreatedTag> _fixedChunkСreatedPool;
-		private EcsPool<StandardChunkСreatedTag> _standardChunkСreatedPool;
+		private EcsPool<FixedChunkCreatedTag> _fixedChunkСreatedPool;
+		private EcsPool<StandardChunkCreatedTag> _standardChunkСreatedPool;
 
 		public void PreInit(IEcsSystems systems)
 		{
 			EcsWorld world = systems.GetWorld();
 			_chunkPool = world.GetPool<ChunkComponent>();
-			_fixedChunkСreatedPool = world.GetPool<FixedChunkСreatedTag>();
-			_standardChunkСreatedPool = world.GetPool<StandardChunkСreatedTag>();
+			_fixedChunkСreatedPool = world.GetPool<FixedChunkCreatedTag>();
+			_standardChunkСreatedPool = world.GetPool<StandardChunkCreatedTag>();
 		}
 
 		public void Init(IEcsSystems systems)

@@ -10,7 +10,6 @@ using UnityEngine.Serialization;
 
 namespace _Scripts.Implementation.BlocksImplementation.StandardBlock.Graphics
 {
-	[MovedFrom(true, sourceClassName: "StandardBlockGraphics")]
 	[Serializable]
 	public class StandardBlockGraphicsComponent : IGraphicsBlockComponent
 	{

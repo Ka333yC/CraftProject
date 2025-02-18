@@ -12,7 +12,6 @@ namespace _Scripts.Core.ChunkCore.ChunkLogic.Pools
 
 		public ChunkGameObjectPool(ICreator<ChunkGameObject> creator)
 		{
-			// _creator = new ChunkGameObjectCreator();
 			_creator = creator;
 		}
 

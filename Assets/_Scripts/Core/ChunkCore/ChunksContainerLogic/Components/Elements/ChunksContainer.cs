@@ -5,8 +5,8 @@ using UnityEngine;
 
 namespace _Scripts.Core.ChunkCore.ChunksContainerLogic.Components.Elements
 {
-	// гле-то есть баг, из-за которого удаляется ещё не созданный чанк, в идеале переделать весь ChunksContainer
-	// т.к. он сам по себе непонятно и неоптимально
+	// Где-то есть баг, из-за которого удаляется ещё не созданный чанк, в идеале переделать весь ChunksContainer
+	// т.к. он сам по себе непонятно и неоптимально работает
 	public class ChunksContainer
 	{
 		private readonly Dictionary<Vector3Int, ChunkData> _chunkDataByGridPosition =
@@ -18,7 +18,7 @@ namespace _Scripts.Core.ChunkCore.ChunksContainerLogic.Components.Elements
 		public bool TryGetChunk(Vector3Int gridPosition, out int chunkEntity)
 		{
 			// В редких случаях может выбрасывать IndexOutOfRangeException, если доступ из потоков,
-			// так что ставим try-catch
+			// так что ставим try-catch. Впоследствии добавить lock(){}
 			try
 			{
 				if(_chunkDataByGridPosition.TryGetValue(gridPosition, out var chunkData) &&
