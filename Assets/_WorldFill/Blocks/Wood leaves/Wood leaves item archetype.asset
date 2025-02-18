@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adf52eeb13d22ef4c9c0fb0543dae82f, type: 3}
-  m_Name: Stone item container
+  m_Name: Wood leaves item archetype
   m_EditorClassIdentifier: 
   _stackSize: 64
-  _icon: {fileID: 21300000, guid: 88acddeb26aeaff47898be27e9fa897a, type: 3}
-  _blockArchetype: {fileID: 11400000, guid: 9fed5270e7bde564ba02d12861458df7, type: 2}
+  _icon: {fileID: 21300000, guid: 9455f083b4f9da4419301e85e6b06bed, type: 3}
+  _blockArchetype: {fileID: 11400000, guid: 4a8e0d970f48cd640b613858f769b3fd, type: 2}

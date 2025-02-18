@@ -5,12 +5,12 @@ using UnityEngine;
 
 namespace _Scripts.Implementation.InventoryImplementation.Block
 {
-	public class BlockItem : Item
+	public class StandardBlockItem : Item
 	{
-		private readonly BlockItemArchetype _itemArchetype;
+		private readonly StandardBlockItemArchetype _itemArchetype;
 		private readonly EcsWorld _world;
 
-		public BlockItem(BlockItemArchetype itemArchetype, EcsWorld world)
+		public StandardBlockItem(StandardBlockItemArchetype itemArchetype, EcsWorld world)
 		{
 			_itemArchetype = itemArchetype;
 			_world = world;
@@ -20,7 +20,7 @@ namespace _Scripts.Implementation.InventoryImplementation.Block
 
 		public override Item Clone()
 		{
-			var result = new BlockItem(_itemArchetype, _world);
+			var result = new StandardBlockItem(_itemArchetype, _world);
 			result.Count = Count;
 			return result;
 		}
