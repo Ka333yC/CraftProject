@@ -4,6 +4,7 @@ using _Scripts.Core.PlayerCore.Components;
 using _Scripts.Core.UICore.PopUp;
 using _Scripts.Implementation.PlayerImplementation.PlayerInventory;
 using _Scripts.Implementation.PlayerImplementation.PlayerInventory.Components;
+using Cysharp.Threading.Tasks;
 using Leopotam.EcsLite;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -32,7 +33,18 @@ namespace _Scripts.Implementation.UIImplementation.GameWorldSceneUI.PlayerToolba
 
 		private void Start()
 		{
-			_toolbar = GetPlayerInventory().Toolbar;
+			Initialize().Forget();
+		}
+
+		private async UniTaskVoid Initialize()
+		{
+			PlayerInventoryComponent playerInventoryComponent;
+			while(!TryGetPlayerInventory(out playerInventoryComponent))
+			{
+				await UniTask.Yield();
+			}
+			
+			_toolbar = playerInventoryComponent.Toolbar;
 			for(int i = 0; i < PlayerConstantData.ToolbarSize; i++)
 			{
 				var slot = _uiSlots[i];
@@ -54,6 +66,23 @@ namespace _Scripts.Implementation.UIImplementation.GameWorldSceneUI.PlayerToolba
 		private void OnSlotPressed(int slotIndex)
 		{
 			_toolbar.ActiveSlotIndex = slotIndex;
+		}
+
+		private bool TryGetPlayerInventory(out PlayerInventoryComponent component)
+		{
+			var playerInventoryPool = _ecsWorld.GetPool<PlayerInventoryComponent>();
+			var playerInventoryFilter = _ecsWorld
+				.Filter<PlayerComponent>()
+				.Inc<PlayerInventoryComponent>()
+				.End();
+			foreach(var playerEntity in playerInventoryFilter)
+			{
+				component = playerInventoryPool.Get(playerEntity);
+				return true;
+			}
+
+			component = default;
+			return false;
 		}
 
 		private ref PlayerInventoryComponent GetPlayerInventory()

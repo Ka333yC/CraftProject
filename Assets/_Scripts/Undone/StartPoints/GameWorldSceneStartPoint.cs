@@ -117,7 +117,6 @@ namespace _Scripts.Undone.StartPoints
 			}
 
 			Instantiate(_playerPrefab, spawnPosition.Value, Quaternion.identity);
-			await UniTask.Yield();
 		}
 	}
 }
