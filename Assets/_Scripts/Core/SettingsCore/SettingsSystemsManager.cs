@@ -1,49 +1,42 @@
 ﻿using System.Collections.Generic;
+using _Scripts.Core.GameProgressCore;
 using Cysharp.Threading.Tasks;
 
 namespace _Scripts.Core.SettingsCore
 {
-	public class SettingsSystemsManager
+	public class SettingsSystemsManager : ISerializableDataSystem
 	{
 		private readonly List<ISettingsSystem> _settingsSystems = new List<ISettingsSystem>();
-		private readonly SettingsFileLoader _settingsFileLoader = new SettingsFileLoader();
 
 		private SettingsData _settingsData;
-		private bool _isLoaded;
-
-		public async UniTaskVoid Initialize()
+		private bool _isInitialized;
+		
+		public void Initialize(SerializableDataContainer dataContainer)
 		{
-			_settingsData = await _settingsFileLoader.Read();
-			if(_settingsData == null)
-			{
-				_settingsData = new SettingsData();
-			}
-
+			_settingsData = new SettingsData(dataContainer);
 			foreach(var settingsSystem in _settingsSystems)
 			{
-				settingsSystem.GetFrom(_settingsData);
+				settingsSystem.Initialize(_settingsData);
 			}
 
-			_isLoaded = true;
+			_isInitialized = true;
+		}
+
+		public void WriteTo(SerializableDataContainer dataContainer)
+		{
+			foreach(var settingsSystem in _settingsSystems)
+			{
+				settingsSystem.WriteTo(_settingsData);
+			}
 		}
 
 		public void AddSystem(ISettingsSystem settingsSystem) 
 		{
 			_settingsSystems.Add(settingsSystem);
-			if(_isLoaded)
+			if(_isInitialized)
 			{
-				settingsSystem.GetFrom(_settingsData);
+				settingsSystem.Initialize(_settingsData);
 			}
-		}
-
-		public async UniTaskVoid SaveData()
-		{
-			foreach(var settingsSystem in _settingsSystems)
-			{
-				settingsSystem.SetTo(_settingsData);
-			}
-
-			await _settingsFileLoader.Write(_settingsData);
 		}
 	}
 }

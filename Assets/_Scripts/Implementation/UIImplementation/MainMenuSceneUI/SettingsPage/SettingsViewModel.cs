@@ -22,7 +22,7 @@ namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.SettingsPage
 
 		public void Dispose()
 		{
-			_settingsManager.SaveData().Forget();
+			
 		}
 
 		public void SetLoadingRange(int loadingRange)

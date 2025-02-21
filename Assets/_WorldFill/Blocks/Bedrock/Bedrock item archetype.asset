@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adf52eeb13d22ef4c9c0fb0543dae82f, type: 3}
   m_Name: Bedrock item archetype
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp:_Scripts.Implementation.InventoryImplementation.Block:StandardBlockItemArchetype
   _stackSize: 64
   _icon: {fileID: 21300000, guid: 361c0f85b5b3f6742b561e18989f1ecd, type: 3}
   _blockArchetype: {fileID: 11400000, guid: cfb1c3e1ff582014e96a6fd7eca2702c, type: 2}

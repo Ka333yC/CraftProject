@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace _Scripts.Core.SettingsCore
 {
-	public class SavableData
+	public class SerializableDataContainer
 	{
 		[JsonConverter(typeof(TypedDictionaryConverter))]
 		[JsonProperty]

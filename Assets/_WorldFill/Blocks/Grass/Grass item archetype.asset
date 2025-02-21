@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adf52eeb13d22ef4c9c0fb0543dae82f, type: 3}
   m_Name: Grass item archetype
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp:_Scripts.Implementation.InventoryImplementation.Block:StandardBlockItemArchetype
   _stackSize: 64
   _icon: {fileID: 21300000, guid: 68720cc5b7dbfdd40b8de9781765b2e8, type: 3}
   _blockArchetype: {fileID: 11400000, guid: c33615c8c59d0bb4b9f9d12e8531455b, type: 2}

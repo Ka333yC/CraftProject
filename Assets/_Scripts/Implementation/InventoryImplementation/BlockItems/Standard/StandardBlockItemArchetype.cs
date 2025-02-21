@@ -1,12 +1,12 @@
 ﻿using _Scripts.Core.BlocksCore;
 using _Scripts.Core.InventoryCore.ItemLogic;
 using _Scripts.Implementation.BlocksImplementation;
+using _Scripts.Implementation.InventoryImplementation.Block;
 using Leopotam.EcsLite;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
-namespace _Scripts.Implementation.InventoryImplementation.Block
+namespace _Scripts.Implementation.InventoryImplementation.BlockItems.Standard
 {
 	[CreateAssetMenu(fileName = "ItemArchetype", menuName = "Items/Archetypes/Standard block item archetype")]
 	public class StandardBlockItemArchetype : ItemArchetype, IBlockItemData
