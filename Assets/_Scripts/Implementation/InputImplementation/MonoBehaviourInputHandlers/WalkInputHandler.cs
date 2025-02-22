@@ -50,7 +50,7 @@ namespace _Scripts.Implementation.InputImplementation.MonoBehaviourInputHandlers
 
 			var inputEntity = _world.NewEntity();
 			ref var walkInput = ref _walkInputPool.Add(inputEntity);
-			walkInput.Input = _lastPerformedInput;
+			walkInput.JoystickInput = _lastPerformedInput;
 		}
 
 		public override void Initialize(InputActionMap actionMap)

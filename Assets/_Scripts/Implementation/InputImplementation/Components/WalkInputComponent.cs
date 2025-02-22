@@ -4,6 +4,9 @@ namespace _Scripts.Implementation.InputImplementation.Components
 {
 	public struct WalkInputComponent
 	{
-		public Vector2 Input;
+		/// <summary>
+		/// Normailzed joystick direction
+		/// </summary>
+		public Vector2 JoystickInput;
 	}
 }

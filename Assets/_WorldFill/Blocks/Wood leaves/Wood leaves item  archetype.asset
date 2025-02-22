@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Wood leaves item  archetype
   m_EditorClassIdentifier: 
   _stackSize: 64
-  _icon: {fileID: 0}
-  _blockArchetype: {fileID: 0}
+  _icon: {fileID: 21300000, guid: 9455f083b4f9da4419301e85e6b06bed, type: 3}
+  _blockArchetype: {fileID: 11400000, guid: 4a8e0d970f48cd640b613858f769b3fd, type: 2}

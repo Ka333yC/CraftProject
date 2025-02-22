@@ -8,7 +8,6 @@ namespace _Scripts.Implementation.SettingsImplementation.GraphicsSettings
 	public class GraphicsSettingsSystem : ISettingsSystem
 	{
 		private int _loadingRange = 0;
-		private List<int> _someObject = null;
 
 		public int LoadingRange
 		{

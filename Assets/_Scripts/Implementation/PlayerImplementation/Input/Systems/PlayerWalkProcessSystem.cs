@@ -38,7 +38,7 @@ namespace _Scripts.Implementation.PlayerImplementation.Input.Systems
 		{
 			foreach (var inputEntity in _walkInputFilter)
 			{
-				var walkInput = _walkInputPool.Get(inputEntity).Input;
+				var walkInput = _walkInputPool.Get(inputEntity).JoystickInput;
 				HandleWalkInput(walkInput);
 			}
 		}
