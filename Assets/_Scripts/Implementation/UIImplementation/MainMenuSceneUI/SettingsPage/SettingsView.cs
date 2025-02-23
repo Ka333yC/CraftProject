@@ -30,11 +30,6 @@ namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.SettingsPage
 			ViewModel.LoadingRange.OnChanged += SetLoadingRangeCountTextValue;
 		}
 
-		private void OnDestroy()
-		{
-			ViewModel.Dispose();	
-		}
-
 		private void SetLoadingRangeCountTextValue(int value)
 		{
 			_loadingRangeCountText.text = value.ToString();

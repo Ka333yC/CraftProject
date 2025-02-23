@@ -31,5 +31,26 @@ namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.WorldsListPag
 
 			return result;
 		}
+
+		public async Task<List<GameWorldParameters>> LoadWorlds(CancellationToken token)
+		{
+			List<GameWorldParameters> result = new List<GameWorldParameters>();
+			var selectCommand = GameWorldParameters.SelectCommand;
+			await _commandExecutor.ExecuteReaderAsync(selectCommand, (reader) => 
+			{
+				while(reader.Read())
+				{
+					var gameWorldParameters = new GameWorldParameters();
+					gameWorldParameters.Id = reader.GetInt32(0);
+					gameWorldParameters.Name = reader.GetString(1);
+					gameWorldParameters.Seed = reader.GetInt32(2);
+					gameWorldParameters.WorldFolderPath = reader.GetString(3);
+					result.Add(gameWorldParameters);
+					token.ThrowIfCancellationRequested();
+				}
+			});
+
+			return result;
+		}
 	}
 }

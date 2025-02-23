@@ -18,7 +18,8 @@ namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.WorldDeleteCo
 
 		public async void DeleteWorld()
 		{
-			await _model.DeleteWorld(WorldId.Value);
+			_model.WorldId = WorldId.Value;
+			await _model.DeleteWorld();
 			OnWorldDeleted?.Invoke(WorldId.Value);
 		}
 	}

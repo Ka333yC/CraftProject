@@ -5,24 +5,16 @@ using _Scripts.Implementation.SettingsImplementation.GraphicsSettings;
 
 namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.SettingsPage
 {
-	public class SettingsViewModel : IDisposable
+	public class SettingsViewModel
 	{
 		public readonly ReactiveProperty<int> LoadingRange;
 
-		private readonly SettingsSystemsManager _settingsManager;
 		private readonly GraphicsSettingsSystem _graphicsSettingsSystem;
 
-		public SettingsViewModel(SettingsSystemsManager settingsManager, 
-			GraphicsSettingsSystem graphicsSettingsSystem)
+		public SettingsViewModel(GraphicsSettingsSystem graphicsSettingsSystem)
 		{
-			_settingsManager = settingsManager;
 			_graphicsSettingsSystem = graphicsSettingsSystem;
 			LoadingRange = new ReactiveProperty<int>(_graphicsSettingsSystem.LoadingRange);
-		}
-
-		public void Dispose()
-		{
-			
 		}
 
 		public void SetLoadingRange(int loadingRange)

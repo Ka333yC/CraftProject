@@ -27,12 +27,12 @@ namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.CreateNewWorl
 			_cancelButton.onClick.AddListener(Escape);
 
 			ViewModel.WorldName.OnChanged += UpdateWorldNameInView;
-			ViewModel.OnWorldNameAlreadyUsed += WorldNameAlreadyUsed;
+			ViewModel.IsNameAlreadyUsed.OnChanged += SetWorldNameAlreadyUsed;
 
 			UpdateWorldNameInViewModel(_worldNameInputField.text);
 		}
 
-		private void WorldNameAlreadyUsed(bool isUsed)
+		private void SetWorldNameAlreadyUsed(bool isUsed)
 		{
 			_worldNameAlreadyUsedText.gameObject.SetActive(isUsed);
 			_createNewWorldButton.interactable = !isUsed;

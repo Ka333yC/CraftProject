@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using _Scripts.Implementation.DataBaseImplementation.GameWorldsDataDB.Tables.GameWorldParametersTable;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -18,12 +19,8 @@ namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.WorldsListPag
 		[Inject]
 		private DiContainer _diContainer;
 
-		private readonly CancellationTokenSource _token = new CancellationTokenSource();
-		private Task _fillTask = Task.CompletedTask;
-		private readonly Dictionary<int, WorldListScrollCard> _usedCards =
-			new Dictionary<int, WorldListScrollCard>();
-		private readonly LinkedList<int> _worldsIdToCreate = new LinkedList<int>();
-		private readonly LinkedList<int> _worldsIdToDelete = new LinkedList<int>();
+		private readonly LinkedList<GameWorldParameters> _worldsParametersToCreateCards = new ();
+		private readonly Dictionary<int, WorldListScrollCard> _createdCards = new ();
 		private ScrollRect _scrollRect;
 
 		public event Action<int> OnCardSelected;
@@ -36,43 +33,33 @@ namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.WorldsListPag
 
 		private void Update()
 		{
-			if(_worldsIdToCreate.Any() && _fillTask.IsCompleted)
+			if(_worldsParametersToCreateCards.Any())
 			{
-				var worldIdToCreate = _worldsIdToCreate.First();
-				_worldsIdToCreate.RemoveFirst();
-				_fillTask = CreateAndFillCard(worldIdToCreate);
-			}
-
-			if(_worldsIdToDelete.Any())
-			{
-				var worldIdToRecord = _worldsIdToDelete.First();
-				_worldsIdToDelete.RemoveFirst();
-				DeleteCard(worldIdToRecord);
+				var worldIdToCreate = _worldsParametersToCreateCards.First();
+				_worldsParametersToCreateCards.RemoveFirst();
+				CreateAndFillCard(worldIdToCreate);
 			}
 		}
 
-		private void OnDestroy()
+		public void AddToCreate(GameWorldParameters worldParameters)
 		{
-			_token.Cancel();
-			_token.Dispose();
+			_worldsParametersToCreateCards.AddLast(worldParameters);
 		}
 
-		public void AddToCreate(int worldId)
+		public void Delete(int worldId)
 		{
-			_worldsIdToCreate.AddLast(worldId);
-		}
-
-		public void AddToDelete(int worldId)
-		{
-			if(_worldsIdToCreate.Remove(worldId))
+			var worldToCreate = _worldsParametersToCreateCards
+				.FirstOrDefault(worldParameter => worldParameter.Id.Value == worldId);
+			if(worldToCreate != null)
 			{
+				_worldsParametersToCreateCards.Remove(worldToCreate);
 				return;
 			}
-
-			_worldsIdToDelete.AddLast(worldId);
+			
+			DeleteCard(worldId);
 		}
 
-		private async Task CreateAndFillCard(int worldId)
+		private void CreateAndFillCard(GameWorldParameters worldParameters)
 		{
 			try
 			{
@@ -80,9 +67,9 @@ namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.WorldsListPag
 					_diContainer.InstantiatePrefab(_elementPrefab).GetComponent<WorldListScrollCard>();
 				createdElement.transform.SetParent(_scrollRect.content, false);
 				createdElement.OnValueChanged += CardValueChanged;
-				_usedCards.Add(worldId, createdElement);
-				await createdElement.SetWorld(worldId, _token.Token);
+				createdElement.SetWorld(worldParameters);
 				createdElement.gameObject.SetActive(true);
+				_createdCards.Add(worldParameters.Id.Value, createdElement);
 			}
 			catch(OperationCanceledException)
 			{
@@ -103,9 +90,9 @@ namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.WorldsListPag
 
 		private void DeleteCard(int worldId)
 		{
-			var element = _usedCards[worldId];
+			var element = _createdCards[worldId];
 			Destroy(element.gameObject);
-			_usedCards.Remove(worldId);
+			_createdCards.Remove(worldId);
 		}
 	}
 }

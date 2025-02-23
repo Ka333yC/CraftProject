@@ -24,7 +24,7 @@ namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.WorldsListPag
 		[Inject]
 		private GameWorldsDBCommandExecutor _commandExecutor;
 
-		private int _worldId;
+		private GameWorldParameters _worldParameters;
 
 		public event Action<int, bool> OnValueChanged;
 
@@ -36,41 +36,19 @@ namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.WorldsListPag
 
 		private void OnDestroy()
 		{
-			OnValueChanged?.Invoke(_worldId, false);
+			OnValueChanged?.Invoke(_worldParameters.Id.Value, false);
 		}
 
-		public async Task SetWorld(int worldId, CancellationToken token)
+		public void SetWorld(GameWorldParameters worldParameters)
 		{
-			_worldId = worldId;
-			var worldSettings = await GetWorldSettings(worldId, token);
-			SetWorldName(worldSettings.Name);
-			var creationTime = Directory.GetCreationTime(worldSettings.WorldFolderPath);
+			_worldParameters = worldParameters;
+			SetWorldName(worldParameters.Name);
+			var creationTime = Directory.GetCreationTime(worldParameters.WorldFolderPath);
 			SetCreationTime(creationTime);
-			var lastWriteTime = Directory.GetLastWriteTime(worldSettings.WorldFolderPath);
+			var lastWriteTime = Directory.GetLastWriteTime(worldParameters.WorldFolderPath);
 			SetLastPlayTime(lastWriteTime);
 		}
-
-		private async Task<GameWorldParameters> GetWorldSettings(int worldId, CancellationToken token) 
-		{
-			var worldSettings = new GameWorldParameters();
-			var selectCommand = GameWorldParameters.SelectWhereIdCommand;
-			selectCommand.Id = worldId;
-			await _commandExecutor.CommandExecutor.ExecuteReaderAsync(selectCommand, (reader) =>
-			{
-				token.ThrowIfCancellationRequested();
-				if(!reader.Read())
-				{
-					throw new ArgumentException("The request returned nothing.");
-				}
-
-				worldSettings.Name = reader.GetString(0);
-				worldSettings.Seed = reader.GetInt32(1);
-				worldSettings.WorldFolderPath = reader.GetString(2);
-			});
-
-			return worldSettings;
-		}
-
+		
 		private void SetWorldName(string value)
 		{
 			_worldNameText.text = value;
@@ -88,7 +66,7 @@ namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.WorldsListPag
 
 		private void InvokeOnToggleValueChanged(bool value)
 		{
-			OnValueChanged?.Invoke(_worldId, value);
+			OnValueChanged?.Invoke(_worldParameters.Id.Value, value);
 		}
 	}
 }

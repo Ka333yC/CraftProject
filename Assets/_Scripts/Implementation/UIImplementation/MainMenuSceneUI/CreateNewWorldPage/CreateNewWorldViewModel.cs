@@ -7,31 +7,30 @@ namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.CreateNewWorl
 {
 	public class CreateNewWorldViewModel
 	{
-		public readonly ReactiveProperty<string> WorldName = new ReactiveProperty<string>("");
+		public readonly ReactiveProperty<string> WorldName = new ("");
+		public readonly ReactiveProperty<bool> IsNameAlreadyUsed = new (false);
 
 		private readonly CreateNewWorldModel _model;
 
 		[Inject]
 		private ScenesLauncher _scenesLauncher;
 
-		public event Action<bool> OnWorldNameAlreadyUsed;
-
 		public CreateNewWorldViewModel(CreateNewWorldModel model)
 		{
 			_model = model;
-			WorldName.OnChanged += OnWorldNameChanged;
+			WorldName.OnChanged += UpdateIsNameAlreadyUsed;
 		}
 
-		private async void OnWorldNameChanged(string worldName)
+		private async void UpdateIsNameAlreadyUsed(string worldName)
 		{
 			worldName = _model.TrimStringFromWrongSymbols(worldName);
-			var hasWorldWithName = await _model.HasWorldWithName(worldName);
-			OnWorldNameAlreadyUsed?.Invoke(hasWorldWithName);
+			IsNameAlreadyUsed.Value = await _model.HasWorldWithName(worldName);
 		}
 
 		public async void CreateAndLaunchNewWorld()
 		{
-			var worldId = await _model.CreateWorld(_model.TrimStringFromWrongSymbols(WorldName.Value));
+			var worldName = _model.TrimStringFromWrongSymbols(WorldName.Value);
+			var worldId = await _model.CreateWorld(worldName);
 			await _scenesLauncher.LaunchGameWorld(worldId);
 		}
 	}

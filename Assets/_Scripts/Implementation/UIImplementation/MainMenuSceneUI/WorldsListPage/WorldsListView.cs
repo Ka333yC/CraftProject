@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Specialized;
 using _Scripts.Core.UICore.Page;
+using _Scripts.Implementation.DataBaseImplementation.GameWorldsDataDB.Tables.GameWorldParametersTable;
 using _Scripts.Implementation.UIImplementation.MainMenuSceneUI.CreateNewWorldPage;
 using _Scripts.Implementation.UIImplementation.MainMenuSceneUI.WorldDeleteConfirmPage;
 using _Scripts.Implementation.UIImplementation.MainMenuSceneUI.WorldsListPage.WorldListScrollScripts;
@@ -35,7 +36,7 @@ namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.WorldsListPag
 			_createNewWorldButton.onClick.AddListener(OpenCreateNewWorldView);
 			_backButton.onClick.AddListener(Escape);
 
-			ViewModel.WorldsId.CollectionChanged += WorldsIdCollectionChanged;
+			ViewModel.Worlds.CollectionChanged += WorldsIdCollectionChanged;
 			ViewModel.LoadData();
 		}
 
@@ -67,13 +68,13 @@ namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.WorldsListPag
 
 			foreach(var newItem in e.NewItems)
 			{
-				_worldsListScroll.AddToCreate((int)newItem);
+				_worldsListScroll.AddToCreate((GameWorldParameters)newItem);
 			}
 		}
 
 		private void DeleteWorldFromList(int worldId) 
 		{
-			_worldsListScroll.AddToDelete(worldId);
+			_worldsListScroll.Delete(worldId);
 		}
 
 		private void WorldListScrollOnCardSelected(int worldId)

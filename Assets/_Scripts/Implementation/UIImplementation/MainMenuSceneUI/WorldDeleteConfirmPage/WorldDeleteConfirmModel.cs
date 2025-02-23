@@ -12,16 +12,18 @@ namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.WorldDeleteCo
 	{
 		private readonly DataBaseCommandExecutor _commandExecutor;
 
+		public int WorldId { get; set; }
+		
 		public WorldDeleteConfirmModel(GameWorldsDBCommandExecutor gameWorldsDBCommandExecutor)
 		{
 			_commandExecutor = gameWorldsDBCommandExecutor.CommandExecutor;
 		}
 
-		public async UniTask DeleteWorld(int worldId)
+		public async UniTask DeleteWorld()
 		{
-			var worldFolderPath = await GetWorldFolderPath(worldId);
+			var worldFolderPath = await GetWorldFolderPath(WorldId);
 			Directory.Delete(worldFolderPath, true);
-			await DeleteRecordFromDatabase(worldId);
+			await DeleteRecordFromDatabase(WorldId);
 		}
 
 		private async UniTask<string> GetWorldFolderPath(int worldId)
