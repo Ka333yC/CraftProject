@@ -1,5 +1,6 @@
 using _Scripts.Apart.Extensions;
 using _Scripts.Core.UICore.Page;
+using R3;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,12 +23,10 @@ namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.SettingsPage
 		private void Start()
 		{
 			_loadingRangeSlider.onValueChanged.AddListinerWholeNumbers(ViewModel.SetLoadingRange);
-			SetLoadingRangeSliderValue(ViewModel.LoadingRange.Value);
-			SetLoadingRangeCountTextValue(ViewModel.LoadingRange.Value);
 			_doneButton.onClick.AddListener(Escape);
 
-			ViewModel.LoadingRange.OnChanged += SetLoadingRangeSliderValue;
-			ViewModel.LoadingRange.OnChanged += SetLoadingRangeCountTextValue;
+			ViewModel.LoadingRange.Subscribe(SetLoadingRangeSliderValue);
+			ViewModel.LoadingRange.Subscribe(SetLoadingRangeCountTextValue);
 		}
 
 		private void SetLoadingRangeCountTextValue(int value)

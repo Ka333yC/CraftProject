@@ -1,5 +1,5 @@
 using System;
-using _Scripts.Core.UICore;
+using R3;
 
 namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.WorldDeleteConfirmPage
 {

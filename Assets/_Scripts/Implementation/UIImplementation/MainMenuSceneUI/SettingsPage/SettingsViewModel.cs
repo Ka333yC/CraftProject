@@ -2,6 +2,7 @@ using System;
 using _Scripts.Core.SettingsCore;
 using _Scripts.Core.UICore;
 using _Scripts.Implementation.SettingsImplementation.GraphicsSettings;
+using R3;
 
 namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.SettingsPage
 {

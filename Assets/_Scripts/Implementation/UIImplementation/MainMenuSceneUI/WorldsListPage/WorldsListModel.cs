@@ -16,22 +16,6 @@ namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.WorldsListPag
 			_commandExecutor = gameWorldsDBCommandExecutor.CommandExecutor;
 		}
 
-		public async Task<List<int>> LoadWorldsId(CancellationToken token)
-		{
-			List<int> result = new List<int>();
-			var selectCommand = GameWorldParameters.SelectCommand;
-			await _commandExecutor.ExecuteReaderAsync(selectCommand, (reader) => 
-			{
-				while(reader.Read())
-				{
-					result.Add(reader.GetInt32(0));
-					token.ThrowIfCancellationRequested();
-				}
-			});
-
-			return result;
-		}
-
 		public async Task<List<GameWorldParameters>> LoadWorlds(CancellationToken token)
 		{
 			List<GameWorldParameters> result = new List<GameWorldParameters>();

@@ -1,4 +1,5 @@
 using _Scripts.Core.UICore.Page;
+using R3;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,10 +27,10 @@ namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.CreateNewWorl
 			_createNewWorldButton.onClick.AddListener(ViewModel.CreateAndLaunchNewWorld);
 			_cancelButton.onClick.AddListener(Escape);
 
-			ViewModel.WorldName.OnChanged += UpdateWorldNameInView;
-			ViewModel.IsNameAlreadyUsed.OnChanged += SetWorldNameAlreadyUsed;
-
 			UpdateWorldNameInViewModel(_worldNameInputField.text);
+			
+			ViewModel.WorldName.Subscribe(UpdateWorldNameInView);
+			ViewModel.IsNameAlreadyUsed.Subscribe(SetWorldNameAlreadyUsed);
 		}
 
 		private void SetWorldNameAlreadyUsed(bool isUsed)

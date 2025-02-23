@@ -1,6 +1,7 @@
 using System;
 using _Scripts.Core.UICore;
 using _Scripts.Implementation.SceneManagement;
+using R3;
 using Zenject;
 
 namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.CreateNewWorldPage
@@ -18,7 +19,7 @@ namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.CreateNewWorl
 		public CreateNewWorldViewModel(CreateNewWorldModel model)
 		{
 			_model = model;
-			WorldName.OnChanged += UpdateIsNameAlreadyUsed;
+			WorldName.Subscribe(UpdateIsNameAlreadyUsed);
 		}
 
 		private async void UpdateIsNameAlreadyUsed(string worldName)

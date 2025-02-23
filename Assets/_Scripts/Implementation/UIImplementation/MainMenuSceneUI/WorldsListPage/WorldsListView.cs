@@ -1,10 +1,10 @@
-using System;
-using System.Collections.Specialized;
 using _Scripts.Core.UICore.Page;
 using _Scripts.Implementation.DataBaseImplementation.GameWorldsDataDB.Tables.GameWorldParametersTable;
 using _Scripts.Implementation.UIImplementation.MainMenuSceneUI.CreateNewWorldPage;
 using _Scripts.Implementation.UIImplementation.MainMenuSceneUI.WorldDeleteConfirmPage;
 using _Scripts.Implementation.UIImplementation.MainMenuSceneUI.WorldsListPage.WorldListScrollScripts;
+using ObservableCollections;
+using R3;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -36,7 +36,7 @@ namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.WorldsListPag
 			_createNewWorldButton.onClick.AddListener(OpenCreateNewWorldView);
 			_backButton.onClick.AddListener(Escape);
 
-			ViewModel.Worlds.CollectionChanged += WorldsIdCollectionChanged;
+			ViewModel.Worlds.ObserveAdd().Subscribe(onNext: WorldsListAddItem);
 			ViewModel.LoadData();
 		}
 
@@ -59,17 +59,9 @@ namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.WorldsListPag
 			PageStack.OpenView(worldDeleteConfirmView);
 		}
 
-		private void WorldsIdCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+		private void WorldsListAddItem(CollectionAddEvent<GameWorldParameters> addEvent)
 		{
-			if(e.Action != NotifyCollectionChangedAction.Add)
-			{
-				throw new ArgumentException(e.Action.ToString());
-			}
-
-			foreach(var newItem in e.NewItems)
-			{
-				_worldsListScroll.AddToCreate((GameWorldParameters)newItem);
-			}
+			_worldsListScroll.AddToCreate(addEvent.Value);
 		}
 
 		private void DeleteWorldFromList(int worldId) 

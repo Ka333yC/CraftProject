@@ -1,9 +1,9 @@
 using System;
-using System.Collections.ObjectModel;
 using System.Threading;
-using _Scripts.Core.UICore;
 using _Scripts.Implementation.DataBaseImplementation.GameWorldsDataDB.Tables.GameWorldParametersTable;
 using _Scripts.Implementation.SceneManagement;
+using ObservableCollections;
+using R3;
 using Unity.VisualScripting;
 using Zenject;
 
@@ -11,7 +11,7 @@ namespace _Scripts.Implementation.UIImplementation.MainMenuSceneUI.WorldsListPag
 {
 	public class WorldsListViewModel : IDisposable
 	{
-		public readonly ObservableCollection<GameWorldParameters> Worlds = new ();
+		public readonly ObservableList<GameWorldParameters> Worlds = new ();
 		public readonly ReactiveProperty<int> SelectedWorldId = new ReactiveProperty<int>(-1);
 
 		private readonly WorldsListModel _model;
