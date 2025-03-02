@@ -19,10 +19,10 @@ namespace _Scripts.Implementation.UIImplementation.GameWorldSceneUI.PausePage
 			_model.ResumeGame();
 		}
 
-		public async void OpenStartMenu()
+		public async void OpenMain()
 		{
 			_model.ResumeGame();
-			await _model.OpenStartMenuScene();
+			await _model.OpenMainScene();
 		}
 	}
 }

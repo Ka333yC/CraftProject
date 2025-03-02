@@ -5,10 +5,10 @@
 		/// <summary>
 		/// Загружает свои данные из settingsData
 		/// </summary>
-		public void Initialize(SettingsData settingsData);
+		public void LoadFrom(SettingsData settingsData);
 		/// <summary>
 		/// Загружает свои данные в settingsData
 		/// </summary>
-		public void WriteTo(SettingsData settingsData);
+		public void SaveTo(SettingsData settingsData);
 	}
 }

@@ -6,7 +6,7 @@ using Zenject;
 
 namespace _Scripts.Undone.StartPoints
 {
-	public class StartMenuSceneStartPoint : MonoBehaviour
+	public class MainMenuSceneStartPoint : MonoBehaviour
 	{
 		[Inject]
 		private ViewFactory _viewFactory;

@@ -28,7 +28,7 @@ namespace _Scripts.Implementation.SettingsImplementation.GraphicsSettings
 			settingsSystemsManager.AddSystem(this);
 		}
 
-		public void Initialize(SettingsData settingsData)
+		public void LoadFrom(SettingsData settingsData)
 		{
 			if(settingsData.TryGet(nameof(LoadingRange), out int loadingRange))
 			{
@@ -40,7 +40,7 @@ namespace _Scripts.Implementation.SettingsImplementation.GraphicsSettings
 			}
 		}
 
-		public void WriteTo(SettingsData settingsData)
+		public void SaveTo(SettingsData settingsData)
 		{
 			settingsData.Set(nameof(LoadingRange), LoadingRange);
 		}

@@ -11,22 +11,22 @@ namespace _Scripts.Core.SettingsCore
 		private SettingsData _settingsData;
 		private bool _isInitialized;
 		
-		public void Initialize(SerializableDataContainer dataContainer)
+		public void LoadFrom(SerializableDataContainer dataContainer)
 		{
 			_settingsData = new SettingsData(dataContainer);
 			foreach(var settingsSystem in _settingsSystems)
 			{
-				settingsSystem.Initialize(_settingsData);
+				settingsSystem.LoadFrom(_settingsData);
 			}
 
 			_isInitialized = true;
 		}
 
-		public void WriteTo(SerializableDataContainer dataContainer)
+		public void SaveTo(SerializableDataContainer dataContainer)
 		{
 			foreach(var settingsSystem in _settingsSystems)
 			{
-				settingsSystem.WriteTo(_settingsData);
+				settingsSystem.SaveTo(_settingsData);
 			}
 		}
 
@@ -35,7 +35,7 @@ namespace _Scripts.Core.SettingsCore
 			_settingsSystems.Add(settingsSystem);
 			if(_isInitialized)
 			{
-				settingsSystem.Initialize(_settingsData);
+				settingsSystem.LoadFrom(_settingsData);
 			}
 		}
 	}

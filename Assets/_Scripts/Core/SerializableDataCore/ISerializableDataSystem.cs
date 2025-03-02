@@ -7,10 +7,10 @@ namespace _Scripts.Core.GameProgressCore
 		/// <summary>
 		/// Загружает свои данные из dataContainer
 		/// </summary>
-		public void Initialize(SerializableDataContainer dataContainer);
+		public void LoadFrom(SerializableDataContainer dataContainer);
 		/// <summary>
-		/// Загружает свои данные в dataContainer
+		/// Выгружает свои данные в dataContainer
 		/// </summary>
-		public void WriteTo(SerializableDataContainer dataContainer);
+		public void SaveTo(SerializableDataContainer dataContainer);
 	}
 }

@@ -18,7 +18,7 @@ namespace _Scripts.Implementation.UIImplementation.GameWorldSceneUI.PausePage
 		private void Start()
 		{
 			_resumeButton.onClick.AddListener(ResumeGame);
-			_backToMenuButton.onClick.AddListener(ViewModel.OpenStartMenu);
+			_backToMenuButton.onClick.AddListener(ViewModel.OpenMain);
 
 			ViewModel.PauseGame();
 		}

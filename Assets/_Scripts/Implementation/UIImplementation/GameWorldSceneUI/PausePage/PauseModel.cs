@@ -24,9 +24,9 @@ namespace _Scripts.Implementation.UIImplementation.GameWorldSceneUI.PausePage
 			_pauseManager.IsPaused = false;
 		}
 
-		public async Task OpenStartMenuScene()
+		public async Task OpenMainScene()
 		{
-			var asyncOperation = SceneManager.LoadSceneAsync(ScenesIndexes.MainMenuSceneIndex);
+			var asyncOperation = SceneManager.LoadSceneAsync(ScenesIndexes.MainMenuSceneName);
 			while(!asyncOperation.isDone)
 			{
 				await Task.Yield();

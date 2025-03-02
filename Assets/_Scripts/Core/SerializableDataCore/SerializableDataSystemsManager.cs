@@ -29,7 +29,7 @@ namespace _Scripts.Core.SerializableDataCore
 
 			foreach(var settingsSystem in _serializableDataSystems)
 			{
-				settingsSystem.Initialize(_serializableDataContainer);
+				settingsSystem.LoadFrom(_serializableDataContainer);
 			}
 
 			_isLoaded = true;
@@ -40,7 +40,7 @@ namespace _Scripts.Core.SerializableDataCore
 			_serializableDataSystems.Add(serializableDataSystem);
 			if(_isLoaded)
 			{
-				serializableDataSystem.Initialize(_serializableDataContainer);
+				serializableDataSystem.LoadFrom(_serializableDataContainer);
 			}
 		}
 
@@ -48,7 +48,7 @@ namespace _Scripts.Core.SerializableDataCore
 		{
 			foreach(var serializableDataSystem in _serializableDataSystems)
 			{
-				serializableDataSystem.WriteTo(_serializableDataContainer);
+				serializableDataSystem.SaveTo(_serializableDataContainer);
 			}
 
 			await _serializableDataFileLoader.Write(_serializableDataContainer);

@@ -13,13 +13,13 @@ namespace _Scripts.Implementation.SceneManagement
             var gameWorldLaunchParameters = new GameWorldLaunchParameters();
 			gameWorldLaunchParameters.WorldId = worldId;
 			GameWorldLaunchParameters = gameWorldLaunchParameters;
-			await SceneManager.LoadSceneAsync(ScenesIndexes.GameWorldSceneIndex).ToUniTask();
+			await SceneManager.LoadSceneAsync(ScenesIndexes.GameWorldSceneName).ToUniTask();
         }
 
         public async UniTask LaunchMainMenu()
         {
             GameWorldLaunchParameters = null;
-            await SceneManager.LoadSceneAsync(ScenesIndexes.MainMenuSceneIndex).ToUniTask();
+            await SceneManager.LoadSceneAsync(ScenesIndexes.MainMenuSceneName).ToUniTask();
         }
     }
 }
